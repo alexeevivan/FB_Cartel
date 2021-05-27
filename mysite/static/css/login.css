@@ -1,0 +1,111 @@
+body {
+    font-family: 'SF Pro Display';
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    grid-template-areas: "left_backside main right_backside";
+    grid-template-columns: 20% 1fr 20%;
+    grid-column-gap: 0%;
+    font-family:'SF Pro Display';
+    background: #C57A4A;
+    justify-content: center;
+    margin:0;
+    position: relative;
+}
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border: 5px solid #FFC29B;
+    border-radius: 10px;
+    width: 50%;
+}
+.textinput {
+    background: rgba(255, 255, 255, 0.18);
+    width: 90%;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    color: white;
+    text-align: center;
+    align-items: center;
+    outline-style: none;
+}
+input:matches([type="button"], [type="submit"], [type="reset"]) {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    position: relative;
+    display: inline-block;
+    padding: 12px 20px;
+    background: #8c469800;
+    border-radius: 15px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.24);
+    transition: 1s;
+    margin-top: 15px;
+    margin-bottom: 5%;
+}
+input:matches([type="button"], [type="submit"], [type="reset"]):hover {
+    background: #3b291f82;
+    transition: 1s;;
+    box-shadow: 1px 1px 40px rgba(255, 255, 255, 1);
+    color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+.form-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+ul.m-0 {
+    list-style: none;
+}
+.captchaanswerinput {
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.01);
+    height: 30px;
+    display: grid;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.18);
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    outline-style: none;
+}
+.captcha {
+    width: 50%;
+    border: 3px solid rgba(221, 141, 92, 0.55);
+    border-radius: 5px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    transition: 1s;
+}
+.captcha:hover {
+    width: 60%;
+    transition: 1s;
+}
+form {
+    margin-top: 5%;
+}
+#left_backside {
+    grid-area: left_backside;
+    overflow: auto;
+    display: block;
+    height: 100vh;
+}
+#main {
+    grid-area: main;
+    color: rgb(0, 0, 0);
+    align-items: center;
+}
+#right_backside {
+    grid-area: right_backside;
+    overflow: auto;
+    display: block;
+    height: 100vh;
+}

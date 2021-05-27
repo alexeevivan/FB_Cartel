@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link href="../../static/css/simple-line-icons.css" rel="stylesheet">
+    <link href="../../static/css/index.css" rel="stylesheet">
+    <link href="../../static/css/font.css" rel="stylesheet">
+
+    <title>
+        Food &#38 Beverage Cartel
+    </title>
+</head>
+<body>
+    <div id="pageNav">
+        <div id="logo">
+           <a href="#" style="background-image: url(../../static/img/logo.jpeg);">Food &#38 Beverage Cartel</a>
+        </div>
+        {% if not request.user.is_authenticated %}
+        <li>
+            <a href="{% url 'login' %}">Авторизация</a>
+        </li>
+        <li>
+            <a href="{% url 'registration' %}">Регистрация</a>
+        </li>
+        {% endif %}
+        {% if request.user.is_authenticated %}
+        <li>
+            <a href="#" style="text-transform: capitalize;">{{ request.user.username }}</a>
+            <a href="{% url 'logout' %}" style="margin-left: 10%; padding: 2%; border: 1px solid goldenrod;">Выход</a>
+        </li>
+        <li>
+        </li>
+        {% endif %}
+        <li>
+            <a href="#">Справочник</a>
+        </li>
+        <li>
+            <a href="#">Обучение</a>
+        </li>
+        <li>
+            <a href="#">О нас</a>
+        </li>
+    </div>
+    <div id="pageInfo">
+        <div class="container">
+            <div class="card">
+                <div class="box">
+                    <div class="content">
+                        <h2><img class="fl" src="https://img.icons8.com/dotty/100/000000/grapes.png" style="width:70%; height: 70%;"/></h2>
+                        <h3>Вино</h3>
+                        <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                        <button type="button" data-open-modal="modal1" id="myBtn">Read more</button>
+                        <noscript name="modal1" data-title="Подтвердите свой возраст" style="color: white; text-align: center;">
+                            <span><a href="#" id="firstBtn">18 +</a></span>
+                            <span><a href="https://www.lego.com/" id="secondBtn">< 18</a></span>
+                        </noscript>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <div class="content">
+                        <h2><img class="fl" src="https://img.icons8.com/ios/50/000000/whisky-still.png"/></h2>
+                        <h3>40%</h3>
+                        <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                        <button type="button" data-open-modal="modal1" id="myBtn">Read more</button>
+                        <noscript name="modal1" data-title="Подтвердите свой возраст" style="color: white; text-align: center;">
+                            <span><a href="#" id="firstBtn">18 +</a></span>
+                            <span><a href="https://www.lego.com/" id="secondBtn">< 18</a></span>
+                        </noscript>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <div class="content">
+                        <h2><img class="fl" src="https://img.icons8.com/dotty/100/000000/beer.png" style="width:50%; height: 50%;"/></h2>
+                        <h3>Не 40%</h3>
+                        <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                        <button type="button" data-open-modal="modal1" id="myBtn">Read more</button>
+                        <noscript name="modal1" data-title="Подтвердите свой возраст" style="color: white; text-align: center;">
+                            <span><a href="#" id="firstBtn">18 +</a></span>
+                            <span><a href="https://www.lego.com/" id="secondBtn">< 18</a></span>
+                        </noscript>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <div class="content">
+                        <h2><img class="fl" src="https://img.icons8.com/dotty/80/000000/cocktail-shaker.png" style="width:80%; height: 80%;"/></h2>
+                        <h3>Коктейль</h3>
+                        <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                        <button type="button" data-open-modal="modal1" id="myBtn">Read more</button>
+                        <noscript name="modal1" data-title="Подтвердите свой возраст" style="color: white; text-align: center;">
+                            <span><a href="#" id="firstBtn">18 +</a></span>
+                            <span><a href="https://www.lego.com/" id="secondBtn">< 18</a></span>
+                        </noscript>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <div class="content">
+                        <h2><img class="fl" src="https://img.icons8.com/dotty/80/000000/work-light.png" style="width:80%; height: 80%;"/></h2>
+                        <h3>Как?</h3>
+                        <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                        <button data-open-modal="modal1" id="myBtn">Read more</button>
+                        <noscript name="modal1" data-title="Подтвердите свой возраст" style="color: white; text-align: center;">
+                            <span><a href="#" id="firstBtn">18 +</a></span>
+                            <span><a href="https://www.lego.com/" id="secondBtn">< 18</a></span>
+                        </noscript>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <div class="content">
+                        <h2><img class="fl" src="https://img.icons8.com/dotty/64/000000/chat.png" style="width:80%; height: 80%;"/></h2>
+                        <h3>Форум</h3>
+                        <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                        <button type="button" data-open-modal="modal1" id="myBtn">Read more</button>
+                        <noscript name="modal1" data-title="Подтвердите свой возраст" style="color: white; text-align: center;">
+                            <span><a href="#" id="firstBtn">18 +</a></span>
+                            <span><a href="https://www.lego.com/" id="secondBtn">< 18</a></span>
+                        </noscript>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

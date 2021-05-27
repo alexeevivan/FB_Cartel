@@ -1,0 +1,186 @@
+body {
+    font-family: 'SF Pro Display';
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    grid-template-areas: "nav info";
+    grid-template-columns: 20% 1fr;
+    grid-column-gap: 0%;
+    font-family:'SF Pro Display';
+    background: #C57A4A;
+    justify-content: center;
+    margin:0;
+    position: relative;
+}
+@media(max-width: 320px) {
+    body {
+        display:block;
+        grid-template-areas:
+            "nav"
+            "info";
+        grid-template-rows: 5px;  
+        grid-template-columns: 1fr;
+    }
+    #pageNav {
+        text-align: center;
+    }
+}
+li {
+    list-style: none;
+    margin-left: 10%;
+}
+li a{
+    color: #ffe7d9;
+    line-height: 3em;
+    font-size: 20px;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: 0.5s;
+}
+li a:hover {
+    color: goldenrod;
+    background-size: 100% 2px;
+    transition: 0.5s;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #82723c00;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 40px 0;
+}
+.container .card {
+    position: relative;
+    width: 280px;
+    height: 400px;
+    box-shadow: inset 5px 5px 5px rgba(0,0,0,0.05),
+                inset -5px -5px -55px rgba(255,255,255,0.5),
+                inset 5px 5px 5px rgba(0,0,0,0.05),
+                inset -5px -5px -55px rgba(255,255,255,0.5);
+    border-radius: 15px;
+    border-color:#ffffff00;
+    margin: 30px;
+}
+.container .card .box {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: #FFC29B;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1.4s;
+}
+.container .card:hover .box {
+    transform: translateY(-30px);
+    box-shadow: 6px 6px 8px rgba(0,0,0);
+    transition: 1s;
+}
+.container .card .box .content {
+    padding: 20px;
+    text-align: center;
+}
+.container .card .box .content h2{
+    position: absolute;
+    top: -10px;
+    right: 30px;
+    font-size: 3em;
+    color: rgba(0,0,0,0.02);
+    transition: 0.5s;
+    pointer-events: none;
+}
+.container .card:hover .box .content h2{
+    color: rgba(0,0,0,0.05);
+}
+.container .card .box .content h3{
+    font-size: 1.8em;
+    color:rgb(0, 0, 0);
+    z-index: 1;
+    transition: 0.5s;
+}
+.container .card .box .content p{
+    font-size: 1em;
+    font-weight: 300;
+    color: rgb(26, 26, 26);
+    z-index: 1;
+    transition: 0.5s;
+}
+button {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    position: relative;
+    display: inline-block;
+    padding: 12px 20px;
+    background: #8c469800;
+    margin-top: 15px;
+    border-radius: 15px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: 400;
+    box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.24);
+    transition: 1s;
+}
+button:hover {
+    background: #3b291f82;
+    transition: 1s;;
+    box-shadow: 1px 1px 40px rgba(255, 255, 255, 1);
+    color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0);;
+}
+
+#pageNav {
+    grid-area: nav;
+    background: url('../../static/img/aside.png') no-repeat right top rgb(0, 0, 0, 0.8);
+    position: fixed;
+    width: 20%;
+    overflow: auto;
+    display: block;
+    height: 100vh;
+}
+#pageInfo {
+    grid-area: info;
+    color: rgb(255, 255, 255);
+}
+#logo {
+    margin-top: 20%;
+    margin-bottom: 20%;
+    display: block;
+    width: 100%;
+    font-weight: normal;
+    font-size: 35px;
+    line-height: 1.6;
+    font-family: "SF Pro Display";
+    text-decoration: none;
+    text-align: center;
+}
+#logo a{
+    display: block;
+    text-align: center;
+    color: #000000;
+    overflow: hidden;
+    background-clip:text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

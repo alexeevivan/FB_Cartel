@@ -1,0 +1,33 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link href="../../static/css/simple-line-icons.css" rel="stylesheet">
+    <link href="../../static/css/login.css" rel="stylesheet">
+    <link href="../../static/css/font.css" rel="stylesheet">
+
+    <title>
+        Food &#38 Beverage Cartel
+    </title>
+</head>
+<body>
+<div id="left_backside"></div>
+<div id="main">
+    <div class="vertical-center">
+        <form action="" method="POST" style="margin-top: 5%;">
+            {% csrf_token %}
+            {{ form|crispy}}
+            <input type="submit" class="button" value="Войти">
+        </form>
+    </div>
+</div>
+<div id="right_backside"></div>
+
+</body>
+</html>
