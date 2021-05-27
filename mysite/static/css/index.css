@@ -44,6 +44,7 @@ li a:hover {
     color: goldenrod;
     background-size: 100% 2px;
     transition: 0.5s;
+    transform: translateX(5%);
 }
 .card {
     position: relative;
@@ -87,11 +88,12 @@ li a:hover {
     justify-content: center;
     align-items: center;
     transition: 1.4s;
+    box-shadow: -6px -6px 8px rgba(0,0,0);
 }
 .container .card:hover .box {
     transform: translateY(-30px);
     box-shadow: 6px 6px 8px rgba(0,0,0);
-    transition: 1s;
+    transition: 1.4s;
 }
 .container .card .box .content {
     padding: 20px;
@@ -183,4 +185,10 @@ button:hover {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    background-image: url(../../static/img/logo.jpeg);
+    transition: 1s;
+}
+#logo a:hover{
+    filter: hue-rotate(90deg);
+    transition: 1s;
 }

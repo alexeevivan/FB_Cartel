@@ -20,7 +20,7 @@
 <body>
     <div id="pageNav">
         <div id="logo">
-           <a href="#" style="background-image: url(../../static/img/logo.jpeg);">Food &#38 Beverage Cartel</a>
+           <a href="#">Food &#38 Beverage Cartel</a>
         </div>
         {% if not request.user.is_authenticated %}
         <li>
@@ -32,14 +32,16 @@
         {% endif %}
         {% if request.user.is_authenticated %}
         <li>
-            <a href="#" style="text-transform: capitalize;">{{ request.user.username }}</a>
-            <a href="{% url 'logout' %}" style="margin-left: 10%; padding: 2%; border: 1px solid goldenrod;">Выход</a>
+            <a href="#" style="display: grid; width: 80%; text-align: center; margin-bottom: 8%; text-transform: capitalize; border: 1px solid goldenrod; border-radius: 10px;">{{ request.user.username }}</a>
+        </li>
+        <li>
+            <a href="{% url 'logout' %}" style="display: grid; width: 80%; text-align: center; border: 1px solid goldenrod; border-radius: 10px;">Выход</a>
         </li>
         <li>
         </li>
         {% endif %}
         <li>
-            <a href="#">Справочник</a>
+            <a href="#" id="ddd">Справочник</a>
         </li>
         <li>
             <a href="#">Обучение</a>
