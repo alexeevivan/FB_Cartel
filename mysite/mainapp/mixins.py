@@ -1,13 +1,26 @@
 from django.views.generic.detail import SingleObjectMixin
-from .models import Category, Red_wine, Rose_wine, White_wine, Champagne
+from .models import *
+
 
 class CategoryDetailMixin(SingleObjectMixin):
     
     CATEGORY_SLUG2PRODUCT_MODEL = {
-        'red_wine': Red_wine,
-        'rose_Wine': Rose_wine,
-        'white_Wine': White_wine,
+        'red_wine': Red_Wine,
+        'rose_Wine': Rose_Wine,
+        'white_Wine': White_Wine,
         'champagne': Champagne,
+        'sparkling_wine': Sparkling_Wine,
+        'porto': Porto,
+        'bitter': Bitter,
+        'vermouth': Vermouth,
+        'whiskey': Whiskey,
+        'rum': Rum,
+        'tequila': Tequila,
+        'mezcal': Mezcal,
+        'gin': Gin,
+        'vodka': Vodka,
+        'liquor': Liquor,
+        'cocktail': Cocktail,
     }
 
     def get_context_data(self, **kwargs):
