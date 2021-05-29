@@ -59,9 +59,11 @@ class CategoryManager(models.Manager):
         'Whiskey': 'whiskey__count',
         'Rum': 'Rum__count',
         'Tequila': 'tequila__count',
+        'Mezcal': 'mezcal__count',
         'Gin': 'gin__count',
         'Vodka': 'vodka__count',
         'Liquor': 'liquor__count',
+        'Cocktail': 'cocktail__count',
     }
 
 
@@ -70,7 +72,8 @@ class CategoryManager(models.Manager):
 
     def get_categories_for_left_sidebar(self):
         models = get_models_for_count('red_wine', 'rose_wine', 'white_wine', 'champagne', 'sparkling_wine',
-                                      'porto', 'bitter', 'vermouth', 'whiskey', 'rum', 'tequila', 'gin', 'vodka', 'liquor')
+                                      'porto', 'bitter', 'vermouth', 'whiskey', 'rum', 'tequila', 'mezcal',
+                                      'gin', 'vodka', 'liquor', 'cocktail')
         qs = list(self.get_queryset().annotate(*models))
         data = [
             dict(name=c.name, url=c.get_absolute_url(), count=getattr(c, self.CATEGORY_NAME_COUNT_NAME[c.name]))
@@ -128,7 +131,7 @@ class Product(models.Model):
         return self.__class__.__name__.lower()
 
 
-class Red_wine(Product):
+class Red_Wine(Product):
     
     spirit_type = models.CharField(max_length=255, verbose_name='Категория:')
     region = models.CharField(max_length=255, verbose_name='Регион производства:', null=False, blank=False)
@@ -141,6 +144,7 @@ class Red_wine(Product):
     taste = models.CharField(max_length=255, verbose_name='Вкус:')
     body = models.CharField(max_length=10, verbose_name='Тело')
     gastronomic = models.CharField(max_length=13, verbose_name='Гастрономическое сочетание:')
+    cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:", null=True)
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
     manufacturer_site = models.CharField(max_length=255, verbose_name='Сайт производителя')
@@ -153,7 +157,7 @@ class Red_wine(Product):
         return get_product_url(self, 'product_detail')
 
 
-class Rose_wine(Product):
+class Rose_Wine(Product):
     
     spirit_type = models.CharField(max_length=255, verbose_name='Категория:')
     region = models.CharField(max_length=255, verbose_name='Регион производства:', null=False, blank=False)
@@ -166,6 +170,7 @@ class Rose_wine(Product):
     taste = models.CharField(max_length=255, verbose_name='Вкус:')
     body = models.CharField(max_length=10, verbose_name='Тело')
     gastronomic = models.CharField(max_length=13, verbose_name='Гастрономическое сочетание:')
+    cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:", null=True)
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
     manufacturer_site = models.CharField(max_length=255, verbose_name='Сайт производителя')
@@ -178,7 +183,7 @@ class Rose_wine(Product):
         return get_product_url(self, 'product_detail')
 
 
-class White_wine(Product):
+class White_Wine(Product):
     
     spirit_type = models.CharField(max_length=255, verbose_name='Категория:')
     region = models.CharField(max_length=255, verbose_name='Регион производства:', null=False, blank=False)
@@ -191,6 +196,7 @@ class White_wine(Product):
     taste = models.CharField(max_length=255, verbose_name='Вкус:')
     body = models.CharField(max_length=10, verbose_name='Тело')
     gastronomic = models.CharField(max_length=13, verbose_name='Гастрономическое сочетание:')
+    cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:", null=True)
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
     manufacturer_site = models.CharField(max_length=255, verbose_name='Сайт производителя')
@@ -217,6 +223,299 @@ class Champagne(Product):
     taste = models.CharField(max_length=255, verbose_name='Вкус:')
     body = models.CharField(max_length=10, verbose_name='Тело')
     gastronomic = models.CharField(max_length=13, verbose_name='Гастрономическое сочетание:')
+    cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:", null=True)
+    serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
+    manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
+    manufacturer_site = models.CharField(max_length=255, verbose_name='Сайт производителя')
+    provider = models.CharField(max_length=255, verbose_name='Поставщик:', null=True)
+
+    def __str__(self):
+        return "{} : {}".format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Sparkling_Wine(Product):
+    
+    spirit_type = models.CharField(max_length=255, verbose_name='Категория:')
+    country_of_manufacturing = models.CharField(max_length=255, verbose_name='Страна производства')
+    region = models.CharField(max_length=255, verbose_name='Регион производства:')
+    vintage = models.CharField(max_length=10, verbose_name='Винтаж:')
+    alcohol = models.CharField(max_length=10, verbose_name='Крепость:')
+    value = models.CharField(max_length=10, verbose_name='Объём:')
+    grape = models.CharField(max_length=255, verbose_name='Виноград')
+    color = models.CharField(max_length=255, verbose_name='Цвет:')
+    flavour = models.CharField(max_length=255, verbose_name='Аромат:')
+    taste = models.CharField(max_length=255, verbose_name='Вкус:')
+    body = models.CharField(max_length=10, verbose_name='Тело')
+    gastronomic = models.CharField(max_length=13, verbose_name='Гастрономическое сочетание:')
+    cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:", null=True)
+    serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
+    manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
+    manufacturer_site = models.CharField(max_length=255, verbose_name='Сайт производителя')
+    provider = models.CharField(max_length=255, verbose_name='Поставщик:', null=True)
+
+    def __str__(self):
+        return "{} : {}".format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Porto(Product):
+    
+    spirit_type = models.CharField(max_length=255, verbose_name='Категория:')
+    country_of_manufacturing = models.CharField(max_length=255, verbose_name='Страна производства')
+    region = models.CharField(max_length=255, verbose_name='Регион производства:')
+    vintage = models.CharField(max_length=10, verbose_name='Винтаж:', null=True)
+    alcohol = models.CharField(max_length=10, verbose_name='Крепость:')
+    value = models.CharField(max_length=10, verbose_name='Объём:')
+    grape = models.CharField(max_length=255, verbose_name='Виноград')
+    color = models.CharField(max_length=255, verbose_name='Цвет:')
+    flavour = models.CharField(max_length=255, verbose_name='Аромат:')
+    taste = models.CharField(max_length=255, verbose_name='Вкус:')
+    body = models.CharField(max_length=10, verbose_name='Тело')
+    gastronomic = models.CharField(max_length=13, verbose_name='Гастрономическое сочетание:')
+    cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:", null=True)
+    serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
+    manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
+    manufacturer_site = models.CharField(max_length=255, verbose_name='Сайт производителя')
+    provider = models.CharField(max_length=255, verbose_name='Поставщик:', null=True)
+
+    def __str__(self):
+        return "{} : {}".format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Bitter(Product):
+    
+    spirit_type = models.CharField(max_length=255, verbose_name='Категория:')
+    country_of_manufacturing = models.CharField(max_length=255, verbose_name='Страна производства')
+    region = models.CharField(max_length=255, verbose_name='Регион производства:')
+    vintage = models.CharField(max_length=10, verbose_name='Винтаж:', null=True)
+    alcohol = models.CharField(max_length=10, verbose_name='Крепость:')
+    value = models.CharField(max_length=10, verbose_name='Объём:')
+    color = models.CharField(max_length=255, verbose_name='Цвет:')
+    flavour = models.CharField(max_length=255, verbose_name='Аромат:')
+    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
+    serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
+    manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
+    manufacturer_site = models.CharField(max_length=255, verbose_name='Сайт производителя')
+    provider = models.CharField(max_length=255, verbose_name='Поставщик:', null=True)
+
+    def __str__(self):
+        return "{} : {}".format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Vermouth(Product):
+    
+    spirit_type = models.CharField(max_length=255, verbose_name='Категория:')
+    country_of_manufacturing = models.CharField(max_length=255, verbose_name='Страна производства')
+    region = models.CharField(max_length=255, verbose_name='Регион производства:')
+    vintage = models.CharField(max_length=10, verbose_name='Винтаж:', null=True)
+    alcohol = models.CharField(max_length=10, verbose_name='Крепость:')
+    value = models.CharField(max_length=10, verbose_name='Объём:')
+    color = models.CharField(max_length=255, verbose_name='Цвет:')
+    flavour = models.CharField(max_length=255, verbose_name='Аромат:')
+    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
+    serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
+    manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
+    manufacturer_site = models.CharField(max_length=255, verbose_name='Сайт производителя')
+    provider = models.CharField(max_length=255, verbose_name='Поставщик:', null=True)
+
+    def __str__(self):
+        return "{} : {}".format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+    
+
+class Whiskey(Product):
+    
+    spirit_type = models.CharField(max_length=255, verbose_name='Категория:')
+    country_of_manufacturing = models.CharField(max_length=255, verbose_name='Страна производства')
+    region = models.CharField(max_length=255, verbose_name='Регион производства:')
+    vintage = models.CharField(max_length=10, verbose_name='Винтаж:', null=True)
+    alcohol = models.CharField(max_length=10, verbose_name='Крепость:')
+    value = models.CharField(max_length=10, verbose_name='Объём:')
+    color = models.CharField(max_length=255, verbose_name='Цвет:')
+    flavour = models.CharField(max_length=255, verbose_name='Аромат:')
+    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
+    serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
+    manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
+    manufacturer_site = models.CharField(max_length=255, verbose_name='Сайт производителя')
+    provider = models.CharField(max_length=255, verbose_name='Поставщик:', null=True)
+
+    def __str__(self):
+        return "{} : {}".format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+    
+
+class Rum(Product):
+    
+    spirit_type = models.CharField(max_length=255, verbose_name='Категория:')
+    country_of_manufacturing = models.CharField(max_length=255, verbose_name='Страна производства')
+    region = models.CharField(max_length=255, verbose_name='Регион производства:')
+    vintage = models.CharField(max_length=10, verbose_name='Винтаж:', null=True)
+    alcohol = models.CharField(max_length=10, verbose_name='Крепость:')
+    value = models.CharField(max_length=10, verbose_name='Объём:')
+    color = models.CharField(max_length=255, verbose_name='Цвет:')
+    flavour = models.CharField(max_length=255, verbose_name='Аромат:')
+    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
+    serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
+    manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
+    manufacturer_site = models.CharField(max_length=255, verbose_name='Сайт производителя')
+    provider = models.CharField(max_length=255, verbose_name='Поставщик:', null=True)
+
+    def __str__(self):
+        return "{} : {}".format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Tequila(Product):
+    
+    spirit_type = models.CharField(max_length=255, verbose_name='Категория:')
+    country_of_manufacturing = models.CharField(max_length=255, verbose_name='Страна производства')
+    region = models.CharField(max_length=255, verbose_name='Регион производства:')
+    vintage = models.CharField(max_length=10, verbose_name='Винтаж:', null=True)
+    alcohol = models.CharField(max_length=10, verbose_name='Крепость:')
+    value = models.CharField(max_length=10, verbose_name='Объём:')
+    color = models.CharField(max_length=255, verbose_name='Цвет:')
+    flavour = models.CharField(max_length=255, verbose_name='Аромат:')
+    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
+    serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
+    manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
+    manufacturer_site = models.CharField(max_length=255, verbose_name='Сайт производителя')
+    provider = models.CharField(max_length=255, verbose_name='Поставщик:', null=True)
+
+    def __str__(self):
+        return "{} : {}".format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Mezcal(Product):
+    
+    spirit_type = models.CharField(max_length=255, verbose_name='Категория:')
+    country_of_manufacturing = models.CharField(max_length=255, verbose_name='Страна производства')
+    region = models.CharField(max_length=255, verbose_name='Регион производства:')
+    vintage = models.CharField(max_length=10, verbose_name='Винтаж:', null=True)
+    alcohol = models.CharField(max_length=10, verbose_name='Крепость:')
+    value = models.CharField(max_length=10, verbose_name='Объём:')
+    color = models.CharField(max_length=255, verbose_name='Цвет:')
+    flavour = models.CharField(max_length=255, verbose_name='Аромат:')
+    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
+    serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
+    manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
+    manufacturer_site = models.CharField(max_length=255, verbose_name='Сайт производителя')
+    provider = models.CharField(max_length=255, verbose_name='Поставщик:', null=True)
+
+    def __str__(self):
+        return "{} : {}".format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Gin(Product):
+    
+    spirit_type = models.CharField(max_length=255, verbose_name='Категория:')
+    country_of_manufacturing = models.CharField(max_length=255, verbose_name='Страна производства')
+    region = models.CharField(max_length=255, verbose_name='Регион производства:')
+    vintage = models.CharField(max_length=10, verbose_name='Винтаж:', null=True)
+    alcohol = models.CharField(max_length=10, verbose_name='Крепость:')
+    value = models.CharField(max_length=10, verbose_name='Объём:')
+    color = models.CharField(max_length=255, verbose_name='Цвет:')
+    flavour = models.CharField(max_length=255, verbose_name='Аромат:')
+    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
+    serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
+    manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
+    manufacturer_site = models.CharField(max_length=255, verbose_name='Сайт производителя')
+    provider = models.CharField(max_length=255, verbose_name='Поставщик:', null=True)
+
+    def __str__(self):
+        return "{} : {}".format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Vodka(Product):
+    
+    spirit_type = models.CharField(max_length=255, verbose_name='Категория:')
+    country_of_manufacturing = models.CharField(max_length=255, verbose_name='Страна производства')
+    region = models.CharField(max_length=255, verbose_name='Регион производства:')
+    alcohol = models.CharField(max_length=10, verbose_name='Крепость:')
+    value = models.CharField(max_length=10, verbose_name='Объём:')
+    color = models.CharField(max_length=255, verbose_name='Цвет:')
+    flavour = models.CharField(max_length=255, verbose_name='Аромат:')
+    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
+    serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
+    manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
+    manufacturer_site = models.CharField(max_length=255, verbose_name='Сайт производителя')
+    provider = models.CharField(max_length=255, verbose_name='Поставщик:', null=True)
+
+    def __str__(self):
+        return "{} : {}".format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Liquor(Product):
+    
+    spirit_type = models.CharField(max_length=255, verbose_name='Категория:')
+    country_of_manufacturing = models.CharField(max_length=255, verbose_name='Страна производства')
+    region = models.CharField(max_length=255, verbose_name='Регион производства:')
+    vintage = models.CharField(max_length=10, verbose_name='Винтаж:', null=True)
+    alcohol = models.CharField(max_length=10, verbose_name='Крепость:')
+    value = models.CharField(max_length=10, verbose_name='Объём:')
+    color = models.CharField(max_length=255, verbose_name='Цвет:')
+    flavour = models.CharField(max_length=255, verbose_name='Аромат:')
+    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
+    serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
+    manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
+    manufacturer_site = models.CharField(max_length=255, verbose_name='Сайт производителя')
+    provider = models.CharField(max_length=255, verbose_name='Поставщик:', null=True)
+
+    def __str__(self):
+        return "{} : {}".format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Cocktail(Product):
+    
+    spirit_type = models.CharField(max_length=255, verbose_name='Категория:')
+    country_of_manufacturing = models.CharField(max_length=255, verbose_name='Страна производства')
+    region = models.CharField(max_length=255, verbose_name='Регион производства:')
+    alcohol = models.CharField(max_length=10, verbose_name='Крепость:')
+    value = models.CharField(max_length=10, verbose_name='Объём:')
+    color = models.CharField(max_length=255, verbose_name='Цвет:')
+    flavour = models.CharField(max_length=255, verbose_name='Аромат:')
+    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
     manufacturer_site = models.CharField(max_length=255, verbose_name='Сайт производителя')
