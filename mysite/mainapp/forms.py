@@ -11,18 +11,18 @@ class LoginForm(forms.ModelForm):
 
     def __int__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].label = 'Login'
-        self.fields['password'].label = 'Password'
+        self.fields['username'].label = 'Логин'
+        self.fields['password'].label = 'Пароль'
     
     def clean(self):
         username = self.cleaned_data['username']
         password = self.cleaned_data['password']
         if not User.objects.filter(username=username).exists():
-            raise forms.ValidationError(f'There is no Esse account with the «{username}» username you provided')
+            raise forms.ValidationError(f'Пользователь {username}» в системе не найден')
         user = User.objects.filter(username=username).first()
         if user:
             if not user.check_password(password):
-                raise forms.ValidationError('Wrong password')
+                raise forms.ValidationError('Неверный пароль')
         return self.cleaned_data
     class Meta:
         model = User
@@ -39,35 +39,35 @@ class RegistrationUserForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].label = 'Username'
-        self.fields['password'].label = 'Password'
-        self.fields['confirm_password'].label = 'Confirm the password'
-        self.fields['phone'].label = 'Phone number'
-        self.fields['first_name'].label = 'First Name'
-        self.fields['last_name'].label = 'Last Name'
-        self.fields['address'].label = 'Location'
+        self.fields['username'].label = 'Логин'
+        self.fields['password'].label = 'Пароль'
+        self.fields['confirm_password'].label = 'Подтвердите пароль'
+        self.fields['phone'].label = 'Введите номер телефона'
+        self.fields['first_name'].label = 'Фамилия'
+        self.fields['last_name'].label = 'Имя'
+        self.fields['address'].label = 'Адрес'
         self.fields['email'].label = 'E-mail'
     
     def clean_email(self):
         email = self.cleaned_data['email']
         domain = email.split('.')[-1]
         if domain in ['by', 'net', 'ru']:
-            raise forms.ValidationError(f'Registration of a user with such an e-mail is not possible')
+            raise forms.ValidationError(f'Регистрация пользователя с таким e-mail невозможна')
         if User.objects.filter(email=email).exists():
-            raise forms.ValidationError(f'There is an other user registered in thhe system with such an e-mail')
+            raise forms.ValidationError(f'Пользователь с таким e-mail уже зарегистрирован')
         return email
     
     def clean_username(self):
         username = self.cleaned_data['username']
         if User.objects.filter(username=username).exists():
-            raise forms.ValidationError(f'User with «{username}» as a nickname already exixsts')
+            raise forms.ValidationError(f'Пользователь с «{username}» в качестве имени аккаунта уже существует')
         return username
     
     def clean(self):
         password = self.cleaned_data['password']
         confirm_password = self.cleaned_data['confirm_password']
         if password != confirm_password:
-            raise forms.ValidationError(f'Passwords don''t match')
+            raise forms.ValidationError(f'Попробуйте сделать эту строчку идентичной верхней')
         return self.cleaned_data
     
     class Meta:
