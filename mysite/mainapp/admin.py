@@ -39,7 +39,7 @@ class AnyProductAdminForm(ModelForm):
         return image
 
 # exclude the possibility of providing another choice when determining the category of the corresponding product (for biographies - only biography category, etc.)
-class Red_wine_Admin(admin.ModelAdmin):
+class Red_Wine_Admin(admin.ModelAdmin):
 
     form = AnyProductAdminForm
 
@@ -49,7 +49,7 @@ class Red_wine_Admin(admin.ModelAdmin):
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
-class Rose_wine_Admin(admin.ModelAdmin):
+class Rose_Wine_Admin(admin.ModelAdmin):
     
     form = AnyProductAdminForm
 
@@ -59,7 +59,7 @@ class Rose_wine_Admin(admin.ModelAdmin):
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
-class White_wine_Admin(admin.ModelAdmin):
+class White_Wine_Admin(admin.ModelAdmin):
     
     form = AnyProductAdminForm
 
@@ -78,9 +78,141 @@ class Champagne_Admin(admin.ModelAdmin):
             return ModelChoiceField(Category.objects.filter(slug='champagne'))
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
-# Register your models here.
+
+class Sparkling_Wine_Admin(admin.ModelAdmin):
+    
+    form = AnyProductAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='sparkling_wine'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+class Porto_Admin(admin.ModelAdmin):
+    
+    form = AnyProductAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='porto'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+class Bitter_Admin(admin.ModelAdmin):
+    
+    form = AnyProductAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='bitter'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+class Vermouth_Admin(admin.ModelAdmin):
+    
+    form = AnyProductAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='vermouth'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+class Whiskey_Admin(admin.ModelAdmin):
+    
+    form = AnyProductAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='whiskey'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+class Rum_Admin(admin.ModelAdmin):
+    
+    form = AnyProductAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='rum'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+class Tequila_Admin(admin.ModelAdmin):
+    
+    form = AnyProductAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='tequila'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+class Mezcal_Admin(admin.ModelAdmin):
+    
+    form = AnyProductAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='mezcal'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+class Gin_Admin(admin.ModelAdmin):
+    
+    form = AnyProductAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='gin'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+class Vodka_Admin(admin.ModelAdmin):
+    
+    form = AnyProductAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='vodka'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+class Liquor_Admin(admin.ModelAdmin):
+    
+    form = AnyProductAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='liquor'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+class Cocktail_Admin(admin.ModelAdmin):
+    
+    form = AnyProductAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='cocktail'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
 admin.site.register(Category)
-admin.site.register(Red_wine, Red_wine_Admin)
-admin.site.register(Rose_wine, Rose_wine_Admin)
-admin.site.register(White_wine, White_wine_Admin)
+admin.site.register(Red_Wine, Red_Wine_Admin)
+admin.site.register(Rose_Wine, Rose_Wine_Admin)
+admin.site.register(White_Wine, White_Wine_Admin)
 admin.site.register(Champagne, Champagne_Admin)
+admin.site.register(Sparkling_Wine, Sparkling_Wine_Admin)
+admin.site.register(Porto, Porto_Admin)
+admin.site.register(Bitter, Bitter_Admin)
+admin.site.register(Vermouth, Vermouth_Admin)
+admin.site.register(Whiskey, Whiskey_Admin)
+admin.site.register(Rum, Rum_Admin)
+admin.site.register(Tequila, Tequila_Admin)
+admin.site.register(Mezcal, Mezcal_Admin)
+admin.site.register(Gin, Gin_Admin)
+admin.site.register(Vodka, Vodka_Admin)
+admin.site.register(Liquor, Liquor_Admin)
+admin.site.register(Cocktail, Cocktail_Admin)
