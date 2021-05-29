@@ -32,7 +32,9 @@
         {% endif %}
         {% if request.user.is_authenticated %}
         <li>
-            <a href="#" style="display: grid; width: 80%; text-align: center; margin-bottom: 8%; text-transform: capitalize; border: 1px solid goldenrod; border-radius: 10px;">{{ request.user.username }}</a>
+            <a href="#" style="display: grid; width: 80%; text-align: center; margin-bottom: 8%; text-transform: capitalize; border: 1px solid goldenrod; border-radius: 10px;">
+                {{ request.user.username }}
+            </a>
         </li>
         <li>
             <a href="{% url 'logout' %}" style="display: grid; width: 80%; text-align: center; border: 1px solid goldenrod; border-radius: 10px;">Выход</a>
@@ -41,7 +43,7 @@
         </li>
         {% endif %}
         <li>
-            <a href="#" id="ddd">Справочник</a>
+            <a href="#">Справочник</a>
         </li>
         <li>
             <a href="#">Обучение</a>
@@ -49,6 +51,7 @@
         <li>
             <a href="#">О нас</a>
         </li>
+        <div class="one"></div>
     </div>
     <div id="pageInfo">
         <div class="container">
@@ -139,6 +142,13 @@
         </div>
     </div>
 
-
+<script>
+    jQuery(document).ready(function(){
+        $('.btn').click(function(){
+          $('.one').addClass('oneani');
+          $('.two').addClass('twoani');
+        });
+      })
+</script>
 </body>
 </html>
