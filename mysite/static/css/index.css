@@ -192,3 +192,6 @@ button:hover {
     filter: hue-rotate(90deg);
     transition: 1s;
 }
+.form-text text-muted {
+    color:rgb(0, 0, 0, 0);
+}
