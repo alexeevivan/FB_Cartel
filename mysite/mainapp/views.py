@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect, request
 from django.contrib.auth import authenticate, login
 from django.views.generic import DetailView, View, ListView
 from django.contrib.auth import logout
-from .models import Category, Red_wine, Rose_wine, White_wine, Champagne
+from .models import *
 from .mixins import CategoryDetailMixin
 
 
@@ -84,10 +84,22 @@ class LogoutView(View):
 class ProductDetailView(CategoryDetailMixin, DetailView):
     
     CT_MODEL_MODEL_CLASS = {
-        'red_wine': Red_wine,
-        'rose_Wine': Rose_wine,
-        'white_Wine': White_wine,
+        'red_wine': Red_Wine,
+        'rose_Wine': Rose_Wine,
+        'white_Wine': White_Wine,
         'champagne': Champagne,
+        'sparkling_wine': Sparkling_Wine,
+        'porto': Porto,
+        'bitter': Bitter,
+        'vermouth': Vermouth,
+        'whiskey': Whiskey,
+        'rum': Rum,
+        'tequila': Tequila,
+        'mezcal': Mezcal,
+        'gin': Gin,
+        'vodka': Vodka,
+        'liquor': Liquor,
+        'cocktail': Cocktail,
     }
 
     def dispatch(self, request, *args, **kwargs):
