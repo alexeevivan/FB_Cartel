@@ -7,7 +7,7 @@ body {
     grid-template-columns: 20% 1fr;
     grid-column-gap: 0%;
     font-family:'SF Pro Display';
-    background: #C57A4A;
+    background: linear-gradient(to right, #000, #cb6b30);
     justify-content: center;
     margin:0;
     position: relative;

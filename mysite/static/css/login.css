@@ -7,7 +7,7 @@ body {
     grid-template-columns: 20% 1fr 20%;
     grid-column-gap: 0%;
     font-family:'SF Pro Display';
-    background: linear-gradient(93deg, #ffc29b, #e77600 0%, #ffc29b 47.9%, #fff);
+    background: linear-gradient(93deg, #6d2a00, #e77600, #482d1c 83.19%, #151515);
     justify-content: center;
     margin:0;
     position: relative;
@@ -20,7 +20,7 @@ body {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
-    border: 5px solid #FFC29B;
+    border: 2px solid rgba(196, 203, 241, 0.27);
     border-radius: 10px;
     width: 50%;
 }
@@ -115,7 +115,7 @@ form {
     display: block;
     width: 100%;
     font-weight: normal;
-    font-size: 35px;
+    font-size: 30px;
     line-height: 1.6;
     font-family: "SF Pro Display";
     text-decoration: none;
@@ -136,4 +136,6 @@ form {
     background-position: center center;
     background-image: url(../../static/img/logo.jpeg);
     transition: 1s;
+    padding-right: 5%;
+    padding-left: 5%;
 }

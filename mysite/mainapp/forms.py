@@ -9,7 +9,7 @@ class LoginForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     captcha = CaptchaField()
 
-    def __int__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].label = 'Логин'
         self.fields['password'].label = 'Пароль'
@@ -34,7 +34,7 @@ class RegistrationUserForm(forms.ModelForm):
     confirm_password = forms.CharField(widget=forms.PasswordInput)
     password = forms.CharField(widget=forms.PasswordInput)
     phone = forms.CharField(required=False)
-    address = forms.CharField(required=False)
+    job_position = forms.CharField(required=False)
     email = forms.CharField(required=True)
 
     def __init__(self, *args, **kwargs):
@@ -45,7 +45,7 @@ class RegistrationUserForm(forms.ModelForm):
         self.fields['phone'].label = 'Введите номер телефона'
         self.fields['first_name'].label = 'Фамилия'
         self.fields['last_name'].label = 'Имя'
-        self.fields['address'].label = 'Адрес'
+        self.fields['job_position'].label = 'Должность'
         self.fields['email'].label = 'E-mail'
     
     def clean_email(self):
@@ -78,7 +78,7 @@ class RegistrationUserForm(forms.ModelForm):
             'confirm_password', 
             'first_name',
             'last_name', 
-            'address', 
+            'job_position', 
             'phone', 
             'email'
         ]
