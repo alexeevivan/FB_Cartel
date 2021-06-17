@@ -16,6 +16,7 @@ from .mixins import CategoryDetailMixin
 
 
 class Index_View(TemplateView):
+    
     template_name = "index.html"
 
 
@@ -130,3 +131,8 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         context = super().get_context_data(**kwargs)
         context['cart'] = self.cart
         return context
+
+
+class WineView(TemplateView):
+    
+    template_name = 'wine.html'

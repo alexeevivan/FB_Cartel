@@ -124,6 +124,9 @@ li a:hover {
     z-index: 1;
     transition: 0.5s;
 }
+.form-text text-muted {
+    color:rgb(0, 0, 0, 0);
+}
 button {
     cursor: pointer;
     border: 1px solid rgba(0, 0, 0, 0.24);
@@ -154,7 +157,7 @@ button:hover {
     width: 20%;
     overflow: auto;
     display: block;
-    height: 100vh;
+    height: 100%;
 }
 #pageInfo {
     grid-area: info;
@@ -191,7 +194,4 @@ button:hover {
 #logo a:hover{
     filter: hue-rotate(90deg);
     transition: 1s;
-}
-.form-text text-muted {
-    color:rgb(0, 0, 0, 0);
 }
