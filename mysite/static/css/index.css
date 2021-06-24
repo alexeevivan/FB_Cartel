@@ -6,24 +6,10 @@ body {
     grid-template-areas: "nav info";
     grid-template-columns: 20% 1fr;
     grid-column-gap: 0%;
-    font-family:'SF Pro Display';
     background: linear-gradient(to right, #000, #cb6b30);
     justify-content: center;
     margin:0;
     position: relative;
-}
-@media(max-width: 320px) {
-    body {
-        display:block;
-        grid-template-areas:
-            "nav"
-            "info";
-        grid-template-rows: 5px;  
-        grid-template-columns: 1fr;
-    }
-    #pageNav {
-        text-align: center;
-    }
 }
 li {
     list-style: none;
@@ -46,6 +32,35 @@ li a:hover {
     transition: 0.5s;
     transform: translateX(5%);
 }
+button {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    position: relative;
+    display: inline-block;
+    padding: 12px 20px;
+    background: #8c469800;
+    margin-top: 15px;
+    border-radius: 15px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: 400;
+    box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.24);
+    transition: 1s;
+}
+button:hover {
+    background: #3b291f82;
+    transition: 1s;;
+    box-shadow: 1px 1px 40px rgba(255, 255, 255, 1);
+    color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0);;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 40px 0;
+}
 .card {
     position: relative;
     display: flex;
@@ -56,13 +71,6 @@ li a:hover {
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
-}
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 40px 0;
 }
 .container .card {
     position: relative;
@@ -124,30 +132,14 @@ li a:hover {
     z-index: 1;
     transition: 0.5s;
 }
+.container .overlay {
+    display: none;
+}
 .form-text text-muted {
     color:rgb(0, 0, 0, 0);
 }
-button {
-    cursor: pointer;
-    border: 1px solid rgba(0, 0, 0, 0.24);
-    position: relative;
-    display: inline-block;
-    padding: 12px 20px;
-    background: #8c469800;
-    margin-top: 15px;
-    border-radius: 15px;
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    font-weight: 400;
-    box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.24);
-    transition: 1s;
-}
-button:hover {
-    background: #3b291f82;
-    transition: 1s;;
-    box-shadow: 1px 1px 40px rgba(255, 255, 255, 1);
-    color: #fff;
-    border: 1px solid rgba(0, 0, 0, 0);;
+.openBtn {
+    display: none;
 }
 
 #pageNav {
@@ -194,4 +186,89 @@ button:hover {
 #logo a:hover{
     filter: hue-rotate(90deg);
     transition: 1s;
+}
+@media(max-width: 992.91px) {
+    body {
+        display: block;
+    }
+    .overlay {
+        height: 0%;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: rgb(0, 0, 0);
+        overflow-y: hidden;
+        transition: 0.5s;
+        overflow-y: auto;
+    }
+    .overlay .closebtn {
+        position: absolute;
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+    .overlay a{
+        padding: 8px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+    .overlay li {
+        margin-left: 0;
+    }
+    .overlay li a {
+        color: #ffe7d9;
+        line-height: 3em;
+        font-size: 21px;
+        text-decoration: none;
+        background-image: linear-gradient(currentColor, currentColor);
+        background-position: 20% 75%;
+        background-repeat: no-repeat;
+        background-size: 0% 3px;
+        transition: 0.5s;
+    }
+    .overlay a:hover, .overlay a:focus {
+        color: #1cd2a8;
+    }
+    .overlay li a:hover {
+        color: goldenrod;
+        background-size: 100% 1px;
+        transition: 0.5s;
+        transform: translateX(0%);
+        font-size: 21px;
+    }
+    .overlay-content {
+        position: relative;
+        top: 16%;
+        width: 100%;
+        text-align: center;
+    }
+    .openBtn {
+        display: block;
+        font-size:30px;
+        cursor:pointer;
+    }
+    .openBtn a {
+        position: absolute;
+        font-size: 40px;
+        top: 15px;
+        right: 0%;
+        margin-right: 5%;
+        color: #FFC29B;
+        transition: 1s;
+    }
+    .openBtn:hover a {
+        color:black;
+        transition: 1s;
+    }
+    .container .overlay{
+        display: block;
+    }
+    #pageNav {
+        display: none;
+    }
 }

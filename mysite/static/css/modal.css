@@ -1,0 +1,117 @@
+/* The Modal (background) */
+.modal, .modal2, .modal3, .modal4, .modal5, .modal6 {
+    display: none; /* Hidden by default */
+    margin-left: 20%;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 80%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+.modal-content, .modal-content2, .modal-content3, .modal-content4,
+.modal-content5, .modal-content6 {
+    background: linear-gradient(93deg, rgba(111, 70, 48, 1), rgba(0, 0, 0, 0.91), rgba(111, 70, 48, 1));
+    margin-top: 20%;
+    margin-left: 25%;
+    padding: 0px;
+    border: 0px solid rgba(147, 12, 12, 0);
+    width: 30%;
+    height: 30%;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: 1s;
+    justify-content: center;
+    position: fixed;
+    transition: all 1s ease-in-out;
+}
+.modal-content h3, .modal-content2 h3, .modal-content3 h3, .modal-content4 h3,
+.modal-content5 h3, .modal-content6 h3 {
+    font-family: 'SF Pro Display';
+    margin: auto auto;
+    text-align: center;
+    padding: 40px;
+    color: #FFC29B;
+}
+.modal-content__left-button, .modal-content__left-button2,
+.modal-content__left-button3, .modal-content__left-button4,
+.modal-content__left-button5, .modal-content__left-button6 {
+    background: rgba(255, 194, 156, 0.99);
+    float: left;
+    margin-left: 20%;
+}
+.modal-content__right-button, .modal-content__right-button2,
+.modal-content__right-button3, .modal-content__right-button4,
+.modal-content__right-button5, .modal-content__right-button6 {
+    background: rgba(255, 194, 156, 0.99);
+    float: right;
+    margin-right: 20%;
+}
+.modal-content__left-button a, .modal-content__right-button a,
+.modal-content__left-button2 a, .modal-content__right-button2 a,
+.modal-content__left-button3 a, .modal-content__right-button3 a,
+.modal-content__left-button4 a, .modal-content__right-button4 a,
+.modal-content__left-button5 a, .modal-content__right-button5 a,
+.modal-content__left-button6 a, .modal-content__right-button6 a{
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
+.modal-content__left-button:hover, .modal-content__right-button:hover,
+.modal-content__left-button2:hover, .modal-content__right-button2:hover,
+.modal-content__left-button3:hover, .modal-content__right-button3:hover,
+.modal-content__left-button4:hover, .modal-content__right-button4:hover,
+.modal-content__left-button5:hover, .modal-content__right-button5:hover,
+.modal-content__left-button6:hover, .modal-content__right-button6:hover   {
+    background: rgb(218, 165, 32);
+    box-shadow: 1px 1px 40px rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(0,0,0,0);
+}
+  /* The Close Button */
+.closeModal, .closeModal2, .closeModal3, .closeModal4,
+.closeModal5, .closeModal6 {
+    color: #818181;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    transition: 1s;
+    margin: 3%;
+}
+.closeModal:hover, .closeModal:focus, .closeModal2:hover, .closeModal2:focus,
+.closeModal3:hover, .closeModal3:focus, .closeModal4:hover, .closeModal4:focus,
+.closeModal5:hover, .closeModal5:focus, .closeModal6:hover, .closeModal6:focus {
+    color: #1cd2a8;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 1s;
+}
+
+@media(max-width: 600px) {
+    .modal, .modal2, .modal3, .modal4, .modal5, .modal6 {
+        width: 100%;
+        margin-left: 0;
+        background-color: rgba(0,0,0,0.8);
+    }
+    .modal-content, .modal-content2, .modal-content3, .modal-content4,
+    .modal-content5, .modal-content6 {
+        width: 70%;
+        margin-left: 15%;
+        height: 40%;
+        margin-top: 50%;
+    }
+    .modal-content__left-button, .modal-content__left-button2,
+    .modal-content__left-button3, .modal-content__left-button4,
+    .modal-content__left-button5, .modal-content__left-button6 {
+        margin-left: 10%;
+    }
+    .modal-content__right-button, .modal-content__right-button2,
+    .modal-content__right-button3, .modal-content__right-button4,
+    .modal-content__right-button5, .modal-content__right-button6 {
+        margin-right: 10%;
+    }
+}

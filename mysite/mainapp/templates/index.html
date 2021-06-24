@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-
         <!--Кодировка-->
         <meta charset="UTF-8">
         <!--Адаптивность. User-scalable=0 запрещает зумить на Android-->
@@ -37,208 +36,214 @@
         <!--Запрет на индексацию сайта; потом убрать!-->
         <meta name="robots" content="none">
 
-        <title>Food &#38 Beverage Cartel</title>
 
-
+        <link rel="stylesheet" href="../../static/css/icons.css">
         <link rel="stylesheet" href="../../static/css/simple-line-icons.css">
-        <link rel="stylesheet" href="../../static/css/font.css">
+        <link rel="stylesheet" href="../../static/css/fonts.css">
         <link rel="stylesheet" href="../../static/css/index.css">
+        <link rel="stylesheet" href="../../static/css/modal.css">
 
-    <title>
-        Food &#38 Beverage Cartel
-    </title>
-</head>
-<style>
-    .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgba(0, 0, 0, 0.32); /* Black w/ opacity */
-    }
-    
-    /* Modal Content */
-    .modal-content {
-        background-color: rgba(0, 0, 0, 0.66);
-        margin: auto;
-        padding: 50px;
-        border: 1px solid rgba(136, 136, 136, 0);
-        width: 35%;
-        border-radius: 15px;
-    }
-    
-    /* The Close Button */
-    .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-    
-    .close:hover,
-    .close:focus {
-        color: #FFC29B;
-        text-decoration: none;
-        cursor: pointer;
-    }
-</style>
-<body>
-    <div id="pageNav">
-        <div id="logo">
-           <a href="#">Food &#38 Beverage Cartel</a>
+        <title>
+            Food &#38 Beverage Cartel
+        </title>
+        
+    </head>
+    <body>
+        <div id="pageNav">
+            <div id="logo">
+                <a href="#">Food &#38 Beverage Cartel</a>
+            </div>
+            {% if not request.user.is_authenticated %}
+                <li>
+                    <a href="{% url 'login' %}">
+                        Авторизация
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'registration' %}">
+                        Регистрация
+                    </a>
+                </li>
+            {% endif %}
+            {% if request.user.is_authenticated %}
+                <li>
+                    <a href="#" style="display: grid; width: 80%; text-align: center; margin-bottom: 8%; text-transform: capitalize; border: 1px solid goldenrod; border-radius: 10px;">
+                        {{ request.user.username }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}" style="display: grid; width: 80%; text-align: center; border: 1px solid goldenrod; border-radius: 10px;">Выход</a>
+                </li>
+            {% endif %}
+            <li>
+                <a href="#">Справочник</a>
+            </li>
+            <li>
+                <a href="#">Обучение</a>
+            </li>
+            <li>
+                <a href="#">О нас</a>
+            </li>
+            <div class="one"></div>
         </div>
-        {% if not request.user.is_authenticated %}
-        <li>
-            <a href="{% url 'login' %}">Авторизация</a>
-        </li>
-        <li>
-            <a href="{% url 'registration' %}">Регистрация</a>
-        </li>
-        {% endif %}
-        {% if request.user.is_authenticated %}
-        <li>
-            <a href="#" style="display: grid; width: 80%; text-align: center; margin-bottom: 8%; text-transform: capitalize; border: 1px solid goldenrod; border-radius: 10px;">
-                {{ request.user.username }}
-            </a>
-        </li>
-        <li>
-            <a href="{% url 'logout' %}" style="display: grid; width: 80%; text-align: center; border: 1px solid goldenrod; border-radius: 10px;">Выход</a>
-        </li>
-        <li>
-        </li>
-        {% endif %}
-        <li>
-            <a href="#">Справочник</a>
-        </li>
-        <li>
-            <a href="#">Обучение</a>
-        </li>
-        <li>
-            <a href="#">О нас</a>
-        </li>
-        <div class="one"></div>
-    </div>
-    <div id="pageInfo">
-        <div class="container">
-            <div class="card">
-                <div class="box">
-                    <div class="content">
-                        <h2><img class="fl" src="https://img.icons8.com/dotty/100/000000/grapes.png" style="width:70%; height: 70%;"/></h2>
-                        <h3>Вино</h3>
-                        <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
-                        <button id="myBtn">Read more</button>
+        <div id="pageInfo">
+            <div class="container">
+                <div id="myNav" class="overlay">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <div class="overlay-content">
+                        {% if not request.user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'login' %}">Авторизация</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'registration' %}">Регистрация</a>
+                        </li>
+                        {% endif %}
+                        {% if request.user.is_authenticated %}
+                        <li>
+                            <a href="#" style="display: grid; width: 80%; text-align: center; margin-bottom: 8%; text-transform: capitalize; border: 1px solid goldenrod; border-radius: 10px;">
+                                {{ request.user.username }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'logout' %}" style="display: grid; width: 80%; text-align: center; border: 1px solid goldenrod; border-radius: 10px;">Выход</a>
+                        </li>
+                        <li>
+                        </li>
+                        {% endif %}
+                        <li>
+                            <a href="#">Справочник</a>
+                        </li>
+                        <li>
+                            <a href="#">Обучение</a>
+                        </li>
+                        <li>
+                            <a href="#">О нас</a>
+                        </li>
+                        <div class="one"></div>
                     </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="box">
-                    <div class="content">
-                        <h2><img class="fl" src="https://img.icons8.com/ios/50/000000/whisky-still.png"/></h2>
-                        <h3>40%</h3>
-                        <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
-                        <button type="button" id="myBtn">Read more</button>
-                        <noscript name="modal1" data-title="Подтвердите свой возраст" style="color: white; text-align: center;">
-                            <span><a href="#" id="firstBtn">18 +</a></span>
-                            <span><a href="https://www.lego.com/" id="secondBtn">< 18</a></span>
-                        </noscript>
+                <span class="openBtn" onclick="openNav()"><a>&#9776;</a></span>
+                <div class="card">
+                    <div class="box">
+                        <div class="content">
+                            <h2><img class="fl" src="https://img.icons8.com/dotty/100/000000/grapes.png" style="width:70%; height: 70%;"/></h2>
+                            <h3>Вино</h3>
+                            <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                            <button type="button" id="openModalBtn">Read more</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="box">
-                    <div class="content">
-                        <h2><img class="fl" src="https://img.icons8.com/dotty/100/000000/beer.png" style="width:50%; height: 50%;"/></h2>
-                        <h3>Не 40%</h3>
-                        <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
-                        <button type="button" id="myBtn">Read more</button>
+                <div class="card">
+                    <div class="box">
+                        <div class="content">
+                            <h2><img class="fl" src="https://img.icons8.com/ios/50/000000/whisky-still.png"/></h2>
+                            <h3>40%</h3>
+                            <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                            <button type="button" id="openModalBtn2">Read more</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="box">
-                    <div class="content">
-                        <h2><img class="fl" src="https://img.icons8.com/dotty/80/000000/cocktail-shaker.png" style="width:80%; height: 80%;"/></h2>
-                        <h3>Коктейль</h3>
-                        <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
-                        <button type="button" id="myBtn">Read more</button>
+                <div class="card">
+                    <div class="box">
+                        <div class="content">
+                            <h2><img class="fl" src="https://img.icons8.com/dotty/100/000000/beer.png" style="width:50%; height: 50%;"/></h2>
+                            <h3>Не 40%</h3>
+                            <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                            <button type="button" id="openModalBtn3">Read more</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="box">
-                    <div class="content">
-                        <h2><img class="fl" src="https://img.icons8.com/dotty/80/000000/work-light.png" style="width:80%; height: 80%;"/></h2>
-                        <h3>Как?</h3>
-                        <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
-                        <button id="myBtn">Read more</button>
-                        <noscript name="modal1" data-title="Подтвердите свой возраст" style="color: white; text-align: center;">
-                            <span><a href="#" id="firstBtn">18 +</a></span>
-                            <span><a href="https://www.lego.com/" id="secondBtn">< 18</a></span>
-                        </noscript>
+                <div class="card">
+                    <div class="box">
+                        <div class="content">
+                            <h2><img class="fl" src="https://img.icons8.com/dotty/80/000000/cocktail-shaker.png" style="width:80%; height: 80%;"/></h2>
+                            <h3>Коктейль</h3>
+                            <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                            <button type="button" id="openModalBtn4">Read more</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="box">
-                    <div class="content">
-                        <h2><img class="fl" src="https://img.icons8.com/dotty/64/000000/chat.png" style="width:80%; height: 80%;"/></h2>
-                        <h3>Форум</h3>
-                        <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
-                        <button type="button" data-open-modal="modal1" id="myBtn">Read more</button>
-                        <noscript name="modal1" data-title="Подтвердите свой возраст" style="color: white; text-align: center;">
-                            <span><a href="#" id="firstBtn">18 +</a></span>
-                            <span><a href="https://www.lego.com/" id="secondBtn">< 18</a></span>
-                        </noscript>
+                <div class="card">
+                    <div class="box">
+                        <div class="content">
+                            <h2><img class="fl" src="https://img.icons8.com/dotty/80/000000/work-light.png" style="width:80%; height: 80%;"/></h2>
+                            <h3>Как?</h3>
+                            <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                            <button type="button" id="openModalBtn5">Read more</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
-    
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close">×</span>
-                    <p>Some text in the Modal..</p>
-                    <a href="#">ds</a>
+                <div class="card">
+                    <div class="box">
+                        <div class="content">
+                            <h2><img class="fl" src="https://img.icons8.com/dotty/64/000000/chat.png" style="width:80%; height: 80%;"/></h2>
+                            <h3>Форум</h3>
+                            <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                            <button type="button" id="openModalBtn6">Read more</button>
+                        </div>
+                    </div>
                 </div>
-    
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="closeModal">×</span>
+                        <h3>Подтвердите свой возраст</h3>
+                        <button class="modal-content__left-button"><a href="">18+</a></button>
+                        <button class="modal-content__right-button"><a href="https://www.lego.com/en-us">< 18</a></button>
+                    </div>
+                </div>
+                <div id="myModal2" class="modal2">
+                    <div class="modal-content2">
+                        <span class="closeModal2">×</span>
+                        <h3>Подтвердите свой возраст</h3>
+                        <button class="modal-content__left-button2"><a href="">18+</a></button>
+                        <button class="modal-content__right-button2"><a href="https://www.lego.com/en-us">< 18</a></button>
+                    </div>
+                </div>
+                <div id="myModal3" class="modal3">
+                    <div class="modal-content3">
+                        <span class="closeModal3">×</span>
+                        <h3>Подтвердите свой возраст</h3>
+                        <button class="modal-content__left-button3"><a href="">18+</a></button>
+                        <button class="modal-content__right-button3"><a href="https://www.lego.com/en-us">< 18</a></button>
+                    </div>
+                </div>
+                <div id="myModal4" class="modal4">
+                    <div class="modal-content4">
+                        <span class="closeModal4">×</span>
+                        <h3>Подтвердите свой возраст</h3>
+                        <button class="modal-content__left-button4"><a href="">18+</a></button>
+                        <button class="modal-content__right-button4"><a href="https://www.lego.com/en-us">< 18</a></button>
+                    </div>
+                </div>
+                <div id="myModal5" class="modal5">
+                    <div class="modal-content5">
+                        <span class="closeModal5">×</span>
+                        <h3>Подтвердите свой возраст</h3>
+                        <button class="modal-content__left-button5"><a href="">18+</a></button>
+                        <button class="modal-content__right-button5"><a href="https://www.lego.com/en-us">< 18</a></button>
+                    </div>
+                </div>
+                <div id="myModal6" class="modal6">
+                    <div class="modal-content6">
+                        <span class="closeModal6">×</span>
+                        <h3>Подтвердите свой возраст</h3>
+                        <button class="modal-content__left-button6"><a href="">18+</a></button>
+                        <button class="modal-content__right-button6"><a href="https://www.lego.com/en-us">< 18</a></button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        // Get the modal
-        var modal = document.getElementById('myModal');
-        
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-        
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-        
-        // When the user clicks the button, open the modal 
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-        
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-        
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
+        <script type="text/javascript" src="../../static/js/navbar_toggle.js"></script>
+        <script type="text/javascript" src="../../static/js/modal_wine.js"></script>
+        <script type="text/javascript" src="../../static/js/modal_straight.js"></script>
+        <script type="text/javascript" src="../../static/js/modal_nonstraight.js"></script>
+        <script type="text/javascript" src="../../static/js/modal_cocktails.js"></script>
+        <script type="text/javascript" src="../../static/js/modal_how.js"></script>
+        <script type="text/javascript" src="../../static/js/modal_chat.js"></script>
 
-</body>
+    </body>
 </html>

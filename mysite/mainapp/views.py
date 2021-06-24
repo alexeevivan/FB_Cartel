@@ -20,6 +20,11 @@ class Index_View(TemplateView):
     template_name = "index.html"
 
 
+class WineView(TemplateView):
+    
+    template_name = 'wine.html'
+
+
 class LoginView(View):
     
     def get(self, request, *args, **kwargs):
@@ -131,8 +136,3 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         context = super().get_context_data(**kwargs)
         context['cart'] = self.cart
         return context
-
-
-class WineView(TemplateView):
-    
-    template_name = 'wine.html'

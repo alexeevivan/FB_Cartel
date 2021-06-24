@@ -1,0 +1,50 @@
+[class^="_icon-"]::before, [class*=" _icon-"]::before {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icon' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  ._icon-technial-support:before {
+    content: "\e900";
+  }
+  ._icon-whatsapp:before {
+    content: "\e901";
+  }
+  ._icon-telegram:before {
+    content: "\e902";
+  }
+  ._icon-viber:before {
+    content: "\e903";
+  }
+  ._icon-registration:before {
+    content: "\e904";
+  }
+  ._icon-login:before {
+    content: "\e905";
+  }
+  ._icon-search-to-left:before {
+    content: "\e906";
+  }
+  ._icon-search-to-right:before {
+    content: "\e907";
+  }
+  ._icon-guide:before {
+    content: "\e908";
+  }
+  ._icon-chat-to-left:before {
+    content: "\e909";
+  }
+  ._icon-chat-to-right:before {
+    content: "\e90a";
+  }
+  ._icon-info:before {
+    content: "\e90b";
+  }
