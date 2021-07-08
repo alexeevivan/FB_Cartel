@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainapp',
     'crispy_forms',
-    'captcha'
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -139,4 +139,4 @@ CAPTCHA_FONT_SIZE = 70
 CAPTCHA_LENGTH = 5
 CAPTCHA_BACKGROUND_COLOR = '#C67949'
 CAPTCHA_FOREGROUND_COLOR = '#000'
-CAPTCHA_FONT_PATH = 'static/font/SFProDisplay-Thin.ttf'
+CAPTCHA_FONT_PATH = 'static/fonts/SFProDisplay-Thin.ttf'

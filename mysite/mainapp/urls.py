@@ -1,6 +1,6 @@
 from django.urls import path, include
 from . import views
-from .views import Index_View, LoginView, RegistrationView, LogoutView, ProductDetailView, CategoryDetailView, WineView
+from .views import Index_View, LoginView, RegistrationView, LogoutView, ProductDetailView, CategoryDetailView, WineView, StillWineView
 
 urlpatterns = [
     path('', Index_View.as_view(), name='index'),
@@ -8,6 +8,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
     path('logout', LogoutView.as_view(), name='logout'),
     path('wine', WineView.as_view(), name='wine'),
+    path('wine/still_wine', StillWineView.as_view(), name='still_wine'),
     path('captcha/', include('captcha.urls')),
     path('<str:ct_model>/<str:slug>/', ProductDetailView.as_view(), name='product_detail'),
     path('library/<str:slug>/', CategoryDetailView.as_view(), name='category_detail'),  

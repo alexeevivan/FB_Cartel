@@ -223,7 +223,7 @@ button:hover {
     .overlay li a {
         color: #ffe7d9;
         line-height: 3em;
-        font-size: 21px;
+        font-size: 30px;
         text-decoration: none;
         background-image: linear-gradient(currentColor, currentColor);
         background-position: 20% 75%;
@@ -239,11 +239,11 @@ button:hover {
         background-size: 100% 1px;
         transition: 0.5s;
         transform: translateX(0%);
-        font-size: 21px;
+        font-size: 30px;
     }
     .overlay-content {
         position: relative;
-        top: 16%;
+        top: 20%;
         width: 100%;
         text-align: center;
     }

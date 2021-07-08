@@ -129,7 +129,7 @@
                         <div class="content">
                             <h2><img class="fl" src="https://img.icons8.com/dotty/100/000000/grapes.png" style="width:70%; height: 70%;"/></h2>
                             <h3>Вино</h3>
-                            <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                            <p>«<strike style="color: rgb(26, 26, 26);">Я в вине совершенно не разбираюсь</strike>»</p>
                             <button type="button" id="openModalBtn">Read more</button>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                         <div class="content">
                             <h2><img class="fl" src="https://img.icons8.com/ios/50/000000/whisky-still.png"/></h2>
                             <h3>40%</h3>
-                            <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                            <p>История и описание крепких алкогольных напитков</p>
                             <button type="button" id="openModalBtn2">Read more</button>
                         </div>
                     </div>
@@ -149,7 +149,7 @@
                         <div class="content">
                             <h2><img class="fl" src="https://img.icons8.com/dotty/100/000000/beer.png" style="width:50%; height: 50%;"/></h2>
                             <h3>Не 40%</h3>
-                            <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                            <p></p>
                             <button type="button" id="openModalBtn3">Read more</button>
                         </div>
                     </div>
@@ -159,7 +159,7 @@
                         <div class="content">
                             <h2><img class="fl" src="https://img.icons8.com/dotty/80/000000/cocktail-shaker.png" style="width:80%; height: 80%;"/></h2>
                             <h3>Коктейль</h3>
-                            <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                            <p>Не спрашивай, по ком звонит шейкер</p>
                             <button type="button" id="openModalBtn4">Read more</button>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
                         <div class="content">
                             <h2><img class="fl" src="https://img.icons8.com/dotty/80/000000/work-light.png" style="width:80%; height: 80%;"/></h2>
                             <h3>Как?</h3>
-                            <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                            <p>От старта карьеры до запуска бара</p>
                             <button type="button" id="openModalBtn5">Read more</button>
                         </div>
                     </div>
@@ -179,7 +179,7 @@
                         <div class="content">
                             <h2><img class="fl" src="https://img.icons8.com/dotty/64/000000/chat.png" style="width:80%; height: 80%;"/></h2>
                             <h3>Форум</h3>
-                            <p>«<strike style="color: rgb(26, 26, 26);">Я в вине не разбираюсь</strike>»</p>
+                            <p>Обсуждение рецептур, заведений и новостей</p>
                             <button type="button" id="openModalBtn6">Read more</button>
                         </div>
                     </div>
@@ -190,7 +190,7 @@
                     <div class="modal-content">
                         <span class="closeModal">×</span>
                         <h3>Подтвердите свой возраст</h3>
-                        <button class="modal-content__left-button"><a href="">18+</a></button>
+                        <button class="modal-content__left-button"><a href="{% url 'wine' %}">18+</a></button>
                         <button class="modal-content__right-button"><a href="https://www.lego.com/en-us">< 18</a></button>
                     </div>
                 </div>
@@ -230,7 +230,7 @@
                     <div class="modal-content6">
                         <span class="closeModal6">×</span>
                         <h3>Подтвердите свой возраст</h3>
-                        <button class="modal-content__left-button6"><a href="">18+</a></button>
+                        <button class="modal-content__left-button6"><a href="{% url 'wine' %}">18+</a></button>
                         <button class="modal-content__right-button6"><a href="https://www.lego.com/en-us">< 18</a></button>
                     </div>
                 </div>
@@ -244,6 +244,5 @@
         <script type="text/javascript" src="../../static/js/modal_cocktails.js"></script>
         <script type="text/javascript" src="../../static/js/modal_how.js"></script>
         <script type="text/javascript" src="../../static/js/modal_chat.js"></script>
-
     </body>
 </html>

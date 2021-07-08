@@ -25,6 +25,11 @@ class WineView(TemplateView):
     template_name = 'wine.html'
 
 
+class StillWineView(TemplateView):
+    
+    template_name = 'still_wine.html'
+
+
 class LoginView(View):
     
     def get(self, request, *args, **kwargs):
