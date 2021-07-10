@@ -526,3 +526,17 @@ class Cocktail(Product):
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
+
+
+class Post(models.Model):
+    
+    title = models.CharField(max_length=255, verbose_name='Название')
+    author = models.ForeignKey(User, on_delete=CASCADE, verbose_name='Автор поста')
+    body = models.TextField(verbose_name='Сообщение')
+    
+    def __str__(self):
+        return self.title + '|' + str(self.author)
+    
+    def get_absolute_url(self):
+        return reverse("forum_post_detail", kwargs={"pk": self.pk})
+    

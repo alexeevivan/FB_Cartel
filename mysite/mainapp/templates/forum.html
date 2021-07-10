@@ -1,0 +1,8 @@
+<ul>
+    {% for post in object_list %}
+        <li>
+            <a href="{% url 'forum_post_detail' post.pk %}">{{ post.title }}</a> - {{ post.author.first_name }} {{ post.author.last_name }}<br/>
+            {{ post.body }}
+        </li>
+    {% endfor %}
+</ul>

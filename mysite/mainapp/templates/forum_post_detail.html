@@ -1,0 +1,13 @@
+<title>{{ post.title }}</title>
+<!--здесь не делаю for, потому что используется не ListView, который
+подразумевает список - поэтому достаточно характеристики этого поста-->
+<h1>
+    {{ post.title }}
+</h1>
+<small>By: {{ post.author.first_name}} {{ post.author.last_name}}</small>
+<hr>
+<p>
+    {{ post.body }}
+</p>
+<br/><br/>
+<a href="{% url 'forum' %}">Вернуться</a>

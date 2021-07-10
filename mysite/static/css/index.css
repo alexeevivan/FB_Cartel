@@ -47,6 +47,13 @@ button {
     box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.24);
     transition: 1s;
 }
+.posting {
+    display: block;
+    width: 81%;
+    margin-bottom: 5%;
+    margin-left: 10%;
+    font-size: 15px;
+}
 button:hover {
     background: #3b291f82;
     transition: 1s;;
@@ -141,7 +148,40 @@ button:hover {
 .openBtn {
     display: none;
 }
-
+.form-control, .form-control-select, .form-control-body {
+    display: block;
+    margin-left: 10%;
+    height: 5vh;
+    border: 1px solid rgba(218, 165, 32, 0);
+    border-radius: 10px;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.25);
+    color: white;
+}
+.form-control {
+    padding-left: 2%;
+    width: 78%;
+}
+.form-control-select {
+    width: 80%;
+}
+.form-control-body {
+    resize: none;
+    height: 50vh;
+    padding: 2%;
+    width: 76%;
+}
+.form-control:focus, .form-control-select:focus, .form-control-body:focus {
+    outline-style: none;
+}
+label {
+    text-align: left;
+    padding-bottom: 2%;
+    display: block;
+    padding-top: 2%;
+    margin-left: 10%;
+    font-size: 25px;
+}
 #pageNav {
     grid-area: nav;
     background: url('../../static/img/aside.png') no-repeat right top rgb(0, 0, 0, 0.8);
@@ -154,6 +194,9 @@ button:hover {
 #pageInfo {
     grid-area: info;
     color: rgb(255, 255, 255);
+}
+#pageInfo h1{
+    text-align: center;
 }
 #logo {
     margin-top: 20%;

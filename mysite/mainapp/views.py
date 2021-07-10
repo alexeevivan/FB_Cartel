@@ -4,15 +4,13 @@ from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView
-from .forms import LoginForm, RegistrationUserForm
 from django.http import HttpResponseRedirect, request
 from django.contrib.auth import authenticate, login
-from django.views.generic import DetailView, View, ListView
+from django.views.generic import DetailView, View, ListView, CreateView
 from django.contrib.auth import logout
 from .models import *
+from .forms import LoginForm, RegistrationUserForm, PostForm
 from .mixins import CategoryDetailMixin
-
-
 
 
 class Index_View(TemplateView):
@@ -28,6 +26,30 @@ class WineView(TemplateView):
 class StillWineView(TemplateView):
     
     template_name = 'still_wine.html'
+
+
+class ForumView(ListView):
+    
+    model = Post
+    template_name = 'forum.html'
+
+
+class ForumPostDetailView(DetailView):
+    
+    model = Post
+    template_name = 'forum_post_detail.html'
+    
+
+class AddPostVoew(CreateView):
+    
+    model = Post
+    form_class = PostForm
+    template_name = 'forum_post_add.html'
+    # '__all__' добавляет к форме создания нового поста все поля, которые указаны в модели Post
+    # fields = '__all__'
+    # надо закомментировать строку fields(хоть она рабочая) лишь потому, что отныне будет использоваться
+    # самостоятельно созданная форма PostForm
+    # fields = ('title', 'body')
 
 
 class LoginView(View):
@@ -90,7 +112,7 @@ class LogoutView(View):
     def get(self, request, *args, **kwargs):
         logout(request)
         return HttpResponseRedirect('/')
-    
+
 
 class ProductDetailView(CategoryDetailMixin, DetailView):
     
@@ -141,3 +163,5 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         context = super().get_context_data(**kwargs)
         context['cart'] = self.cart
         return context
+
+

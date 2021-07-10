@@ -1,6 +1,6 @@
 from django import forms
-from .models import User
-from django.forms import fields
+from .models import User, Post
+from django.forms import fields, widgets
 from captcha.fields import CaptchaField
 
 
@@ -72,7 +72,7 @@ class RegistrationUserForm(forms.ModelForm):
     
     class Meta:
         model = User
-        fields = [
+        fields = (
             'username', 
             'password', 
             'confirm_password', 
@@ -81,5 +81,20 @@ class RegistrationUserForm(forms.ModelForm):
             'job_position', 
             'phone', 
             'email'
-        ]
+        )
 
+
+class PostForm(forms.ModelForm):
+
+    class Meta:
+        model = Post
+        fields = ('title','author','body')
+        # так как каждая строка в форме - это TextInput или Textarea, если просмотреть в режиме разработчика HTML-страницу,
+        # то, чтобы изменить стиль - в виджетах устанавливается класс, который имеет название, использующееся в
+        # файле CSS. Оно (название) может быть рандомным
+        widgets = {
+            'title' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'Введите краткий заголовок'}),
+            'author': forms.Select(attrs={'class':'form-control-select'}),
+            'body' : forms.Textarea(attrs={'class':'form-control-body', 'placeholder':'Введите текст'}),
+        }
+        

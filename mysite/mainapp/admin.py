@@ -200,6 +200,7 @@ class Cocktail_Admin(admin.ModelAdmin):
 
 
 admin.site.register(Category)
+admin.site.register(Post)
 admin.site.register(Red_Wine, Red_Wine_Admin)
 admin.site.register(Rose_Wine, Rose_Wine_Admin)
 admin.site.register(White_Wine, White_Wine_Admin)
