@@ -1,11 +1,11 @@
 // Get the modal
-var modal = document.getElementById("myModal6");
+var modal = document.getElementById("myModal-straight");
 
 // Get the button that opens the modal
-var btn = document.getElementById("openModalBtn6");
+var btn = document.getElementById("openModalBtn-straight");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("closeModal6")[0];
+var span = document.getElementsByClassName("closeModal-straight")[0];
 
 // When the user clicks on the button, open the modal 
 btn.onclick = function() {

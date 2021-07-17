@@ -4,10 +4,25 @@
 <h1>
     {{ post.title }}
 </h1>
-<small>By: {{ post.author.first_name}} {{ post.author.last_name}}</small>
+<small>
+    By: {{ post.author.first_name}} {{ post.author.last_name}} - {{ post.pub_date }}
+</small>
 <hr>
 <p>
-    {{ post.body }}
+    {{ post.body|safe }}
+    <p>
+    {% if request.user.is_authenticated %}
+        {% if user.id == post.author.id %}
+            <a href="{% url 'forum_post_update' post.pk %}">
+                Редактировать
+            </a>
+            <a href="{% url 'forum_post_remove' post.pk %}">
+                Удалить
+            </a>
+            <br/>
+        {% endif %}
+    {% endif %}
+    </p>
 </p>
 <br/><br/>
 <a href="{% url 'forum' %}">Вернуться</a>

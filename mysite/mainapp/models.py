@@ -2,12 +2,13 @@ from PIL import Image
 
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 
-User = get_user_model()
+from datetime import date, datetime
+
 
 def get_models_for_count(*model_names):
     return [models.Count(model_name) for model_name in model_names]
@@ -533,9 +534,22 @@ class Post(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')
     author = models.ForeignKey(User, on_delete=CASCADE, verbose_name='Автор поста')
     body = models.TextField(verbose_name='Сообщение')
+    pub_date = models.DateField(auto_now_add=True)
+    post_category = models.CharField(max_length=30, default='Рецептуры напитков', verbose_name='Категория')
     
     def __str__(self):
         return self.title + '|' + str(self.author)
+    
+    def get_absolute_url(self):
+        return reverse("forum_post_detail", kwargs={"pk": self.pk})
+
+
+class PostCategory(models.Model):
+    
+    name = models.CharField(max_length=30, verbose_name='Название категории')
+    
+    def __str__(self):
+        return self.name
     
     def get_absolute_url(self):
         return reverse("forum_post_detail", kwargs={"pk": self.pk})

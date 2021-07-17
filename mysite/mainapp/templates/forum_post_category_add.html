@@ -124,12 +124,12 @@
             </div>
             {% if request.user.is_authenticated %}
                 <h1>
-                    Создать тему
+                    Создать категорию
                 </h1>
                 <form method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button class="posting">Post</button>
+                    <button class="posting">Добавить категорию</button>
                 </form>
             {% endif %}
         </div>

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mainapp',
+    'members',
     'crispy_forms',
     'captcha',
 ]
@@ -140,3 +141,5 @@ CAPTCHA_LENGTH = 5
 CAPTCHA_BACKGROUND_COLOR = '#C67949'
 CAPTCHA_FOREGROUND_COLOR = '#000'
 CAPTCHA_FONT_PATH = 'static/fonts/SFProDisplay-Thin.ttf'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'

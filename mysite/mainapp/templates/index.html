@@ -60,7 +60,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'registration' %}">
+                    <a href="{% url 'register' %}">
                         Регистрация
                     </a>
                 </li>
@@ -96,7 +96,7 @@
                             <a href="{% url 'login' %}">Авторизация</a>
                         </li>
                         <li>
-                            <a href="{% url 'registration' %}">Регистрация</a>
+                            <a href="{% url 'register' %}">Регистрация</a>
                         </li>
                         {% endif %}
                         {% if request.user.is_authenticated %}
@@ -130,7 +130,7 @@
                             <h2><img class="fl" src="https://img.icons8.com/dotty/100/000000/grapes.png" style="width:70%; height: 70%;"/></h2>
                             <h3>Вино</h3>
                             <p>«<strike style="color: rgb(26, 26, 26);">Я в вине совершенно не разбираюсь</strike>»</p>
-                            <button type="button" id="openModalBtn">Read more</button>
+                            <button type="button" id="openModalBtn-wine">Read more</button>
                         </div>
                     </div>
                 </div>
@@ -140,7 +140,7 @@
                             <h2><img class="fl" src="https://img.icons8.com/ios/50/000000/whisky-still.png"/></h2>
                             <h3>40%</h3>
                             <p>История и описание крепких алкогольных напитков</p>
-                            <button type="button" id="openModalBtn2">Read more</button>
+                            <button type="button" id="openModalBtn-straight">Read more</button>
                         </div>
                     </div>
                 </div>
@@ -150,7 +150,7 @@
                             <h2><img class="fl" src="https://img.icons8.com/dotty/100/000000/beer.png" style="width:50%; height: 50%;"/></h2>
                             <h3>Не 40%</h3>
                             <p></p>
-                            <button type="button" id="openModalBtn3">Read more</button>
+                            <button type="button" id="openModalBtn-nonstraight">Read more</button>
                         </div>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
                             <h2><img class="fl" src="https://img.icons8.com/dotty/80/000000/cocktail-shaker.png" style="width:80%; height: 80%;"/></h2>
                             <h3>Коктейль</h3>
                             <p>Не спрашивай, по ком звонит шейкер</p>
-                            <button type="button" id="openModalBtn4">Read more</button>
+                            <button type="button" id="openModalBtn-cocktail">Read more</button>
                         </div>
                     </div>
                 </div>
@@ -170,7 +170,7 @@
                             <h2><img class="fl" src="https://img.icons8.com/dotty/80/000000/work-light.png" style="width:80%; height: 80%;"/></h2>
                             <h3>Как?</h3>
                             <p>От старта карьеры до запуска бара</p>
-                            <button type="button" id="openModalBtn5">Read more</button>
+                            <button type="button" id="openModalBtn-how">Read more</button>
                         </div>
                     </div>
                 </div>
@@ -185,64 +185,55 @@
                     </div>
                 </div>
                 <!-- The Modal -->
-                <div id="myModal" class="modal">
+                <div id="myModal-wine" class="modal-wine">
                     <!-- Modal content -->
-                    <div class="modal-content">
-                        <span class="closeModal">×</span>
+                    <div class="modal-content-wine">
+                        <span class="closeModal-wine">×</span>
                         <h3>Подтвердите свой возраст</h3>
-                        <button class="modal-content__left-button"><a href="{% url 'wine' %}">18+</a></button>
-                        <button class="modal-content__right-button"><a href="https://www.lego.com/en-us">< 18</a></button>
+                        <button class="modal-content__left-button-wine"><a href="{% url 'wine' %}">18+</a></button>
+                        <button class="modal-content__right-button-wine"><a href="https://www.lego.com/en-us">< 18</a></button>
                     </div>
                 </div>
-                <div id="myModal2" class="modal2">
-                    <div class="modal-content2">
-                        <span class="closeModal2">×</span>
+                <div id="myModal-straight" class="modal-straight">
+                    <div class="modal-content-straight">
+                        <span class="closeModal-straight">×</span>
                         <h3>Подтвердите свой возраст</h3>
-                        <button class="modal-content__left-button2"><a href="">18+</a></button>
-                        <button class="modal-content__right-button2"><a href="https://www.lego.com/en-us">< 18</a></button>
+                        <button class="modal-content__left-button-straight"><a href="#">18+</a></button>
+                        <button class="modal-content__right-button-straight"><a href="https://www.lego.com/en-us">< 18</a></button>
                     </div>
                 </div>
-                <div id="myModal3" class="modal3">
-                    <div class="modal-content3">
-                        <span class="closeModal3">×</span>
+                <div id="myModal-nonstraight" class="modal-nonstraight">
+                    <div class="modal-content-nonstraight">
+                        <span class="closeModal-nonstraight">×</span>
                         <h3>Подтвердите свой возраст</h3>
-                        <button class="modal-content__left-button3"><a href="">18+</a></button>
-                        <button class="modal-content__right-button3"><a href="https://www.lego.com/en-us">< 18</a></button>
+                        <button class="modal-content__left-button-nonstraight"><a href="#">18+</a></button>
+                        <button class="modal-content__right-button-nonstraight"><a href="https://www.lego.com/en-us">< 18</a></button>
                     </div>
                 </div>
-                <div id="myModal4" class="modal4">
-                    <div class="modal-content4">
-                        <span class="closeModal4">×</span>
+                <div id="myModal-cocktail" class="modal-cocktail">
+                    <div class="modal-content-cocktail">
+                        <span class="closeModal-cocktail">×</span>
                         <h3>Подтвердите свой возраст</h3>
-                        <button class="modal-content__left-button4"><a href="">18+</a></button>
-                        <button class="modal-content__right-button4"><a href="https://www.lego.com/en-us">< 18</a></button>
+                        <button class="modal-content__left-button-cocktail"><a href="#">18+</a></button>
+                        <button class="modal-content__right-button-cocktail"><a href="https://www.lego.com/en-us">< 18</a></button>
                     </div>
                 </div>
-                <div id="myModal5" class="modal5">
-                    <div class="modal-content5">
-                        <span class="closeModal5">×</span>
+                <div id="myModal-how" class="modal-how">
+                    <div class="modal-content-how">
+                        <span class="closeModal-how">×</span>
                         <h3>Подтвердите свой возраст</h3>
-                        <button class="modal-content__left-button5"><a href="">18+</a></button>
-                        <button class="modal-content__right-button5"><a href="https://www.lego.com/en-us">< 18</a></button>
-                    </div>
-                </div>
-                <div id="myModal6" class="modal6">
-                    <div class="modal-content6">
-                        <span class="closeModal6">×</span>
-                        <h3>Подтвердите свой возраст</h3>
-                        <button class="modal-content__left-button6"><a href="{% url 'wine' %}">18+</a></button>
-                        <button class="modal-content__right-button6"><a href="https://www.lego.com/en-us">< 18</a></button>
+                        <button class="modal-content__left-button-how"><a href="{% url 'wine' %}">18+</a></button>
+                        <button class="modal-content__right-button-how"><a href="https://www.lego.com/en-us">< 18</a></button>
                     </div>
                 </div>
             </div>
         </div>
 
         <script type="text/javascript" src="../../static/js/navbar_toggle.js"></script>
-        <script type="text/javascript" src="../../static/js/modal_wine.js"></script>
-        <script type="text/javascript" src="../../static/js/modal_straight.js"></script>
-        <script type="text/javascript" src="../../static/js/modal_nonstraight.js"></script>
-        <script type="text/javascript" src="../../static/js/modal_cocktails.js"></script>
-        <script type="text/javascript" src="../../static/js/modal_how.js"></script>
-        <script type="text/javascript" src="../../static/js/modal_chat.js"></script>
+        <script type="text/javascript" src="../../static/js/modal-wine.js"></script>
+        <script type="text/javascript" src="../../static/js/modal-straight.js"></script>
+        <script type="text/javascript" src="../../static/js/modal-nonstraight.js"></script>
+        <script type="text/javascript" src="../../static/js/modal-cocktails.js"></script>
+        <script type="text/javascript" src="../../static/js/modal-how.js"></script>
     </body>
 </html>

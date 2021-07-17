@@ -4,15 +4,15 @@ from .views import *
 
 urlpatterns = [
     path('', Index_View.as_view(), name='index'),
-    path('registration/', RegistrationView.as_view(), name='registration'),
-    path('login/', LoginView.as_view(), name='login'),
-    path('logout', LogoutView.as_view(), name='logout'),
     path('forum', ForumView.as_view(), name='forum'),
     path('forum/forum_post_detail/<int:pk>', ForumPostDetailView.as_view(), name='forum_post_detail'),
-    path('forum/forum_post_add/', AddPostVoew.as_view(), name='forum_post_add'),
+    path('forum/forum_post_add/', AddPostView.as_view(), name='forum_post_add'),
+    path('forum/forum_post_category_add/', AddPostCategoryView.as_view(), name='forum_post_category_add'),
+    path('forum/forum_post_update/<int:pk>', UpdatePostView.as_view(), name='forum_post_update'),
+    path('forum/<int:pk>/remove', RemovePostView.as_view(), name='forum_post_remove'),
+    path('category/<str:categories>/', PostCategoryView, name='category'),
     path('wine', WineView.as_view(), name='wine'),
     path('wine/still_wine', StillWineView.as_view(), name='still_wine'),
     path('captcha/', include('captcha.urls')),
-    path('<str:ct_model>/<str:slug>/', ProductDetailView.as_view(), name='product_detail'),
     path('library/<str:slug>/', CategoryDetailView.as_view(), name='category_detail'),  
 ]

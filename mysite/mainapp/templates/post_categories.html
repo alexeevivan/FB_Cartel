@@ -37,8 +37,11 @@
         <meta name="robots" content="none">
 
 
+        <link rel="stylesheet" href="../../static/css/icons.css">
+        <link rel="stylesheet" href="../../static/css/simple-line-icons.css">
         <link rel="stylesheet" href="../../static/css/fonts.css">
         <link rel="stylesheet" href="../../static/css/forum.css">
+        <link rel="stylesheet" href="../../static/css/modal.css">
 
         <title>
             Food &#38 Beverage Cartel
@@ -120,18 +123,37 @@
                         <div class="one"></div>
                     </div>
                 </div>
-                <span class="openBtn" onclick="openNav()"><a>&#9776;</a></span>
+                {% if category_posts %}
+                    <h1>
+                        {{ categories }}
+                    </h1>
+                    <ul>
+                        {% for post in category_posts %}
+                            <li>
+                                <a href="{% url 'forum_post_detail' post.pk %}">
+                                    {{ post.title }}
+                                </a>
+                                 - {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.pub_date}}
+                                {% if request.user.is_authenticated %}
+                                    <a href="{% url 'forum_post_update' post.pk %}">
+                                        Редактировать
+                                    </a>
+                                    <a href="{% url 'forum_post_remove' post.pk %}">
+                                        Удалить
+                                    </a>
+                                    <br/>
+                                {% endif %}
+                                <!-- Комнда "|slice" помогает не показывать весь текст поста на странице всех постов-->
+                                {{ post.body|slice:":200"|safe}}
+                            </li>
+                        {% endfor  %}
+                    </ul>
+                {% else %}
+                    <h1>
+                        Такую категорию мы не создали
+                    </h1>
+                {% endif %}
             </div>
-            {% if request.user.is_authenticated %}
-                <h1>
-                    Создать тему
-                </h1>
-                <form method="POST">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button class="posting">Post</button>
-                </form>
-            {% endif %}
         </div>
     </body>
 </html>

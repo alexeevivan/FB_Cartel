@@ -6,7 +6,7 @@ body {
     grid-template-areas: "nav info";
     grid-template-columns: 20% 1fr;
     grid-column-gap: 0%;
-    background: linear-gradient(to right, #000, #cb6b30);
+    background: linear-gradient(to right, #000, #cb3061);
     justify-content: center;
     margin:0;
     position: relative;

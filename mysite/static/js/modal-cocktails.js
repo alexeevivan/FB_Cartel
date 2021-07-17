@@ -1,11 +1,11 @@
 // Get the modal
-var modal = document.getElementById("myModal3");
+var modal = document.getElementById("myModal-cocktail");
 
 // Get the button that opens the modal
-var btn = document.getElementById("openModalBtn3");
+var btn = document.getElementById("openModalBtn-cocktail");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("closeModal3")[0];
+var span = document.getElementsByClassName("closeModal-cocktail")[0];
 
 // When the user clicks on the button, open the modal 
 btn.onclick = function() {
