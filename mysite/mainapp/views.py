@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
@@ -33,13 +33,26 @@ class ForumView(ListView):
     # добавлялся к каждому посту
     #ordering = ['-id']
 
-
 class ForumPostDetailView(DetailView):
     
     model = Post
     template_name = 'forum_post_detail.html'
-    
 
+    def get_context_data(self, *args, **kwargs):
+        
+        context = super(ForumPostDetailView, self).get_context_data(*args, **kwargs)
+        stuff = get_object_or_404(Post, id=self.kwargs['pk'])
+        total_likes = stuff.total_likes()
+        
+        liked = False
+        if stuff.like.filter(id=self.request.user.id).exists():
+            liked = True
+        
+        context["total_likes"] = total_likes
+        context["liked"] = liked
+        return context
+
+    
 class AddPostView(CreateView):
     
     model = Post
@@ -66,12 +79,28 @@ class RemovePostView(DeleteView):
     success_url = reverse_lazy('forum')
 
 
+def ForumPostLikeView(request, pk):
+    
+    # 'post id' - имя у кнопки в forum_post_detail
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    liked = False
+    if post.like.filter(id=request.user.id).exists():
+        post.like.remove(request.user)
+        liker = False
+    else:
+        post.like.add(request.user)
+        liked = True 
+    return HttpResponseRedirect(reverse('forum_post_detail', args=[str(pk)]))
+
+
 def PostCategoryView(request, categories):
     
     # post_category - характеристика категорий в модели Post, приравнивается в данном случае к записи в urls
     # (<str:categories>)
-    category_posts = Post.objects.filter(post_category=categories)
-    return render(request, 'post_categories.html', {'categories':categories.title, 'category_posts':category_posts})
+    # replace функция заменяет все, что необходимо, требуя аргумент "на что менять" и "что именно менять"
+    # в нашем случае менять нужно пробел на тире
+    category_posts = Post.objects.filter(post_category=categories.replace('-', '%20'))
+    return render(request, 'post_categories.html', {'categories':categories.title().replace('-', '%20'), 'category_posts':category_posts})
 
 
 class AddPostCategoryView(CreateView):

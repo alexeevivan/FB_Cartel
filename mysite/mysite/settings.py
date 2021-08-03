@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'mainapp',
     'members',
     'crispy_forms',
+    'ckeditor',
     'captcha',
 ]
 

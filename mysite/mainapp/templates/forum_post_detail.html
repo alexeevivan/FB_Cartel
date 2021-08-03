@@ -8,9 +8,16 @@
     By: {{ post.author.first_name}} {{ post.author.last_name}} - {{ post.pub_date }}
 </small>
 <hr>
+<!-- |safe позволяет в body ввода текста делать текст жирным, при этом в предпросмотре самого текста
+не будут использованы HTML-теги, типа <strong> и так далее-->
+{% if post.uploaded_image %}
+    <p>
+        <img src="{{ post.uploaded_image.url }}">
+    </p>
+{% endif %}
 <p>
     {{ post.body|safe }}
-    <p>
+<p>
     {% if request.user.is_authenticated %}
         {% if user.id == post.author.id %}
             <a href="{% url 'forum_post_update' post.pk %}">
@@ -26,3 +33,18 @@
 </p>
 <br/><br/>
 <a href="{% url 'forum' %}">Вернуться</a>
+<form action="{% url 'forum_post_like' post.pk %}" method="POST">
+    {% csrf_token %}
+    {% if request.user.is_authenticated %}
+        {% if liked %}
+            <button type="submit" name="post_id" value="{{ post.id }}">
+                unlike
+            </button>
+        {% else %}
+            <button type="submit" name="post_id" value="{{ post.id }}">
+                like
+            </button>
+        {% endif %}
+     - {{ total_likes }} Likes
+    {% endif %}
+</form>

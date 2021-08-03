@@ -67,12 +67,26 @@
             {% endif %}
             {% if request.user.is_authenticated %}
                 <li>
-                    <a href="#" style="display: grid; width: 80%; text-align: center; margin-bottom: 8%; text-transform: capitalize; border: 1px solid goldenrod; border-radius: 10px;">
+                    <a href="{% url 'profile' %}" id="admin_menu">
                         {{ request.user.username }}
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'logout' %}" style="display: grid; width: 80%; text-align: center; border: 1px solid goldenrod; border-radius: 10px;">Выход</a>
+                    <a href="{% url 'forum_post_add' %}" id="extra_menu">
+                        Создать тему
+                    </a>
+                </li>
+                {% if user.is_superuser %}
+                    <li>
+                        <a href="{% url 'forum_post_category_add' %}" id="extra_menu">
+                            Добавить категорию
+                        </a>
+                    </li>
+                {% endif %}
+                <li>
+                    <a href="{% url 'logout' %}" id="admin_menu">
+                        Выход
+                    </a>
                 </li>
             {% endif %}
             <li>
@@ -93,22 +107,38 @@
                     <div class="overlay-content">
                         {% if not request.user.is_authenticated %}
                         <li>
-                            <a href="{% url 'login' %}">Авторизация</a>
+                            <a href="{% url 'login' %}">
+                                Авторизация
+                            </a>
                         </li>
                         <li>
-                            <a href="{% url 'register' %}">Регистрация</a>
+                            <a href="{% url 'register' %}">
+                                Регистрация
+                            </a>
                         </li>
                         {% endif %}
                         {% if request.user.is_authenticated %}
                         <li>
-                            <a href="#" style="display: grid; width: 80%; text-align: center; margin-bottom: 8%; text-transform: capitalize; border: 1px solid goldenrod; border-radius: 10px;">
+                            <a href="{% url 'profile' %}" id="admin_menu">
                                 {{ request.user.username }}
                             </a>
                         </li>
                         <li>
-                            <a href="{% url 'logout' %}" style="display: grid; width: 80%; text-align: center; border: 1px solid goldenrod; border-radius: 10px;">Выход</a>
+                            <a href="{% url 'forum_post_add' %}" id="extra_menu">
+                                Создать тему
+                            </a>
                         </li>
+                        {% if user.is_superuser %}
+                            <li>
+                                <a href="{% url 'forum_post_category_add' %}" id="extra_menu">
+                                    Добавить категорию
+                                </a>
+                            </li>
+                        {% endif %}
                         <li>
+                            <a href="{% url 'logout' %}" id="admin_menu">
+                                Выход
+                            </a>
                         </li>
                         {% endif %}
                         <li>
@@ -123,18 +153,6 @@
                         <div class="one"></div>
                     </div>
                 </div>
-                {% if request.user.is_authenticated %}
-                <button>
-                    <a href="{% url 'forum_post_add' %}">
-                        Создать тему
-                    </a>
-                </button>
-                <button>
-                    <a href="{% url 'forum_post_category_add' %}">
-                        Добавить категорию
-                    </a>
-                </button>
-                {% endif %}
                 <ul>
                     {% for post in object_list %}
                         <li>
@@ -144,7 +162,10 @@
                             <!--Чтобы сделать рабочей ссылку на каждую категорию, нужно не забывать определять
                             указание на то, чтобы она являлась уникальной для каждой категории.
                             Что-то вроде ранее указанного pk, но сейчас категория из модели поста-->
-                             - <a href="{% url 'category' post.post_category %}">{{ post.post_category }}</a> - {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.pub_date}}
+                            <!-- |slugify позволяет добавить автоматически - (тире) к созданной категории
+                            без этого тире: я создал категорию (новые заведения), теперь в адресной строке
+                            будет (новые-заведения)-->
+                             - <a href="{% url 'category' post.post_category  %}">{{ post.post_category }}</a> - {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.pub_date}}
                             {% if request.user.is_authenticated %}
                                 {% if user.id == post.author.id %}
                                     <a href="{% url 'forum_post_update' post.pk %}">
@@ -156,8 +177,10 @@
                                     <br/>
                                 {% endif %}
                             {% endif %}
-                            <!-- Комнда "|slice" помогает не показывать весь текст поста на странице всех постов-->
-                            {{ post.body|slice:":200"|safe}}
+                            <!-- Команда "|slice" помогает не показывать весь текст поста на странице всех постов
+                            но я её удалил, потому что добавилась строка краткого описания
+                            без неё было post.body, которое нужно было сократить-->
+                            {{ post.short_description|safe}}
                         </li>
                     {% endfor %}
                 </ul>

@@ -9,6 +9,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 
 from datetime import date, datetime
 
+from ckeditor.fields import RichTextField
 
 def get_models_for_count(*model_names):
     return [models.Count(model_name) for model_name in model_names]
@@ -533,9 +534,17 @@ class Post(models.Model):
     
     title = models.CharField(max_length=255, verbose_name='Название')
     author = models.ForeignKey(User, on_delete=CASCADE, verbose_name='Автор поста')
-    body = models.TextField(verbose_name='Сообщение')
+    body = RichTextField(blank=True, null=True, verbose_name = 'Сообщение')
+    # Закомментировал вариант без RichTextField, который добавляет строку со эмодзи и т.д.
+    # body = models.TextField(verbose_name='Сообщение')
+    uploaded_image = models.ImageField(null=True, blank=True, upload_to="img/")
+    short_description = models.CharField(max_length=50, default='', verbose_name='Краткое описание поста')
     pub_date = models.DateField(auto_now_add=True)
     post_category = models.CharField(max_length=30, default='Рецептуры напитков', verbose_name='Категория')
+    like = models.ManyToManyField(User, related_name='blog_posts')
+    
+    def total_likes(self):
+        return self.like.count()
     
     def __str__(self):
         return self.title + '|' + str(self.author)
@@ -553,4 +562,12 @@ class PostCategory(models.Model):
     
     def get_absolute_url(self):
         return reverse("forum_post_detail", kwargs={"pk": self.pk})
+
+
+class Profile(models.Model):
     
+    user = models.OneToOneField(User, null=True, on_delete=CASCADE)
+    bio = models.TextField()
+     
+    def __str__(self):
+        return str(self.user)

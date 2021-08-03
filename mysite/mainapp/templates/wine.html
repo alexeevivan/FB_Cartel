@@ -60,7 +60,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'registration' %}">
+                    <a href="{% url 'register' %}">
                         Регистрация
                     </a>
                 </li>
@@ -96,7 +96,7 @@
                             <a href="{% url 'login' %}">Авторизация</a>
                         </li>
                         <li>
-                            <a href="{% url 'registration' %}">Регистрация</a>
+                            <a href="{% url 'register' %}">Регистрация</a>
                         </li>
                         {% endif %}
                         {% if request.user.is_authenticated %}

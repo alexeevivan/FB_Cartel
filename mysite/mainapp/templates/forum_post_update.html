@@ -126,8 +126,9 @@
                 <h1>
                     Редактировать запись
                 </h1>
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
+                    {{ form.media }}
                     {{ form.as_p }}
                     <button class="posting">Post</button>
                 </form>

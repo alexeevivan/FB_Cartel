@@ -21,15 +21,22 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('title','post_category','author','body')
+        fields = ('title','post_category','author','body','uploaded_image','short_description')
         # так как каждая строка в форме - это TextInput или Textarea, если просмотреть в режиме разработчика HTML-страницу,
         # то, чтобы изменить стиль - в виджетах устанавливается класс, который имеет название, использующееся в
         # файле CSS. Оно (название) может быть рандомным
         widgets = {
             'title' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'Введите краткий заголовок'}),
             'post_category': forms.Select(choices=choice_list, attrs={'class':'form-control-select'}),
-            'author': forms.Select(attrs={'class':'form-control-select'}),
+            # закомментирована строка автора с Select-выбором для того, чтобы не давать пользователю
+            # возможность выбора автора поста. ID приписан для того, чтобы сказать JavaScript, какую из
+            # форм TextInput нужно заполнять атоматически
+            # value пустое, чтобы дать возможность скрипту самому вставлять автоматически ID пользователя
+            # type:hidden попросту скрывает данную форму для отображения в браузере (но она есть)
+            'author' : forms.TextInput(attrs={'class':'form-control', 'id':'user_id', 'value':'', 'type':'hidden'}),
+            #'author': forms.Select(attrs={'class':'form-control-select'}),
             'body' : forms.Textarea(attrs={'class':'form-control-body', 'placeholder':'Введите текст'}),
+            'short_description': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Краткое описание поста'})
         }
 
 
