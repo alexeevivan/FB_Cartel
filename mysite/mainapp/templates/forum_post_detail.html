@@ -1,18 +1,86 @@
-<title>{{ post.title }}</title>
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <!--Кодировка-->
+        <meta charset="UTF-8">
+        <!--Адаптивность. User-scalable=0 запрещает зумить на Android-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <!--Краткое описание страницы для поисковых плтаформ (до 140 символов)-->
+        <meta name="description" content="">
+        <!--Ключевые слова для поисковых платформ (до 20 слов через запятую)-->
+        <meta name="keywords" content="">
+        <!--Мета теги в случае репоста страницы сайта на Facebook-->
+        <!--Локализация сайта. Для русскоязычного сайта - ru_RU-->
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:type" content="aticle">
+        <!--Какой заголовок сайта при репосте-->
+        <meta proprety="og:title" content="">
+        <!--Описания страницы при репосте-->
+        <meta property="ogdescritpion" content="">
+        <!--Ссылка на изображение, которое выводится при репосте (http-адрес нужно будет вставить с изображением)-->
+        <meta property="og:image" content="">
+        <!--Ссылка на конкретную страницу (тоже http-адрес указать для каждой страницы)-->
+        <meta property="og:url" content="">
+        <!--Название сайта при репосте-->
+        <meta property="og:site_name" content="F&B Cartel">
+        <!--Разрешение или запрет номер телефона делать ссылкой на звонок в iOS-->
+        <meta name="format-detection" content="telephone=yes">
+        <!--Данные о владельце/авторе страницы-->
+        <meta name="Author" content="Alexeev Ivan">
+        <meta name="Copyright" content="Alexeev Ivan">
+        <meta name="Address" content="">
+
+        <!--Эту строчку добавить только на страницу 404 - она позволяет выполнить редирект на главную, если вылезла 404-->
+        <!--<meta http-equiv="refresh" content="3, url=index.html"-->
+        
+        <!--Запрет на индексацию сайта; потом убрать!-->
+        <meta name="robots" content="none">
+
+
+        <link rel="stylesheet" href="../../static/css/icons.css">
+        <link rel="stylesheet" href="../../static/css/fonts.css">
+
+
+        <title>{{ post.title }}</title>
+        
+    </head>
+    <body>
+
+
 <!--здесь не делаю for, потому что используется не ListView, который
 подразумевает список - поэтому достаточно характеристики этого поста-->
 <h1>
     {{ post.title }}
 </h1>
 <small>
-    By: {{ post.author.first_name}} {{ post.author.last_name}} - {{ post.pub_date }}
+    By: 
+    {% if post.author.profile.profile_img %}
+        <img src="{{ post.author.profile.profile_img.url }}" style="width: 30px; height:30px; border:1px; border-radius: 30px;">
+    {% else %}
+        <img src="{% static 'img/logo.jpeg' %}" style="width: 30px; height:30px; border:1px; border-radius: 30px;">
+    {% endif %}
+    <a href="{% url 'profile_page' post.author.profile.id %}">{{ post.author.first_name }} {{ post.author.last_name }}</a>
+    {% if post.author.profile.instagram_url %}
+        <a href="http://{{ post.author.profile.instagram_url }}" class="_icon-telegram" style="text-decoration: none;"></a> - 
+    {% endif %}
+    {% if post.author.profile.vk_url %}
+        <a href="http://{{ post.author.profile.vk_url }}">vk</a> - 
+    {% endif %}
+    {% if post.author.profile.facebook_url %}
+        <a href="http://{{ post.author.profile.facebook_url }}">facebook</a> - 
+    {% endif %}
+    {% if post.author.profile.twitter_url %}
+        <a href="http://{{ post.author.profile.twitter_url }}" class="icon-social-instagram">twitter</a> - 
+    {% endif %}
+    {{ post.pub_date }}
 </small>
 <hr>
 <!-- |safe позволяет в body ввода текста делать текст жирным, при этом в предпросмотре самого текста
 не будут использованы HTML-теги, типа <strong> и так далее-->
 {% if post.uploaded_image %}
     <p>
-        <img src="{{ post.uploaded_image.url }}">
+        <img src="{{ post.uploaded_image.url }}" style="width: 200px; height: 200px; border:1px; border-radius: 30px;">
     </p>
 {% endif %}
 <p>
@@ -48,3 +116,5 @@
      - {{ total_likes }} Likes
     {% endif %}
 </form>
+    </body>
+</html>

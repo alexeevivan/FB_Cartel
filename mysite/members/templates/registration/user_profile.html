@@ -1,0 +1,25 @@
+{% load static %}
+{{ page_user }}
+<hr>
+<small>
+    {% if page_user.profile_img %}
+        <img src="{{ page_user.profile_img.url }}" style="width: 30px; height:30px; border:1px; border-radius: 30px;">
+    {% else %}
+        <img src="{% static 'img/logo.jpeg' %}" style="width: 30px; height:30px; border:1px; border-radius: 30px;">
+    {% endif %}
+    {{ page_user.user.first_name }} {{ page_user.user.last_name }}
+    {% if page_user.instagram_url %}
+        <a href="http://{{ page_user.instagram_url }}">Instagram</a>
+    {% endif %}
+    {% if page_user.vk_url %}
+        <a href="http://{{ page_user.vk_url }}">vk</a>
+    {% endif %}
+    {% if page_user.facebook_url %}
+        <a href="http://{{ page_user.facebook_url }}">facebook</a>
+    {% endif %}
+    {% if page_user.twitter_url %}
+        <a href="http://{{ page_user.twitter_url }}">twitter</a>
+    {% endif %}
+</small>
+<hr>
+{{ page_user.bio }}

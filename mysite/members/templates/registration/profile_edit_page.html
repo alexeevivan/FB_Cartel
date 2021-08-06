@@ -1,0 +1,10 @@
+{% if request.user.is_authenticated %}
+<h1>
+    Создать тему
+</h1>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="posting">Обновить страницу</button>
+</form>
+{% endif %}

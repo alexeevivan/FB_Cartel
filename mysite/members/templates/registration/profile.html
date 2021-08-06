@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+        <link href="../../../static/css/simple-line-icons.css" rel="stylesheet">
+        <link href="../../static/css/forum.css" rel="stylesheet">
+        <link href="../../../static/css/login.css" rel="stylesheet">
+        <link href="../../../static/css/fonts.css" rel="stylesheet">
+
+        <title>
+            FBC Profile
+        </title>
+    </head>
+    <body>
+        <div id="left_backside"></div>
+        <div id="main">
+            <div class="vertical-center">
+                <br>
+                <img src="{{ user.profile.profile_img.url }}" style="width: 90px; height: 90px; border:1px; border-radius: 30px;">
+                <h1>
+                    {{ user.username }}
+                </h1>
+                {{ user.first_name }} {{ user.last_name }}
+                <br>
+                {{ user.email }}
+                <br>
+                {% if user.profile.instagram_url %}
+                    Instagram link : <a href="{{ user.profile.instagram_url }}">{{ user.profile.instagram_url }}</a>
+                {% else %}
+                    Instagram link : добавьте информацию
+                {% endif %}
+                <br>
+                {% if user.profile.vk_url %}
+                    VK link : <a href="{{ user.profile.vk_url }}">{{ user.profile.vk_url }}</a>
+                {% else %}
+                    VK link : добавьте информацию
+                {% endif %}
+                <br>
+                {% if user.profile.facebook_url %}
+                    Facebook link : <a href="{{ user.profile.facebook_url }}">{{ user.profile.facebook_url }}</a>
+                {% else %}
+                    Facebook link : добавьте информацию
+                {% endif %}
+                <br>
+                {% if user.profile.twitter_url %}
+                    Twitter link : <a href="{{ user.profile.twitter_url }}">{{ user.profile.twitter_url }}</a>
+                {% else %}
+                    Twitter link : добавьте информацию
+                {% endif %}
+                <br>
+                <button>
+                    <a href="{% url 'profile_edit' %}">
+                        Редактировать основную информацию
+                    </a>
+                </button>
+                <br>
+                <button>
+                    <a href="{% url 'profile_edit_page' user.profile.id %}">
+                        Редактировать дополнительную информацию
+                    </a>
+                </button>
+                <br>
+                <br>
+            </div>
+        </div>
+        <div id="right_backside"></div>
+    </body>
+</html>
