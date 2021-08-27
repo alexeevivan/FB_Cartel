@@ -64,7 +64,7 @@
             {% endif %}
             {% if request.user.is_authenticated %}
                 <li>
-                    <a href="#" style="display: grid; width: 80%; text-align: center; margin-bottom: 8%; text-transform: capitalize; border: 1px solid goldenrod; border-radius: 10px;">
+                    <a href="{% url 'profile' %}" id="admin_menu">
                         {{ request.user.username }}
                     </a>
                 </li>
@@ -98,7 +98,7 @@
                         {% endif %}
                         {% if request.user.is_authenticated %}
                         <li>
-                            <a href="#" style="display: grid; width: 80%; text-align: center; margin-bottom: 8%; text-transform: capitalize; border: 1px solid goldenrod; border-radius: 10px;">
+                            <a href="{% url 'profile' %}" id="admin_menu">
                                 {{ request.user.username }}
                             </a>
                         </li>
@@ -132,5 +132,6 @@
                 </form>
             {% endif %}
         </div>
+        <script type="text/javascript" src="../../static/js/navbar_toggle.js"></script>
     </body>
 </html>

@@ -2,8 +2,8 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Password
 from django.contrib.auth.models import User
 from django import forms
 from django.db.models.fields import related
-
-
+from django.forms import widgets, ModelForm
+from mainapp.models import *
 
 class SignUpForm(UserCreationForm):
     
@@ -39,7 +39,23 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
-        
+
+
+class ProfilePageForm(ModelForm):
+    
+    class Meta:
+        model = Profile
+        fields = ('bio', 'workplace','profile_img', 'instagram_url', 'vk_url', 'facebook_url', 'twitter_url')
+        widgets = {
+            'bio' : forms.Textarea(attrs={'class':'form-control', 'placeholder':'Введите краткую информацию о себе'}),
+            #'profile_img': forms.ImageField(choices=choice_list, attrs={'class':'form-control-select'}),
+            'workplace' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать место работы'}),
+            'instagram_url' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать ссылку на Ваш профиль в Instagram'}),
+            'vk_url': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать ссылку на Ваш профиль в VK'}),
+            'facebook_url' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать ссылку на Ваш профиль в Facebook'}),
+            'twitter_url': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать ссылку на Ваш профиль в Twitter'})
+        }
+    
 
 class ProfileEditForm(UserChangeForm):
     # названия всех ниже перечисленных полей взято после того, как была проинспектирована страница

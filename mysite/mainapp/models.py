@@ -5,11 +5,14 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
 from django.contrib.contenttypes.models import ContentType
+from django.http import HttpResponseRedirect, request
 from django.contrib.contenttypes.fields import GenericForeignKey
+from django.shortcuts import redirect, render
 
 from datetime import date, datetime
 
 from ckeditor.fields import RichTextField
+from django.urls.base import reverse_lazy
 
 def get_models_for_count(*model_names):
     return [models.Count(model_name) for model_name in model_names]
@@ -86,7 +89,7 @@ class CategoryManager(models.Manager):
 
 class Category(models.Model):
     
-    name = models.CharField(max_length=255, verbose_name='Name of category')
+    name = models.CharField(max_length=255, verbose_name='Название категории')
     slug = models.SlugField(unique=True)
     objects = CategoryManager()
 
@@ -145,7 +148,7 @@ class Red_Wine(Product):
     flavour = models.CharField(max_length=255, verbose_name='Аромат:')
     taste = models.CharField(max_length=255, verbose_name='Вкус:')
     body = models.CharField(max_length=10, verbose_name='Тело')
-    gastronomic = models.CharField(max_length=13, verbose_name='Гастрономическое сочетание:')
+    gastronomic = models.TextField(max_length=255, verbose_name='Гастрономическое сочетание:')
     cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:", null=True)
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
@@ -171,7 +174,7 @@ class Rose_Wine(Product):
     flavour = models.CharField(max_length=255, verbose_name='Аромат:')
     taste = models.CharField(max_length=255, verbose_name='Вкус:')
     body = models.CharField(max_length=10, verbose_name='Тело')
-    gastronomic = models.CharField(max_length=13, verbose_name='Гастрономическое сочетание:')
+    gastronomic = models.TextField(max_length=255, verbose_name='Гастрономическое сочетание:')
     cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:", null=True)
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
@@ -197,7 +200,7 @@ class White_Wine(Product):
     flavour = models.CharField(max_length=255, verbose_name='Аромат:')
     taste = models.CharField(max_length=255, verbose_name='Вкус:')
     body = models.CharField(max_length=10, verbose_name='Тело')
-    gastronomic = models.CharField(max_length=13, verbose_name='Гастрономическое сочетание:')
+    gastronomic = models.TextField(max_length=255, verbose_name='Гастрономическое сочетание:')
     cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:", null=True)
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
@@ -251,7 +254,7 @@ class Sparkling_Wine(Product):
     flavour = models.CharField(max_length=255, verbose_name='Аромат:')
     taste = models.CharField(max_length=255, verbose_name='Вкус:')
     body = models.CharField(max_length=10, verbose_name='Тело')
-    gastronomic = models.CharField(max_length=13, verbose_name='Гастрономическое сочетание:')
+    gastronomic = models.TextField(max_length=255, verbose_name='Гастрономическое сочетание:')
     cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:", null=True)
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
@@ -278,7 +281,7 @@ class Porto(Product):
     flavour = models.CharField(max_length=255, verbose_name='Аромат:')
     taste = models.CharField(max_length=255, verbose_name='Вкус:')
     body = models.CharField(max_length=10, verbose_name='Тело')
-    gastronomic = models.CharField(max_length=13, verbose_name='Гастрономическое сочетание:')
+    gastronomic = models.TextField(max_length=255, verbose_name='Гастрономическое сочетание:')
     cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:", null=True)
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
@@ -302,7 +305,7 @@ class Bitter(Product):
     value = models.CharField(max_length=10, verbose_name='Объём:')
     color = models.CharField(max_length=255, verbose_name='Цвет:')
     flavour = models.CharField(max_length=255, verbose_name='Аромат:')
-    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    combination = models.CharField(max_length=255, verbose_name='Сочитается с:')
     cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
@@ -326,7 +329,7 @@ class Vermouth(Product):
     value = models.CharField(max_length=10, verbose_name='Объём:')
     color = models.CharField(max_length=255, verbose_name='Цвет:')
     flavour = models.CharField(max_length=255, verbose_name='Аромат:')
-    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    combination = models.CharField(max_length=255, verbose_name='Сочитается с:')
     cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
@@ -350,7 +353,7 @@ class Whiskey(Product):
     value = models.CharField(max_length=10, verbose_name='Объём:')
     color = models.CharField(max_length=255, verbose_name='Цвет:')
     flavour = models.CharField(max_length=255, verbose_name='Аромат:')
-    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    combination = models.CharField(max_length=255, verbose_name='Сочитается с:')
     cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
@@ -374,7 +377,7 @@ class Rum(Product):
     value = models.CharField(max_length=10, verbose_name='Объём:')
     color = models.CharField(max_length=255, verbose_name='Цвет:')
     flavour = models.CharField(max_length=255, verbose_name='Аромат:')
-    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    combination = models.CharField(max_length=255, verbose_name='Сочитается с:')
     cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
@@ -398,7 +401,7 @@ class Tequila(Product):
     value = models.CharField(max_length=10, verbose_name='Объём:')
     color = models.CharField(max_length=255, verbose_name='Цвет:')
     flavour = models.CharField(max_length=255, verbose_name='Аромат:')
-    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    combination = models.CharField(max_length=255, verbose_name='Сочитается с:')
     cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
@@ -422,7 +425,7 @@ class Mezcal(Product):
     value = models.CharField(max_length=10, verbose_name='Объём:')
     color = models.CharField(max_length=255, verbose_name='Цвет:')
     flavour = models.CharField(max_length=255, verbose_name='Аромат:')
-    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    combination = models.CharField(max_length=255, verbose_name='Сочитается с:')
     cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
@@ -446,7 +449,7 @@ class Gin(Product):
     value = models.CharField(max_length=10, verbose_name='Объём:')
     color = models.CharField(max_length=255, verbose_name='Цвет:')
     flavour = models.CharField(max_length=255, verbose_name='Аромат:')
-    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    combination = models.CharField(max_length=255, verbose_name='Сочитается с:')
     cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
@@ -469,7 +472,7 @@ class Vodka(Product):
     value = models.CharField(max_length=10, verbose_name='Объём:')
     color = models.CharField(max_length=255, verbose_name='Цвет:')
     flavour = models.CharField(max_length=255, verbose_name='Аромат:')
-    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    combination = models.CharField(max_length=255, verbose_name='Сочитается с:')
     cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
@@ -493,7 +496,7 @@ class Liquor(Product):
     value = models.CharField(max_length=10, verbose_name='Объём:')
     color = models.CharField(max_length=255, verbose_name='Цвет:')
     flavour = models.CharField(max_length=255, verbose_name='Аромат:')
-    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    combination = models.CharField(max_length=255, verbose_name='Сочитается с:')
     cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
@@ -516,7 +519,7 @@ class Cocktail(Product):
     value = models.CharField(max_length=10, verbose_name='Объём:')
     color = models.CharField(max_length=255, verbose_name='Цвет:')
     flavour = models.CharField(max_length=255, verbose_name='Аромат:')
-    combination = models.CharField(max_length=13, verbose_name='Сочитается с:')
+    combination = models.CharField(max_length=255, verbose_name='Сочитается с:')
     cocktails = models.CharField(max_length=255, verbose_name="Входит в состав коктейлей:")
     serving = models.CharField(max_length=255, verbose_name='Температура сервировки:')
     manufacturer = models.CharField(max_length=255, verbose_name='Производитель:')
@@ -568,6 +571,7 @@ class Profile(models.Model):
     
     user = models.OneToOneField(User, null=True, on_delete=CASCADE)
     bio = models.TextField()
+    workplace = models.CharField(null=True, blank=True, max_length=255)
     profile_img = models.ImageField(null=True, blank=True, upload_to="img/profile")
     instagram_url = models.CharField(null=True, blank=True, max_length=255)
     vk_url = models.CharField(null=True, blank=True, max_length=255)
@@ -577,3 +581,21 @@ class Profile(models.Model):
     
     def __str__(self):
         return str(self.user)
+
+    # для того, чтобы был редирект после того, как профиль создается вручную на сайте после регистрации
+    def get_absolute_url(self):
+        return reverse('index')
+
+
+class Comment(models.Model):
+    
+    post = models.ForeignKey(Post, related_name='comments', on_delete=CASCADE)
+    name = models.CharField(max_length=255)
+    body = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self, **kwargs):
+        return '%s - %s' % (self.post.title, self.name)
+    
+    def get_absolute_url(self):
+        return reverse("forum_post_detail", kwargs={"pk": self.post.pk})

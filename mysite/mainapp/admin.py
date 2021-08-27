@@ -201,6 +201,7 @@ class Cocktail_Admin(admin.ModelAdmin):
 
 admin.site.register(Category)
 admin.site.register(Post)
+admin.site.register(Comment)
 admin.site.register(PostCategory)
 admin.site.register(Profile)
 admin.site.register(Red_Wine, Red_Wine_Admin)

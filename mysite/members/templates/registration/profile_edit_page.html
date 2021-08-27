@@ -1,10 +1,16 @@
 {% if request.user.is_authenticated %}
-<h1>
-    Создать тему
-</h1>
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="posting">Обновить страницу</button>
-</form>
+    {% if user.id == profile.user.id %}
+        <h1>
+            Редактировать профиль
+        </h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="posting">Обновить страницу</button>
+        </form>
+    {% endif %}
+{% else %}
+    <h1>
+        Вы не можете просмотривать данную страницу, поскольку не авторизованы
+    </h1>
 {% endif %}

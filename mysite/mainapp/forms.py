@@ -1,5 +1,5 @@
 from django import forms
-from .models import User, Post, PostCategory
+from .models import Comment, User, Post, PostCategory
 from django.forms import fields, widgets
 from captcha.fields import CaptchaField
 
@@ -51,4 +51,14 @@ class ForumPostUpdateForm(forms.ModelForm):
         widgets = {
             'title' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'Введите краткий заголовок'}),
             'body' : forms.Textarea(attrs={'class':'form-control-body', 'placeholder':'Введите текст'}),
+        }
+
+
+class ForumPostCategoryAdd(forms.ModelForm):
+    
+    class Meta:
+        model = PostCategory
+        fields = ('name',)
+        widgets = {
+            'name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Введите название новой категории'})
         }

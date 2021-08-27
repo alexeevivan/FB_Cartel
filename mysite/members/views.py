@@ -14,6 +14,18 @@ class UserRegisterView(CreateView):
     success_url = reverse_lazy('login')
 
 
+class ProfilePageCreateView(CreateView):
+    
+    model = Profile
+    form_class = ProfilePageForm
+    template_name = 'registration/profile_page_create.html'
+    # говорит о том, чтобы использовался User автоматически тот, который видит форму для создания профиля
+    # поэтому в forms.py в виджетах нет строки user 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
 class ProfileView(TemplateView):
      
     template_name = 'registration/profile.html'
@@ -60,5 +72,5 @@ class PasswordEditView(PasswordChangeView):
     # можно было прописать стили в CSS
     form_class = PasswordChangingForm
     #form_class = PasswordChangeForm
-    template_name = 'password-edit.html'
+    template_name = 'registration/password-edit.html'
     success_url = reverse_lazy('profile')

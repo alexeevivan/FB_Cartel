@@ -6,7 +6,7 @@ body {
     grid-template-areas: "nav info";
     grid-template-columns: 20% 1fr;
     grid-column-gap: 0%;
-    background: linear-gradient(to right, #000, #cb3061);
+    background: linear-gradient(to right, #000000, #1c0336);
     justify-content: center;
     margin:0;
     position: relative;
@@ -32,30 +32,6 @@ li a:hover {
     transition: 0.5s;
     transform: translateX(5%);
 }
-#admin_menu, #extra_menu {
-    display: grid;
-    width: 80%;
-    margin-bottom: 8%;
-    text-align: center;
-    border: 1px solid goldenrod;
-    border-radius: 10px;
-    font-size:20px;
-    text-transform: capitalize;
-}
-#extra_menu {
-    font-size: 15px;
-    border: 1px solid #cb3061;
-    text-transform: none;
-}
-#admin_menu:hover, #extra_menu:hover{
-    color: goldenrod;
-    background-size: 100% 2px;
-    transition: 0.5s;
-    transform: translateX(5%);
-}
-#extra_menu:hover {
-    color: #cb3061;
-}
 button {
     cursor: pointer;
     border: 1px solid rgba(0, 0, 0, 0.24);
@@ -77,10 +53,11 @@ button a {
 }
 .posting {
     display: block;
-    width: 81%;
-    margin-bottom: 5%;
-    margin-left: 10%;
+    width: 50%;
+    margin-bottom: 2%;
+    margin-left: 25%;
     font-size: 15px;
+    background: goldenrod;
 }
 button:hover {
     background: #3b291f82;
@@ -94,7 +71,63 @@ button:hover {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding: 40px 0;
+    padding: 0;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+}
+ul li p {
+    padding: 0;
+    margin: 0;
+}
+small {
+    font-size: 15px;
+    text-align: center;
+    display: block;
+}
+small a {
+    font-size: 15px;
+    text-decoration: none;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+small p {
+    font-size: 10px;
+}
+.forum_post_detail_content {
+    width: 70vw;
+    margin-left: 5vw;
+}
+.forumhr {
+    background-color: goldenrod;
+    height: 1px;
+    border: none;
+}
+#postlist {
+    margin-top: 4%;
+    width: 90%;
+}
+#postlistobject {
+    margin-left: 0;
+}
+#changepostbtn, #deletepostbtn {
+    font-size: 15px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    transition: 0.5s;
+    text-decoration: none;
+}
+#changepostbtn:hover {
+    color: rgb(64, 158, 64);
+}
+#deletepostbtn:hover {
+    color: rgb(211, 62, 62);
 }
 .card {
     position: relative;
@@ -183,7 +216,7 @@ button:hover {
     border: 1px solid rgba(218, 165, 32, 0);
     border-radius: 10px;
     font-size: 15px;
-    background: rgba(0, 0, 0, 0.25);
+    background: rgba(156, 216, 255, 0.25);
     color: white;
     text-align: center;
 }
@@ -212,6 +245,41 @@ label {
 }
 label[for=id_password] {
     display: none;
+}
+.centeredform {
+    width: 80vw;
+    height: 97vh;
+    display: grid;
+    align-content: center;
+}
+#cke_id_body {
+    width: 70vw;
+    margin-left: 5vw;
+}
+#admin_menu, #extra_menu {
+    display: grid;
+    width: 80%;
+    margin-bottom: 8%;
+    text-align: center;
+    border: 1px solid goldenrod;
+    border-radius: 10px;
+    font-size:20px;
+    text-transform: capitalize;
+}
+#extra_menu {
+    font-size: 15px;
+    border: 1px solid #5e427c;
+    text-transform: none;
+}
+#admin_menu:hover{
+    color: goldenrod;
+    background-size: 100% 1px;
+    transition: 0.5s;
+    transform: translateX(5%);
+}
+#extra_menu:hover {
+    color: #ffe7d9;
+    background-size: 100% 0.5px;
 }
 #id_last_login, #id_date_joined {
     pointer-events: none;

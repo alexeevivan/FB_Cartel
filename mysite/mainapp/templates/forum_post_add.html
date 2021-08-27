@@ -36,9 +36,9 @@
         <!--Запрет на индексацию сайта; потом убрать!-->
         <meta name="robots" content="none">
 
-
-        <link rel="stylesheet" href="../../static/css/fonts.css">
         <link rel="stylesheet" href="../../static/css/forum.css">
+        <link rel="stylesheet" href="../../static/css/editor.css">
+        <link rel="stylesheet" href="../../static/css/fonts.css">
 
         <title>
             Food &#38 Beverage Cartel
@@ -64,12 +64,19 @@
             {% endif %}
             {% if request.user.is_authenticated %}
                 <li>
-                    <a href="#" style="display: grid; width: 80%; text-align: center; margin-bottom: 8%; text-transform: capitalize; border: 1px solid goldenrod; border-radius: 10px;">
+                    <a href="{% url 'profile' %}" id="admin_menu">
                         {{ request.user.username }}
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'logout' %}" style="display: grid; width: 80%; text-align: center; border: 1px solid goldenrod; border-radius: 10px;">Выход</a>
+                    <a href="{% url 'forum' %}" id="extra_menu">
+                        Назад
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}" id="admin_menu">
+                        Выход
+                    </a>
                 </li>
             {% endif %}
             <li>
@@ -98,12 +105,14 @@
                         {% endif %}
                         {% if request.user.is_authenticated %}
                         <li>
-                            <a href="#" style="display: grid; width: 80%; text-align: center; margin-bottom: 8%; text-transform: capitalize; border: 1px solid goldenrod; border-radius: 10px;">
+                            <a href="{% url 'profile' %}" id="admin_menu">
                                 {{ request.user.username }}
                             </a>
                         </li>
                         <li>
-                            <a href="{% url 'logout' %}" style="display: grid; width: 80%; text-align: center; border: 1px solid goldenrod; border-radius: 10px;">Выход</a>
+                            <a href="{% url 'logout' %}" id="admin_menu">
+                                Выход
+                            </a>
                         </li>
                         <li>
                         </li>
@@ -126,7 +135,7 @@
                 <h1>
                     Создать тему
                 </h1>
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data" style="width: 70vw; margin-left: 5vw;">
                     {% csrf_token %}
                     {{ form.media }}
                     {{ form.as_p }}
@@ -138,5 +147,6 @@
             var name = "{{ user.id }}";
             document.getElementById("user_id").value = name
         </script>
+        <script type="text/javascript" src="../../static/js/navbar_toggle.js"></script>
     </body>
 </html>

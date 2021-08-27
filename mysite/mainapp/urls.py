@@ -13,6 +13,7 @@ urlpatterns = [
     path('forum/forum_post_update/<int:pk>', UpdatePostView.as_view(), name='forum_post_update'),
     path('forum/like/<int:pk>', ForumPostLikeView, name='forum_post_like'),
     path('forum/<int:pk>/remove', RemovePostView.as_view(), name='forum_post_remove'),
+    path('forum_post_detail/<int:pk>/forum_comment_add/ ', AddCommentView.as_view(), name='forum_post_comment_add'),
     path('category/<str:categories>/', PostCategoryView, name='category'),
     path('wine', WineView.as_view(), name='wine'),
     path('wine/still_wine', StillWineView.as_view(), name='still_wine'),

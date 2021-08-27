@@ -39,82 +39,210 @@
 
 
         <link rel="stylesheet" href="../../static/css/icons.css">
+        <link rel="stylesheet" href="../../static/css/simple-line-icons.css">
         <link rel="stylesheet" href="../../static/css/fonts.css">
+        <link rel="stylesheet" href="../../static/css/forum.css">
+        <link rel="stylesheet" href="../../static/css/modal.css">
 
-
-        <title>{{ post.title }}</title>
+        <title>
+            Food &#38 Beverage Cartel
+        </title>
         
     </head>
     <body>
-
-
-<!--здесь не делаю for, потому что используется не ListView, который
-подразумевает список - поэтому достаточно характеристики этого поста-->
-<h1>
-    {{ post.title }}
-</h1>
-<small>
-    By: 
-    {% if post.author.profile.profile_img %}
-        <img src="{{ post.author.profile.profile_img.url }}" style="width: 30px; height:30px; border:1px; border-radius: 30px;">
-    {% else %}
-        <img src="{% static 'img/logo.jpeg' %}" style="width: 30px; height:30px; border:1px; border-radius: 30px;">
-    {% endif %}
-    <a href="{% url 'profile_page' post.author.profile.id %}">{{ post.author.first_name }} {{ post.author.last_name }}</a>
-    {% if post.author.profile.instagram_url %}
-        <a href="http://{{ post.author.profile.instagram_url }}" class="_icon-telegram" style="text-decoration: none;"></a> - 
-    {% endif %}
-    {% if post.author.profile.vk_url %}
-        <a href="http://{{ post.author.profile.vk_url }}">vk</a> - 
-    {% endif %}
-    {% if post.author.profile.facebook_url %}
-        <a href="http://{{ post.author.profile.facebook_url }}">facebook</a> - 
-    {% endif %}
-    {% if post.author.profile.twitter_url %}
-        <a href="http://{{ post.author.profile.twitter_url }}" class="icon-social-instagram">twitter</a> - 
-    {% endif %}
-    {{ post.pub_date }}
-</small>
-<hr>
-<!-- |safe позволяет в body ввода текста делать текст жирным, при этом в предпросмотре самого текста
-не будут использованы HTML-теги, типа <strong> и так далее-->
-{% if post.uploaded_image %}
-    <p>
-        <img src="{{ post.uploaded_image.url }}" style="width: 200px; height: 200px; border:1px; border-radius: 30px;">
-    </p>
-{% endif %}
-<p>
-    {{ post.body|safe }}
-<p>
-    {% if request.user.is_authenticated %}
-        {% if user.id == post.author.id %}
-            <a href="{% url 'forum_post_update' post.pk %}">
-                Редактировать
-            </a>
-            <a href="{% url 'forum_post_remove' post.pk %}">
-                Удалить
-            </a>
-            <br/>
-        {% endif %}
-    {% endif %}
-    </p>
-</p>
-<br/><br/>
-<a href="{% url 'forum' %}">Вернуться</a>
-<form action="{% url 'forum_post_like' post.pk %}" method="POST">
-    {% csrf_token %}
-    {% if request.user.is_authenticated %}
-        {% if liked %}
-            <button type="submit" name="post_id" value="{{ post.id }}">
-                unlike
-            </button>
-        {% else %}
-            <button type="submit" name="post_id" value="{{ post.id }}">
-                like
-            </button>
-        {% endif %}
-     - {{ total_likes }} Likes
-    {% endif %}
-</form>
+        <div id="pageNav">
+            <div id="logo">
+                <a href="{% url 'index' %}">Food &#38 Beverage Cartel</a>
+            </div>
+            {% if not request.user.is_authenticated %}
+                <li>
+                    <a href="{% url 'login' %}">
+                        Авторизация
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'register' %}">
+                        Регистрация
+                    </a>
+                </li>
+            {% endif %}
+            {% if request.user.is_authenticated %}
+                <li>
+                    <a href="{% url 'profile' %}" id="admin_menu">
+                        {{ request.user.username }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'forum' %}" id="extra_menu">
+                        Назад
+                    </a>
+                </li>
+                {% if user.is_superuser %}
+                    <li>
+                        <a href="{% url 'forum_post_category_add' %}" id="extra_menu">
+                            Добавить категорию
+                        </a>
+                    </li>
+                {% endif %}
+                <li>
+                    <a href="{% url 'logout' %}" id="admin_menu">
+                        Выход
+                    </a>
+                </li>
+            {% endif %}
+            <li>
+                <a href="#">Справочник</a>
+            </li>
+            <li>
+                <a href="#">Обучение</a>
+            </li>
+            <li>
+                <a href="#">О нас</a>
+            </li>
+            <div class="one"></div>
+        </div>
+        <div id="pageInfo">
+            <div class="container">
+                <div id="myNav" class="overlay">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <div class="overlay-content">
+                        {% if not request.user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'login' %}">
+                                Авторизация
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'register' %}">
+                                Регистрация
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if request.user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'profile' %}" id="admin_menu">
+                                {{ request.user.username }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'forum_post_add' %}" id="extra_menu">
+                                Создать тему
+                            </a>
+                        </li>
+                        {% if user.is_superuser %}
+                            <li>
+                                <a href="{% url 'forum_post_category_add' %}" id="extra_menu">
+                                    Добавить категорию
+                                </a>
+                            </li>
+                        {% endif %}
+                        <li>
+                            <a href="{% url 'logout' %}" id="admin_menu">
+                                Выход
+                            </a>
+                        </li>
+                        {% endif %}
+                        <li>
+                            <a href="#">Справочник</a>
+                        </li>
+                        <li>
+                            <a href="#">Обучение</a>
+                        </li>
+                        <li>
+                            <a href="#">О нас</a>
+                        </li>
+                        <div class="one"></div>
+                    </div>
+                </div>
+            </div>
+            <!--здесь не делаю for, потому что используется не ListView, который
+            подразумевает список - поэтому достаточно характеристики этого поста-->
+            <h1>
+                {{ post.title }}
+            </h1>
+            <small>
+                <li style="margin-left: 0;">
+                    Автор:
+                    <a href="{% url 'profile_page' post.author.profile.id %}">{{ post.author.first_name }} {{ post.author.last_name }}</a>
+                    {% if post.author.profile.instagram_url %}
+                        <a href="http://{{ post.author.profile.instagram_url }}" class="_icon-telegram"></a>
+                    {% endif %}
+                    {% if post.author.profile.vk_url %}
+                        <a href="http://{{ post.author.profile.vk_url }}">vk</a>
+                    {% endif %}
+                    {% if post.author.profile.facebook_url %}
+                        <a href="http://{{ post.author.profile.facebook_url }}">facebook</a>
+                    {% endif %}
+                    {% if post.author.profile.twitter_url %}
+                        <a href="http://{{ post.author.profile.twitter_url }}" class="icon-social-instagram">twitter</a> - 
+                    {% endif %}
+                    <p>
+                        {{ post.pub_date }}
+                    </p>
+                </li>
+            </small>
+            <div class="forum_post_detail_content">
+                <hr>
+                <!-- |safe позволяет в body ввода текста делать текст жирным, при этом в предпросмотре самого текста
+                не будут использованы HTML-теги, типа <strong> и так далее-->
+                {% if post.uploaded_image %}
+                    <p>
+                        <img src="{{ post.uploaded_image.url }}" style="width: 200px; height: 200px; border:1px; border-radius: 30px;">
+                    </p>
+                {% endif %}
+                <p>
+                    {{ post.body|safe }}
+                    <p>
+                        <hr>
+                        <li style="margin-left: 0; text-align: center;">
+                            {% if request.user.is_authenticated %}
+                                {% if user.id == post.author.id %}
+                                    <a href="{% url 'forum_post_update' post.pk %}" id="changepostbtn">
+                                        Редактировать
+                                    </a>
+                                    <a href="{% url 'forum_post_remove' post.pk %}" id="deletepostbtn">
+                                        Удалить
+                                    </a>
+                                {% endif %}
+                            {% endif %}
+                        </li>
+                    </p>
+                </p>
+                <form action="{% url 'forum_post_like' post.pk %}" method="POST">
+                    {% csrf_token %}
+                    {% if request.user.is_authenticated %}
+                        {% if liked %}
+                            <button type="submit" name="post_id" value="{{ post.id }}">
+                                Не нравится
+                            </button>
+                        {% else %}
+                            <button type="submit" name="post_id" value="{{ post.id }}">
+                                Нравится
+                            </button>
+                        {% endif %}
+                    {{ total_likes }} Likes
+                    {% endif %}
+                </form>
+                <h2>
+                    Дискуссия
+                </h2>
+                {% if not post.comments.all %}
+                    No comments yet <a href="{% url 'forum_post_comment_add' post.pk %}">Оставить первый комментарий</a>
+                {% else %}
+                    <br>
+                    <a href="{% url 'forum_post_comment_add' post.pk %}">Комментировать</a>
+                    <br>
+                    <a href="{% url 'forum' %}">Вернуться</a>
+                    <br>
+                    {% for comment in post.comments.all %}
+                        {{ comment.name }} - {{ comment.date_added }}
+                        <br>
+                        {{ comment.body }}
+                        <br>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <script type="text/javascript" src="../../static/js/navbar_toggle.js"></script>
     </body>
 </html>

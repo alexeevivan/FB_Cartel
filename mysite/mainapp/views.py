@@ -5,7 +5,7 @@ from django.views.generic.edit import CreateView
 from django.http import HttpResponseRedirect, request
 from django.views.generic import DetailView, View, ListView, CreateView, UpdateView, DeleteView
 from .models import *
-from .forms import PostForm, ForumPostUpdateForm
+from .forms import PostForm, ForumPostUpdateForm, ForumPostCategoryAdd
 from .mixins import CategoryDetailMixin
 
 
@@ -86,7 +86,7 @@ def ForumPostLikeView(request, pk):
     liked = False
     if post.like.filter(id=request.user.id).exists():
         post.like.remove(request.user)
-        liker = False
+        liked = False
     else:
         post.like.add(request.user)
         liked = True 
@@ -106,8 +106,9 @@ def PostCategoryView(request, categories):
 class AddPostCategoryView(CreateView):
     
     model = PostCategory
+    form_class = ForumPostCategoryAdd
     template_name = 'forum_post_category_add.html'
-    fields = '__all__'
+    #fields = '__all__'
     success_url = reverse_lazy('forum')
 
 
@@ -123,5 +124,12 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         context = super().get_context_data(**kwargs)
         context['cart'] = self.cart
         return context
+    
+
+class AddCommentView(CreateView):
+    
+    model = Comment
+    template_name = 'forum_post_comment_add.html'
+    fields = '__all__'
 
 

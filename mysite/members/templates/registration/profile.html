@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -22,52 +23,76 @@
         <div id="left_backside"></div>
         <div id="main">
             <div class="vertical-center">
-                <br>
-                <img src="{{ user.profile.profile_img.url }}" style="width: 90px; height: 90px; border:1px; border-radius: 30px;">
-                <h1>
-                    {{ user.username }}
-                </h1>
-                {{ user.first_name }} {{ user.last_name }}
-                <br>
-                {{ user.email }}
-                <br>
-                {% if user.profile.instagram_url %}
-                    Instagram link : <a href="{{ user.profile.instagram_url }}">{{ user.profile.instagram_url }}</a>
+                {% if request.user.is_authenticated %}
+                    <br>
+                    {% if page_user.profile_img %}
+                        <img src="{{ page_user.profile_img.url }}" style="width: 200px; height: 200px; border:1px; border-radius: 30px;">
+                    {% else %}
+                        <img src="{% static 'img/default_user_img.png' %}" style="width: 200px; height: 200px; border:1px; border-radius: 30px;">
+                    {% endif %}
+                    <h1>
+                        {{ user.username }}
+                    </h1>
+                    {{ user.first_name }} {{ user.last_name }}
+                    <br>
+                    {{ user.email }}
+                    <br>
+                    {% if user.profile.workplace %}
+                        Место работы: {{ user.profile.workplace }}
+                    {% else %}
+                        Место работы: не указано
+                    {% endif %}
+                    <br>
+                    {% if user.profile.instagram_url %}
+                        Instagram link : <a href="{{ user.profile.instagram_url }}">{{ user.profile.instagram_url }}</a>
+                    {% else %}
+                        Instagram link : добавьте информацию
+                    {% endif %}
+                    <br>
+                    {% if user.profile.vk_url %}
+                        VK link : <a href="{{ user.profile.vk_url }}">{{ user.profile.vk_url }}</a>
+                    {% else %}
+                        VK link : добавьте информацию
+                    {% endif %}
+                    <br>
+                    {% if user.profile.facebook_url %}
+                        Facebook link : <a href="{{ user.profile.facebook_url }}">{{ user.profile.facebook_url }}</a>
+                    {% else %}
+                        Facebook link : добавьте информацию
+                    {% endif %}
+                    <br>
+                    {% if user.profile.twitter_url %}
+                        Twitter link : <a href="{{ user.profile.twitter_url }}">{{ user.profile.twitter_url }}</a>
+                    {% else %}
+                        Twitter link : добавьте информацию
+                    {% endif %}
+                    <br>
+                    <button>
+                        <a href="{% url 'profile_edit' %}">
+                            Редактировать основную информацию
+                        </a>
+                    </button>
+                    <br>
+                    {% if user.profile.id %}
+                        <button>
+                            <a href="{% url 'profile_edit_page' user.profile.id %}">
+                                Редактировать дополнительную информацию
+                            </a>
+                        </button>
+                    {% else %}
+                        <button>
+                            <a href="{% url 'profile_page_create' %}">
+                                Создать личный кабинет
+                            </a>
+                        </button>
+                    {% endif %}
+                    <br>
+                    <br>
                 {% else %}
-                    Instagram link : добавьте информацию
+                    <h1>
+                        Вы не можете просмотривать данную страницу, поскольку не авторизованы
+                    </h1>
                 {% endif %}
-                <br>
-                {% if user.profile.vk_url %}
-                    VK link : <a href="{{ user.profile.vk_url }}">{{ user.profile.vk_url }}</a>
-                {% else %}
-                    VK link : добавьте информацию
-                {% endif %}
-                <br>
-                {% if user.profile.facebook_url %}
-                    Facebook link : <a href="{{ user.profile.facebook_url }}">{{ user.profile.facebook_url }}</a>
-                {% else %}
-                    Facebook link : добавьте информацию
-                {% endif %}
-                <br>
-                {% if user.profile.twitter_url %}
-                    Twitter link : <a href="{{ user.profile.twitter_url }}">{{ user.profile.twitter_url }}</a>
-                {% else %}
-                    Twitter link : добавьте информацию
-                {% endif %}
-                <br>
-                <button>
-                    <a href="{% url 'profile_edit' %}">
-                        Редактировать основную информацию
-                    </a>
-                </button>
-                <br>
-                <button>
-                    <a href="{% url 'profile_edit_page' user.profile.id %}">
-                        Редактировать дополнительную информацию
-                    </a>
-                </button>
-                <br>
-                <br>
             </div>
         </div>
         <div id="right_backside"></div>
