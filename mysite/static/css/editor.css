@@ -78,7 +78,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 
 .cke_inner {
     display: block;
-    background: none;
+    background: rgba(0, 0, 0, 0);
     padding: 0;
     -webkit-touch-callout:none;
 }

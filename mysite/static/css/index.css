@@ -305,7 +305,7 @@ label {
     .overlay li a {
         color: #ffe7d9;
         line-height: 3em;
-        font-size: 30px;
+        font-size: 15px;
         text-decoration: none;
         background-image: linear-gradient(currentColor, currentColor);
         background-position: 20% 75%;
@@ -313,15 +313,8 @@ label {
         background-size: 0% 3px;
         transition: 0.5s;
     }
-    .overlay a:hover, .overlay a:focus {
-        color: #1cd2a8;
-    }
     .overlay li a:hover {
         color: goldenrod;
-        background-size: 100% 1px;
-        transition: 0.5s;
-        transform: translateX(0%);
-        font-size: 30px;
     }
     .overlay-content {
         position: relative;
@@ -352,5 +345,59 @@ label {
     }
     #pageNav {
         display: none;
+    }
+    #admin_menu {
+        width: 40%;
+        margin-left: 30%;
+        margin-bottom: 2%;
+        font-size: 15px;
+    }
+}
+@media(max-width: 668px) {
+    .overlay .closebtn {
+        top: 0px;
+        right: 20px;
+    }
+    .overlay li {
+        margin-left: 0;
+    }
+    .overlay li a {
+        line-height: 2.5em;
+        font-size: 14px;
+    }
+    .overlay li a:hover {
+        color: goldenrod;
+    }
+    .overlay-content {
+        position: relative;
+        top: 20%;
+        width: 100%;
+        text-align: center;
+    }
+    .openBtn {
+        display: block;
+        font-size:30px;
+        cursor:pointer;
+    }
+    .openBtn a {
+        font-size: 25px;
+        color: #000000;
+    }
+    .openBtn:hover a {
+        color:black;
+        transition: 1s;
+    }
+    .container .overlay{
+        display: block;
+    }
+    #pageNav {
+        display: none;
+    }
+    #admin_menu {
+        width: 60%;
+        margin-left: 20%;
+        margin-bottom: 10%;
+        font-size: 13px;
+        line-height: 2em;
     }
 }
