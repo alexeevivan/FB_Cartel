@@ -1,8 +1,11 @@
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django import forms
 from django.db.models.fields import related
 from django.forms import widgets, ModelForm
+
+from captcha.fields import CaptchaField
+
 from mainapp.models import *
 
 class SignUpForm(UserCreationForm):
@@ -13,12 +16,13 @@ class SignUpForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
-        self.fields['email'].label = 'E-mail'
-        self.fields['first_name'].label = 'Имя'
-        self.fields['last_name'].label = 'Фамилия'
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
+        self.fields['username'].label = 'Логин'
+        self.fields['email'].label = 'E-mail'
+        self.fields['first_name'].label = 'Имя'
+        self.fields['last_name'].label = 'Фамилия'
 
 
     def clean_email(self):
@@ -32,6 +36,8 @@ class SignUpForm(UserCreationForm):
 
     def clean_username(self):
         username = self.cleaned_data['username']
+        if username in ['лох', 'ЛОХ', 'лОх', 'лОХ', 'ЛоХ', 'л0х', 'Л0х', 'л0Х', 'Л0Х']:
+            raise forms.ValidationError(f'Регистрация пользователя с таким именем невозможна!')
         if User.objects.filter(username=username).exists():
             raise forms.ValidationError(f'Имя Пользователя «{username}» зарезервировано')
         return username
@@ -39,6 +45,17 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
+
+
+class LoginForm(AuthenticationForm):
+    
+    username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control'}))
+    password = forms.CharField(max_length=100, widget=forms.PasswordInput(attrs={'class':'form-control'}))
+    captcha = CaptchaField()
+
+    class Meta:
+        model = User
+        fields = ('username', 'password')
 
 
 class ProfilePageForm(ModelForm):

@@ -12,6 +12,19 @@ class UserRegisterView(CreateView):
     form_class = SignUpForm
     template_name = 'registration/register.html'
     success_url = reverse_lazy('login')
+    
+
+class UserLoginView(CreateView):
+    form_class = LoginForm
+    template_name = 'registration/login.html'
+    success_url = reverse_lazy('index')
+    
+    def form_valid(self, form):
+        # проверка валидности reCAPTCHA
+        if self.request.recaptcha_is_valid:
+            form.save()
+            return render(self.request, reverse_lazy('index'), self.get_context_data())
+        return render(self.request, 'registration/login.html', self.get_context_data())
 
 
 class ProfilePageCreateView(CreateView):

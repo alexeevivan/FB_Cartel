@@ -1,8 +1,8 @@
 body {
     font-family: 'SF Pro Display';
     display: grid;
-    height: 100vh;
-    width: 100vw;
+    height: auto;
+    width: auto;
     grid-template-areas: "left_backside main right_backside";
     grid-template-columns: 20% 1fr 20%;
     grid-column-gap: 0%;
@@ -12,17 +12,24 @@ body {
     margin:0;
     position: relative;
 }
-.vertical-center {
-    margin: 0;
+.vertical-center, .vertical-center-login {
     position: absolute;
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    text-align: center;
     border: 2px solid rgba(196, 203, 241, 0.27);
     border-radius: 10px;
+    font-size: 10px;
+    text-align: justify;
+}
+.vertical-center-login {
+    padding: 20px;
+}
+.vertical-center-login input:matches([type="button"], [type="submit"], [type="reset"]) {
     width: 50%;
+    text-align: center;
+    margin-left: 25%;
 }
 .textinput {
     background: rgba(255, 255, 255, 0.18);
@@ -50,6 +57,8 @@ input:matches([type="button"], [type="submit"], [type="reset"]) {
     transition: 1s;
     margin-top: 15px;
     margin-bottom: 5%;
+    margin-left: 40%;
+    width: 20%;
 }
 input:matches([type="button"], [type="submit"], [type="reset"]):hover {
     background: #3b291f82;
@@ -58,9 +67,21 @@ input:matches([type="button"], [type="submit"], [type="reset"]):hover {
     color: #fff;
     border: 1px solid rgba(0, 0, 0, 0);
 }
+.form-group, .form-group-login {
+    margin-bottom: 10px;
+}
 .form-group {
     margin-top: 10px;
-    margin-bottom: 10px;
+}
+.form-group-login {
+    margin-top: 40px;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    margin-block-start: 0px;
+    padding-inline-start: 0px;
+    height: auto;
 }
 ul.m-0 {
     list-style: none;
@@ -138,4 +159,27 @@ form {
     transition: 1s;
     padding-right: 5%;
     padding-left: 5%;
+}
+.helptext {
+    display: none;
+}
+p label {
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+p input {
+    display: block;
+    margin-left: 10%;
+    margin-top: 2%;
+    width: 80%;
+    height: 3vh;
+    border: 1px solid rgba(218, 165, 32, 0);
+    border-radius: 10px;
+    font-size: 15px;
+    background: rgba(0, 0, 0, 0.38);
+    color: white;
+    text-align: center;
 }

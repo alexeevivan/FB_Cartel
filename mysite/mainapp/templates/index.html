@@ -51,7 +51,7 @@
     <body>
         <div id="pageNav">
             <div id="logo">
-                <a href="#">Food &#38 Beverage Cartel</a>
+                <a href="{% url 'index' %}">Food &#38 Beverage Cartel</a>
             </div>
             {% if not request.user.is_authenticated %}
                 <li>
@@ -84,7 +84,7 @@
                 <a href="#">Обучение</a>
             </li>
             <li>
-                <a href="#">О нас</a>
+                <a href="{% url 'about' %}">О нас</a>
             </li>
             <div class="one"></div>
         </div>

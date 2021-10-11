@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -11,7 +12,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
         <link href="../../../static/css/simple-line-icons.css" rel="stylesheet">
         <link href="../../static/css/forum.css" rel="stylesheet">
-        <link href="../../../static/css/login.css" rel="stylesheet">
+        <link href="../../../static/css/profile_page.css" rel="stylesheet">
         <link href="../../../static/css/fonts.css" rel="stylesheet">
 
         <title>
@@ -19,21 +20,24 @@
         </title>
     </head>
     <body>
-        <div id="left_backside"></div>
-        <div id="main">
-            <div class="vertical-center">
-                <p>
-                    {{ user.profile.bio }}
-                </p>
+        {% if request.user.is_authenticated %}
+        <div class="card1_profile_edit">
+            <div class="container">
                 <div class="form-group">
                     <form action="" method="POST" style="margin-top: 5%;">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <input type="submit" class="button" value="Изменить профиль">
                     </form>
                 </div>
             </div>
+            <div class="additional">
+                <input type="submit" class="button" value="Изменить профиль">
+            </div>
         </div>
-        <div id="right_backside"></div>
+        {% else %}
+        <h1>
+            Вы не можете просмотривать данную страницу, поскольку не авторизованы
+        </h1>
+        {% endif %}
     </body>
 </html>

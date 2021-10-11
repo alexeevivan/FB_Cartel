@@ -12,7 +12,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
         <link href="../../../static/css/simple-line-icons.css" rel="stylesheet">
         <link href="../../static/css/forum.css" rel="stylesheet">
-        <link href="../../../static/css/login.css" rel="stylesheet">
+        <link href="../../../static/css/profile_page.css" rel="stylesheet">
         <link href="../../../static/css/fonts.css" rel="stylesheet">
 
         <title>
@@ -20,66 +20,80 @@
         </title>
     </head>
     <body>
-        <div id="left_backside"></div>
-        <div id="main">
-            <div class="vertical-center">
-                {% if request.user.is_authenticated %}
-                    {% if page_user.profile_img %}
-                        <img src="{{ page_user.profile_img.url }}" style="width: 200px; height: 200px; border:1px; border-radius: 30px;">
-                    {% else %}
-                        <img src="{% static 'img/default_user_img.png' %}" style="width: 200px; height: 200px; border:1px; border-radius: 30px;">
-                    {% endif %}
-                    <h1>
-                        {{ page_user }}
-                    </h1>
-                    {{ page_user.user.first_name }} {{ page_user.user.last_name }}
-                    <br>
-                    {{ user.email }}
-                    <br>
-                    {% if user.profile.workplace %}
-                        Место работы: {{ user.profile.workplace }}
-                    {% else %}
-                        Место работы: не указано
-                    {% endif %}
-                    <br>
-                    {% if page_user.instagram_url %}
-                        Instagram link : 
-                        <a href="http://{{ page_user.instagram_url }}">
-                            {{ page_user.instagram_url }}
-                        </a>
+        {% if request.user.is_authenticated %}
+            <div class="card1_user_profile">
+                <div class="container">
+                    <div class="photo">
+                        {% if page_user.profile_img %}
+                            <img src="{{ page_user.profile_img.url }}" style="width: 200px; height: 200px; border:1px; border-radius: 30px;">
+                        {% else %}
+                            <img src="{% static 'img/default_user_img.png' %}" style="width: 200px; height: 200px; border:1px; border-radius: 30px;">
+                        {% endif %}
+                    </div>
+                    <div class="nickname">
+                        <h1>
+                            {{ page_user }}
+                        </h1>
+                    </div>
+                    <div class="main">
+                        <h3>
+                            "{{ page_user.bio }}"
+                        </h3>
                         <br>
-                    {% endif %}
-                    {% if page_user.vk_url %}
-                        Vkontakte link : 
-                        <a href="http://{{ page_user.vk_url }}">
-                            {{ page_user.vk_url }}
-                        </a>
+                        <h4>
+                            {{ page_user.user.first_name }} {{ page_user.user.last_name }}
+                        </h4>
+                        {{ user.email }}
+                        {% if user.profile.workplace %}
+                            <br>
+                            Место работы: {{ user.profile.workplace }}
+                            {%else%}
+                        {% endif %}
                         <br>
-                    {% endif %}
-                    {% if page_user.facebook_url %}
-                        Instagram link : 
-                        <a href="http://{{ page_user.facebook_url }}">
-                            {{ page_user.facebook_url }}
-                        </a>
                         <br>
-                    {% endif %}
-                    {% if page_user.twitter_url %}
-                        Twitter link : 
-                        <a href="http://{{ page_user.twitter_url }}">
-                            {{ page_user.twitter_url }}
-                        </a>
+                        {% if page_user.instagram_url %}
+                            Instagram link : 
+                            <a href="http://{{ page_user.instagram_url }}">
+                                {{ page_user.instagram_url }}
+                            </a>
+                        {% endif %}
                         <br>
-                    {% endif %}
-                    <p>
-                        {{ page_user.bio }}
-                    </p>
-                {% else %}
-                    <h1>
-                        Вы не можете просмотривать данную страницу, поскольку не авторизованы
-                    </h1>
-                {% endif %}
+                        {% if page_user.vk_url %}
+                            Vkontakte link : 
+                            <a href="http://{{ page_user.vk_url }}">
+                                {{ page_user.vk_url }}
+                            </a>
+                        {% endif %}
+                        <br>
+                        {% if page_user.facebook_url %}
+                            Instagram link : 
+                            <a href="http://{{ page_user.facebook_url }}">
+                                {{ page_user.facebook_url }}
+                            </a>
+                            <br>
+                        {% endif %}
+                        {% if page_user.twitter_url %}
+                            Twitter link : 
+                            <a href="http://{{ page_user.twitter_url }}">
+                                {{ page_user.twitter_url }}
+                            </a>
+                            <br>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-        </div>
-        <div id="right_backside"></div>
+        {% else %}
+            <div class="typing">
+                <span class="typer" data-text="Вы не можете просматривать данную страницу, поскольку не авторизованы"></span>
+                <button class="btn_to_homepage">
+                    <a href="{% url 'index' %}">
+                        Перейти на главную
+                    </a>
+                </button>
+            </div>
+        {% endif %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="../../../static/js/ban.js"></script>
     </body>
 </html>

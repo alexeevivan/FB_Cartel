@@ -19,6 +19,11 @@ class WineView(TemplateView):
     template_name = 'wine.html'
 
 
+class AboutUsView(TemplateView):
+    
+    template_name = 'about.html'
+
+
 class StillWineView(TemplateView):
     
     template_name = 'still_wine.html'

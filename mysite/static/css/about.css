@@ -1,0 +1,45 @@
+body {
+    font-family: 'SF Pro Display';
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+    background: #e0e0e0;
+    justify-content: center;
+    margin:0;
+    position: relative;
+}
+.left-top-block, .right-top-block, .left-bottom-block, .right-bottom-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #cacaca, #ffffff);
+    box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+                inset -6px -6px 10px 0 rgba(255, 255, 255, 0.9);
+}
+.left-top-block {
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 2.5%;
+    margin-bottom: 2.5%;
+}
+.right-top-block {
+    margin-top: 10%;
+    margin-right: 10%;
+    margin-left: 2.5%;
+    margin-bottom: 2.5%;
+}
+.left-bottom-block {
+    margin-bottom: 10%;
+    margin-left: 10%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+}
+.right-bottom-block {
+    margin-bottom: 10%;
+    margin-right: 10%;
+    margin-left: 2.5%;
+    margin-top: 2.5%;
+}

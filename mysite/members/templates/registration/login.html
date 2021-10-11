@@ -8,9 +8,9 @@
 
 
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-        <link href="../../static/css/simple-line-icons.css" rel="stylesheet">
-        <link href="../../static/css/login.css" rel="stylesheet">
-        <link href="../../static/css/fonts.css" rel="stylesheet">
+        <link href="../../../static/css/simple-line-icons.css" rel="stylesheet">
+        <link href="../../../static/css/login.css" rel="stylesheet">
+        <link href="../../../static/css/fonts.css" rel="stylesheet">
 
         <title>
             FBC Login
@@ -19,10 +19,17 @@
     <body>
         <div id="left_backside"></div>
         <div id="main">
-            <div class="vertical-center">
+            <div class="vertical-center-login">
                 <form action="" method="POST" style="margin-top: 5%;">
                     {% csrf_token %}
                     {{ form.as_p }}
+                    <script src='https://www.google.com/recaptcha/api.js'></script>
+                    <div class="form-group-login g-recaptcha" data-sitekey="6LdqvHgaAAAAACUSh8cuYNpFMjYZwvt0OSFPAuaU" data-theme='dark'></div>
+                    {% if messages %}
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    {% endif %}
                     <input type="submit" class="button" value="Войти">
                 </form>
             </div>
@@ -31,7 +38,7 @@
             <div id='t1' style="height: 33vh;"></div>
             <div id='t2' style="height: 34vh;">
                 <div id="logo">
-                    <a href="#">Food &#38 Beverage Cartel</a>
+                    <a href="{% url 'index' %}">Food &#38 Beverage Cartel</a>
                 </div>
             </div>
             <div id='t3' style="height: 33vh;"></div>

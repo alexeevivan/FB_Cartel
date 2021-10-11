@@ -6,6 +6,7 @@ from .views import *
 
 urlpatterns = [
     path('', Index_View.as_view(), name='index'),
+    path('about', AboutUsView.as_view(), name='about'),
     path('forum', ForumView.as_view(), name='forum'),
     path('forum/forum_post_detail/<int:pk>', ForumPostDetailView.as_view(), name='forum_post_detail'),
     path('forum/forum_post_add/', AddPostView.as_view(), name='forum_post_add'),
