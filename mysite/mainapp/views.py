@@ -1,9 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
-from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 from django.http import HttpResponseRedirect, request
-from django.views.generic import DetailView, View, ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import TemplateView, DetailView, View, ListView, CreateView, UpdateView, DeleteView
 from .models import *
 from .forms import PostForm, ForumPostUpdateForm, ForumPostCategoryAdd
 from .mixins import CategoryDetailMixin
