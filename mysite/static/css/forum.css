@@ -11,6 +11,42 @@ body {
     margin:0;
     position: relative;
 }
+button {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    position: relative;
+    display: inline-block;
+    padding: 12px 20px;
+    background: #8c469800;
+    margin-top: 15px;
+    border-radius: 15px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: 400;
+    box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.24);
+    transition: 1s;
+}
+button a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+button:hover {
+    background: #3b291f82;
+    transition: 1s;;
+    box-shadow: 1px 1px 40px rgba(255, 255, 255, 1);
+    color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0);;
+}
+label {
+    text-align: center;
+    padding-bottom: 2%;
+    display: block;
+    padding-top: 2%;
+    font-size: 15px;
+}
+label[for=id_password] {
+    display: none;
+}
 li {
     list-style: none;
     text-align: justify;
@@ -34,57 +70,6 @@ li a:hover {
     transition: 0.5s;
     transform: translateX(5%);
 }
-button {
-    cursor: pointer;
-    border: 1px solid rgba(0, 0, 0, 0.24);
-    position: relative;
-    display: inline-block;
-    padding: 12px 20px;
-    background: #8c469800;
-    margin-top: 15px;
-    border-radius: 15px;
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    font-weight: 400;
-    box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.24);
-    transition: 1s;
-}
-button a {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-}
-.posting {
-    display: block;
-    width: 50%;
-    margin-bottom: 2%;
-    margin-left: 25%;
-    font-size: 15px;
-    background: goldenrod;
-}
-button:hover {
-    background: #3b291f82;
-    transition: 1s;;
-    box-shadow: 1px 1px 40px rgba(255, 255, 255, 1);
-    color: #fff;
-    border: 1px solid rgba(0, 0, 0, 0);;
-}
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 0;
-}
-ul {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100vh;
-}
-ul li p {
-    padding: 0;
-    margin: 0;
-}
 small {
     font-size: 15px;
     text-align: center;
@@ -99,6 +84,34 @@ small a {
 small p {
     font-size: 10px;
 }
+sup {
+    font-size: 14px;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+}
+ul li p {
+    padding: 0;
+    margin: 0;
+}
+.posting {
+    display: block;
+    width: 50%;
+    margin-bottom: 2%;
+    margin-left: 25%;
+    font-size: 15px;
+    background: goldenrod;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0;
+}
 .forum_post_detail_content {
     width: 70vw;
     margin-left: 5vw;
@@ -107,29 +120,6 @@ small p {
     background-color: goldenrod;
     height: 1px;
     border: none;
-}
-#postlist {
-    margin-top: 4%;
-    width: 90%;
-}
-#postlistobject {
-    margin-left: 0;
-}
-#changepostbtn, #deletepostbtn {
-    font-size: 15px;
-    border: 1px solid;
-    border-radius: 5px;
-    padding: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    transition: 0.5s;
-    text-decoration: none;
-}
-#changepostbtn:hover {
-    color: rgb(64, 158, 64);
-}
-#deletepostbtn:hover {
-    color: rgb(211, 62, 62);
 }
 .card {
     position: relative;
@@ -141,6 +131,12 @@ small p {
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
+}
+.centeredform {
+    width: 80vw;
+    height: 97vh;
+    display: grid;
+    align-content: center;
 }
 .container .card {
     position: relative;
@@ -208,9 +204,6 @@ small p {
 .form-text text-muted {
     color:rgb(0, 0, 0, 0);
 }
-.openBtn {
-    display: none;
-}
 .form-control, .form-control-select, .form-control-body {
     display: block;
     margin-left: 10%;
@@ -241,21 +234,8 @@ small p {
 .form-control:focus, .form-control-select:focus, .form-control-body:focus {
     outline-style: none;
 }
-label {
-    text-align: center;
-    padding-bottom: 2%;
-    display: block;
-    padding-top: 2%;
-    font-size: 15px;
-}
-label[for=id_password] {
+.openBtn {
     display: none;
-}
-.centeredform {
-    width: 80vw;
-    height: 97vh;
-    display: grid;
-    align-content: center;
 }
 #cke_id_body {
     width: 70vw;
@@ -310,22 +290,28 @@ label[for=id_password] {
 #pageInfo h1{
     text-align: center;
 }
+#logo, #logo_profilepage {
+    width: 100%;
+    font-weight: normal;
+    line-height: 1.6;
+    font-family: "SF Pro Display";
+    text-align: center;
+}
 #logo {
     margin-top: 20%;
     margin-bottom: 20%;
     display: block;
-    width: 100%;
-    font-weight: normal;
-    font-size: 35px;
-    line-height: 1.6;
-    font-family: "SF Pro Display";
-    text-decoration: none;
     text-align: center;
 }
-#logo a{
+#logo_profilepage {
+    top: 6%;
+    position: absolute;
+}
+#logo a, #logo_profilepage a{
     display: block;
     text-align: center;
     color: #000000;
+    text-decoration: none;
     overflow: hidden;
     background-clip:text;
     -webkit-background-clip: text;
@@ -338,9 +324,38 @@ label[for=id_password] {
     background-image: url(../../static/img/logo.jpeg);
     transition: 1s;
 }
-#logo a:hover{
+#logo a {
+    font-size: 35px;
+}
+#logo_profilepage a {
+    font-size: 25px;
+}
+#logo a:hover, #logo_profilepage a:hover{
     filter: hue-rotate(90deg);
     transition: 1s;
+}
+#postlist {
+    margin-top: 4%;
+    width: 90%;
+}
+#postlistobject {
+    margin-left: 0;
+}
+#changepostbtn, #deletepostbtn {
+    font-size: 15px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    transition: 0.5s;
+    text-decoration: none;
+}
+#changepostbtn:hover {
+    color: rgb(64, 158, 64);
+}
+#deletepostbtn:hover {
+    color: rgb(211, 62, 62);
 }
 @media(max-width: 992.91px) {
     body {

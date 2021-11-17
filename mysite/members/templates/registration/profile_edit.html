@@ -11,7 +11,7 @@
 
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
         <link href="../../../static/css/simple-line-icons.css" rel="stylesheet">
-        <link href="../../static/css/forum.css" rel="stylesheet">
+        <link href="../../../static/css/forum.css" rel="stylesheet">
         <link href="../../../static/css/profile_page.css" rel="stylesheet">
         <link href="../../../static/css/fonts.css" rel="stylesheet">
 
@@ -27,11 +27,14 @@
                     <form action="" method="POST" style="margin-top: 5%;">
                         {% csrf_token %}
                         {{ form.as_p }}
+                        <div class="additional">
+                            <a href="{% url 'profile' %}" class="btn">
+                                <input type="button" class="btn_back" value="Назад">
+                            </a>
+                            <input type="submit" class="btn" value="Изменить профиль">
+                        </div>
                     </form>
                 </div>
-            </div>
-            <div class="additional">
-                <input type="submit" class="button" value="Изменить профиль">
             </div>
         </div>
         {% else %}

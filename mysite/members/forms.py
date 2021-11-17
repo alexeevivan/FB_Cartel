@@ -37,8 +37,8 @@ class SignUpForm(UserCreationForm):
     def clean_username(self):
         username = self.cleaned_data['username']
         if username in ['лох', 'ЛОХ', 'лОх', 'лОХ', 'ЛоХ', 'л0х', 'Л0х', 'л0Х', 'Л0Х']:
-            raise forms.ValidationError(f'Регистрация пользователя с таким именем невозможна!')
-        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError(f'Регистрация пользователя с таким именем невозможна в соответствии с пунктом №2 Правил пользования сервисом!')
+        if User.objects.filter(username=username).exists(): 
             raise forms.ValidationError(f'Имя Пользователя «{username}» зарезервировано')
         return username
 
@@ -55,23 +55,43 @@ class LoginForm(AuthenticationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'password')
+        fields = ('username', 'password', 'captcha')
 
 
 class ProfilePageForm(ModelForm):
     
+    bio = forms.CharField(widget=forms.Textarea(attrs={'rows':2, 'class':'form-control', 'placeholder':'Введите краткую информацию о себе'}))
+    workplace = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать место работы'}))
+    instagram_url = forms.URLField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать ссылку на Ваш профиль в Instagram'}))
+    vk_url = forms.URLField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать ссылку на Ваш профиль в VK'}))
+    facebook_url = forms.URLField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать ссылку на Ваш профиль в Facebook'}))
+    twitter_url = forms.URLField(required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать ссылку на Ваш профиль в Twitter'}))
+
+    def __init__(self, *args, **kwargs):
+        super(ProfileEditForm, self).__init__(*args, **kwargs)
+        self.fields['bio'].label = 'E-mail'
+        self.fields['workplace'].label = 'Имя'
+        self.fields['instagram_url'].label = 'Ссылка на профиль Instagram'
+        self.fields['vk_url'].label = 'Ссылка на профиль VK'
+        self.fields['facebook'].label = 'Ссылка на профиль Facebook'
+        self.fields['twitter_url'].label = 'Ссылка на ленту в Twitter'
+    
     class Meta:
         model = Profile
-        fields = ('bio', 'workplace','profile_img', 'instagram_url', 'vk_url', 'facebook_url', 'twitter_url')
-        widgets = {
-            'bio' : forms.Textarea(attrs={'class':'form-control', 'placeholder':'Введите краткую информацию о себе'}),
-            #'profile_img': forms.ImageField(choices=choice_list, attrs={'class':'form-control-select'}),
-            'workplace' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать место работы'}),
-            'instagram_url' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать ссылку на Ваш профиль в Instagram'}),
-            'vk_url': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать ссылку на Ваш профиль в VK'}),
-            'facebook_url' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать ссылку на Ваш профиль в Facebook'}),
-            'twitter_url': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать ссылку на Ваш профиль в Twitter'})
-        }
+        fields = ('bio', 'profile_img', 'workplace', 'instagram_url', 'vk_url', 'facebook_url', 'twitter_url')
+        
+    # class Meta:
+    #     model = Profile
+    #     fields = ('bio', 'workplace','profile_img', 'instagram_url', 'vk_url', 'facebook_url', 'twitter_url')
+    #     widgets = {
+    #         'bio' : forms.Textarea(attrs={'class':'form-control', 'placeholder':'Введите краткую информацию о себе'}),
+    #         #'profile_img': forms.ImageField(choices=choice_list, attrs={'class':'form-control-select'}),
+    #         'workplace' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать место работы'}),
+    #         'instagram_url' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать ссылку на Ваш профиль в Instagram'}),
+    #         'vk_url': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать ссылку на Ваш профиль в VK'}),
+    #         'facebook_url' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать ссылку на Ваш профиль в Facebook'}),
+    #         'twitter_url': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Вы можете указать ссылку на Ваш профиль в Twitter'})
+    #     }
     
 
 class ProfileEditForm(UserChangeForm):

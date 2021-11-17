@@ -51,6 +51,9 @@ button a {
     text-decoration: none;
     color: rgb(0, 0, 0);
 }
+sup {
+    font-size: 10px;
+}
 .posting {
     display: block;
     width: 81%;
@@ -129,6 +132,7 @@ button:hover {
 }
 .container .card:hover .box .content h2{
     color: rgba(0,0,0,0.05);
+    transform: rotate3d(1, 2.0, 3.0, 20deg);
 }
 .container .card .box .content h3{
     font-size: 1.8em;

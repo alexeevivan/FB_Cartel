@@ -1,16 +1,48 @@
-{% if request.user.is_authenticated %}
-    {% if user.id == profile.user.id %}
-        <h1>
-            Редактировать профиль
-        </h1>
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button class="posting">Обновить страницу</button>
-        </form>
-    {% endif %}
-{% else %}
-    <h1>
-        Вы не можете просмотривать данную страницу, поскольку не авторизованы
-    </h1>
-{% endif %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+        <link href="../../../static/css/simple-line-icons.css" rel="stylesheet">
+        <link href="../../../static/css/forum.css" rel="stylesheet">
+        <link href="../../../static/css/profile_page.css" rel="stylesheet">
+        <link href="../../../static/css/fonts.css" rel="stylesheet">
+
+        <title>
+            FBC Profile
+        </title>
+    </head>
+    <body>
+        {% if request.user.is_authenticated %}
+            {% if user.id == profile.user.id %}
+                <div class="card1_profile_edit">
+                    <div class="container_edit_page">
+                        <div class="form-group">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <div class="additional">
+                                    <a href="{% url 'profile' %}" class="btn">
+                                        <input type="button" class="btn_back" value="Назад">
+                                    </a>
+                                    <input type="submit" class="btn" value="Сохранить изменения">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% else %}
+            <h1>
+                Вы не можете просмотривать данную страницу, поскольку не авторизованы
+            </h1>
+        {% endif %}
+    </body>
+</html>

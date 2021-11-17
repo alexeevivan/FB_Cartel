@@ -11,7 +11,7 @@
 
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
         <link href="../../../static/css/simple-line-icons.css" rel="stylesheet">
-        <link href="../../static/css/forum.css" rel="stylesheet">
+        <link href="../../../static/css/forum.css" rel="stylesheet">
         <link href="../../../static/css/profile_page.css" rel="stylesheet">
         <link href="../../../static/css/fonts.css" rel="stylesheet">
 
@@ -21,6 +21,9 @@
     </head>
     <body>
         {% if request.user.is_authenticated %}
+        <div id="logo_profilepage">
+            <a href="{% url 'index' %}" style="width: 40vw; margin-left: 30vw;">Food &#38 Beverage Cartel <sup>BY</sup></a>
+        </div>
         <div class="card1">
             <div class="container">
                 <div class="photo">
@@ -48,7 +51,7 @@
                     <br>
                     <br>
                     {% if user.profile.workplace %}
-                        Работает в : {{ user.profile.workplace }}
+                        Работает в : <br>{{ user.profile.workplace }}
                     {% else %}
                         Место работы : <br>не указано
                     {% endif %}
@@ -77,23 +80,17 @@
                 </div>
             </div>
             <div class="additional">
-                <button>
-                    <a href="{% url 'profile_edit' %}">
-                        Редактировать основную информацию
-                    </a>
-                </button>
+                <a href="{% url 'profile_edit' %}">
+                    <input type="submit" class="btn" value="Редактировать основную информацию">                        
+                </a>
                 {% if user.profile.id %}
-                    <button>
-                        <a href="{% url 'profile_edit_page' user.profile.id %}">
-                            Редактировать дополнительную информацию
-                        </a>
-                    </button>
+                    <a href="{% url 'profile_edit_page' user.profile.id %}">
+                        <input type="submit" class="btn" value="Редактировать дополнительную информацию">                        
+                    </a>
                 {% else %}
-                    <button>
-                        <a href="{% url 'profile_page_create' %}">
-                            Создать личный кабинет
-                        </a>
-                    </button>
+                    <a href="{% url 'profile_page_create' %}">
+                        <input type="submit" class="btn" value="Создать личный кабинет">                        
+                    </a>
                 {% endif %}
             {% else %}
                 <h1>

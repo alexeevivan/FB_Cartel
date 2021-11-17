@@ -19,24 +19,34 @@
         </title>
     </head>
     <body>
+        {% if request.user.is_authenticated %}
         <div id="left_backside"></div>
         <div id="main">
-            <div class="vertical-center">
-                <form action="" method="POST" style="margin-top: 5%;">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="submit" class="button" value="Войти">
-                </form>
-            </div>
+            <h3>
+                Не стоит делать нашей базе данных плохо
+            </h3>
         </div>
-        <div id="right_backside">
-            <div id='t1' style="height: 33vh;"></div>
-            <div id='t2' style="height: 34vh;">
-                <div id="logo">
-                    <a href="{% url 'index' %}">Food &#38 Beverage Cartel</a>
+            <div id="right_backside"></div>
+        {% else %}
+            <div id="left_backside"></div>
+            <div id="main">
+                <div class="vertical-center">
+                    <form action="" method="POST" style="margin-top: 5%;">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" class="button" value="Войти">
+                    </form>
                 </div>
             </div>
-            <div id='t3' style="height: 33vh;"></div>
-        </div>
+            <div id="right_backside">
+                <div id='t1' style="height: 33vh;"></div>
+                <div id='t2' style="height: 34vh;">
+                    <div id="logo">
+                        <a href="{% url 'index' %}">Food &#38 Beverage Cartel</a>
+                    </div>
+                </div>
+                <div id='t3' style="height: 33vh;"></div>
+            </div>
+        {% endif %}
     </body>
 </html>

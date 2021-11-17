@@ -14,7 +14,7 @@ body {
     width: 75%;
     border: 0px;
     border-radius: 50px;
-    background: linear-gradient(209deg, rgb(255, 244, 0), rgba(255, 242, 80, 1), rgba(153, 255, 148, 1) 36.13%, rgba(0, 255, 198, 1), rgba(137, 255, 229, 0.67) 65.13%, rgba(131, 169, 166, 0.81) 83.19%, rgb(55, 55, 55) 99.58%);
+    background: repeat;
     box-shadow: 20px 20px 60px rgba(190, 190, 190, 0.26),
                 -20px -20px 60px rgba(0, 0, 0, 0.78);
     display: grid;
@@ -28,7 +28,7 @@ body {
     height: 85%;
     width: 85%;
 }
-.card1, .card1_profile_edit {
+.card1 {
     grid-template-rows: 80% 20%;
 }
 .card1_user_profile {
@@ -40,12 +40,21 @@ body {
     box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.78),
                 -20px -20px 60px rgba(190, 190, 190, 0.26);
 }
-.container {
+.card1_profile_edit {
     display: flex;
-    flex-direction: row;
-    font-size: 10px;
+    align-items: center;
     justify-content: center;
-    align-items: stretch;
+}
+.container {
+    font-size: 10px;
+}
+.container_edit_page {
+    display: flex;
+    width: 60vw;
+    justify-content: center;
+}
+.container_edit_page .form-group {
+    width: 27vw;
 }
 .photo {
     display: flex;
@@ -58,6 +67,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 25%;
+    cursor: default;
 }
 .nickname h1 {
     text-transform: uppercase;
@@ -67,6 +77,7 @@ body {
     background: -webkit-linear-gradient(340deg, #050505, #2e8cb8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    -webkit-user-select: none;
     transition: 1s;
 }
 .main {
@@ -81,12 +92,22 @@ body {
     justify-content: center;
     position: relative;
 }
+.helptext {
+    display: block;
+    color: black;
+    font-style: italic;
+    margin-block-start: 3em;
+}
 a {
     text-decoration: none;
-    color: #fff;
-    width: 100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    color: rgba(255,255,255);
+    font-size: 10px;
+}
+span a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    text-align: center;
 }
 h3 {
     font-family: Copperplate;
@@ -100,8 +121,64 @@ span {
 form span {
     font-size: 10px;
 }
+input.btn_back {
+    background: rgba(0,0,0,0);
+    border: none;
+    cursor: pointer;
+    color: rgba(255,255,255);
+    padding: 10px;
+}
+input.btn, a.btn {
+    background: rgba(0, 0, 0, 0.38);
+    border: none;
+    border-radius: 15px;
+    color: rgba(255,255,255);
+    transition: 0.5s;
+    height: 38px;
+    margin: 5px;
+}
+input.btn {
+    padding: 10px;
+}
+a.btn {
+    padding: 0px;
+}
+input.btn:active, a.btn:active {
+    padding: 8px;
+    margin-top: 2px;
+}
+input.btn:hover, a.btn:hover {
+    background: rgba(255, 255, 255, 0.26);
+    color: rgba(255,255,255);
+    box-shadow: 10px 10px 45px rgba(0, 0, 0),
+                -10px -10px 30px rgba(190, 190, 190, 0.26);
+    cursor: pointer;
+}
+input#id_instagram_url, input#id_vk_url, input#id_facebook_url, input#id_twitter_url {
+    border-radius: 5px;
+    border: none;
+    background: rgba(255, 255, 255, 0.26);
+    width: 96%;
+    padding: 2%;
+    color: rgba(255, 255, 255);
+}
+textarea#id_bio {
+    resize: none;
+    border-radius: 15px;
+    border: none;
+    padding: 2%;
+    background: rgba(255, 255, 255, 0.26);
+    color: rgba(255, 255, 255);
+    width: 96%;
+}
+textarea#id_bio:focus, input#id_instagram_url:focus, input#id_vk_url:focus,
+input#id_facebook_url:focus, input#id_twitter_url:focus {
+    outline-color: rgba(0, 0, 0, 0);
+    outline-style: none;
+}
 .nosocial {
-    color: red;
+    color: goldenrod;
+    font-size: 10px;
 }
 .typing {
     display: flex;
