@@ -166,10 +166,12 @@ textarea#id_bio {
     resize: none;
     border-radius: 15px;
     border: none;
-    padding: 2%;
+    padding: 5%;
     background: rgba(255, 255, 255, 0.26);
     color: rgba(255, 255, 255);
-    width: 96%;
+    width: 90%;
+    box-shadow: 6px 6px 3px -5px rgba(0, 0, 0, 0.51),
+                -6px -6px 5px -2px rgba(62, 55, 55, 0.21);
 }
 textarea#id_bio:focus, input#id_instagram_url:focus, input#id_vk_url:focus,
 input#id_facebook_url:focus, input#id_twitter_url:focus {

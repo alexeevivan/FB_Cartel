@@ -1,115 +1,78 @@
-/* The Modal (background) */
-.modal-wine, .modal-straight, .modal-nonstraight, .modal-cocktail, .modal-how {
-    display: none; /* Hidden by default */
-    margin-left: 20%;
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+.modal {
+    display: none;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 80%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content/Box */
-.modal-content-wine, .modal-content-straight, .modal-content-nonstraight, .modal-content-cocktail,
-.modal-content-how {
-    background: linear-gradient(93deg, rgba(111, 70, 48, 1), rgba(0, 0, 0, 0.91), rgba(111, 70, 48, 1));
-    margin-top: 20%;
-    margin-left: 25%;
-    padding: 0px;
-    border: 0px solid rgba(147, 12, 12, 0);
-    width: 30%;
-    height: 30%;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    transition: 1s;
+    height: 100%;
+    overflow: auto;
+    background: rgba(11, 7, 3, 0.69);
     justify-content: center;
-    position: fixed;
-    transition: all 1s ease-in-out;
-}
-.modal-content-wine h3, .modal-content-straight h3, .modal-content-nonstraight h3, .modal-content-cocktail h3,
-.modal-content-how h3 {
-    font-family: 'SF Pro Display';
-    margin: auto auto;
+    width: 80vw;
+    margin-left: 20vw;
     text-align: center;
-    padding: 40px;
-    color: #FFC29B;
+    position: fixed;
 }
-.modal-content__left-button-wine, .modal-content__left-button-straight,
-.modal-content__left-button-nonstraight, .modal-content__left-button-cocktail,
-.modal-content__left-button-how {
-    background: rgba(255, 194, 156, 0.99);
-    float: left;
-    margin-left: 20%;
+.modalContent {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), #502a13, #a15628, #cb6b30, #a15628, #502a13, rgba(0, 0, 0, 0));
+    margin: auto;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 9px 7px 18px rgb(163, 111, 84);
+    width: 70%;
+    height: 15%;
+    display: flex;
+    direction: rtl;
+    justify-content: center;
+    align-items: center;
 }
-.modal-content__right-button-wine, .modal-content__right-button-straight,
-.modal-content__right-button-nonstraight, .modal-content__right-button-cocktail,
-.modal-content__right-button-how {
-    background: rgba(255, 194, 156, 0.99);
-    float: right;
-    margin-right: 20%;
+.modalContent .age {
+    position: absolute;
+    display: flex;
+    height: 10%;
+    align-items: center;
+    width: 10%;
 }
-.modal-content__left-button-wine a, .modal-content__right-button-wine a,
-.modal-content__left-button-straight a, .modal-content__right-button-straight a,
-.modal-content__left-button-nonstraight a, .modal-content__right-button-nonstraight a,
-.modal-content__left-button-cocktail a, .modal-content__right-button-cocktail a,
-.modal-content__left-button-how a, .modal-content__right-button-how a {
-    text-decoration: none;
-    color: black;
-    font-size: 15px;
+.modalContent .age h5 {
+    color: rgba(0,0,0);
 }
-.modal-content__left-button-wine:hover, .modal-content__right-button-wine:hover,
-.modal-content__left-button-straight:hover, .modal-content__right-button-straight:hover,
-.modal-content__left-button-nonstraight:hover, .modal-content__right-button-nonstraight:hover,
-.modal-content__left-button-cocktail:hover, .modal-content__right-button-cocktail:hover,
-.modal-content__left-button-how:hover, .modal-content__right-button-how:hover {
-    background: rgb(218, 165, 32);
-    box-shadow: 1px 1px 40px rgba(255, 255, 255, 0.94);
-    border: 1px solid rgba(0,0,0,0);
-}
-  /* The Close Button */
-.closeModal-wine, .closeModal-straight, .closeModal-nonstraight, .closeModal-cocktail,
-.closeModal-how {
-    color: #818181;
-    float: right;
-    font-size: 35px;
-    font-weight: bold;
+.modalClose {
+    color: #ffc19b1f;
+    font-size: 60px;
+    margin-left: 50%;
+    position: sticky;
     transition: 1s;
-    margin: 3%;
 }
-.closeModal-wine:hover, .closeModal-wine:focus, .closeModal-straight:hover, .closeModal-straight:focus,
-.closeModal-nonstraight:hover, .closeModal-nonstraight:focus, .closeModal-cocktail:hover, .closeModal-cocktail:focus,
-.closeModal-how:hover, .closeModal-how:focus {
-    color: #1cd2a8;
+.modalClose:hover, .modalClose:focus {
+    color: #FFC29B;
     text-decoration: none;
     cursor: pointer;
-    transition: 1s;
+    transform: rotate3d(1,1,0, 180deg);
 }
-
-@media(max-width: 600px) {
-    .modal-wine, .modal-straight, .modal-nonstraight, .modal-cocktail, .modal-how {
-        width: 100%;
-        margin-left: 0;
-        background-color: rgba(0,0,0,0.8);
-    }
-    .modal-content-wine, .modal-content-straight, .modal-content-nonstraight, .modal-content-cocktail,
-    .modal-content-how {
-        width: 70%;
-        margin-left: 15%;
-        height: 40%;
-        margin-top: 50%;
-    }
-    .modal-content__left-button-wine, .modal-content__left-button-straight,
-    .modal-content__left-button-nonstraight, .modal-content__left-button-cocktail,
-    .modal-content__left-button-how {
-        margin-left: 10%;
-    }
-    .modal-content__right-button-wine, .modal-content__right-button-straight,
-    .modal-content__right-button-nonstraight, .modal-content__right-button-cocktail,
-    .modal-content__right-button-how {
-        margin-right: 10%;
-    }
+.ageButtons {
+    direction: initial;
+    height: 100%;
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ageButtons18above {
+    margin-right: 20px;
+}
+.ageButtonAsk {
+    font-family: 'SF Pro Display';
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.16);
+    border: none;
+    color: white;
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: 500ms;
+}
+.ageButtonAsk:hover {
+    background: rgba(224, 224, 224, 0.16);
+    color: black;
 }
