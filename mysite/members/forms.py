@@ -13,6 +13,7 @@ class SignUpForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control'}))
     first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control'}))
     last_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control'}))
+    check = forms.BooleanField(required=True, widget=forms.CheckboxInput(attrs={'class':'smth', 'style':'display:flex;'}))
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
@@ -23,6 +24,7 @@ class SignUpForm(UserCreationForm):
         self.fields['email'].label = 'E-mail'
         self.fields['first_name'].label = 'Имя'
         self.fields['last_name'].label = 'Фамилия'
+        self.fields['check'].label = 'Я ознакомлен с правилами ресурса'
 
 
     def clean_email(self):
@@ -41,10 +43,11 @@ class SignUpForm(UserCreationForm):
         if User.objects.filter(username=username).exists(): 
             raise forms.ValidationError(f'Имя Пользователя «{username}» зарезервировано')
         return username
+    
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'check')
 
 
 class LoginForm(AuthenticationForm):

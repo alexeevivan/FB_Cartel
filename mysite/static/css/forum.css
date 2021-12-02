@@ -11,20 +11,32 @@ body {
     margin:0;
     position: relative;
 }
-button {
+button, .button_like, .button_dislike {
     cursor: pointer;
     border: 1px solid rgba(0, 0, 0, 0.24);
     position: relative;
     display: inline-block;
     padding: 12px 20px;
-    background: #8c469800;
     margin-top: 15px;
     border-radius: 15px;
-    color: rgb(0, 0, 0);
     text-decoration: none;
     font-weight: 400;
-    box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.24);
     transition: 1s;
+}
+button {
+    background: #8c469800;
+    color: rgb(0, 0, 0);
+    box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.24);
+}
+.button_like, .button_dislike {
+    background: #1c0336;
+    color: white;
+    box-shadow: 1px 1px 40px rgba(191, 30, 207, 0.95);
+    border: 1px solid #1c0336;
+}
+.button_like:hover {
+    color: rgba(255,0,0);
+    box-shadow: 1px 1px 40px rgba(255, 0, 0, 0.95);
 }
 button a {
     text-decoration: none;
@@ -218,6 +230,10 @@ ul li p {
     padding-left: 0%;
     width: 80%;
     height: 3.5vh;
+}
+.form-control:focus {
+    background: rgba(255, 255, 255, 0.26);
+
 }
 .form-control-select, .form-control-body {
     height: 3vh;

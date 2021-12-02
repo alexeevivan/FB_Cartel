@@ -212,11 +212,11 @@
                     {% csrf_token %}
                     {% if request.user.is_authenticated %}
                         {% if liked %}
-                            <button type="submit" name="post_id" value="{{ post.id }}">
+                            <button type="submit" class="button_like" name="post_id" value="{{ post.id }}">
                                 Не нравится
                             </button>
                         {% else %}
-                            <button type="submit" name="post_id" value="{{ post.id }}">
+                            <button type="submit" class="button_dislike" name="post_id" value="{{ post.id }}">
                                 Нравится
                             </button>
                         {% endif %}

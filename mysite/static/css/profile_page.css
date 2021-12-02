@@ -72,13 +72,15 @@ body {
 .nickname h1 {
     text-transform: uppercase;
     transform: rotate(-90deg);
-    -webkit-transform: rotate(-90deg);
     font-size: 4em;
     background: -webkit-linear-gradient(340deg, #050505, #2e8cb8);
+    background-clip: text;
+    user-select: none;
+    transition: 1s;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-user-select: none;
-    transition: 1s;
+    -webkit-transform: rotate(-90deg);
 }
 .main {
     display: flex;
@@ -208,8 +210,8 @@ input#id_facebook_url:focus, input#id_twitter_url:focus {
     width:1px;
     height:1em;
     background: #000;
-    animation: caretPulsate 1s linear infinite;
-    -webkit-animation: caretPulsate 1s linear infinite;
+    animation: caretPulsate 1s linear infinite
+    -webkit-animation caretPulsate 1s linear infinite;
 }
 @keyframes caretPulsate {
     0%   {opacity:1;}

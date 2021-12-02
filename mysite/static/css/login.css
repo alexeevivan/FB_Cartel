@@ -12,6 +12,11 @@ body {
     margin:0;
     position: relative;
 }
+.smth {
+    display: flex;
+    text-align: justify;
+    position: initial;
+}
 .vertical-center, .vertical-center-login {
     border: 2px solid rgba(196, 203, 241, 0.27);
     border-radius: 10px;
