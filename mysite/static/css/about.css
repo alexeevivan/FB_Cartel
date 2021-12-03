@@ -153,11 +153,22 @@ body {
     background: #1c0336;
     border-radius: 20px;
     overflow: hidden;
-    border: none;
+    border: 1px solid rgba(0, 0, 0, 0);
     transition: 1s;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
 }
 .container .serviceBox:hover {
     border: 1px solid goldenrod;
+    transition: 1s;
+}
+.container .serviceBox:active {
+    width:340px;
+    height: 270px;
 }
 .container .serviceBox .icon {
     position: absolute;
@@ -193,8 +204,9 @@ body {
 }
 .container .serviceBox .icon p {
     position: absolute;
+    margin-top: 50px;
     color: white;
-    font-size: 5em;
+    font-size: 1.5em;
     transition: 2.25s;
     transform: scale(1);
     font-family: 'SF Pro Display';
@@ -229,25 +241,3 @@ body {
     line-height: 1.5em;
     font-family: 'SF Pro Display';
 }
-.typer:after {
-    content:"";
-    display: inline-block;
-    vertical-align: middle;
-    width:1px;
-    height:1em;
-    background: #000;
-    animation: caretPulsate 1s linear infinite;
-    -webkit-animation: caretPulsate 1s linear infinite;
-  }
-  @keyframes caretPulsate {
-    0%   {opacity:1;}
-    50%  {opacity:1;}
-    60%  {opacity:0;}
-    100% {opacity:0;}
-  }
-  @-webkit-keyframes caretPulsate {
-    0%   {opacity:1;}
-    50%  {opacity:1;}
-    60%  {opacity:0;}
-    100% {opacity:0;}
-  }
