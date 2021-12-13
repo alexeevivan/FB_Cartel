@@ -6,7 +6,6 @@ from django.http import HttpResponseRedirect, request
 from django.views.generic import TemplateView, DetailView, View, ListView, CreateView, UpdateView, DeleteView
 from .models import *
 from .forms import PostForm, ForumPostUpdateForm, ForumPostCategoryAdd
-from .mixins import CategoryDetailMixin
 
 
 class Index_View(TemplateView):
