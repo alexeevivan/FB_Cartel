@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainapp',
     'members',
+    'products',
     'crispy_forms',
     'ckeditor',
     'captcha',

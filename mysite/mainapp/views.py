@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
+from django.db.models import Q
 from django.views.generic.edit import CreateView
 from django.http import HttpResponseRedirect, request
 from django.views.generic import TemplateView, DetailView, View, ListView, CreateView, UpdateView, DeleteView
@@ -115,19 +116,6 @@ class AddPostCategoryView(CreateView):
     #fields = '__all__'
     success_url = reverse_lazy('forum')
 
-
-class CategoryDetailView(CategoryDetailMixin, DetailView):
-    
-    model = Category
-    queryset = Category.objects.all()
-    context_object_name = 'category'
-    template_name = 'category_detail.html'
-    slug_url_kwarg = 'slug'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['cart'] = self.cart
-        return context
     
 
 class AddCommentView(CreateView):
@@ -135,5 +123,3 @@ class AddCommentView(CreateView):
     model = Comment
     template_name = 'forum_post_comment_add.html'
     fields = '__all__'
-
-

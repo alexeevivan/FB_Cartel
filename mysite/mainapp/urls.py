@@ -19,5 +19,4 @@ urlpatterns = [
     path('wine', WineView.as_view(), name='wine'),
     path('wine/still_wine', StillWineView.as_view(), name='still_wine'),
     path('captcha/', include('captcha.urls')),
-    path('library/<str:slug>/', CategoryDetailView.as_view(), name='category_detail'),  
 ]

@@ -90,6 +90,20 @@
         </div>
         <div id="pageInfo">
             <div class="container">
+                <form class="navbar-nav px-lg-4 mb-auto mt-auto" action="{% url 'search_results' %}" method="get">
+                    <input class="form-control px-lg-4 mb-auto mt-auto" style="width: 17em;" placeholder="Keyword, author or ISBN ..." aria-label="Search" name="q">
+                    <ul class="navbar-nav px-lg-4 mb-auto mt-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-uppercase text-expanded">
+                                <button class="btn btn-outline-light" style="border-color:rgba(217, 158, 84); color:#D99E54FF;">
+                                    <span>
+                                        Search
+                                    </span>
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
+                </form>
                 <div id="myNav" class="overlay">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <div class="overlay-content">
