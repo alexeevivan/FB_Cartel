@@ -5,8 +5,8 @@ from .models import *
 from .mixins import *
 
 
-def info_products(request):
-    return render(request, 'products.html', {})
+def info_library(request):
+    return render(request, 'library.html', {})
 
 def info_white_wine(request):
     categories = Category.objects.get_categories_for_left_sidebar()
@@ -143,7 +143,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         return context
 
 # building a scheme, thats can help to show the url-address of each product
-class ProductDetailView(ListView):
+class ProductDetailView(CategoryDetailMixin, DetailView):
     
     CT_MODEL_MODEL_CLASS = {
         'red_wine': Red_Wine,
@@ -161,7 +161,7 @@ class ProductDetailView(ListView):
         'gin': Gin,
         'vodka': Vodka,
         'liquor': Liquor,
-        'cocktail': Cocktail,
+        'cocktail': Cocktail
     }
 
     def dispatch(self, request, *args, **kwargs):
@@ -178,7 +178,7 @@ class ProductDetailView(ListView):
         context = super().get_context_data(**kwargs)
         context['ct_model'] = self.model._meta.model_name
         return context
-    
+
 
 class SearchResultsView(ListView):
     model = White_Wine, Rose_Wine, Red_Wine, Sparkling_Wine, Champagne, Porto, Bitter, Vermouth, Whiskey, Rum, Tequila, Mezcal, Gin, Vodka, Liquor, Cocktail
@@ -263,6 +263,5 @@ class SearchResultsView(ListView):
             object_list_16 = Cocktail.objects.filter(
                 Q(title__icontains=query) | Q(manufacturer__icontains=query)
             )
-            object_list = object_list_1, object_list_2, object_list_3, object_list_4, object_list_5, object_list_6, object_list_7, object_list_8, object_list_9, object_list_10, object_list_11, object_list_12, object_list_13, object_list_14,
-            object_list_15, object_list_16
+            object_list = object_list_1, object_list_2, object_list_3, object_list_4, object_list_5, object_list_6, object_list_7, object_list_8, object_list_9, object_list_10, object_list_11, object_list_12, object_list_13, object_list_14, object_list_15, object_list_16
             return object_list_1 or object_list_2 or object_list_3 or object_list_4 or object_list_5 or object_list_6 or object_list_7 or object_list_8 or object_list_9 or object_list_10 or object_list_11 or object_list_12 or object_list_13 or object_list_14 or object_list_15 or object_list_16
