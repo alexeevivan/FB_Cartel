@@ -43,6 +43,18 @@
         <link rel="stylesheet" href="../../static/css/index.css">
         <link rel="stylesheet" href="../../static/css/modal.css">
 
+        
+        <link rel="icon" type="image/vnd.microsoft.icon" href="../newyear2022/static/img/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../newyear2022/static/img/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../newyear2022/static/img/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../newyear2022/static/img/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../newyear2022/static/img/favicon.ico">
+        <link rel="icon" sizes="128x128" href="../newyear2022/static/img/favicon.ico">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+
+
         <title>
             Food &#38 Beverage Cartel
         </title>
@@ -88,12 +100,12 @@
             </li>
             <div class="one">
                 <footer>
-                    <form class="navbar-nav px-lg-4 mb-auto mt-auto" action="{% url 'search_results' %}" method="get">
-                        <input class="form-control px-lg-4 mb-auto mt-auto" style="width: 17em;" placeholder="Keyword, author or ISBN ..." aria-label="Search" name="q">
-                        <ul class="navbar-nav px-lg-4 mb-auto mt-auto">
-                            <li class="nav-item">
-                                <a class="nav-link text-uppercase text-expanded">
-                                    <button class="btn btn-outline-light" style="border-color:rgba(217, 158, 84); color:#D99E54FF;">
+                    <form class="searchform" action="{% url 'search_results' %}" method="get">
+                        <input placeholder="Поиск..." aria-label="Search" name="q">
+                        <ul>
+                            <li>
+                                <a>
+                                    <button class="search_btn">
                                         <span>
                                             Search
                                         </span>

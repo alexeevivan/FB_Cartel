@@ -129,7 +129,7 @@ ul li p {
     margin-left: 5vw;
 }
 .forumhr {
-    background-color: goldenrod;
+    background: linear-gradient(to right, rgba(0,0,0,0), goldenrod, rgba(0,0,0,0));
     height: 1px;
     border: none;
 }
@@ -253,6 +253,19 @@ ul li p {
 .openBtn {
     display: none;
 }
+.post_view_count {
+    display: contents;
+}
+.post_view_count button {
+    color: #ffe7d9;
+    border: 1px solid;
+    background-color: rgba(0, 0, 0, 0);
+    font-family: 'SF Pro Display';
+}
+.post_view_count button:hover {
+    box-shadow: 1px 1px 40px rgba(0, 45, 255, 1);
+    border: 1px solid rgba(0, 45, 255, 1);
+}
 #cke_id_body {
     width: 70vw;
     margin-left: 5vw;
@@ -357,7 +370,7 @@ ul li p {
 #postlistobject {
     margin-left: 0;
 }
-#changepostbtn, #deletepostbtn {
+#readpostbtn, #changepostbtn, #deletepostbtn {
     font-size: 15px;
     border: 1px solid;
     border-radius: 5px;
@@ -366,6 +379,9 @@ ul li p {
     margin-right: 5px;
     transition: 0.5s;
     text-decoration: none;
+}
+#readpostbtn:hover {
+    color: rgb(13, 183, 189);
 }
 #changepostbtn:hover {
     color: rgb(64, 158, 64);

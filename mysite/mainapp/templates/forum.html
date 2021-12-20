@@ -1,3 +1,4 @@
+{% load counter %}
 <!DOCTYPE html>
 <html lang="ru">
     <head>
@@ -149,7 +150,7 @@
                     {% for post in object_list %}
                         <li id="postlistobject">
                             <p>
-                                <a href="{% url 'forum_post_detail' post.pk %}" style="text-transform: capitalize;">
+                                <a style="text-transform: capitalize; cursor: default; color: goldenrod; line-height: 1em;">
                                     {{ post.title }}
                                 </a>
                             <!--Чтобы сделать рабочей ссылку на каждую категорию, нужно не забывать определять
@@ -158,9 +159,10 @@
                             <!-- |slugify позволяет добавить автоматически - (тире) к созданной категории
                             без этого тире: я создал категорию (новые заведения), теперь в адресной строке
                             будет (новые-заведения)-->
-                             - <a href="{% url 'category' post.post_category  %}">{{ post.post_category }}</a>
+                            <p>&#926; <a href="{% url 'category' post.post_category %}" style="font-size:15px;">{{ post.post_category }}</a>
                             </p>
-                            <p style="text-transform: capitalize;">
+                            </p>
+                            <p style="text-transform: capitalize; border: 1px solid goldenrod; border-radius: 15px; padding: 20px;">
                             <!-- Команда "|slice" помогает не показывать весь текст поста на странице всех постов
                             но я её удалил, потому что добавилась строка краткого описания
                             без неё было post.body, которое нужно было сократить-->
@@ -171,6 +173,11 @@
                                     {{ post.author.first_name }} {{ post.author.last_name }}
                                 </a>
                                  - {{ post.pub_date}}
+                                <span>{% page_hits post.get_absolute_url %} &#9740;</span>
+                                <form class="post_view_count" action="{% url 'forum_post_detail' pk=post.id %}" method="get">
+                                    <input type="hidden" name="post-id" value={{post.id}}>
+                                    <button type="submit" id="readpostbtn">Читать</button>
+                                </form>
                                 {% if request.user.is_authenticated %}
                                     {% if user.id == post.author.id %}
                                         <a href="{% url 'forum_post_update' post.pk %}" id="changepostbtn">
@@ -184,6 +191,7 @@
                                 {% endif %}
                             </p>
                             <hr class="forumhr">
+                            <br>
                         </li>
                     {% endfor %}
                 </ul>

@@ -5,14 +5,22 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericRelation
 from django.http import HttpResponseRedirect, request
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.shortcuts import redirect, render
 
-
+from taggit.managers import TaggableManager
 from ckeditor.fields import RichTextField
 from django.urls.base import reverse_lazy
 
+
+# class IpModel(models.Model):
+    
+#     ip = models.CharField(max_length=100, null=True)
+    
+#     def __str__(self):
+#         return self.ip
 
 class Post(models.Model):
     
@@ -26,15 +34,25 @@ class Post(models.Model):
     pub_date = models.DateField(auto_now_add=True)
     post_category = models.CharField(max_length=30, default='Рецептуры напитков', verbose_name='Категория')
     like = models.ManyToManyField(User, related_name='blog_posts')
-    
+    tags = TaggableManager()
+    # views = models.ManyToManyField(IpModel, related_name='post_views', blank=True)
+
+    class Meta:
+        
+        ordering = ('-pub_date',)
+        
+        
     def total_likes(self):
         return self.like.count()
     
-    def __str__(self):
-        return self.title + '|' + str(self.author)
-    
+    # def total_views(self):
+    #     return self.views.count()
+
     def get_absolute_url(self):
         return reverse("forum_post_detail", kwargs={"pk": self.pk})
+    
+    def __str__(self):
+        return self.title + '|' + str(self.author)
 
 
 class PostCategory(models.Model):

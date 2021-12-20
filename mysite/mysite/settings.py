@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'mainapp',
     'members',
     'products',
+    'analytics',
+    'taggit',
     'crispy_forms',
     'ckeditor',
     'captcha',

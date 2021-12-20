@@ -7,6 +7,9 @@ from django.views.generic import TemplateView, DetailView, View, ListView, Creat
 from .models import *
 from .forms import PostForm, ForumPostUpdateForm, ForumPostCategoryAdd
 
+from django.utils.decorators import method_decorator
+from analytics.decorators import counted
+
 
 class Index_View(TemplateView):
     
@@ -37,6 +40,8 @@ class ForumView(ListView):
     # добавлялся к каждому посту
     #ordering = ['-id']
 
+
+@method_decorator(counted, name='dispatch')
 class ForumPostDetailView(DetailView):
     
     model = Post
@@ -55,6 +60,26 @@ class ForumPostDetailView(DetailView):
         context["total_likes"] = total_likes
         context["liked"] = liked
         return context
+
+    # def get(self, request, *args, **kwargs):
+        
+    #     self.object = self.get_object()
+    #     context = self.get_context_data(object = self.object)
+    #     ip = get_client_ip(self.request)
+    #     print(ip)
+        
+    #     if IpModel.objects.filter(ip = ip).exists():
+    #         print('ip already presents') 
+    #         post_id = request.GET.get('post-id')
+    #         print(post_id)
+    #         post = Post.objects.get(pk = post_id)
+    #         post.views.add(IpModel.objects.get(ip = ip))
+    #     else:
+    #         IpModel.objects.create(ip = ip)
+    #         post_id = request.GET.get('post-id')
+    #         post = Post.objects.get(pk = post_id)
+    #         post.views.add(IpModel.objects.get(ip = ip))
+    #     return self.render_to_response(context)
 
     
 class AddPostView(CreateView):
@@ -115,10 +140,19 @@ class AddPostCategoryView(CreateView):
     #fields = '__all__'
     success_url = reverse_lazy('forum')
 
-    
 
 class AddCommentView(CreateView):
     
     model = Comment
     template_name = 'forum_post_comment_add.html'
     fields = '__all__'
+
+
+# def get_client_ip(request):
+    
+#     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+#     if x_forwarded_for:
+#         ip = x_forwarded_for.split(',')[0]
+#     else:
+#         ip = request.META.get('REMOTE_ADDR')
+#     return ip

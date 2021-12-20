@@ -77,6 +77,9 @@ input:matches([type="button"], [type="submit"], [type="reset"]):hover {
 .form-group-login {
     margin-top: 40px;
 }
+.g-recaptcha > div {
+    margin: 0 auto;
+}
 ul {
     margin: 0;
     padding: 0;
