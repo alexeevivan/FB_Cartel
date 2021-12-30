@@ -1,7 +1,6 @@
 from django import forms
 from .models import Comment, User, Post, PostCategory
 from django.forms import fields, widgets
-from captcha.fields import CaptchaField
 
 # если делать так, как строчкой ниже - то это хардкодинг: когда будет добавляться новая категория, нужно
 # будет лезть сюда и добавлять отдельно созданную категорию в этот список
