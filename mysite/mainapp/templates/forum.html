@@ -1,4 +1,3 @@
-{% load counter %}
 <!DOCTYPE html>
 <html lang="ru">
     <head>
@@ -173,7 +172,11 @@
                                     {{ post.author.first_name }} {{ post.author.last_name }}
                                 </a>
                                  - {{ post.pub_date}}
-                                <span>{% page_hits post.get_absolute_url %} &#9740;</span>
+                                <span>
+                                    <p>
+                                        Просмотры : {{ post.count_views }} &#9740;
+                                    </p> <!-- Просмотры -->
+                                </span>
                                 <form class="post_view_count" action="{% url 'forum_post_detail' pk=post.id %}" method="get">
                                     <input type="hidden" name="post-id" value={{post.id}}>
                                     <button type="submit" id="readpostbtn">Читать</button>

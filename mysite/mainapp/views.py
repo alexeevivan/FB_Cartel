@@ -8,7 +8,6 @@ from .models import *
 from .forms import PostForm, ForumPostUpdateForm, ForumPostCategoryAdd
 
 from django.utils.decorators import method_decorator
-from analytics.decorators import counted
 
 
 class Index_View(TemplateView):
@@ -41,7 +40,7 @@ class ForumView(ListView):
     #ordering = ['-id']
 
 
-@method_decorator(counted, name='dispatch')
+
 class ForumPostDetailView(DetailView):
     
     model = Post
@@ -61,25 +60,30 @@ class ForumPostDetailView(DetailView):
         context["liked"] = liked
         return context
 
-    # def get(self, request, *args, **kwargs):
-        
-    #     self.object = self.get_object()
-    #     context = self.get_context_data(object = self.object)
-    #     ip = get_client_ip(self.request)
-    #     print(ip)
-        
-    #     if IpModel.objects.filter(ip = ip).exists():
-    #         print('ip already presents') 
-    #         post_id = request.GET.get('post-id')
-    #         print(post_id)
-    #         post = Post.objects.get(pk = post_id)
-    #         post.views.add(IpModel.objects.get(ip = ip))
-    #     else:
-    #         IpModel.objects.create(ip = ip)
-    #         post_id = request.GET.get('post-id')
-    #         post = Post.objects.get(pk = post_id)
-    #         post.views.add(IpModel.objects.get(ip = ip))
-    #     return self.render_to_response(context)
+
+def post_detail(self, request, *args, **kwargs):
+    # Проверяем есть ли пост с запрашиваемым слагом
+    post = get_object_or_404(Post, kwargs={"pk": self.pk})
+
+    if not request.session.session_key:
+        request.session.save()
+    # получаем сессию
+    session_key = request.session.session_key
+
+    is_views = PostCountViews.objects.filter(postId=post.id, sesId=session_key)
+
+    # если нет информации о просмотрах создаем ее
+    if is_views.count() == 0 and str(session_key) != 'None':
+
+        views = PostCountViews()
+        views.sesId = session_key
+        views.postId = post
+        views.save()
+
+        post.count_views += 1
+        post.save()
+
+    return render(request, 'forum_post_detail.html', context={'post': post})
 
     
 class AddPostView(CreateView):

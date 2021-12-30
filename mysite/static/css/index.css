@@ -38,7 +38,7 @@ button {
     position: relative;
     display: inline-block;
     padding: 12px 20px;
-    background: #8c469800;
+    background-color: #8c469800;
     margin-top: 15px;
     border-radius: 15px;
     color: rgb(0, 0, 0);
@@ -62,7 +62,7 @@ sup {
     font-size: 15px;
 }
 button:hover {
-    background: #3b291f82;
+    background-color: #3b291f82;
     transition: 1s;;
     box-shadow: 1px 1px 40px rgba(255, 255, 255, 1);
     color: #fff;
@@ -83,7 +83,7 @@ button:hover {
     font-size: 20px;
     font-family: 'SF Pro Display';
     color: rgb(255, 255, 255);
-    background: rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0);
     padding: 0;
     margin-left: auto;
     margin-right: auto;
@@ -170,7 +170,7 @@ button:hover {
     left: 20px;
     right: 20px;
     bottom: 20px;
-    background: #FFC29B;
+    background-color: #FFC29B;
     border-radius: 15px;
     display: flex;
     justify-content: center;
@@ -229,7 +229,7 @@ button:hover {
     border: 1px solid rgba(218, 165, 32, 0);
     border-radius: 10px;
     font-size: 20px;
-    background: rgba(0, 0, 0, 0.25);
+    background-color: rgba(0, 0, 0, 0.25);
     color: white;
 }
 .form-control, .form-control-select, .form-control-body {
@@ -239,7 +239,7 @@ button:hover {
     border: 1px solid rgba(218, 165, 32, 0);
     border-radius: 10px;
     font-size: 20px;
-    background: rgba(0, 0, 0, 0.25);
+    background-color: rgba(0, 0, 0, 0.25);
     color: white;
 }
 .form-control {
