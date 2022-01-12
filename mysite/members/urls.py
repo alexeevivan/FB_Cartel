@@ -3,6 +3,7 @@ from . import views
 from .views import *
 from .decorators import check_recaptcha
 
+
 urlpatterns = [
     path('register/', UserRegisterView.as_view(), name='register'),
     path('login/', check_recaptcha(views.UserLoginView.as_view()), name='login'),

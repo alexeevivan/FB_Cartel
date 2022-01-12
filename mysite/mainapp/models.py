@@ -22,15 +22,19 @@ class Post(models.Model):
     body = RichTextField(blank=True, null=True, verbose_name = 'Сообщение')
     # Закомментировал вариант без RichTextField, который добавляет строку со эмодзи и т.д.
     # body = models.TextField(verbose_name='Сообщение')
+    slug = models.SlugField(default='', editable=False,  max_length=160)
     uploaded_image = models.ImageField(null=True, blank=True, upload_to="img/")
     short_description = models.CharField(max_length=50, default='', verbose_name='Краткое описание поста')
     pub_date = models.DateField(auto_now_add=True)
     post_category = models.CharField(max_length=30, default='Рецептуры напитков', verbose_name='Категория')
     like = models.ManyToManyField(User, related_name='blog_posts')
-    count_views = models.IntegerField(default=0)
-        
+    views = models.ManyToManyField(User, related_name='view_posts')
+    
     def total_likes(self):
         return self.like.count()
+    
+    def total_views(self):
+        return self.views.count()
 
     def get_absolute_url(self):
         return reverse("forum_post_detail", kwargs={"pk": self.pk})
@@ -41,16 +45,6 @@ class Post(models.Model):
     class Meta:
         
         ordering = ('-pub_date',)
-
-
-class PostCountViews(models.Model):
-    # привязка к пользователю (сессии пользователя)
-    sesId = models.CharField(max_length=150, db_index=True)
-    # привязка к посту 
-    postId = models.ForeignKey(Post, blank=True, null=True, default=None, on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return '{}'.format(self.sesId)
 
 
 class PostCategory(models.Model):

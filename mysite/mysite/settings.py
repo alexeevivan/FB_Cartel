@@ -135,10 +135,10 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CAPTCHA_FONT_SIZE = 70
-CAPTCHA_LENGTH = 5
-CAPTCHA_BACKGROUND_COLOR = '#C67949'
-CAPTCHA_FOREGROUND_COLOR = '#000'
-CAPTCHA_FONT_PATH = 'static/fonts/SFProDisplay-Thin.ttf'
+# RECAPTCHA_PUBLIC_KEY = '6LdqvHgaAAAAACUSh8cuYNpFMjYZwvt0OSFPAuaU'
+# RECAPTCHA_PRIVATE_KEY = '6LdqvHgaAAAAAD-ct6oHr0SxkOdnZFAMt1OdZacK'
+# RECAPTCHA_PROXY = {'http': 'http://127.0.0.1:8000', 'https': 'https://127.0.0.1:8000'}
+# RECAPTCHA_DOMAIN = 'www.recaptcha.net'
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'

@@ -25,6 +25,11 @@ class AboutUsView(TemplateView):
     template_name = 'about.html'
 
 
+class UserAgreementView(TemplateView):
+    
+    template_name = 'user_agreement.html'
+
+
 class StillWineView(TemplateView):
     
     template_name = 'still_wine.html'
@@ -40,14 +45,15 @@ class ForumView(ListView):
     #ordering = ['-id']
 
 
-
 class ForumPostDetailView(DetailView):
     
     model = Post
     template_name = 'forum_post_detail.html'
+    slug_field = 'slug'
 
     def get_context_data(self, *args, **kwargs):
         
+        self.object.views.add(self.request.user)
         context = super(ForumPostDetailView, self).get_context_data(*args, **kwargs)
         stuff = get_object_or_404(Post, id=self.kwargs['pk'])
         total_likes = stuff.total_likes()
@@ -56,34 +62,11 @@ class ForumPostDetailView(DetailView):
         if stuff.like.filter(id=self.request.user.id).exists():
             liked = True
         
+        context['post'] = context.get('object')
         context["total_likes"] = total_likes
         context["liked"] = liked
         return context
 
-
-def post_detail(self, request, *args, **kwargs):
-    # Проверяем есть ли пост с запрашиваемым слагом
-    post = get_object_or_404(Post, kwargs={"pk": self.pk})
-
-    if not request.session.session_key:
-        request.session.save()
-    # получаем сессию
-    session_key = request.session.session_key
-
-    is_views = PostCountViews.objects.filter(postId=post.id, sesId=session_key)
-
-    # если нет информации о просмотрах создаем ее
-    if is_views.count() == 0 and str(session_key) != 'None':
-
-        views = PostCountViews()
-        views.sesId = session_key
-        views.postId = post
-        views.save()
-
-        post.count_views += 1
-        post.save()
-
-    return render(request, 'forum_post_detail.html', context={'post': post})
 
     
 class AddPostView(CreateView):

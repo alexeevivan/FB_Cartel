@@ -23,6 +23,10 @@ body {
     font-size: 10px;
     text-align: justify;
     width: 70%;
+    height: auto;
+}
+.vertical-center .register_form {
+    margin-top: 5%;
 }
 .vertical-center-login {
     padding: 20px;
@@ -132,9 +136,10 @@ form {
 }
 #right_backside {
     grid-area: right_backside;
-    overflow: auto;
-    display: block;
     height: 100vh;
+    overflow: auto;
+    display: flex;
+    align-items: center;
 }
 #logo {
     margin-top: 20%;
@@ -173,13 +178,9 @@ p label {
     display: block;
     text-align: center;
     font-size: 15px;
-    padding-bottom: 2%;
-    padding-top: 2%;
 }
 p input {
     display: block;
-    margin-left: 10%;
-    margin-top: 2%;
     width: 80%;
     height: 3vh;
     border: 1px solid rgba(218, 165, 32, 0);

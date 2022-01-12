@@ -2,11 +2,10 @@ from django.urls import path, include
 from . import views
 from .views import *
 
-
-
 urlpatterns = [
     path('', Index_View.as_view(), name='index'),
     path('about', AboutUsView.as_view(), name='about'),
+    path('about/user_agreement', UserAgreementView.as_view(), name='user_agreement'),
     path('forum', ForumView.as_view(), name='forum'),
     path('forum/forum_post_detail/<int:pk>', ForumPostDetailView.as_view(), name='forum_post_detail'),
     path('forum/forum_post_add/', AddPostView.as_view(), name='forum_post_add'),
@@ -18,5 +17,4 @@ urlpatterns = [
     path('category/<str:categories>/', PostCategoryView, name='category'),
     path('wine', WineView.as_view(), name='wine'),
     path('wine/still_wine', StillWineView.as_view(), name='still_wine'),
-    path('captcha/', include('captcha.urls')),
 ]

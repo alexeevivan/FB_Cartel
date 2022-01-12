@@ -11,7 +11,7 @@
 
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
         <link href="../../../static/css/simple-line-icons.css" rel="stylesheet">
-        <link href="../../static/css/forum.css" rel="stylesheet">
+        <link href="../../../static/css/forum.css" rel="stylesheet">
         <link href="../../../static/css/profile_page.css" rel="stylesheet">
         <link href="../../../static/css/fonts.css" rel="stylesheet">
 
@@ -25,9 +25,9 @@
                 <div class="container">
                     <div class="photo">
                         {% if page_user.profile_img %}
-                            <img src="{{ page_user.profile_img.url }}" style="width: 200px; height: 200px; border:1px; border-radius: 30px;">
+                            <img src="{{ page_user.profile_img.url }}" class="user_profile_avatar">
                         {% else %}
-                            <img src="{% static 'img/default_user_img.png' %}" style="width: 200px; height: 200px; border:1px; border-radius: 30px;">
+                            <img src="{% static 'img/default_user_img.png' %}" class="user_profile_avatar">
                         {% endif %}
                     </div>
                     <div class="nickname">
@@ -91,8 +91,5 @@
                 </button>
             </div>
         {% endif %}
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="../../../static/js/ban.js"></script>
     </body>
 </html>

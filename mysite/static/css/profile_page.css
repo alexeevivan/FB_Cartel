@@ -62,6 +62,12 @@ body {
     justify-content: center;
     width: 30%;
 }
+.photo .user_profile_avatar {
+    width: 200px;
+    height: 200px;
+    border:1px;
+    border-radius: 30px;
+}
 .nickname {
     display: flex;
     align-items: center;

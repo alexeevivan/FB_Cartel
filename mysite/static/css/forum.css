@@ -76,6 +76,9 @@ li a{
     background-size: 0% 2px;
     transition: 0.5s;
 }
+li #no-readpostbtn {
+    background-position: 0% 50%;
+}
 li a:hover {
     color: goldenrod;
     background-size: 100% 2px;
@@ -129,7 +132,7 @@ ul li p {
     margin-left: 5vw;
 }
 .forumhr {
-    background: linear-gradient(to right, rgba(0,0,0,0), goldenrod, rgba(0,0,0,0));
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(208, 32, 218), rgba(0, 0, 0, 0));
     height: 1px;
     border: none;
 }
@@ -266,6 +269,9 @@ ul li p {
     box-shadow: 1px 1px 40px rgba(0, 45, 255, 1);
     border: 1px solid rgba(0, 45, 255, 1);
 }
+.no-readpostbtn-container {
+    text-align: center;
+}
 #cke_id_body {
     width: 70vw;
     margin-left: 5vw;
@@ -370,7 +376,7 @@ ul li p {
 #postlistobject {
     margin-left: 0;
 }
-#readpostbtn, #changepostbtn, #deletepostbtn {
+#readpostbtn, #changepostbtn, #deletepostbtn, #no-readpostbtn {
     font-size: 15px;
     border: 1px solid;
     border-radius: 5px;
@@ -380,6 +386,9 @@ ul li p {
     transition: 0.5s;
     text-decoration: none;
 }
+#no-readpostbtn {
+    cursor: default;
+}
 #readpostbtn:hover {
     color: rgb(13, 183, 189);
 }
@@ -388,6 +397,9 @@ ul li p {
 }
 #deletepostbtn:hover {
     color: rgb(211, 62, 62);
+}
+#no-readpostbtn:hover {
+    color: rgb(208, 32, 218)
 }
 @media(max-width: 992.91px) {
     body {

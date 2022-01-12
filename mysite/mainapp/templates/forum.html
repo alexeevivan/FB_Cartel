@@ -174,13 +174,22 @@
                                  - {{ post.pub_date}}
                                 <span>
                                     <p>
-                                        Просмотры : {{ post.count_views }} &#9740;
-                                    </p> <!-- Просмотры -->
+                                        Просмотры : {{ post.total_views }} &#9740;
+                                    </p>
                                 </span>
+                                <br>
+                                {% if request.user.is_authenticated %}
                                 <form class="post_view_count" action="{% url 'forum_post_detail' pk=post.id %}" method="get">
                                     <input type="hidden" name="post-id" value={{post.id}}>
                                     <button type="submit" id="readpostbtn">Читать</button>
                                 </form>
+                                {% else %}
+                                <div class="no-readpostbtn-container">
+                                    <a href="" id="no-readpostbtn">Читать</a>
+                                    <a href="{% url 'login' %}" id="readpostbtn">Авторизация</a>
+                                    <a href="{% url 'register' %}" id="readpostbtn">Регистрация</a>
+                                </div>
+                                {% endif %}
                                 {% if request.user.is_authenticated %}
                                     {% if user.id == post.author.id %}
                                         <a href="{% url 'forum_post_update' post.pk %}" id="changepostbtn">
@@ -201,5 +210,18 @@
             </div>
         </div>
         <script type="text/javascript" src="../../static/js/navbar_toggle.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+              // use the template tags in our JavaScript call
+              $.postCSRF("{{ hitcount.ajax_url }}", { hitcountPK : "{{ hitcount.pk }}" })
+                .done(function(data){
+                  $('<i />').text(data.hit_counted).attr('id','hit-counted-value').appendTo('#hit-counted');
+                  $('#hit-response').text(data.hit_message);
+              }).fail(function(data){
+                  console.log('POST failed');
+                  console.log(data);
+              });
+            });
+            </script>
     </body>
 </html>
