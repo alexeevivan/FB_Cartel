@@ -7,6 +7,7 @@ from django.views.generic import TemplateView, DetailView, View, ListView, Creat
 from .models import *
 from .forms import PostForm, ForumPostUpdateForm, ForumPostCategoryAdd
 
+
 from django.utils.decorators import method_decorator
 
 
@@ -43,7 +44,6 @@ class ForumView(ListView):
     # перед добавлением datetime сортировка происходила по автоматически создаваемому Django id, который
     # добавлялся к каждому посту
     #ordering = ['-id']
-
 
 class ForumPostDetailView(DetailView):
     

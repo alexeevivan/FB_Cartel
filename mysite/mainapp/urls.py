@@ -17,4 +17,5 @@ urlpatterns = [
     path('category/<str:categories>/', PostCategoryView, name='category'),
     path('wine', WineView.as_view(), name='wine'),
     path('wine/still_wine', StillWineView.as_view(), name='still_wine'),
+    path('social-auth/', include('social_django.urls', namespace="social")),
 ]

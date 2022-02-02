@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'ckeditor',
     'captcha',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -85,8 +86,20 @@ DATABASES = {
         'NAME': str(BASE_DIR / "db.sqlite3"),
     }
 }
-
-
+# AUTHENTICATION_BACKENDS содержит список базовых классов аутентификации (в виде строк) и по умолчанию имеет значение
+# ['django.contrib.auth.backends.ModelBackend']
+# Нам нужно обновить его и добавить новые классы аутентификации, чтобы разрешить аутентификацию через социальные сети
+AUTHENTICATION_BACKENDS = {
+    'social_core.backends.linkedin.LinkedinOAuth2',
+    'social_core.backends.instagram.InstagramOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+}
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
+SOCIAL_AUTH_FACEBOOK_KEY = 452993316283382
+SOCIAL_AUTH_FACEBOOK_SECRET = '5ff6234b26d0a76af42453c18dfe1e5b'
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
