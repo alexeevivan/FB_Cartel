@@ -26,7 +26,6 @@ class SignUpForm(UserCreationForm):
         self.fields['last_name'].label = 'Фамилия'
         self.fields['check'].label = 'Я ознакомлен с правилами ресурса'
 
-
     def clean_email(self):
         email = self.cleaned_data['email']
         domain = email.split('.')[-1]
