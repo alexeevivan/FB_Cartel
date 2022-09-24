@@ -1,12 +1,19 @@
+*::before, ::after {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
 body {
     font-family: 'SF Pro Display';
     display: grid;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     grid-template-areas: "nav info";
     grid-template-columns: 20% 1fr;
     grid-column-gap: 0%;
     background: linear-gradient(to right, #000, #cb6b30);
+    background-color: #371b0a;
     justify-content: center;
     margin:0;
     position: relative;
@@ -15,11 +22,16 @@ li {
     list-style: none;
     margin-left: 10%;
 }
-li a{
-    color: #ffe7d9;
+li a, li .active {
     line-height: 3em;
     font-size: 20px;
     text-decoration: none;
+}
+li .active {
+    color: goldenrod;
+}
+li a {
+    color: #ffe7d9;
     background-image: linear-gradient(currentColor, currentColor);
     background-position: 0% 100%;
     background-repeat: no-repeat;
@@ -31,6 +43,90 @@ li a:hover {
     background-size: 100% 2px;
     transition: 0.5s;
     transform: translateX(5%);
+}
+li .active:hover {
+    background-size: 0% 0px;
+    transition: 0s;
+    transform: translateX(0%);
+}
+.active-link {
+    display: flex;
+    align-items: center;
+    flex-direction: initial;
+}
+.active-container {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    height: 3em;
+}
+.map {
+    display: block;
+    width: 3em;
+    height: 3em;
+    position: relative;
+    margin: 0 auto;
+    background-size: cover;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.map__pin {
+    display: block;
+    width: 1.2em;
+    height: auto;
+    position: absolute;
+    bottom: 1.3em;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: map-pin 1.5s ease infinite;
+    z-index: 4;
+}
+.map__pin_shadow {
+    display: block;
+    width: 2.37rem;
+    height: auto;
+    filter: invert(1);
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    animation: map-pin-shadow 1.5s ease infinite;
+}
+@keyframes map-pin {
+    50% {
+        bottom: 0.9rem;
+    }
+  }
+@keyframes map-pin-shadow {
+    50% {
+        width: 1.6rem;
+    }
+}
+.circle {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 0.06rem solid #dba521;
+    border-radius: 50%;
+    animation: outer 3s ease-out infinite;
+    z-index: 1;
+}
+.circle-2 {
+    animation-delay: 1s;
+}
+.circle-3 {
+    animation-delay: 2s;
+}
+@keyframes outer {
+    100% {
+        width: 2.7rem;
+        height: 2.7rem;
+        opacity: 0.1;
+    }
 }
 button {
     cursor: pointer;
@@ -139,7 +235,7 @@ button:hover {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding: 40px 0;
+    padding: 0px 0;
 }
 .card {
     position: relative;
@@ -343,6 +439,17 @@ label {
     body {
         display: block;
     }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 15vh 0vh 5vh 0vh;
+    }
+    .container .card {
+        width: 40vw;
+        height: 50vh;
+    }
     .overlay {
         height: 0%;
         width: 100%;
@@ -350,7 +457,7 @@ label {
         z-index: 1;
         top: 0;
         left: 0;
-        background-color: rgb(0, 0, 0);
+        background-color: #252525;
         overflow-y: hidden;
         transition: 0.5s;
         overflow-y: auto;
@@ -361,16 +468,97 @@ label {
         top: 15px;
         right: 35px;
     }
-    .overlay a{
-        padding: 8px;
-        text-decoration: none;
-        font-size: 20px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
+    .overlay .overlay-container {
+        display: flex;
+        width: 100%;
+        height: 10%;
+        justify-content: center;
+        align-items: center;
+    }
+    .hamburger, .openBtnhamburger {
+        width: 24px;
+        height: 24px;
+        scroll-behavior: smooth;
+    }
+    .hamburger .chevron,
+    .openBtnhamburger .chevron {
+        position: absolute;
+        width: 28px;
+        height: 8px;
+        opacity: 0;
+        transform: scale3d(0.5, 0.5, 0.5);
+        animation: move 3s ease-out infinite;
+    }  
+    .hamburger .chevron:first-child,
+    .openBtnhamburger .chevron:first-child {
+        animation: move 3s ease-out 1s infinite;
+    } 
+    .hamburger .chevron:nth-child(2),
+    .openBtnhamburger .chevron:nth-child(2) {
+        animation: move 3s ease-out 2s infinite;
+    } 
+    .hamburger .chevron:before,
+    .hamburger .chevron:after,
+    .openBtnhamburger .chevron:before,
+    .openBtnhamburger .chevron:after {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 51%;
+        background: goldenrod;
+    }  
+    .hamburger .chevron:before,
+    .openBtnhamburger .chevron:before {
+        left: 0;
+    } 
+    .hamburger .chevron:after,
+    .openBtnhamburger .chevron:after {
+        right: 0;
+        width: 50%;
+    }
+    .hamburger .chevron:before {
+        transform: skew(0deg, -30deg);
+    } 
+    .hamburger .chevron:after {
+        transform: skew(-3.9deg, -150deg);
+    }
+    .openBtnhamburger .chevron:before {
+        transform: skew(0deg, 30deg);
+    } 
+    .openBtnhamburger .chevron:after {
+        transform: skew(0deg, -30deg);
+    }
+    @keyframes move {
+        25% {
+        opacity: 1;
+    
+        }
+        33% {
+        opacity: 1;
+        transform: translateY(30px);
+        }
+        67% {
+        opacity: 1;
+        transform: translateY(40px);
+        }
+        100% {
+        opacity: 0;
+        transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+        }
+    }
+    @keyframes pulse {
+        to {
+        opacity: 1;
+        }
     }
     .overlay li {
         margin-left: 0;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        width: 100%;
     }
     .overlay li a {
         color: #ffe7d9;
@@ -383,32 +571,41 @@ label {
         background-size: 0% 3px;
         transition: 0.5s;
     }
+    .overlay li a.active {
+        color: goldenrod;
+    }
     .overlay li a:hover {
         color: goldenrod;
     }
     .overlay-content {
         position: relative;
-        top: 20%;
         width: 100%;
-        text-align: center;
+        height: 90%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
     }
     .openBtn {
-        display: block;
-        font-size:30px;
-        cursor:pointer;
-    }
-    .openBtn a {
+        display: flex;
+        cursor: pointer;
+        width: 10vw;
+        height: 10vh;
+        justify-content: center;
+        align-items: baseline;
         position: absolute;
-        font-size: 40px;
-        top: 15px;
+        top: 0%;
         right: 0%;
-        margin-right: 5%;
-        color: #FFC29B;
-        transition: 1s;
+        margin: 2.5vh;
+        background: #ffc29b;
+        border-radius: 20px;
+        box-shadow: rgb(0 0 0) 0px 0px 4px 0px inset;
+        transition: 0.5s;
     }
-    .openBtn:hover a {
-        color:black;
-        transition: 1s;
+    .openBtn:active {
+        width: 9vw;
+        height: 9vh;
+        margin: 3.5vh;
     }
     .container .overlay{
         display: block;
@@ -418,9 +615,12 @@ label {
     }
     #admin_menu {
         width: 40%;
-        margin-left: 30%;
+        height: 65%;
+        font-size: 1em;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
         margin-bottom: 2%;
-        font-size: 15px;
     }
 }
 @media(max-width: 668px) {
@@ -434,6 +634,9 @@ label {
     .overlay li a {
         line-height: 2.5em;
         font-size: 14px;
+    }
+    .overlay li a.active {
+        color: goldenrod;
     }
     .overlay li a:hover {
         color: goldenrod;

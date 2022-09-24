@@ -28,7 +28,17 @@ class AboutUsView(TemplateView):
 
 class UserAgreementView(TemplateView):
     
-    template_name = 'user_agreement.html'
+    template_name = 'user-agreement.html'
+    
+    
+class CoursesView(TemplateView):
+        
+    template_name = 'courses.html'
+
+
+class BartendersCourseView(TemplateView):
+    
+    template_name = 'bartenders-course.html'
 
 
 class StillWineView(TemplateView):

@@ -5,7 +5,7 @@
     top: 0;
     height: 100%;
     overflow: auto;
-    background: rgba(11, 7, 3, 0.69);
+    background: rgb(25 25 25 / 97%);;
     justify-content: center;
     width: 80vw;
     margin-left: 20vw;
@@ -13,54 +13,71 @@
     position: fixed;
 }
 .modalContent {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0), #502a13, #a15628, #cb6b30, #a15628, #502a13, rgba(0, 0, 0, 0));
+    background: linear-gradient(to bottom right, rgba(255, 194, 156, 0.4), rgba(255, 194, 156, 0.8), #ffc29b, rgba(255, 194, 156, 0.8), rgba(255, 194, 156, 0.4));
     margin: auto;
-    border: none;
     border-radius: 15px;
-    box-shadow: 9px 7px 18px rgb(163, 111, 84);
-    width: 70%;
-    height: 15%;
+    box-shadow: 9px 7px 18px rgb(0 0 0);
+    width: 50%;
+    height: 30%;
     display: flex;
-    direction: rtl;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    background-size: cover;
+    filter: drop-shadow(2px 4px 20px black);
 }
-.modalContent .age {
+.modalContent .modalIteraction {
+    width: 80%;
+    height: 100%;
     display: flex;
-    position: absolute;
-    width: 15%;
-    height: 15%;
-    align-items: center;
+    flex-direction: column;
 }
-.modalContent .age h5 {
+.modalContent .modalIteraction .age {
+    display: flex;
+    width: 100%;
+    height: 65%;
+    align-items: center;
+    justify-content: center;
+}
+.modalContent .modalIteraction .age span {
     color: rgb(255, 255, 255);
-    font-size: 15px;
+    font-size: 1.2em;
+    font-weight: 900;
+}
+.modalContent .modalClosebtn {
+    width: 20%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .modalClose {
-    color: #ffc19b1f;
+    color: rgb(255 255 255 / 86%);
     font-size: 60px;
-    margin-left: 50%;
     position: sticky;
     transition: 1s;
+    font-weight: 900;
 }
 .modalClose:hover, .modalClose:focus {
-    color: #FFC29B;
+    color: #b30000;
     text-decoration: none;
     cursor: pointer;
-    transform: rotate3d(1,1,0, 180deg);
+    filter: drop-shadow(2px 4px 6px #252525);
 }
-.ageButtons {
-    direction: initial;
-    height: 100%;
-    width: 35%;
+.modalIteraction .ageButtons {
+    width: 100%;
+    height: 35%;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
+    flex-direction: row;
 }
-.ageButtons18above {
-    margin-right: 20px;
+.modalIteraction .ageButtons a {
+    margin-left: 10px;
+    margin-right: 10px;
 }
-.ageButtonAsk {
+.modalIteraction .ageButtonAsk {
     font-family: 'SF Pro Display';
     text-decoration: none;
     font-size: 20px;
@@ -73,7 +90,15 @@
     cursor: pointer;
     transition: 500ms;
 }
-.ageButtonAsk:hover {
-    background: rgba(224, 224, 224, 0.16);
-    color: black;
+.modalIteraction .ageButtonAsk:hover {
+    background: rgb(255 255 255 / 86%);
+    color: #252525;
 }
+@media(max-width: 992.91px) {
+    .modal {
+        width: 100vw;
+        margin-left: 0%;
+
+    }
+}
+@media(max-width: 668px) {}

@@ -2,9 +2,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    min-height: 100vh;
-    background: linear-gradient(140deg, #000, #000000, rgb(105, 80, 17), rgb(58, 44, 9), rgb(0, 0, 0));
+    width: auto;
+    height: 100vh;
+    min-width: auto;
+    min-height: 100%;
+    background: linear-gradient(196deg, #25252500, #002234, #000);
+    background-color: lightgoldenrodyellow;
 }
 .container {
     position: relative;
@@ -51,7 +54,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--i);
+    background: linear-gradient(45deg, #ffffff3d , var(--i), #ffffff3d);
     transition: 0.5s;
     display: flex;
     justify-content: center;
@@ -79,9 +82,9 @@ body {
 }
 .container .serviceBox .icon p, .container .serviceBox-user_agreement .icon p {
     position: absolute;
-    margin-top: 50px;
+    bottom: 0;
     color: white;
-    font-size: 1.5em;
+    font-size: 1.25em;
     transition: 2.25s;
     transform: scale(1);
     font-family: 'SF Pro Display';

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <!--Кодировка-->
+        <meta charset="UTF-8">
+        <!--Адаптивность. User-scalable=0 запрещает зумить на Android-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <!--Краткое описание страницы для поисковых плтаформ (до 140 символов)-->
+        <meta name="description" content="">
+        <!--Ключевые слова для поисковых платформ (до 20 слов через запятую)-->
+        <meta name="keywords" content="">
+        <!--Мета теги в случае репоста страницы сайта на Facebook-->
+        <!--Локализация сайта. Для русскоязычного сайта - ru_RU-->
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:type" content="aticle">
+        <!--Какой заголовок сайта при репосте-->
+        <meta proprety="og:title" content="">
+        <!--Описания страницы при репосте-->
+        <meta property="og:descritpion" content="">
+        <!--Ссылка на изображение, которое выводится при репосте (http-адрес нужно будет вставить с изображением)-->
+        <meta property="og:image" content="">
+        <!--Ссылка на конкретную страницу (тоже http-адрес указать для каждой страницы)-->
+        <meta property="og:url" content="">
+        <!--Название сайта при репосте-->
+        <meta property="og:site_name" content="F&B Cartel">
+        <!--Разрешение или запрет номер телефона делать ссылкой на звонок в iOS-->
+        <meta name="format-detection" content="telephone=yes">
+        <!--Данные о владельце/авторе страницы-->
+        <meta name="Author" content="Alexeev Ivan">
+        <meta name="Copyright" content="Alexeev Ivan">
+        <meta name="Address" content="">
+
+        <!--Эту строчку добавить только на страницу 404 - она позволяет выполнить редирект на главную, если вылезла 404-->
+        <!--<meta http-equiv="refresh" content="3, url=index.html"-->
+        
+        <!--Запрет на индексацию сайта; потом убрать!-->
+        <meta name="robots" content="none">
+
+
+        <link rel="stylesheet" href="../../static/css/icons.css">
+        <link rel="stylesheet" href="../../static/css/simple-line-icons.css">
+        <link rel="stylesheet" href="../../static/css/fonts.css">
+        <link rel="stylesheet" href="../../static/css/index.css">
+        <link rel="stylesheet" href="../../static/css/courses.css">
+        <link rel="stylesheet" href="../../static/css/bartenders-course.css">
+        <link rel="stylesheet" href="../../static/css/slider.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        
+        <link rel="icon" type="image/vnd.microsoft.icon" href="../newyear2022/static/img/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../newyear2022/static/img/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../newyear2022/static/img/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../newyear2022/static/img/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../newyear2022/static/img/favicon.ico">
+        <link rel="icon" sizes="128x128" href="../newyear2022/static/img/favicon.ico">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap">
+
+
+        <title>
+            Food &amp; Beverage Cartel
+        </title>
+        
+    </head>
+    <body>
+        <div id="pageNav">
+            <div id="logo">
+                <a href="{% url 'index' %}">Food &amp; Beverage Cartel <sup>BY</sup></a>
+            </div>
+            {% if not request.user.is_authenticated %}
+                <li>
+                    <a href="{% url 'login' %}">
+                        Авторизация
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'register' %}">
+                        Регистрация
+                    </a>
+                </li>
+            {% endif %}
+            {% if request.user.is_authenticated %}
+                <li>
+                    <a href="{% url 'profile' %}" id="admin_menu">
+                        {{ request.user.username }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}" id="admin_menu">
+                        Выход
+                    </a>
+                </li>
+            {% endif %}
+            <li>
+                <a href="#">Справочник</a>
+            </li>
+            <li>
+                <a class="active" href="#">Обучение</a>
+            </li>
+            <li>
+                <a href="{% url 'about' %}">О нас</a>
+            </li>
+            <div class="one">
+                <footer>
+                    <form class="searchform" action="{% url 'search_results' %}" method="get">
+                        <input placeholder="Поиск..." aria-label="Search" name="q">
+                        <ul>
+                            <li>
+                                <a>
+                                    <button class="search_btn">
+                                        <span>
+                                            Найти
+                                        </span>
+                                    </button>
+                                </a>
+                            </li>
+                        </ul>
+                    </form>
+                </footer>
+            </div>
+        </div>
+        <div id="pageInfo">
+            <div id="myNav" class="overlay">
+                <div class="overlay-container">
+                    <a href="javascript:void(0)" class="hamburger" onclick="closeNav()">
+                        <div class="chevron"></div>
+                        <div class="chevron"></div>
+                        <div class="chevron"></div>
+                    </a>
+                </div>
+                <div class="overlay-content">
+                    {% if not request.user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'login' %}">Авторизация</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'register' %}">Регистрация</a>
+                    </li>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'profile' %}" id="admin_menu">
+                            {{ request.user.username }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'logout' %}" id="admin_menu">
+                            Выход
+                        </a>
+                    </li>
+                    <li>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a href="{% url 'index' %}">Food &amp; Beverage Cartel <sup>BY</sup></a>
+                    </li>
+                    <li>
+                        <a href="#">Справочник</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'bartenders-course' %}" class="active">Обучение</a>
+                    </li>
+                    <li>
+                        <a href="#">О нас</a>
+                    </li>
+                    <div class="one"></div>
+                </div>
+            </div>
+            <div class="openBtn" onclick="openNav()">
+                <div class="openBtnhamburger">
+                    <div class="chevron"></div>
+                    <div class="chevron"></div>
+                    <div class="chevron"></div>
+                </div>
+            </div>
+            <div class="row_1">
+                <div class="cards">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="top">
+                                <h3 class="name">
+                                    Обучение барменов
+                                </h3>
+                                <div class="date">
+                                    <span>
+                                        180 часов
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <a href="{% url 'bartenders-course' %}" class="card__bottom__link">
+                                    <h2>
+                                        The Art of Bartending
+                                    </h2>
+                                </a>
+                                <div class="bookmark">
+                                    <a href="{% url 'bartenders-course' %}">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        x="0px"
+                                        y="0px"
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        class="bookmark-icn">
+                                        <path
+                                            d="M 6.0097656 2 C 4.9143111 2 4.0097656 2.9025988 4.0097656 3.9980469 L 4 22 L 12 19 L 20 22 L 20 20.556641 L 20 4 C 20 2.9069372 19.093063 2 18 2 L 6.0097656 2 z M 6.0097656 4 L 18 4 L 18 19.113281 L 12 16.863281 L 6.0019531 19.113281 L 6.0097656 4 z">
+                                        </path>
+                                    </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row_2_bartending">
+                <div class="cards">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="top">
+                                <h3 class="name">
+                                    Консалтинг в<br>сфере обслуживания
+                                </h3>
+                                <div class="date soon">
+                                    Скоро
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <a href="#" class="card__bottom__link">
+                                    <h2>
+                                        FBC Maintenance
+                                    </h2>
+                                </a>
+                                <div class="bookmark">
+                                    <a href="#">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        x="0px"
+                                        y="0px"
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        class="bookmark-icn">
+                                        <path
+                                            d="M 6.0097656 2 C 4.9143111 2 4.0097656 2.9025988 4.0097656 3.9980469 L 4 22 L 12 19 L 20 22 L 20 20.556641 L 20 4 C 20 2.9069372 19.093063 2 18 2 L 6.0097656 2 z M 6.0097656 4 L 18 4 L 18 19.113281 L 12 16.863281 L 6.0019531 19.113281 L 6.0097656 4 z">
+                                        </path>
+                                    </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row_3">
+                <div class="cards">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="top">
+                                <h3 class="name">
+                                    Персональный курс<br>бармена
+                                </h3>
+                                <div class="date soon">
+                                    Скоро
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <a href="#" class="card__bottom__link">
+                                    <h2>
+                                        FBC Privilege
+                                    </h2>
+                                </a>
+                                <div class="bookmark">
+                                    <a href="#">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        x="0px"
+                                        y="0px"
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        class="bookmark-icn">
+                                        <path
+                                            d="M 6.0097656 2 C 4.9143111 2 4.0097656 2.9025988 4.0097656 3.9980469 L 4 22 L 12 19 L 20 22 L 20 20.556641 L 20 4 C 20 2.9069372 19.093063 2 18 2 L 6.0097656 2 z M 6.0097656 4 L 18 4 L 18 19.113281 L 12 16.863281 L 6.0019531 19.113281 L 6.0097656 4 z">
+                                        </path>
+                                    </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="../../static/js/navbar_toggle.js"></script>
+        <script type="text/javascript" src="../../static/js/bartenders_page.js"></script>
+        <script type="text/javascript" src="../../static/js/slider.js"></script>
+    </body>
+</html>

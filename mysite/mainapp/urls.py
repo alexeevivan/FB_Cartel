@@ -5,7 +5,9 @@ from .views import *
 urlpatterns = [
     path('', Index_View.as_view(), name='index'),
     path('about', AboutUsView.as_view(), name='about'),
-    path('about/user_agreement', UserAgreementView.as_view(), name='user_agreement'),
+    path('about/user-agreement', UserAgreementView.as_view(), name='user-agreement'),
+    path('courses', CoursesView.as_view(), name='courses'),
+    path('courses/bartenders-course', BartendersCourseView.as_view(), name='bartenders-course'),
     path('forum', ForumView.as_view(), name='forum'),
     path('forum/forum_post_detail/<int:pk>', ForumPostDetailView.as_view(), name='forum_post_detail'),
     path('forum/forum_post_add/', AddPostView.as_view(), name='forum_post_add'),

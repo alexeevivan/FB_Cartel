@@ -52,18 +52,18 @@
         <link rel="icon" sizes="128x128" href="../newyear2022/static/img/favicon.ico">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap">
 
 
         <title>
-            Food &#38 Beverage Cartel
+            Food &amp; Beverage Cartel
         </title>
         
     </head>
     <body>
         <div id="pageNav">
             <div id="logo">
-                <a href="{% url 'index' %}">Food &#38 Beverage Cartel <sup>BY</sup></a>
+                <a href="{% url 'index' %}">Food &amp; Beverage Cartel <sup>BY</sup></a>
             </div>
             {% if not request.user.is_authenticated %}
                 <li>
@@ -93,7 +93,7 @@
                 <a href="#">Справочник</a>
             </li>
             <li>
-                <a href="#">Обучение</a>
+                <a href="{% url 'courses' %}">Обучение</a>
             </li>
             <li>
                 <a href="{% url 'about' %}">О нас</a>
@@ -107,7 +107,7 @@
                                 <a>
                                     <button class="search_btn">
                                         <span>
-                                            Search
+                                            Найти
                                         </span>
                                     </button>
                                 </a>
@@ -120,7 +120,13 @@
         <div id="pageInfo">
             <div class="container">
                 <div id="myNav" class="overlay">
-                    <a href="javascript:void(0)" class="hamburger" onclick="closeNav()">&times;</a>
+                    <div class="overlay-container">
+                        <a href="javascript:void(0)" class="hamburger" onclick="closeNav()">
+                            <div class="chevron"></div>
+                            <div class="chevron"></div>
+                            <div class="chevron"></div>
+                        </a>
+                    </div>
                     <div class="overlay-content">
                         {% if not request.user.is_authenticated %}
                         <li>
@@ -145,18 +151,27 @@
                         </li>
                         {% endif %}
                         <li>
+                            <a href="{% url 'index' %}" class="active">Food &amp; Beverage Cartel <sup>BY</sup></a>
+                        </li>
+                        <li>
                             <a href="#">Справочник</a>
                         </li>
                         <li>
-                            <a href="#">Обучение</a>
+                            <a href="{% url 'courses' %}">Обучение</a>
                         </li>
                         <li>
-                            <a href="#">О нас</a>
+                            <a href="{% url 'about' %}">О нас</a>
                         </li>
                         <div class="one"></div>
                     </div>
                 </div>
-                <span class="openBtn" onclick="openNav()"><a>&#9776;</a></span>
+                <div class="openBtn" onclick="openNav()">
+                    <div class="openBtnhamburger">
+                        <div class="chevron"></div>
+                        <div class="chevron"></div>
+                        <div class="chevron"></div>
+                    </div>
+                </div>
                 <div class="card">
                     <div class="box">
                         <div class="content">
@@ -218,93 +233,124 @@
                     </div>
                 </div>
                 <!--Modal for the wine-->
-                <div id="modalWine" class="modal" style="justify-content: center; width: 80vw; margin-left: 20vw; text-align: center; position: fixed;">
+                <div id="modalWine" class="modal">
                     <div class="modalContent">
-                        <div class="age">
-                            <span>Подтвердите свой возраст</span>
+                        <div class="modalIteraction">
+                            <div class="age">
+                                <span>Подтвердите свой возраст</span>
+                            </div>
+                            <div class="ageButtons">
+                                <a href="{% url 'wine' %}" class="ageButtons18above">
+                                    <input type="button" class="ageButtonAsk" value="18+">
+                                </a>
+                                <a href="https://www.lego.com/en-us">
+                                    <input type="button" class="ageButtonAsk" value="< 18">
+                                </a>
+                            </div>
                         </div>
-                        <span class="modalClose">×</span>
-                        <div class="ageButtons">
-                            <a href="{% url 'wine' %}" class="ageButtons18above">
-                                <input type="button" class="ageButtonAsk" value="18+">
-                            </a>
-                            <a href="https://www.lego.com/en-us">
-                                <input type="button" class="ageButtonAsk" value="< 18">
-                            </a>
+                        <div class="modalClosebtn">
+                            <span class="modalClose">
+                                ×
+                            </span>
                         </div>
                     </div>
                 </div>
                 <!--Modal for the spirits-->
                 <div id="modalStraight" class="modal">
                     <div class="modalContent">
-                        <div class="age">
-                            <span>Подтвердите свой возраст</span>
+                        <div class="modalIteraction">
+                            <div class="age">
+                                <span>Подтвердите свой возраст</span>
+                            </div>
+                            <div class="ageButtons">
+                                <a href="#" class="ageButtons18above">
+                                    <input type="button" class="ageButtonAsk" value="18+">
+                                </a>
+                                <a href="https://www.lego.com/en-us">
+                                    <input type="button" class="ageButtonAsk" value="< 18">
+                                </a>
+                            </div>
                         </div>
-                        <span class="modalClose">×</span>
-                        <div class="ageButtons">
-                            <a href="#" class="ageButtons18above">
-                                <input type="button" class="ageButtonAsk" value="18+">
-                            </a>
-                            <a href="https://www.lego.com/en-us">
-                                <input type="button" class="ageButtonAsk" value="< 18">
-                            </a>
+                        <div class="modalClosebtn">
+                            <span class="modalClose">
+                                ×
+                            </span>
                         </div>
                     </div>
                 </div>
                 <!--Modal for the light spirits-->
                 <div id="modalNonStraight" class="modal">
                     <div class="modalContent">
-                        <div class="age">
-                            <span>Подтвердите свой возраст</span>
+                        <div class="modalIteraction">
+                            <div class="age">
+                                <span>Подтвердите свой возраст</span>
+                            </div>
+                            <div class="ageButtons">
+                                <a href="#" class="ageButtons18above">
+                                    <input type="button" class="ageButtonAsk" value="18+">
+                                </a>
+                                <a href="https://www.lego.com/en-us">
+                                    <input type="button" class="ageButtonAsk" value="< 18">
+                                </a>
+                            </div>
                         </div>
-                        <span class="modalClose">×</span>
-                        <div class="ageButtons">
-                            <a href="#" class="ageButtons18above">
-                                <input type="button" class="ageButtonAsk" value="18+">
-                            </a>
-                            <a href="https://www.lego.com/en-us">
-                                <input type="button" class="ageButtonAsk" value="< 18">
-                            </a>
+                        <div class="modalClosebtn">
+                            <span class="modalClose">
+                                ×
+                            </span>
                         </div>
                     </div>
                 </div>
                 <!--Modal for the light spirits-->
                 <div id="modalCocktail" class="modal">
                     <div class="modalContent">
-                        <div class="age">
-                            <span>Подтвердите свой возраст</span>
+                        <div class="modalIteraction">
+                            <div class="age">
+                                <span>Подтвердите свой возраст</span>
+                            </div>
+                            <div class="ageButtons">
+                                <a href="#" class="ageButtons18above">
+                                    <input type="button" class="ageButtonAsk" value="18+">
+                                </a>
+                                <a href="https://www.lego.com/en-us">
+                                    <input type="button" class="ageButtonAsk" value="< 18">
+                                </a>
+                            </div>
                         </div>
-                        <span class="modalClose">×</span>
-                        <div class="ageButtons">
-                            <a href="#" class="ageButtons18above">
-                                <input type="button" class="ageButtonAsk" value="18+">
-                            </a>
-                            <a href="https://www.lego.com/en-us">
-                                <input type="button" class="ageButtonAsk" value="< 18">
-                            </a>
+                        <div class="modalClosebtn">
+                            <span class="modalClose">
+                                ×
+                            </span>
                         </div>
                     </div>
                 </div>
                 <!--Modal for the light spirits-->
                 <div id="modalHow" class="modal">
                     <div class="modalContent">
-                        <div class="age">
-                            <span>Подтвердите свой возраст</span>
+                        <div class="modalIteraction">
+                            <div class="age">
+                                <span>Подтвердите свой возраст</span>
+                            </div>
+                            <div class="ageButtons">
+                                <a href="#" class="ageButtons18above">
+                                    <input type="button" class="ageButtonAsk" value="18+">
+                                </a>
+                                <a href="https://www.lego.com/en-us">
+                                    <input type="button" class="ageButtonAsk" value="< 18">
+                                </a>
+                            </div>
                         </div>
-                        <span class="modalClose">×</span>
-                        <div class="ageButtons">
-                            <a href="#" class="ageButtons18above">
-                                <input type="button" class="ageButtonAsk" value="18+">
-                            </a>
-                            <a href="https://www.lego.com/en-us">
-                                <input type="button" class="ageButtonAsk" value="< 18">
-                            </a>
+                        <div class="modalClosebtn">
+                            <span class="modalClose">
+                                ×
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script type="text/javascript" src="../../static/js/navbar_toggle.js"></script>
         <script type="text/javascript" src="../../static/js/modal.js"></script>
     </body>

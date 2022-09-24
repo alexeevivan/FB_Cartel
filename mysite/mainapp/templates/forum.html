@@ -40,6 +40,7 @@
         <link rel="stylesheet" href="../../static/css/icons.css">
         <link rel="stylesheet" href="../../static/css/simple-line-icons.css">
         <link rel="stylesheet" href="../../static/css/fonts.css">
+        <link rel="stylesheet" href="../../static/css/index.css">
         <link rel="stylesheet" href="../../static/css/forum.css">
         <link rel="stylesheet" href="../../static/css/modal.css">
 
@@ -98,17 +99,23 @@
                 <a href="#">Справочник</a>
             </li>
             <li>
-                <a href="#">Обучение</a>
+                <a href="{% url 'courses' %}">Обучение</a>
             </li>
             <li>
-                <a href="#">О нас</a>
+                <a href="{% url 'about' %}">О нас</a>
             </li>
             <div class="one"></div>
         </div>
         <div id="pageInfo">
             <div class="container">
                 <div id="myNav" class="overlay">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <div class="overlay-container">
+                        <a href="javascript:void(0)" class="hamburger" onclick="closeNav()">
+                            <div class="chevron"></div>
+                            <div class="chevron"></div>
+                            <div class="chevron"></div>
+                        </a>
+                    </div>
                     <div class="overlay-content">
                         {% if not request.user.is_authenticated %}
                         <li>
@@ -120,12 +127,12 @@
                         {% endif %}
                         {% if request.user.is_authenticated %}
                         <li>
-                            <a href="{% url 'profile' %}" style="border: 1px solid rgb(255, 87, 0);">
+                            <a href="{% url 'profile' %}" id="admin_menu">
                                 {{ request.user.username }}
                             </a>
                         </li>
                         <li>
-                            <a href="{% url 'logout' %}" style="border: 1px solid rgb(218, 32, 72);">
+                            <a href="{% url 'logout' %}" id="admin_menu">
                                 Выход
                             </a>
                         </li>
@@ -133,13 +140,16 @@
                         </li>
                         {% endif %}
                         <li>
+                            <a href="{% url 'index' %}" class="active">Food &amp; Beverage Cartel <sup>BY</sup></a>
+                        </li>
+                        <li>
                             <a href="#">Справочник</a>
                         </li>
                         <li>
-                            <a href="#">Обучение</a>
+                            <a href="{% url 'courses' %}">Обучение</a>
                         </li>
                         <li>
-                            <a href="#">О нас</a>
+                            <a href="{% url 'about' %}">О нас</a>
                         </li>
                         <div class="one"></div>
                     </div>
