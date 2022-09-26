@@ -1,8 +1,29 @@
-*::before, ::after {
-    margin: 0;
-    padding: 0;
-    border: none;
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+li {
+	list-style: none;
+}
+a,
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
 }
 body {
     font-family: 'SF Pro Display';
@@ -223,10 +244,10 @@ button:hover {
     transition: 0s;
     transform: translateX(0%);
 }
-.search_btn {
+.search__btn {
     background-color: goldenrod;
 }
-.search_btn:hover {
+.search__btn:hover {
     background-color: #FFC29B;
     color: #000;
 }
@@ -315,7 +336,7 @@ button:hover {
 .form-text text-muted {
     color:rgb(0, 0, 0, 0);
 }
-.openBtn {
+.open__btn {
     display: none;
 }
 .form-control, .form-control-select, .form-control-body {
@@ -475,13 +496,13 @@ label {
         justify-content: center;
         align-items: center;
     }
-    .hamburger, .openBtnhamburger {
+    .hamburger, .open__btn-hamburger {
         width: 24px;
         height: 24px;
         scroll-behavior: smooth;
     }
     .hamburger .chevron,
-    .openBtnhamburger .chevron {
+    .open__btn-hamburger .chevron {
         position: absolute;
         width: 28px;
         height: 8px;
@@ -490,17 +511,17 @@ label {
         animation: move 3s ease-out infinite;
     }  
     .hamburger .chevron:first-child,
-    .openBtnhamburger .chevron:first-child {
+    .open__btn-hamburger .chevron:first-child {
         animation: move 3s ease-out 1s infinite;
     } 
     .hamburger .chevron:nth-child(2),
-    .openBtnhamburger .chevron:nth-child(2) {
+    .open__btn-hamburger .chevron:nth-child(2) {
         animation: move 3s ease-out 2s infinite;
     } 
     .hamburger .chevron:before,
     .hamburger .chevron:after,
-    .openBtnhamburger .chevron:before,
-    .openBtnhamburger .chevron:after {
+    .open__btn-hamburger .chevron:before,
+    .open__btn-hamburger .chevron:after {
         content: ' ';
         position: absolute;
         top: 0;
@@ -509,11 +530,11 @@ label {
         background: goldenrod;
     }  
     .hamburger .chevron:before,
-    .openBtnhamburger .chevron:before {
+    .open__btn-hamburger .chevron:before {
         left: 0;
     } 
     .hamburger .chevron:after,
-    .openBtnhamburger .chevron:after {
+    .open__btn-hamburger .chevron:after {
         right: 0;
         width: 50%;
     }
@@ -523,10 +544,10 @@ label {
     .hamburger .chevron:after {
         transform: skew(-3.9deg, -150deg);
     }
-    .openBtnhamburger .chevron:before {
+    .open__btn-hamburger .chevron:before {
         transform: skew(0deg, 30deg);
     } 
-    .openBtnhamburger .chevron:after {
+    .open__btn-hamburger .chevron:after {
         transform: skew(0deg, -30deg);
     }
     @keyframes move {
@@ -586,7 +607,7 @@ label {
         display: flex;
         flex-direction: column;
     }
-    .openBtn {
+    .open__btn {
         display: flex;
         cursor: pointer;
         width: 10vw;
@@ -602,7 +623,7 @@ label {
         box-shadow: rgb(0 0 0) 0px 0px 4px 0px inset;
         transition: 0.5s;
     }
-    .openBtn:active {
+    .open__btn:active {
         width: 9vw;
         height: 9vh;
         margin: 3.5vh;
@@ -647,16 +668,16 @@ label {
         width: 100%;
         text-align: center;
     }
-    .openBtn {
+    .open__btn {
         display: block;
         font-size:30px;
         cursor:pointer;
     }
-    .openBtn a {
+    .open__btn a {
         font-size: 25px;
         color: #000000;
     }
-    .openBtn:hover a {
+    .open__btn:hover a {
         color:black;
         transition: 1s;
     }

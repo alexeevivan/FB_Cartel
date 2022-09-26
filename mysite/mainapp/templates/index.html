@@ -1,357 +1,368 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <!--Кодировка-->
-        <meta charset="UTF-8">
-        <!--Адаптивность. User-scalable=0 запрещает зумить на Android-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <!--Краткое описание страницы для поисковых плтаформ (до 140 символов)-->
-        <meta name="description" content="">
-        <!--Ключевые слова для поисковых платформ (до 20 слов через запятую)-->
-        <meta name="keywords" content="">
-        <!--Мета теги в случае репоста страницы сайта на Facebook-->
-        <!--Локализация сайта. Для русскоязычного сайта - ru_RU-->
-        <meta property="og:locale" content="ru_RU">
-        <meta property="og:type" content="aticle">
-        <!--Какой заголовок сайта при репосте-->
-        <meta proprety="og:title" content="">
-        <!--Описания страницы при репосте-->
-        <meta property="og:descritpion" content="">
-        <!--Ссылка на изображение, которое выводится при репосте (http-адрес нужно будет вставить с изображением)-->
-        <meta property="og:image" content="">
-        <!--Ссылка на конкретную страницу (тоже http-адрес указать для каждой страницы)-->
-        <meta property="og:url" content="">
-        <!--Название сайта при репосте-->
-        <meta property="og:site_name" content="F&B Cartel">
-        <!--Разрешение или запрет номер телефона делать ссылкой на звонок в iOS-->
-        <meta name="format-detection" content="telephone=yes">
-        <!--Данные о владельце/авторе страницы-->
-        <meta name="Author" content="Alexeev Ivan">
-        <meta name="Copyright" content="Alexeev Ivan">
-        <meta name="Address" content="">
 
-        <!--Эту строчку добавить только на страницу 404 - она позволяет выполнить редирект на главную, если вылезла 404-->
-        <!--<meta http-equiv="refresh" content="3, url=index.html"-->
-        
-        <!--Запрет на индексацию сайта; потом убрать!-->
-        <meta name="robots" content="none">
+<head>
+	<!--Кодировка-->
+	<meta charset="UTF-8">
+	<!--Адаптивность. User-scalable=0 запрещает зумить на Android-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!--Краткое описание страницы для поисковых плтаформ (до 140 символов)-->
+	<meta name="description" content="">
+	<!--Ключевые слова для поисковых платформ (до 20 слов через запятую)-->
+	<meta name="keywords" content="">
+	<!--Мета теги в случае репоста страницы сайта на Facebook-->
+	<!--Локализация сайта. Для русскоязычного сайта - ru_RU-->
+	<meta property="og:locale" content="ru_RU">
+	<meta property="og:type" content="aticle">
+	<!--Какой заголовок сайта при репосте-->
+	<meta proprety="og:title" content="">
+	<!--Описания страницы при репосте-->
+	<meta property="og:descritpion" content="">
+	<!--Ссылка на изображение, которое выводится при репосте (http-адрес нужно будет вставить с изображением)-->
+	<meta property="og:image" content="">
+	<!--Ссылка на конкретную страницу (тоже http-адрес указать для каждой страницы)-->
+	<meta property="og:url" content="">
+	<!--Название сайта при репосте-->
+	<meta property="og:site_name" content="F&B Cartel">
+	<!--Разрешение или запрет номер телефона делать ссылкой на звонок в iOS-->
+	<meta name="format-detection" content="telephone=yes">
+	<!--Данные о владельце/авторе страницы-->
+	<meta name="Author" content="Alexeev Ivan">
+	<meta name="Copyright" content="Alexeev Ivan">
+	<meta name="Address" content="">
 
+	<!--Эту строчку добавить только на страницу 404 - она позволяет выполнить редирект на главную, если вылезла 404-->
+	<!--<meta http-equiv="refresh" content="3, url=index.html"-->
 
-        <link rel="stylesheet" href="../../static/css/icons.css">
-        <link rel="stylesheet" href="../../static/css/simple-line-icons.css">
-        <link rel="stylesheet" href="../../static/css/fonts.css">
-        <link rel="stylesheet" href="../../static/css/index.css">
-        <link rel="stylesheet" href="../../static/css/modal.css">
-
-        
-        <link rel="icon" type="image/vnd.microsoft.icon" href="../newyear2022/static/img/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../newyear2022/static/img/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../newyear2022/static/img/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../newyear2022/static/img/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../newyear2022/static/img/favicon.ico">
-        <link rel="icon" sizes="128x128" href="../newyear2022/static/img/favicon.ico">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap">
+	<!--Запрет на индексацию сайта; потом убрать!-->
+	<meta name="robots" content="none">
 
 
-        <title>
-            Food &amp; Beverage Cartel
-        </title>
-        
-    </head>
-    <body>
-        <div id="pageNav">
-            <div id="logo">
-                <a href="{% url 'index' %}">Food &amp; Beverage Cartel <sup>BY</sup></a>
-            </div>
-            {% if not request.user.is_authenticated %}
-                <li>
-                    <a href="{% url 'login' %}">
-                        Авторизация
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'register' %}">
-                        Регистрация
-                    </a>
-                </li>
-            {% endif %}
-            {% if request.user.is_authenticated %}
-                <li>
-                    <a href="{% url 'profile' %}" id="admin_menu">
-                        {{ request.user.username }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'logout' %}" id="admin_menu">
-                        Выход
-                    </a>
-                </li>
-            {% endif %}
-            <li>
-                <a href="#">Справочник</a>
-            </li>
-            <li>
-                <a href="{% url 'courses' %}">Обучение</a>
-            </li>
-            <li>
-                <a href="{% url 'about' %}">О нас</a>
-            </li>
-            <div class="one">
-                <footer>
-                    <form class="searchform" action="{% url 'search_results' %}" method="get">
-                        <input placeholder="Поиск..." aria-label="Search" name="q">
-                        <ul>
-                            <li>
-                                <a>
-                                    <button class="search_btn">
-                                        <span>
-                                            Найти
-                                        </span>
-                                    </button>
-                                </a>
-                            </li>
-                        </ul>
-                    </form>
-                </footer>
-            </div>
-        </div>
-        <div id="pageInfo">
-            <div class="container">
-                <div id="myNav" class="overlay">
-                    <div class="overlay-container">
-                        <a href="javascript:void(0)" class="hamburger" onclick="closeNav()">
-                            <div class="chevron"></div>
-                            <div class="chevron"></div>
-                            <div class="chevron"></div>
-                        </a>
-                    </div>
-                    <div class="overlay-content">
-                        {% if not request.user.is_authenticated %}
-                        <li>
-                            <a href="{% url 'login' %}">Авторизация</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'register' %}">Регистрация</a>
-                        </li>
-                        {% endif %}
-                        {% if request.user.is_authenticated %}
-                        <li>
-                            <a href="{% url 'profile' %}" id="admin_menu">
-                                {{ request.user.username }}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{% url 'logout' %}" id="admin_menu">
-                                Выход
-                            </a>
-                        </li>
-                        <li>
-                        </li>
-                        {% endif %}
-                        <li>
-                            <a href="{% url 'index' %}" class="active">Food &amp; Beverage Cartel <sup>BY</sup></a>
-                        </li>
-                        <li>
-                            <a href="#">Справочник</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'courses' %}">Обучение</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'about' %}">О нас</a>
-                        </li>
-                        <div class="one"></div>
-                    </div>
-                </div>
-                <div class="openBtn" onclick="openNav()">
-                    <div class="openBtnhamburger">
-                        <div class="chevron"></div>
-                        <div class="chevron"></div>
-                        <div class="chevron"></div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <div class="content">
-                            <h2><img class="fl" src="https://img.icons8.com/dotty/100/000000/grapes.png" style="width:70%; height: 70%;"/></h2>
-                            <h3>Вино</h3>
-                            <p>«<strike style="color: rgb(26, 26, 26);">Я в вине совершенно не разбираюсь</strike>»</p>
-                            <button id="modalWine" class="modalOpenBtn" onclick="openModal('modalWine')">Читать</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <div class="content">
-                            <h2><img class="fl" src="https://img.icons8.com/ios/50/000000/whisky-still.png"/></h2>
-                            <h3>40%</h3>
-                            <p>История и описание крепких алкогольных напитков</p>
-                            <button id="modalStraight" class="modalOpenBtn" onclick="openModal('modalStraight')">Читать</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <div class="content">
-                            <h2><img class="fl" src="https://img.icons8.com/dotty/100/000000/beer.png" style="width:50%; height: 50%;"/></h2>
-                            <h3>Не 40%</h3>
-                            <p></p>
-                            <button id="modalNonStraight" class="modalOpenBtn" onclick="openModal('modalNonStraight')">Читать</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <div class="content">
-                            <h2><img class="fl" src="https://img.icons8.com/dotty/80/000000/cocktail-shaker.png" style="width:80%; height: 80%;"/></h2>
-                            <h3>Коктейль</h3>
-                            <p>Не спрашивай, по ком звонит шейкер</p>
-                            <button id="modalCocktail" class="modalOpenBtn" onclick="openModal('modalCocktail')">Читать</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <div class="content">
-                            <h2><img class="fl" src="https://img.icons8.com/dotty/80/000000/work-light.png" style="width:80%; height: 80%;"/></h2>
-                            <h3>Как?</h3>
-                            <p>От старта карьеры до запуска бара</p>
-                            <button id="modalHow" class="modalOpenBtn" onclick="openModal('modalHow')">Читать</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <div class="content">
-                            <h2><img class="fl" src="https://img.icons8.com/dotty/64/000000/chat.png" style="width:80%; height: 80%;"/></h2>
-                            <h3>Форум</h3>
-                            <p>Обсуждение рецептур, заведений и новостей</p>
-                            <button><a href="{% url 'forum' %}">Обсудить</a></button>
-                        </div>
-                    </div>
-                </div>
-                <!--Modal for the wine-->
-                <div id="modalWine" class="modal">
-                    <div class="modalContent">
-                        <div class="modalIteraction">
-                            <div class="age">
-                                <span>Подтвердите свой возраст</span>
-                            </div>
-                            <div class="ageButtons">
-                                <a href="{% url 'wine' %}" class="ageButtons18above">
-                                    <input type="button" class="ageButtonAsk" value="18+">
-                                </a>
-                                <a href="https://www.lego.com/en-us">
-                                    <input type="button" class="ageButtonAsk" value="< 18">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="modalClosebtn">
-                            <span class="modalClose">
-                                ×
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <!--Modal for the spirits-->
-                <div id="modalStraight" class="modal">
-                    <div class="modalContent">
-                        <div class="modalIteraction">
-                            <div class="age">
-                                <span>Подтвердите свой возраст</span>
-                            </div>
-                            <div class="ageButtons">
-                                <a href="#" class="ageButtons18above">
-                                    <input type="button" class="ageButtonAsk" value="18+">
-                                </a>
-                                <a href="https://www.lego.com/en-us">
-                                    <input type="button" class="ageButtonAsk" value="< 18">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="modalClosebtn">
-                            <span class="modalClose">
-                                ×
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <!--Modal for the light spirits-->
-                <div id="modalNonStraight" class="modal">
-                    <div class="modalContent">
-                        <div class="modalIteraction">
-                            <div class="age">
-                                <span>Подтвердите свой возраст</span>
-                            </div>
-                            <div class="ageButtons">
-                                <a href="#" class="ageButtons18above">
-                                    <input type="button" class="ageButtonAsk" value="18+">
-                                </a>
-                                <a href="https://www.lego.com/en-us">
-                                    <input type="button" class="ageButtonAsk" value="< 18">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="modalClosebtn">
-                            <span class="modalClose">
-                                ×
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <!--Modal for the light spirits-->
-                <div id="modalCocktail" class="modal">
-                    <div class="modalContent">
-                        <div class="modalIteraction">
-                            <div class="age">
-                                <span>Подтвердите свой возраст</span>
-                            </div>
-                            <div class="ageButtons">
-                                <a href="#" class="ageButtons18above">
-                                    <input type="button" class="ageButtonAsk" value="18+">
-                                </a>
-                                <a href="https://www.lego.com/en-us">
-                                    <input type="button" class="ageButtonAsk" value="< 18">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="modalClosebtn">
-                            <span class="modalClose">
-                                ×
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <!--Modal for the light spirits-->
-                <div id="modalHow" class="modal">
-                    <div class="modalContent">
-                        <div class="modalIteraction">
-                            <div class="age">
-                                <span>Подтвердите свой возраст</span>
-                            </div>
-                            <div class="ageButtons">
-                                <a href="#" class="ageButtons18above">
-                                    <input type="button" class="ageButtonAsk" value="18+">
-                                </a>
-                                <a href="https://www.lego.com/en-us">
-                                    <input type="button" class="ageButtonAsk" value="< 18">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="modalClosebtn">
-                            <span class="modalClose">
-                                ×
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+	<link rel="stylesheet" href="../../static/css/icons.css">
+	<link rel="stylesheet" href="../../static/css/simple-line-icons.css">
+	<link rel="stylesheet" href="../../static/css/fonts.css">
+	<link rel="stylesheet" href="../../static/css/index.css">
+	<link rel="stylesheet" href="../../static/css/modal.css">
 
-        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-        <script type="text/javascript" src="../../static/js/navbar_toggle.js"></script>
-        <script type="text/javascript" src="../../static/js/modal.js"></script>
-    </body>
+
+	<link rel="icon" type="image/vnd.microsoft.icon" href="../newyear2022/static/img/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="../newyear2022/static/img/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../newyear2022/static/img/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../newyear2022/static/img/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../newyear2022/static/img/favicon.ico">
+	<link rel="icon" sizes="128x128" href="../newyear2022/static/img/favicon.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap">
+
+
+	<title>
+		Food &amp; Beverage Cartel
+	</title>
+
+</head>
+
+<body>
+	<div id="pageNav">
+		<div id="logo">
+			<a href="{% url 'index' %}">Food &amp; Beverage Cartel <sup>BY</sup></a>
+		</div>
+		{% if not request.user.is_authenticated %}
+		<li>
+			<a href="{% url 'login' %}">
+				Авторизация
+			</a>
+		</li>
+		<li>
+			<a href="{% url 'register' %}">
+				Регистрация
+			</a>
+		</li>
+		{% endif %}
+		{% if request.user.is_authenticated %}
+		<li>
+			<a href="{% url 'profile' %}" id="admin_menu">
+				{{ request.user.username }}
+			</a>
+		</li>
+		<li>
+			<a href="{% url 'logout' %}" id="admin_menu">
+				Выход
+			</a>
+		</li>
+		{% endif %}
+		<li>
+			<a href="#">Справочник</a>
+		</li>
+		<li>
+			<a href="{% url 'courses' %}">Обучение</a>
+		</li>
+		<li>
+			<a href="{% url 'about' %}">О нас</a>
+		</li>
+		<div class="one">
+			<footer>
+				<form class="searchform" action="{% url 'search_results' %}" method="get">
+					<input placeholder="Поиск..." aria-label="Search" name="q">
+					<ul>
+						<li>
+							<a>
+								<button class="search__btn">
+									<span>
+										Найти
+									</span>
+								</button>
+							</a>
+						</li>
+					</ul>
+				</form>
+			</footer>
+		</div>
+	</div>
+	<div id="pageInfo">
+		<div class="container">
+			<div id="myNav" class="overlay">
+				<div class="overlay-container">
+					<a href="javascript:void(0)" class="hamburger" onclick="closeNav()">
+						<div class="chevron"></div>
+						<div class="chevron"></div>
+						<div class="chevron"></div>
+					</a>
+				</div>
+				<div class="overlay-content">
+					{% if not request.user.is_authenticated %}
+					<li>
+						<a href="{% url 'login' %}">Авторизация</a>
+					</li>
+					<li>
+						<a href="{% url 'register' %}">Регистрация</a>
+					</li>
+					{% endif %}
+					{% if request.user.is_authenticated %}
+					<li>
+						<a href="{% url 'profile' %}" id="admin_menu">
+							{{ request.user.username }}
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'logout' %}" id="admin_menu">
+							Выход
+						</a>
+					</li>
+					<li>
+					</li>
+					{% endif %}
+					<li>
+						<a href="{% url 'index' %}" class="active">Food &amp; Beverage Cartel <sup>BY</sup></a>
+					</li>
+					<li>
+						<a href="#">Справочник</a>
+					</li>
+					<li>
+						<a href="{% url 'courses' %}">Обучение</a>
+					</li>
+					<li>
+						<a href="{% url 'about' %}">О нас</a>
+					</li>
+					<div class="one"></div>
+				</div>
+			</div>
+			<div class="open__btn" onclick="openNav()">
+				<div class="open__btn-hamburger">
+					<div class="chevron"></div>
+					<div class="chevron"></div>
+					<div class="chevron"></div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="box">
+					<div class="content">
+						<h2><img class="fl" src="https://img.icons8.com/dotty/100/000000/grapes.png"
+								style="width:70%; height: 70%;" /></h2>
+						<h3>Вино</h3>
+						<p>«<strike style="color: rgb(26, 26, 26);">Я в вине совершенно не разбираюсь</strike>»</p>
+						<button id="modalWine" class="modal__open-btn" onclick="openModal('modalWine')">Читать</button>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="box">
+					<div class="content">
+						<h2><img class="fl" src="https://img.icons8.com/ios/50/000000/whisky-still.png" /></h2>
+						<h3>40%</h3>
+						<p>История и описание крепких алкогольных напитков</p>
+						<button id="modalStraight" class="modal__open-btn"
+							onclick="openModal('modalStraight')">Читать</button>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="box">
+					<div class="content">
+						<h2><img class="fl" src="https://img.icons8.com/dotty/100/000000/beer.png"
+								style="width:50%; height: 50%;" /></h2>
+						<h3>Не 40%</h3>
+						<p></p>
+						<button id="modalNonStraight" class="modal__open-btn"
+							onclick="openModal('modalNonStraight')">Читать</button>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="box">
+					<div class="content">
+						<h2><img class="fl" src="https://img.icons8.com/dotty/80/000000/cocktail-shaker.png"
+								style="width:80%; height: 80%;" /></h2>
+						<h3>Коктейль</h3>
+						<p>Не спрашивай, по ком звонит шейкер</p>
+						<button id="modalCocktail" class="modal__open-btn"
+							onclick="openModal('modalCocktail')">Читать</button>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="box">
+					<div class="content">
+						<h2><img class="fl" src="https://img.icons8.com/dotty/80/000000/work-light.png"
+								style="width:80%; height: 80%;" /></h2>
+						<h3>Как?</h3>
+						<p>От старта карьеры до запуска бара</p>
+						<button id="modalHow" class="modal__open-btn" onclick="openModal('modalHow')">Читать</button>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="box">
+					<div class="content">
+						<h2><img class="fl" src="https://img.icons8.com/dotty/64/000000/chat.png"
+								style="width:80%; height: 80%;" /></h2>
+						<h3>Форум</h3>
+						<p>Обсуждение рецептур, заведений и новостей</p>
+						<button><a href="{% url 'forum' %}">Обсудить</a></button>
+					</div>
+				</div>
+			</div>
+			<!--Modal for the wine-->
+			<div id="modalWine" class="modal">
+				<div class="modal__content">
+					<div class="modal__iteraction">
+						<div class="age">
+							<span>Подтвердите свой возраст</span>
+						</div>
+						<div class="age__buttons">
+							<a href="{% url 'wine' %}" class="age__buttons-above">
+								<input type="button" class="age__button-ask" value="18+">
+							</a>
+							<a href="https://www.lego.com/en-us">
+								<input type="button" class="age__button-ask" value="< 18">
+							</a>
+						</div>
+					</div>
+					<div class="modal__close-btn">
+						<span class="modal__close">
+							×
+						</span>
+					</div>
+				</div>
+			</div>
+			<!--Modal for the spirits-->
+			<div id="modalStraight" class="modal">
+				<div class="modal__content">
+					<div class="modal__iteraction">
+						<div class="age">
+							<span>Подтвердите свой возраст</span>
+						</div>
+						<div class="age__buttons">
+							<a href="#" class="age__buttons-above">
+								<input type="button" class="age__button-ask" value="18+">
+							</a>
+							<a href="https://www.lego.com/en-us">
+								<input type="button" class="age__button-ask" value="< 18">
+							</a>
+						</div>
+					</div>
+					<div class="modal__close-btn">
+						<span class="modal__close">
+							×
+						</span>
+					</div>
+				</div>
+			</div>
+			<!--Modal for the light spirits-->
+			<div id="modalNonStraight" class="modal">
+				<div class="modal__content">
+					<div class="modal__iteraction">
+						<div class="age">
+							<span>Подтвердите свой возраст</span>
+						</div>
+						<div class="age__buttons">
+							<a href="#" class="age__buttons-above">
+								<input type="button" class="age__button-ask" value="18+">
+							</a>
+							<a href="https://www.lego.com/en-us">
+								<input type="button" class="age__button-ask" value="< 18">
+							</a>
+						</div>
+					</div>
+					<div class="modal__close-btn">
+						<span class="modal__close">
+							×
+						</span>
+					</div>
+				</div>
+			</div>
+			<!--Modal for the light spirits-->
+			<div id="modalCocktail" class="modal">
+				<div class="modal__content">
+					<div class="modal__iteraction">
+						<div class="age">
+							<span>Подтвердите свой возраст</span>
+						</div>
+						<div class="age__buttons">
+							<a href="#" class="age__buttons-above">
+								<input type="button" class="age__button-ask" value="18+">
+							</a>
+							<a href="https://www.lego.com/en-us">
+								<input type="button" class="age__button-ask" value="< 18">
+							</a>
+						</div>
+					</div>
+					<div class="modal__close-btn">
+						<span class="modal__close">
+							×
+						</span>
+					</div>
+				</div>
+			</div>
+			<!--Modal for the light spirits-->
+			<div id="modalHow" class="modal">
+				<div class="modal__content">
+					<div class="modal__iteraction">
+						<div class="age">
+							<span>Подтвердите свой возраст</span>
+						</div>
+						<div class="age__buttons">
+							<a href="#" class="age__buttons-above">
+								<input type="button" class="age__button-ask" value="18+">
+							</a>
+							<a href="https://www.lego.com/en-us">
+								<input type="button" class="age__button-ask" value="< 18">
+							</a>
+						</div>
+					</div>
+					<div class="modal__close-btn">
+						<span class="modal__close">
+							×
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="../../static/js/navbar_toggle.js"></script>
+	<script type="text/javascript" src="../../static/js/modal.js"></script>
+</body>
+
 </html>
