@@ -31,29 +31,24 @@
 	<meta name="Copyright" content="Alexeev Ivan">
 	<meta name="Address" content="">
 
-	<!--Эту строчку добавить только на страницу 404 - она позволяет выполнить редирект на главную, если вылезла 404-->
-	<!--<meta http-equiv="refresh" content="3, url=index.html"-->
+	<!-- Эту строчку добавить только на страницу 404 - она позволяет выполнить редирект на главную, если вылезла 404-->
+	<!--<meta http-equiv="refresh" content="3, url=index.html" -->
 
 	<!--Запрет на индексацию сайта; потом убрать!-->
 	<meta name="robots" content="none">
 
-
 	<link rel="stylesheet" href="../../static/css/icons.css">
 	<link rel="stylesheet" href="../../static/css/simple-line-icons.css">
-	<link rel="stylesheet" href="../../static/css/fonts.css">
 	<link rel="stylesheet" href="../../static/css/index.css">
 	<link rel="stylesheet" href="../../static/css/modal.css">
 
 
-	<link rel="icon" type="image/vnd.microsoft.icon" href="../newyear2022/static/img/favicon.ico">
+	<!-- <link rel="icon" type="image/vnd.microsoft.icon" href="../newyear2022/static/img/favicon.ico">
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="../newyear2022/static/img/favicon.ico">
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../newyear2022/static/img/favicon.ico">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../newyear2022/static/img/favicon.ico">
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../newyear2022/static/img/favicon.ico">
-	<link rel="icon" sizes="128x128" href="../newyear2022/static/img/favicon.ico">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap">
+	<link rel="icon" sizes="128x128" href="../newyear2022/static/img/favicon.ico"> -->
 
 
 	<title>
@@ -92,13 +87,19 @@
 		</li>
 		{% endif %}
 		<li>
-			<a href="#">Справочник</a>
+			<a href="#">
+				Справочник
+			</a>
 		</li>
 		<li>
-			<a href="{% url 'courses' %}">Обучение</a>
+			<a href="{% url 'courses' %}">
+				Обучение
+			</a>
 		</li>
 		<li>
-			<a href="{% url 'about' %}">О нас</a>
+			<a href="{% url 'about' %}">
+				О нас
+			</a>
 		</li>
 		<div class="one">
 			<footer>
@@ -129,13 +130,17 @@
 						<div class="chevron"></div>
 					</a>
 				</div>
-				<div class="overlay-content">
+				<div class="overlay__content">
 					{% if not request.user.is_authenticated %}
 					<li>
-						<a href="{% url 'login' %}">Авторизация</a>
+						<a href="{% url 'login' %}">
+							Авторизация
+						</a>
 					</li>
 					<li>
-						<a href="{% url 'register' %}">Регистрация</a>
+						<a href="{% url 'register' %}">
+							Регистрация
+						</a>
 					</li>
 					{% endif %}
 					{% if request.user.is_authenticated %}
@@ -153,16 +158,24 @@
 					</li>
 					{% endif %}
 					<li>
-						<a href="{% url 'index' %}" class="active">Food &amp; Beverage Cartel <sup>BY</sup></a>
+						<a href="{% url 'index' %}" class="active">
+							Food &amp; Beverage Cartel <sup>BY</sup>
+						</a>
 					</li>
 					<li>
-						<a href="#">Справочник</a>
+						<a href="#">
+							Справочник
+						</a>
 					</li>
 					<li>
-						<a href="{% url 'courses' %}">Обучение</a>
+						<a href="{% url 'courses' %}">
+							Обучение
+						</a>
 					</li>
 					<li>
-						<a href="{% url 'about' %}">О нас</a>
+						<a href="{% url 'about' %}">
+							О нас
+						</a>
 					</li>
 					<div class="one"></div>
 				</div>
@@ -175,70 +188,100 @@
 				</div>
 			</div>
 			<div class="card">
-				<div class="box">
-					<div class="content">
-						<h2><img class="fl" src="https://img.icons8.com/dotty/100/000000/grapes.png"
-								style="width:70%; height: 70%;" /></h2>
-						<h3>Вино</h3>
-						<p>«<strike style="color: rgb(26, 26, 26);">Я в вине совершенно не разбираюсь</strike>»</p>
-						<button id="modalWine" class="modal__open-btn" onclick="openModal('modalWine')">Читать</button>
+				<div class="card__box">
+					<div class="card__content">
+						<img class="card__image" src="https://img.icons8.com/dotty/100/000000/grapes.png" />
+						<h3>
+							Вино
+						</h3>
+						<p>
+							«<strike>
+								Я в вине совершенно не разбираюсь
+							</strike>»
+						</p>
+						<button id="modalWine" class="modal__open-btn" onclick="openModal('modalWine')">
+							Читать
+						</button>
 					</div>
 				</div>
 			</div>
 			<div class="card">
-				<div class="box">
-					<div class="content">
-						<h2><img class="fl" src="https://img.icons8.com/ios/50/000000/whisky-still.png" /></h2>
-						<h3>40%</h3>
-						<p>История и описание крепких алкогольных напитков</p>
-						<button id="modalStraight" class="modal__open-btn"
-							onclick="openModal('modalStraight')">Читать</button>
+				<div class="card__box">
+					<div class="card__content">
+						<img class="card__image another" src="https://img.icons8.com/ios/50/000000/whisky-still.png" />
+						<h3>
+							40%
+						</h3>
+						<p>
+							История и описание крепких алкогольных напитков
+						</p>
+						<button id="modalStraight" class="modal__open-btn" onclick="openModal('modalStraight')">
+							Читать
+						</button>
 					</div>
 				</div>
 			</div>
 			<div class="card">
-				<div class="box">
-					<div class="content">
-						<h2><img class="fl" src="https://img.icons8.com/dotty/100/000000/beer.png"
-								style="width:50%; height: 50%;" /></h2>
-						<h3>Не 40%</h3>
+				<div class="card__box">
+					<div class="card__content">
+						<img class="card__image" src="https://img.icons8.com/dotty/100/000000/beer.png" />
+						<h3>
+							Не 40%
+						</h3>
 						<p></p>
-						<button id="modalNonStraight" class="modal__open-btn"
-							onclick="openModal('modalNonStraight')">Читать</button>
+						<button id="modalNonStraight" class="modal__open-btn" onclick="openModal('modalNonStraight')">
+							Читать
+						</button>
 					</div>
 				</div>
 			</div>
 			<div class="card">
-				<div class="box">
-					<div class="content">
-						<h2><img class="fl" src="https://img.icons8.com/dotty/80/000000/cocktail-shaker.png"
-								style="width:80%; height: 80%;" /></h2>
-						<h3>Коктейль</h3>
-						<p>Не спрашивай, по ком звонит шейкер</p>
-						<button id="modalCocktail" class="modal__open-btn"
-							onclick="openModal('modalCocktail')">Читать</button>
+				<div class="card__box">
+					<div class="card__content">
+						<img class="card__image" src="https://img.icons8.com/dotty/80/000000/cocktail-shaker.png" />
+						<h3>
+							Коктейль
+						</h3>
+						<p>
+							Не спрашивай, по ком звонит шейкер
+						</p>
+						<button id="modalCocktail" class="modal__open-btn" onclick="openModal('modalCocktail')">
+							Читать
+						</button>
 					</div>
 				</div>
 			</div>
 			<div class="card">
-				<div class="box">
-					<div class="content">
-						<h2><img class="fl" src="https://img.icons8.com/dotty/80/000000/work-light.png"
-								style="width:80%; height: 80%;" /></h2>
-						<h3>Как?</h3>
-						<p>От старта карьеры до запуска бара</p>
-						<button id="modalHow" class="modal__open-btn" onclick="openModal('modalHow')">Читать</button>
+				<div class="card__box">
+					<div class="card__content">
+						<img class="card__image" src="https://img.icons8.com/dotty/80/000000/work-light.png" />
+						<h3>
+							Как?
+						</h3>
+						<p>
+							От старта карьеры до запуска бара
+						</p>
+						<button id="modalHow" class="modal__open-btn" onclick="openModal('modalHow')">
+							Читать
+						</button>
 					</div>
 				</div>
 			</div>
 			<div class="card">
-				<div class="box">
-					<div class="content">
-						<h2><img class="fl" src="https://img.icons8.com/dotty/64/000000/chat.png"
-								style="width:80%; height: 80%;" /></h2>
-						<h3>Форум</h3>
-						<p>Обсуждение рецептур, заведений и новостей</p>
-						<button><a href="{% url 'forum' %}">Обсудить</a></button>
+				<div class="card__box">
+					<div class="card__content">
+						<img class="card__image" src="https://img.icons8.com/dotty/64/000000/chat.png" />
+						<h3>
+							Форум
+						</h3>
+						<p>
+							Обсуждение рецептур, заведений и новостей
+						</p>
+						<button>
+							<a href="{% url 'forum' %}">
+								Обсудить
+							</a>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -247,14 +290,16 @@
 				<div class="modal__content">
 					<div class="modal__iteraction">
 						<div class="age">
-							<span>Подтвердите свой возраст</span>
+							<span>
+								Подтвердите свой возраст
+							</span>
 						</div>
 						<div class="age__buttons">
 							<a href="{% url 'wine' %}" class="age__buttons-above">
 								<input type="button" class="age__button-ask" value="18+">
 							</a>
 							<a href="https://www.lego.com/en-us">
-								<input type="button" class="age__button-ask" value="< 18">
+								<input type="button" class="age__button-ask" value="&lt; 18">
 							</a>
 						</div>
 					</div>
@@ -270,14 +315,16 @@
 				<div class="modal__content">
 					<div class="modal__iteraction">
 						<div class="age">
-							<span>Подтвердите свой возраст</span>
+							<span>
+								Подтвердите свой возраст
+							</span>
 						</div>
 						<div class="age__buttons">
 							<a href="#" class="age__buttons-above">
 								<input type="button" class="age__button-ask" value="18+">
 							</a>
 							<a href="https://www.lego.com/en-us">
-								<input type="button" class="age__button-ask" value="< 18">
+								<input type="button" class="age__button-ask" value="&lt; 18">
 							</a>
 						</div>
 					</div>
@@ -293,14 +340,16 @@
 				<div class="modal__content">
 					<div class="modal__iteraction">
 						<div class="age">
-							<span>Подтвердите свой возраст</span>
+							<span>
+								Подтвердите свой возраст
+							</span>
 						</div>
 						<div class="age__buttons">
 							<a href="#" class="age__buttons-above">
 								<input type="button" class="age__button-ask" value="18+">
 							</a>
 							<a href="https://www.lego.com/en-us">
-								<input type="button" class="age__button-ask" value="< 18">
+								<input type="button" class="age__button-ask" value="&lt; 18">
 							</a>
 						</div>
 					</div>
@@ -316,14 +365,16 @@
 				<div class="modal__content">
 					<div class="modal__iteraction">
 						<div class="age">
-							<span>Подтвердите свой возраст</span>
+							<span>
+								Подтвердите свой возраст
+							</span>
 						</div>
 						<div class="age__buttons">
 							<a href="#" class="age__buttons-above">
 								<input type="button" class="age__button-ask" value="18+">
 							</a>
 							<a href="https://www.lego.com/en-us">
-								<input type="button" class="age__button-ask" value="< 18">
+								<input type="button" class="age__button-ask" value="&lt; 18">
 							</a>
 						</div>
 					</div>
@@ -339,14 +390,16 @@
 				<div class="modal__content">
 					<div class="modal__iteraction">
 						<div class="age">
-							<span>Подтвердите свой возраст</span>
+							<span>
+								Подтвердите свой возраст
+							</span>
 						</div>
 						<div class="age__buttons">
 							<a href="#" class="age__buttons-above">
 								<input type="button" class="age__button-ask" value="18+">
 							</a>
 							<a href="https://www.lego.com/en-us">
-								<input type="button" class="age__button-ask" value="< 18">
+								<input type="button" class="age__button-ask" value="&lt; 18">
 							</a>
 						</div>
 					</div>
