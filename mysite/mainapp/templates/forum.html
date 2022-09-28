@@ -1,237 +1,268 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <!--Кодировка-->
-        <meta charset="UTF-8">
-        <!--Адаптивность. User-scalable=0 запрещает зумить на Android-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        <!--Краткое описание страницы для поисковых плтаформ (до 140 символов)-->
-        <meta name="description" content="">
-        <!--Ключевые слова для поисковых платформ (до 20 слов через запятую)-->
-        <meta name="keywords" content="">
-        <!--Мета теги в случае репоста страницы сайта на Facebook-->
-        <!--Локализация сайта. Для русскоязычного сайта - ru_RU-->
-        <meta property="og:locale" content="ru_RU">
-        <meta property="og:type" content="aticle">
-        <!--Какой заголовок сайта при репосте-->
-        <meta proprety="og:title" content="">
-        <!--Описания страницы при репосте-->
-        <meta property="ogdescritpion" content="">
-        <!--Ссылка на изображение, которое выводится при репосте (http-адрес нужно будет вставить с изображением)-->
-        <meta property="og:image" content="">
-        <!--Ссылка на конкретную страницу (тоже http-адрес указать для каждой страницы)-->
-        <meta property="og:url" content="">
-        <!--Название сайта при репосте-->
-        <meta property="og:site_name" content="F&B Cartel">
-        <!--Разрешение или запрет номер телефона делать ссылкой на звонок в iOS-->
-        <meta name="format-detection" content="telephone=yes">
-        <!--Данные о владельце/авторе страницы-->
-        <meta name="Author" content="Alexeev Ivan">
-        <meta name="Copyright" content="Alexeev Ivan">
-        <meta name="Address" content="">
 
-        <!--Эту строчку добавить только на страницу 404 - она позволяет выполнить редирект на главную, если вылезла 404-->
-        <!--<meta http-equiv="refresh" content="3, url=index.html"-->
-        
-        <!--Запрет на индексацию сайта; потом убрать!-->
-        <meta name="robots" content="none">
+<head>
+	<!--Кодировка-->
+	<meta charset="UTF-8">
+	<!--Адаптивность. User-scalable=0 запрещает зумить на Android-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!--Краткое описание страницы для поисковых плтаформ (до 140 символов)-->
+	<meta name="description" content="">
+	<!--Ключевые слова для поисковых платформ (до 20 слов через запятую)-->
+	<meta name="keywords" content="">
+	<!--Мета теги в случае репоста страницы сайта на Facebook-->
+	<!--Локализация сайта. Для русскоязычного сайта - ru_RU-->
+	<meta property="og:locale" content="ru_RU">
+	<meta property="og:type" content="aticle">
+	<!--Какой заголовок сайта при репосте-->
+	<meta proprety="og:title" content="">
+	<!--Описания страницы при репосте-->
+	<meta property="ogdescritpion" content="">
+	<!--Ссылка на изображение, которое выводится при репосте (http-адрес нужно будет вставить с изображением)-->
+	<meta property="og:image" content="">
+	<!--Ссылка на конкретную страницу (тоже http-адрес указать для каждой страницы)-->
+	<meta property="og:url" content="">
+	<!--Название сайта при репосте-->
+	<meta property="og:site_name" content="F&B Cartel">
+	<!--Разрешение или запрет номер телефона делать ссылкой на звонок в iOS-->
+	<meta name="format-detection" content="telephone=yes">
+	<!--Данные о владельце/авторе страницы-->
+	<meta name="Author" content="Alexeev Ivan">
+	<meta name="Copyright" content="Alexeev Ivan">
+	<meta name="Address" content="">
+
+	<!--Эту строчку добавить только на страницу 404 - она позволяет выполнить редирект на главную, если вылезла 404-->
+	<!--<meta http-equiv="refresh" content="3, url=index.html"-->
+
+	<!--Запрет на индексацию сайта; потом убрать!-->
+	<meta name="robots" content="none">
 
 
-        <link rel="stylesheet" href="../../static/css/icons.css">
-        <link rel="stylesheet" href="../../static/css/simple-line-icons.css">
-        <link rel="stylesheet" href="../../static/css/fonts.css">
-        <link rel="stylesheet" href="../../static/css/index.css">
-        <link rel="stylesheet" href="../../static/css/forum.css">
-        <link rel="stylesheet" href="../../static/css/modal.css">
+	<link rel="stylesheet" href="../../static/css/icons.css">
+	<link rel="stylesheet" href="../../static/css/simple-line-icons.css">
+	<link rel="stylesheet" href="../../static/css/fonts.css">
+	<link rel="stylesheet" href="../../static/css/index.css">
+	<link rel="stylesheet" href="../../static/css/forum.css">
+	<link rel="stylesheet" href="../../static/css/modal.css">
 
-        <title>
-            Food &#38 Beverage Cartel
-        </title>
-        
-    </head>
-    <body>
-        <div id="pageNav">
-            <div id="logo">
-                <a href="{% url 'index' %}">Food &#38 Beverage Cartel</a>
-            </div>
-            {% if not request.user.is_authenticated %}
-                <li>
-                    <a href="{% url 'login' %}">
-                        Авторизация
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'register' %}">
-                        Регистрация
-                    </a>
-                </li>
-            {% endif %}
-            {% if request.user.is_authenticated %}
-                <li>
-                    <a href="{% url 'profile' %}" id="admin_menu">
-                        {{ request.user.username }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'forum_post_add' %}" id="extra_menu">
-                        Создать тему
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'index' %}" id="extra_menu">
-                        Назад
-                    </a>
-                </li>
-                {% if user.is_superuser %}
-                    <li>
-                        <a href="{% url 'forum_post_category_add' %}" id="extra_menu">
-                            Добавить категорию
-                        </a>
-                    </li>
-                {% endif %}
-                <li>
-                    <a href="{% url 'logout' %}" id="admin_menu">
-                        Выход
-                    </a>
-                </li>
-            {% endif %}
-            <li>
-                <a href="#">Справочник</a>
-            </li>
-            <li>
-                <a href="{% url 'courses' %}">Обучение</a>
-            </li>
-            <li>
-                <a href="{% url 'about' %}">О нас</a>
-            </li>
-            <div class="one"></div>
-        </div>
-        <div id="pageInfo">
-            <div class="container">
-                <div id="myNav" class="overlay">
-                    <div class="overlay-container">
-                        <a href="javascript:void(0)" class="hamburger" onclick="closeNav()">
-                            <div class="chevron"></div>
-                            <div class="chevron"></div>
-                            <div class="chevron"></div>
-                        </a>
-                    </div>
-                    <div class="overlay-content">
-                        {% if not request.user.is_authenticated %}
-                        <li>
-                            <a href="{% url 'login' %}">Авторизация</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'register' %}">Регистрация</a>
-                        </li>
-                        {% endif %}
-                        {% if request.user.is_authenticated %}
-                        <li>
-                            <a href="{% url 'profile' %}" id="admin_menu">
-                                {{ request.user.username }}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{% url 'logout' %}" id="admin_menu">
-                                Выход
-                            </a>
-                        </li>
-                        <li>
-                        </li>
-                        {% endif %}
-                        <li>
-                            <a href="{% url 'index' %}" class="active">Food &amp; Beverage Cartel <sup>BY</sup></a>
-                        </li>
-                        <li>
-                            <a href="#">Справочник</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'courses' %}">Обучение</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'about' %}">О нас</a>
-                        </li>
-                        <div class="one"></div>
-                    </div>
-                </div>
-                <span class="openBtn" onclick="openNav()"><a>&#9776;</a></span>
-                <ul id="postlist">
-                    {% for post in object_list %}
-                        <li id="postlistobject">
-                            <p>
-                                <a style="text-transform: capitalize; cursor: default; color: goldenrod; line-height: 1em;">
-                                    {{ post.title }}
-                                </a>
-                            <!--Чтобы сделать рабочей ссылку на каждую категорию, нужно не забывать определять
-                            указание на то, чтобы она являлась уникальной для каждой категории.
-                            Что-то вроде ранее указанного pk, но сейчас категория из модели поста-->
-                            <!-- |slugify позволяет добавить автоматически - (тире) к созданной категории
-                            без этого тире: я создал категорию (новые заведения), теперь в адресной строке
-                            будет (новые-заведения)-->
-                            <p>&#926; <a href="{% url 'category' post.post_category %}" style="font-size:15px;">{{ post.post_category }}</a>
-                            </p>
-                            </p>
-                            <p style="text-transform: capitalize; border: 1px solid goldenrod; border-radius: 15px; padding: 20px;">
-                            <!-- Команда "|slice" помогает не показывать весь текст поста на странице всех постов
-                            но я её удалил, потому что добавилась строка краткого описания
-                            без неё было post.body, которое нужно было сократить-->
-                                {{ post.short_description|safe}}
-                            </p>
-                            <p style="font-size: 15px;">
-                                <a href="{% url 'profile_page' post.author.profile.id %}" style="font-size: 15px;">
-                                    {{ post.author.first_name }} {{ post.author.last_name }}
-                                </a>
-                                 - {{ post.pub_date}}
-                                <span>
-                                    <p>
-                                        Просмотры : {{ post.total_views }} &#9740;
-                                    </p>
-                                </span>
-                                <br>
-                                {% if request.user.is_authenticated %}
-                                <form class="post_view_count" action="{% url 'forum_post_detail' pk=post.id %}" method="get">
-                                    <input type="hidden" name="post-id" value={{post.id}}>
-                                    <button type="submit" id="readpostbtn">Читать</button>
-                                </form>
-                                {% else %}
-                                <div class="no-readpostbtn-container">
-                                    <a href="" id="no-readpostbtn">Читать</a>
-                                    <a href="{% url 'login' %}" id="readpostbtn">Авторизация</a>
-                                    <a href="{% url 'register' %}" id="readpostbtn">Регистрация</a>
-                                </div>
-                                {% endif %}
-                                {% if request.user.is_authenticated %}
-                                    {% if user.id == post.author.id %}
-                                        <a href="{% url 'forum_post_update' post.pk %}" id="changepostbtn">
-                                            Редактировать
-                                        </a>
-                                        <a href="{% url 'forum_post_remove' post.pk %}" id="deletepostbtn">
-                                            Удалить
-                                        </a>
-                                        <br/>
-                                    {% endif %}
-                                {% endif %}
-                            </p>
-                            <hr class="forumhr">
-                            <br>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-        <script type="text/javascript" src="../../static/js/navbar_toggle.js"></script>
-        <script type="text/javascript">
-            jQuery(document).ready(function($) {
-              // use the template tags in our JavaScript call
-              $.postCSRF("{{ hitcount.ajax_url }}", { hitcountPK : "{{ hitcount.pk }}" })
-                .done(function(data){
-                  $('<i />').text(data.hit_counted).attr('id','hit-counted-value').appendTo('#hit-counted');
-                  $('#hit-response').text(data.hit_message);
-              }).fail(function(data){
-                  console.log('POST failed');
-                  console.log(data);
-              });
-            });
-            </script>
-    </body>
+	<title>
+		Food &#38 Beverage Cartel
+	</title>
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<div id="pageNav">
+			<div id="logo">
+				<a href="{% url 'index' %}">Food &amp; Beverage Cartel <sup>BY</sup></a>
+			</div>
+			{% if not request.user.is_authenticated %}
+			<li>
+				<a href="{% url 'login' %}">
+					Авторизация
+				</a>
+			</li>
+			<li>
+				<a href="{% url 'register' %}">
+					Регистрация
+				</a>
+			</li>
+			{% endif %}
+			{% if request.user.is_authenticated %}
+			<li>
+				<a href="{% url 'profile' %}" id="admin_menu">
+					{{ request.user.username }}
+				</a>
+			</li>
+			<li>
+				<a href="{% url 'logout' %}" id="admin_menu">
+					Выход
+				</a>
+			</li>
+			{% endif %}
+			<li>
+				<a href="#">
+					Справочник
+				</a>
+			</li>
+			<li>
+				<a href="{% url 'courses' %}">
+					Обучение
+				</a>
+			</li>
+			<li>
+				<a href="{% url 'about' %}">
+					О нас
+				</a>
+			</li>
+			<div class="one">
+				<footer>
+					<form class="searchform" action="{% url 'search_results' %}" method="get">
+						<input placeholder="Поиск..." aria-label="Search" name="q">
+						<ul>
+							<li>
+								<a>
+									<button class="search__btn">
+										<span>
+											Найти
+										</span>
+									</button>
+								</a>
+							</li>
+						</ul>
+					</form>
+				</footer>
+			</div>
+		</div>
+		<div id="pageInfo">
+			<div class="container">
+				<div id="myNav" class="overlay">
+					<div class="overlay-container">
+						<a href="javascript:void(0)" class="hamburger" onclick="closeNav()">
+							<div class="chevron"></div>
+							<div class="chevron"></div>
+							<div class="chevron"></div>
+						</a>
+					</div>
+					<div class="overlay__content">
+						{% if not request.user.is_authenticated %}
+						<li>
+							<a href="{% url 'login' %}">
+								Авторизация
+							</a>
+						</li>
+						<li>
+							<a href="{% url 'register' %}">
+								Регистрация
+							</a>
+						</li>
+						{% endif %}
+						{% if request.user.is_authenticated %}
+						<li>
+							<a href="{% url 'profile' %}" id="admin_menu">
+								{{ request.user.username }}
+							</a>
+						</li>
+						<li>
+							<a href="{% url 'logout' %}" id="admin_menu">
+								Выход
+							</a>
+						</li>
+						<li>
+						</li>
+						{% endif %}
+						<li>
+							<a href="{% url 'index' %}" class="active">
+								Food &amp; Beverage Cartel <sup>BY</sup>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								Справочник
+							</a>
+						</li>
+						<li>
+							<a href="{% url 'courses' %}">
+								Обучение
+							</a>
+						</li>
+						<li>
+							<a href="{% url 'about' %}">
+								О нас
+							</a>
+						</li>
+						<div class="one"></div>
+					</div>
+				</div>
+				<div class="open__btn" onclick="openNav()">
+					<div class="open__btn-hamburger">
+						<div class="chevron"></div>
+						<div class="chevron"></div>
+						<div class="chevron"></div>
+					</div>
+				</div>
+				<ul id="postlist">
+					{% for post in object_list %}
+					<li id="postlistobject">
+						<p>
+							<a style="text-transform: capitalize; cursor: default; color: goldenrod; line-height: 1em;">
+								{{ post.title }}
+							</a>
+							<!--Чтобы сделать рабочей ссылку на каждую категорию, нужно не забывать определять
+								указание на то, чтобы она являлась уникальной для каждой категории.
+								Что-то вроде ранее указанного pk, но сейчас категория из модели поста-->
+							<!-- |slugify позволяет добавить автоматически - (тире) к созданной категории
+								без этого тире: я создал категорию (новые заведения), теперь в адресной строке
+								будет (новые-заведения)-->
+						<p>&#926; <a href="{% url 'category' post.post_category %}" style="font-size:15px;">{{
+								post.post_category }}</a>
+						</p>
+						</p>
+						<p
+							style="text-transform: capitalize; border: 1px solid goldenrod; border-radius: 15px; padding: 20px;">
+							<!-- Команда "|slice" помогает не показывать весь текст поста на странице всех постов
+								но я её удалил, потому что добавилась строка краткого описания
+								без неё было post.body, которое нужно было сократить-->
+							{{ post.short_description|safe}}
+						</p>
+						<p style="font-size: 15px;">
+							<a href="{% url 'profile_page' post.author.profile.id %}" style="font-size: 15px;">
+								{{ post.author.first_name }} {{ post.author.last_name }}
+							</a>
+							- {{ post.pub_date}}
+							<span>
+								<p>
+									Просмотры : {{ post.total_views }} &#9740;
+								</p>
+							</span>
+							<br>
+							{% if request.user.is_authenticated %}
+						<form class="post_view_count" action="{% url 'forum_post_detail' pk=post.id %}" method="get">
+							<input type="hidden" name="post-id" value={{post.id}}>
+							<button type="submit" id="readpostbtn">Читать</button>
+						</form>
+						{% else %}
+						<div class="no-readpostbtn-container">
+							<a href="" id="no-readpostbtn">Читать</a>
+							<a href="{% url 'login' %}" id="readpostbtn">Авторизация</a>
+							<a href="{% url 'register' %}" id="readpostbtn">Регистрация</a>
+						</div>
+						{% endif %}
+						{% if request.user.is_authenticated %}
+						{% if user.id == post.author.id %}
+						<a href="{% url 'forum_post_update' post.pk %}" id="changepostbtn">
+							Редактировать
+						</a>
+						<a href="{% url 'forum_post_remove' post.pk %}" id="deletepostbtn">
+							Удалить
+						</a>
+						<br />
+						{% endif %}
+						{% endif %}
+						</p>
+						<hr class="forumhr">
+						<br>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../../static/js/navbar_toggle.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			// use the template tags in our JavaScript call
+			$.postCSRF("{{ hitcount.ajax_url }}", { hitcountPK: "{{ hitcount.pk }}" })
+				.done(function (data) {
+					$('<i />').text(data.hit_counted).attr('id', 'hit-counted-value').appendTo('#hit-counted');
+					$('#hit-response').text(data.hit_message);
+				}).fail(function (data) {
+					console.log('POST failed');
+					console.log(data);
+				});
+		});
+	</script>
+</body>
+
 </html>

@@ -1,812 +1,848 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <!--Кодировка-->
-        <meta charset="UTF-8">
-        <!--Адаптивность. User-scalable=0 запрещает зумить на Android-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <!--Краткое описание страницы для поисковых плтаформ (до 140 символов)-->
-        <meta name="description" content="">
-        <!--Ключевые слова для поисковых платформ (до 20 слов через запятую)-->
-        <meta name="keywords" content="">
-        <!--Мета теги в случае репоста страницы сайта на Facebook-->
-        <!--Локализация сайта. Для русскоязычного сайта - ru_RU-->
-        <meta property="og:locale" content="ru_RU">
-        <meta property="og:type" content="aticle">
-        <!--Какой заголовок сайта при репосте-->
-        <meta proprety="og:title" content="">
-        <!--Описания страницы при репосте-->
-        <meta property="og:descritpion" content="">
-        <!--Ссылка на изображение, которое выводится при репосте (http-адрес нужно будет вставить с изображением)-->
-        <meta property="og:image" content="">
-        <!--Ссылка на конкретную страницу (тоже http-адрес указать для каждой страницы)-->
-        <meta property="og:url" content="">
-        <!--Название сайта при репосте-->
-        <meta property="og:site_name" content="F&B Cartel">
-        <!--Разрешение или запрет номер телефона делать ссылкой на звонок в iOS-->
-        <meta name="format-detection" content="telephone=yes">
-        <!--Данные о владельце/авторе страницы-->
-        <meta name="Author" content="Alexeev Ivan">
-        <meta name="Copyright" content="Alexeev Ivan">
-        <meta name="Address" content="">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-        <!--Эту строчку добавить только на страницу 404 - она позволяет выполнить редирект на главную, если вылезла 404-->
-        <!--<meta http-equiv="refresh" content="3, url=index.html"-->
-        
-        <!--Запрет на индексацию сайта; потом убрать!-->
-        <meta name="robots" content="none">
+<head>
+	<!--Кодировка-->
+	<meta charset="UTF-8">
+	<!--Адаптивность. User-scalable=0 запрещает зумить на Android-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!--Краткое описание страницы для поисковых плтаформ (до 140 символов)-->
+	<meta name="description" content="">
+	<!--Ключевые слова для поисковых платформ (до 20 слов через запятую)-->
+	<meta name="keywords" content="">
+	<!--Мета теги в случае репоста страницы сайта на Facebook-->
+	<!--Локализация сайта. Для русскоязычного сайта - ru_RU-->
+	<meta property="og:locale" content="ru_RU">
+	<meta property="og:type" content="aticle">
+	<!--Какой заголовок сайта при репосте-->
+	<meta proprety="og:title" content="">
+	<!--Описания страницы при репосте-->
+	<meta property="og:descritpion" content="">
+	<!--Ссылка на изображение, которое выводится при репосте (http-адрес нужно будет вставить с изображением)-->
+	<meta property="og:image" content="">
+	<!--Ссылка на конкретную страницу (тоже http-адрес указать для каждой страницы)-->
+	<meta property="og:url" content="">
+	<!--Название сайта при репосте-->
+	<meta property="og:site_name" content="F&B Cartel">
+	<!--Разрешение или запрет номер телефона делать ссылкой на звонок в iOS-->
+	<meta name="format-detection" content="telephone=yes">
+	<!--Данные о владельце/авторе страницы-->
+	<meta name="Author" content="Alexeev Ivan">
+	<meta name="Copyright" content="Alexeev Ivan">
+	<meta name="Address" content="">
 
+	<!-- Эту строчку добавить только на страницу 404 - она позволяет выполнить редирект на главную, если вылезла 404-->
+	<!--<meta http-equiv="refresh" content="3, url=index.html" -->
 
-        <link rel="stylesheet" href="../../static/css/icons.css">
-        <link rel="stylesheet" href="../../static/css/simple-line-icons.css">
-        <link rel="stylesheet" href="../../static/css/fonts.css">
-        <link rel="stylesheet" href="../../static/css/index.css">
-        <link rel="stylesheet" href="../../static/css/bartenders-course.css">
-        <link rel="stylesheet" href="../../static/css/slider.css">
+	<!--Запрет на индексацию сайта; потом убрать!-->
+	<meta name="robots" content="none">
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&display=swap">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        
-        <link rel="icon" type="image/vnd.microsoft.icon" href="../newyear2022/static/img/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../newyear2022/static/img/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../newyear2022/static/img/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../newyear2022/static/img/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../newyear2022/static/img/favicon.ico">
-        <link rel="icon" sizes="128x128" href="../newyear2022/static/img/favicon.ico">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap">
-
-        <style>
-            .material-symbols-outlined
-            {
-                font-variation-settings:
-                    'FILL' 0,
-                    'wght' 100,
-                    'GRAD' 200,
-                    'opsz' 48;
-                font-size: 48px;
-                color: #036f7c;
-            }
-        </style>
+	<link rel="stylesheet" href="../../static/css/icons.css">
+	<link rel="stylesheet" href="../../static/css/simple-line-icons.css">
+	<link rel="stylesheet" href="../../static/css/index.css">
+	<link rel="stylesheet" href="../../static/css/bartenders-course.css">
 
 
-        <title>
-            Food &amp; Beverage Cartel
-        </title>
-        
-    </head>
-    <body>
-        <div id="pageNav">
-            <div id="logo">
-                <a href="{% url 'index' %}">Food &amp; Beverage Cartel <sup>BY</sup></a>
-            </div>
-            {% if not request.user.is_authenticated %}
-                <li>
-                    <a href="{% url 'login' %}">
-                        Авторизация
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'register' %}">
-                        Регистрация
-                    </a>
-                </li>
-            {% endif %}
-            {% if request.user.is_authenticated %}
-                <li>
-                    <a href="{% url 'profile' %}" id="admin_menu">
-                        {{ request.user.username }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'logout' %}" id="admin_menu">
-                        Выход
-                    </a>
-                </li>
-            {% endif %}
-            <li>
-                <a href="#">Справочник</a>
-            </li>
-            <li>
-                <a class="active" href="{% url 'courses' %}">Обучение</a>
-            </li>
-            <li>
-                <a href="{% url 'about' %}">О нас</a>
-            </li>
-            <div class="one">
-                <footer>
-                    <form class="searchform" action="{% url 'search_results' %}" method="get">
-                        <input placeholder="Поиск..." aria-label="Search" name="q">
-                        <ul>
-                            <li>
-                                <a>
-                                    <button class="search_btn">
-                                        <span>
-                                            Найти
-                                        </span>
-                                    </button>
-                                </a>
-                            </li>
-                        </ul>
-                    </form>
-                </footer>
-            </div>
-        </div>
-        <div id="pageInfo">
-            <div id="myNav" class="overlay">
-                <div class="overlay-container">
-                    <a href="javascript:void(0)" class="hamburger" onclick="closeNav()">
-                        <div class="chevron"></div>
-                        <div class="chevron"></div>
-                        <div class="chevron"></div>
-                    </a>
-                </div>
-                <div class="overlay-content">
-                    {% if not request.user.is_authenticated %}
-                    <li>
-                        <a href="{% url 'login' %}">Авторизация</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'register' %}">Регистрация</a>
-                    </li>
-                    {% endif %}
-                    {% if request.user.is_authenticated %}
-                    <li>
-                        <a href="{% url 'profile' %}" id="admin_menu">
-                            {{ request.user.username }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'logout' %}" id="admin_menu">
-                            Выход
-                        </a>
-                    </li>
-                    <li>
-                    </li>
-                    {% endif %}
-                    <li>
-                        <a href="{% url 'index' %}">Food &amp; Beverage Cartel <sup>BY</sup></a>
-                    </li>
-                    <li>
-                        <a href="#">Справочник</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'courses' %}" class="active">Обучение</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'about' %}">О нас</a>
-                    </li>
-                    <div class="one"></div>
-                </div>
-            </div>
-            <div class="openBtn" onclick="openNav()">
-                <div class="openBtnhamburger">
-                    <div class="chevron"></div>
-                    <div class="chevron"></div>
-                    <div class="chevron"></div>
-                </div>
-            </div>
-            <div class="container_bartender">
-                <div class="row_1">
-                    <h1>The Art of Bartending - это:</h1><br>
-                    <h1 class="textChange">
-                        <div class="textChange__container">
-                            <div class="textChange__sprite">
-                                <b>собственный учебный центр - Jel'sa</b>
-                                <b>180 часов обучения</b>
-                                <b>100 часов практики</b>
-                                <b>84 часа стажировки</b>
-                                <b>стоимость - 199 $</b>
-                                <b>отсутствие конвертов при оплате</b>
-                                <b>лучшие условия обучения в стране</b>
-                                <b>изучение профессии изнутри</b>
-                                <b>современный материал</b>
-                                <b>стажировка в Jel'sa</b>
-                                <b>помощь в трудоустройстве</b>
-                                <b>обучение на ранее недоступном уровне</b>
-                            </div>
-                        </div>
-                    </h1>
-                    <a class="hamburger" href="#section_1">
-                        <div class="chevron"></div>
-                        <div class="chevron"></div>
-                        <div class="chevron"></div>
-                    </a>
-                </div>
-                <div class="row_2_bartending" id="section_1">
-                    <div class="boxes">
-                        <div class="box_small">
-                            <span class="material-symbols-outlined">
-                                payments
-                            </span>
-                            <h2>
-                                Стоимость
-                            </h2>
-                            <p class="piece-count">
-                                199 $
-                            </p>
-                            <span>
-                                &#183; Драматическая доступность при недоступном ранее качестве обучения<br>
-                                &#183; Никаких конвертов: оплата производится на расчётный счёт посредством системы ЕРИП<br>
-                                &#183; Стоимость определяется на основании курса НБРБ в день проведения платежа<br>
-                            </span>
-                        </div>
-                        <div class="box_small">
-                            <span class="material-symbols-outlined">
-                                all_inclusive
-                            </span>
-                            <h2>
-                                Практика
-                            </h2>
-                            <p class="piece-count">
-                                &#8734;
-                            </p>
-                            <span>
-                                Определение качества используемого стиля приготовления классического God Father возможно благодаря <strong>опыту</strong>.<br>
-                                Он приходит с <strong>практикой</strong>.<br>
-                                В нашей школе ощущениия недостаточного количества практики у Вас не возникнет.
-                            </span>
-                        </div>
-                        <div class="box_small">
-                            <span class="material-symbols-outlined">
-                                diamond
-                            </span>
-                            <h2>
-                                Преподаватели
-                            </h2>
-                            <p class="piece-count">
-                                квинтэссенция опыта и знаний
-                            </p>
-                            <span>
-                                Ведущие практикующие специалисты отрасли с опытом работы в:<br>
-                                &#183; Jel'sa Karaoke Club &#183; Beijing Hotel<br>
-                                &#183; Opera casino &#183; Vegas casino<br>
-                                &#183; Imperial Cocktail Bar<br>
-                                &#183; The Manor of the Vankovich
-                            </span>
-                        </div>
-                    </div>
-                    <div class="boxes">
-                        <div class="box_small">
-                            <span class="material-symbols-outlined">
-                                collections_bookmark
-                            </span>
-                            <h2>
-                                Сертификаты
-                            </h2>
-                            <p class="piece-count">
-                                4 категории
-                            </p>
-                            <span>
-                                Plata &#183; Oro &#183; Argent &#183; Clasico<br>
-                                Когда Вы ищете курс не для получения «бумажки» - тогда следует выбрать нас.<br>
-                                Когда для Вас важен близкий к искусству по качеству исполнения элемент, подтверждающий знания - также следует выбрать нас.
-                            </span>
-                        </div>
-                        <div class="box_small">
-                            <span class="material-symbols-outlined">
-                                insights
-                            </span>
-                            <h2>
-                                Перспектива
-                            </h2>
-                            <p class="piece-count">
-                                становитесь лучшими
-                            </p>
-                            <span>
-                                Единственный путь стать сильнее - работать в паре с более сильным напарником.<br>
-                                Перефразирована цитата Э. Ласкера для того, чтобы описать нашу основную идею:<br>
-                            </span>
-                            <p class="piece-count">
-                                «...дать толчок в развитии в перспективе более одарённым барменам, чем мы сами...»
-                            </p>
-                        </div>
-                        <div class="box_small">
-                            <span class="material-symbols-outlined">
-                                auto_awesome
-                            </span>
-                            <h2>
-                                Сервис
-                            </h2>
-                            <p class="piece-count">
-                                высшего класса
-                            </p>
-                            <span>
-                                Персонализированное обучение.<br>
-                                Количество студентов в группе - <strong>не более 6</strong>.<br>
-                                Индивидуальный подход к составлению графика прохождения стажировки.<br>
-                                Возможность получения предложения о трудоустройстве в караоке Jel'sa или казино Opera.<br>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row_3">
-                    <div class="carousel">
-                        <div class="carousel__nav">
-                            <span id="moveLeft" class="carousel__arrow">
-                                <svg class="carousel__icon" width="24" height="24" viewBox="0 0 24 24">
-                                    <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
-                                </svg>
-                            </span>
-                            <span id="moveRight" class="carousel__arrow" >
-                                <svg class="carousel__icon"  width="24" height="24" viewBox="0 0 24 24">
-                                    <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
-                                </svg>    
-                            </span>
-                        </div>
-                        <div class="carousel-item carousel-item--1">
-                            <div class="carousel-item__image"></div>
-                            <div class="carousel-item__info">
-                                <div class="carousel-item__container">
-                                    <div class="active-container">
-                                        <div class="circle circle-1"></div>
-                                        <div class="circle circle-2"></div>
-                                        <div class="circle circle-3"></div>
-                                        <div class="map">
-                                            <img class="map__pin_shadow" src="http://denis-creative.com/wp-content/uploads/2018/05/map-pin-shadow.png">
-                                            <img class="map__pin" src="https://docs.google.com/uc?id=1HfUzgQKQ0-82587c9WbvQIJWUIHH3rq_">
-                                        </div>
-                                    </div>
-                                    <h2 class="carousel-item__subtitle">
-                                        Тренинг-центр
-                                    </h2>
-                                    <h1 class="carousel-item__title">
-                                        JEL'SA
-                                    </h1>
-                                    <p class="carousel-item__description">
-                                        Профессионально обустроенный центр обучения:<br>познайте все тонкости барного ремесла в действующем заведении Премиум-класса <br>в сердце Минска
-                                    </p>
-                                    <div class="box">
-                                        <span></span>
-                                        <span></span>
-                                        <a href="#" class="carousel-item__btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12l-20 12 7.289-12-7.289-12z"/></svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item carousel-item--2">
-                            <div class="carousel-item__image"></div>
-                            <div class="carousel-item__info">
-                                <div class="carousel-item__container">
-                                    <h2 class="carousel-item__subtitle">
-                                        Доступная
-                                    </h2>
-                                    <h1 class="carousel-item__title">
-                                        Цена
-                                    </h1>
-                                    <p class="carousel-item__description">
-                                        Во всём мире не существует логического объяснения причин, по которым кто-либо вправе создавать препятствия для обучения высокой <br>стоимостью курсов
-                                    </p>
-                                    <div class="box">
-                                        <span></span>
-                                        <span></span>
-                                        <a href="#" class="carousel-item__btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12l-20 12 7.289-12-7.289-12z"/></svg>
-                                        </a>
-                                   </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item carousel-item--3">
-                            <div class="carousel-item__image"></div>
-                            <div class="carousel-item__info">
-                                <div class="carousel-item__container">
-                                    <h2 class="carousel-item__subtitle">
-                                        Эксклюзивный
-                                    </h2>
-                                    <h1 class="carousel-item__title">
-                                        Стиль
-                                    </h1>
-                                    <p class="carousel-item__description">
-                                        Ограниченное количество студентов в одной группе позволяет применять индивидуальный подход к теоретическому и практическому обучению в полной мере
-                                    </p>
-                                    <div class="box">
-                                        <span></span>
-                                        <span></span>
-                                        <a href="#" class="carousel-item__btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12l-20 12 7.289-12-7.289-12z"/></svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>              
-                    </div>
-                </div>
-                <div class="row_4">
-                    <div class="row_4-container">
-                        <ul class="acc">
-                            <li>
-                                <button class="acc_ctrl">
-                                    <h2>
-                                        Практика
-                                    </h2>
-                                </button>
-                                <div class="acc_panel">
-                                    <ul class="ul_additional">
-                                        <li>
-                                            Практические блоки
-                                            <ul class="ul_additional">
-                                                <li>
-                                                    Приготовление премиксов
-                                                </li>
-                                                <li>
-                                                    Работа с барным инвентарём
-                                                </li>
-                                                <li>
-                                                    Работа за барной стойкой в команде
-                                                </li>
-                                                <li>
-                                                    Приготовление коктейлей
-                                                </li>
-                                                <li>
-                                                    Разработка технологических карт
-                                                </li>
-                                                <li>
-                                                    Последовательность действий
-                                                </li>
-                                                <li>
-                                                    Speed Mixixng
-                                                </li>
-                                                <li>
-                                                    Техника налива без использования мерной посуды
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <button class="acc_ctrl">
-                                    <h2>
-                                        Аттестации
-                                    </h2>
-                                </button>
-                                <div class="acc_panel">
-                                    <ul class="ul_additional">
-                                        <li>
-                                            Проведение аттестационных испытаний
-                                            <ul class="ul_additional">
-                                                <li>
-                                                    Командные тестовые испытания
-                                                </li>
-                                                <li>
-                                                    Командные практические испытания
-                                                </li>
-                                                <li>
-                                                    Проведение глобального конкурса среди выпускников
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            Подготовка к прохождению собеседований
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <button class="acc_ctrl">
-                                    <h2>
-                                        Миксология
-                                    </h2>
-                                </button>
-                                <div class="acc_panel">
-                                    <ul class="ul_additional">
-                                        <li>
-                                            Азбука вкуса и техника построения авторских коктейлей
-                                        </li>
-                                        <li>
-                                            Mocktails &amp; Лимонады
-                                        </li>
-                                        <li>
-                                            Приготовление смешанных напитков &amp; украшений &amp; премиксов
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <button class="acc_ctrl">
-                                    <h2>
-                                        Сервис &amp; Психология
-                                    </h2>
-                                </button>
-                                <div class="acc_panel">
-                                    <ul class="ul_additional">
-                                        <li>
-                                            История возникновения бара
-                                        </li>
-                                        <li>
-                                            Структура бара
-                                        </li>
-                                        <li>
-                                            Типы заведений
-                                        </li>
-                                        <li>
-                                            Имидж бармена
-                                        </li>
-                                        <li>
-                                            Психология &amp; философия бармена
-                                        </li>
-                                        <li>
-                                            Как стать лучшим и развиваться
-                                        </li>
-                                        <li>
-                                            Холодильное оборудование
-                                        </li>
-                                        <li>
-                                            Кофейное оборудование
-                                        </li>
-                                        <li>
-                                            Винные и сигарные шкафы
-                                        </li>
-                                        <li>
-                                            Барный инвентарь
-                                        </li>
-                                        <li>
-                                            Посуда
-                                        </li>
-                                        <li>
-                                            Организация рабочего пространства
-                                        </li>
-                                        <li>
-                                            Принятие заказа. Работа в команде
-                                        </li>
-                                        <li>
-                                            Английский язык для бармена
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <button class="acc_ctrl">
-                                    <h2>
-                                        Белые &amp; Красные вина
-                                    </h2>
-                                </button>
-                                <div class="acc_panel">
-                                    <ul class="ul_additional">
-                                        <li>
-                                            Греция &amp; Рим
-                                        </li>
-                                        <li>
-                                            Старый Свет
-                                        </li>
-                                        <li>
-                                            Новый Свет
-                                        </li>
-                                        <li>
-                                            Искусство декантации
-                                        </li>
-                                        <li>
-                                            Виды бутылок. Метрика
-                                        </li>
-                                        <li>
-                                            Гастрономические сочетания блюд &amp; напитков.
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <button class="acc_ctrl">
-                                    <h2>
-                                        Шампанские &amp; Игристые вина
-                                    </h2>
-                                </button>
-                                <div class="acc_panel">
-                                    <ul class="ul_additional">
-                                        <li>
-                                            Розе
-                                        </li>
-                                        <li>
-                                            Классификация игристых вин
-                                        </li>
-                                        <li>
-                                            Шампанское вино
-                                            <ul class="ul_additional">
-                                                <li>
-                                                    Определение &amp; история
-                                                </li>
-                                                <li>
-                                                    Регионы &amp; техника производства
-                                                </li>
-                                                <li>
-                                                    Выдежрка &amp; классификация
-                                                </li>
-                                                <li>
-                                                    Правила хранения &amp; подачи
-                                                </li>
-                                                <li>
-                                                    Сабраж
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <button class="acc_ctrl">
-                                    <h2>
-                                        Бренди
-                                    </h2>
-                                </button>
-                                <div class="acc_panel">
-                                    <ul class="ul_additional">
-                                        <li>
-                                            История возникновения
-                                        </li>
-                                        <li>
-                                            Основные разновидности
-                                        </li>
-                                        <li>
-                                            Коньяк | Арманьяк
-                                            <ul class="ul_additional">
-                                                <li>
-                                                    Определение &amp; история
-                                                </li>
-                                                <li>
-                                                    Регионы &amp; техника производства
-                                                </li>
-                                                <li>
-                                                    Выдежрка &amp; классификация
-                                                </li>
-                                                <li>
-                                                    Правила подачи
-                                                </li>
-                                                <li>
-                                                    Напиток в миксологии
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            Остальные виноградные бренди
-                                        </li>
-                                        <li>
-                                            Фруктовые бренди
-                                        </li>
-                                        <li>
-                                            Хересные бренди
-                                        </li>
-                                        <li>
-                                            Писко &amp; Ракы
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <button class="acc_ctrl">
-                                    <h2>
-                                        Виски &amp; Сигары
-                                    </h2>
-                                </button>
-                                <div class="acc_panel">
-                                    <ul class="ul_additional">
-                                        <li>
-                                            История возникновения
-                                        </li>
-                                        <li>
-                                            Регионы производства
-                                        </li>
-                                        <li>
-                                            Выдержка &amp; Классификация
-                                        </li>
-                                        <li>
-                                            Основные производители
-                                        </li>
-                                        <li>
-                                            Культура потребления
-                                        </li>
-                                        <li>
-                                            Напиток в миксологии
-                                        </li>
-                                        <li>
-                                            Сигарный символизм. Культура обращения с сигарами
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <button class="acc_ctrl">
-                                    <h2>
-                                        Ром &amp; Текила
-                                    </h2>
-                                </button>
-                                <div class="acc_panel">
-                                    <ul class="ul_additional">
-                                        <li>
-                                            История возникновения
-                                        </li>
-                                        <li>
-                                            Основные разновидности
-                                        </li>
-                                        <li>
-                                            Остальные напитки, рождённые из продуктов производства сахарного тростника
-                                        </li>
-                                        <li>
-                                            Разновидности напитков, полученных из агавы
-                                        </li>
-                                        <li>
-                                            Сервировка &amp; Культура потребления
-                                        </li>
-                                        <li>
-                                            Мескаль &amp; Текила в миксологии
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <button class="acc_ctrl">
-                                    <h2>
-                                        Джин &amp; Водка
-                                    </h2>
-                                </button>
-                                <div class="acc_panel">
-                                    <ul class="ul_additional">
-                                        <li>
-                                            История возникновения
-                                        </li>
-                                        <li>
-                                            Регионы производства
-                                        </li>
-                                        <li>
-                                            Выдержка &amp; Классификация
-                                        </li>
-                                        <li>
-                                            Основные производители Джина &amp; Женевера
-                                        </li>
-                                        <li>
-                                            Культура потребления &amp; Сервировка
-                                        </li>
-                                        <li>
-                                            Джин &amp; Женевер в миксологии
-                                        </li>
-                                        <li>
-                                            Основные производители водки
-                                        </li>
-                                        <li>
-                                            Водка в миксологии
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <button class="acc_ctrl">
-                                    <h2>
-                                        Абсент, Ликёры, Биттеры &amp; Вермуты
-                                    </h2>
-                                </button>
-                                <div class="acc_panel">
-                                    <ul class="ul_additional">
-                                        <li>
-                                            История возникновения
-                                        </li>
-                                        <li>
-                                            Основные разновидности
-                                        </li>
-                                        <li>
-                                            Анисовые &amp; Хинные аперитивы
-                                        </li>
-                                        <li>
-                                            Абсент &amp; Ликёры в миксологии
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+	<!-- <link rel="icon" type="image/vnd.microsoft.icon" href="../newyear2022/static/img/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="../newyear2022/static/img/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../newyear2022/static/img/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../newyear2022/static/img/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../newyear2022/static/img/favicon.ico">
+	<link rel="icon" sizes="128x128" href="../newyear2022/static/img/favicon.ico"> -->
 
-        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/bdd89edb33.js"></script>
-        <script type="text/javascript" src="../../static/js/navbar_toggle.js"></script>
-        <script type="text/javascript" src="../../static/js/bartenders_page.js"></script>
-        <script type="text/javascript" src="../../static/js/slider.js"></script>
-        <script type="text/javascript" src="../../static/js/accordion.js"></script>
-    </body>
+
+	<title>
+		Food &amp; Beverage Cartel
+	</title>
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<div id="pageNav">
+			<div id="logo">
+				<a href="{% url 'index' %}">Food &amp; Beverage Cartel <sup>BY</sup></a>
+			</div>
+			{% if not request.user.is_authenticated %}
+			<li>
+				<a href="{% url 'login' %}">
+					Авторизация
+				</a>
+			</li>
+			<li>
+				<a href="{% url 'register' %}">
+					Регистрация
+				</a>
+			</li>
+			{% endif %}
+			{% if request.user.is_authenticated %}
+			<li>
+				<a href="{% url 'profile' %}" id="admin_menu">
+					{{ request.user.username }}
+				</a>
+			</li>
+			<li>
+				<a href="{% url 'logout' %}" id="admin_menu">
+					Выход
+				</a>
+			</li>
+			{% endif %}
+			<li>
+				<a href="#">
+					Справочник
+				</a>
+			</li>
+			<li>
+				<a href="{% url 'courses' %}">
+					Обучение
+				</a>
+			</li>
+			<li>
+				<a href="{% url 'about' %}">
+					О нас
+				</a>
+			</li>
+			<div class="one">
+				<footer>
+					<form class="searchform" action="{% url 'search_results' %}" method="get">
+						<input placeholder="Поиск..." aria-label="Search" name="q">
+						<ul>
+							<li>
+								<a>
+									<button class="search__btn">
+										<span>
+											Найти
+										</span>
+									</button>
+								</a>
+							</li>
+						</ul>
+					</form>
+				</footer>
+			</div>
+		</div>
+		<div id="pageInfo">
+			<div class="container">
+				<div id="myNav" class="overlay">
+					<div class="overlay-container">
+						<a href="javascript:void(0)" class="hamburger" onclick="closeNav()">
+							<div class="chevron"></div>
+							<div class="chevron"></div>
+							<div class="chevron"></div>
+						</a>
+					</div>
+					<div class="overlay__content">
+						{% if not request.user.is_authenticated %}
+						<li>
+							<a href="{% url 'login' %}">
+								Авторизация
+							</a>
+						</li>
+						<li>
+							<a href="{% url 'register' %}">
+								Регистрация
+							</a>
+						</li>
+						{% endif %}
+						{% if request.user.is_authenticated %}
+						<li>
+							<a href="{% url 'profile' %}" id="admin_menu">
+								{{ request.user.username }}
+							</a>
+						</li>
+						<li>
+							<a href="{% url 'logout' %}" id="admin_menu">
+								Выход
+							</a>
+						</li>
+						<li>
+						</li>
+						{% endif %}
+						<li>
+							<a href="{% url 'index' %}" class="active">
+								Food &amp; Beverage Cartel <sup>BY</sup>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								Справочник
+							</a>
+						</li>
+						<li>
+							<a href="{% url 'courses' %}">
+								Обучение
+							</a>
+						</li>
+						<li>
+							<a href="{% url 'about' %}">
+								О нас
+							</a>
+						</li>
+						<div class="one"></div>
+					</div>
+				</div>
+				<div class="open__btn" onclick="openNav()">
+					<div class="open__btn-hamburger">
+						<div class="chevron"></div>
+						<div class="chevron"></div>
+						<div class="chevron"></div>
+					</div>
+				</div>
+				<div class="container__bartender">
+					<div class="row__top">
+						<h1>The Art of Bartending - это:</h1><br>
+						<h1 class="text__change">
+							<div class="text__change-container">
+								<div class="text__change-sprite">
+									<b>собственный учебный центр - Jel'sa</b>
+									<b>180 часов обучения</b>
+									<b>100 часов практики</b>
+									<b>84 часа стажировки</b>
+									<b>стоимость - 199 $</b>
+									<b>отсутствие конвертов при оплате</b>
+									<b>лучшие условия обучения в стране</b>
+									<b>изучение профессии изнутри</b>
+									<b>современный материал</b>
+									<b>стажировка в Jel'sa</b>
+									<b>помощь в трудоустройстве</b>
+									<b>обучение на ранее недоступном уровне</b>
+								</div>
+							</div>
+						</h1>
+						<a class="hamburger" href="#section_1">
+							<div class="chevron"></div>
+							<div class="chevron"></div>
+							<div class="chevron"></div>
+						</a>
+					</div>
+					<div class="row__middle-2" id="section_1">
+						<div class="boxes">
+							<div class="boxes__box">
+								<span class="material-symbols-outlined">
+									payments
+								</span>
+								<h2>
+									Стоимость
+								</h2>
+								<p class="piece-count">
+									199 $
+								</p>
+								<span>
+									&#183; Драматическая доступность при недоступном ранее качестве обучения<br>
+									&#183; Никаких конвертов: оплата производится на расчётный счёт посредством системы
+									ЕРИП<br>
+									&#183; Стоимость определяется на основании курса НБРБ в день проведения платежа<br>
+								</span>
+							</div>
+							<div class="boxes__box">
+								<span class="material-symbols-outlined">
+									all_inclusive
+								</span>
+								<h2>
+									Практика
+								</h2>
+								<p class="piece-count">
+									&#8734;
+								</p>
+								<span>
+									Определение качества используемого стиля приготовления классического God Father
+									возможно
+									благодаря <strong>опыту</strong>.<br>
+									Он приходит с <strong>практикой</strong>.<br>
+									В нашей школе ощущениия недостаточного количества практики у Вас не возникнет.
+								</span>
+							</div>
+							<div class="boxes__box">
+								<span class="material-symbols-outlined">
+									diamond
+								</span>
+								<h2>
+									Преподаватели
+								</h2>
+								<p class="piece-count">
+									квинтэссенция опыта и знаний
+								</p>
+								<span>
+									Ведущие практикующие специалисты отрасли с опытом работы в:<br>
+									&#183; Jel'sa Karaoke Club &#183; Beijing Hotel<br>
+									&#183; Opera casino &#183; Vegas casino<br>
+									&#183; Imperial Cocktail Bar<br>
+									&#183; The Manor of the Vankovich
+								</span>
+							</div>
+						</div>
+						<div class="boxes">
+							<div class="boxes__box">
+								<span class="material-symbols-outlined">
+									collections_bookmark
+								</span>
+								<h2>
+									Сертификаты
+								</h2>
+								<p class="piece-count">
+									4 категории
+								</p>
+								<span>
+									Plata &#183; Oro &#183; Argent &#183; Clasico<br>
+									Когда Вы ищете курс не для получения «бумажки» - тогда следует выбрать нас.<br>
+									Когда для Вас важен близкий к искусству по качеству исполнения элемент,
+									подтверждающий
+									знания - также следует выбрать нас.
+								</span>
+							</div>
+							<div class="boxes__box">
+								<span class="material-symbols-outlined">
+									insights
+								</span>
+								<h2>
+									Перспектива
+								</h2>
+								<p class="piece-count">
+									становитесь лучшими
+								</p>
+								<span>
+									Единственный путь стать сильнее - работать в паре с более сильным напарником.<br>
+									Перефразирована цитата Э. Ласкера для того, чтобы описать нашу основную идею:<br>
+								</span>
+								<p class="piece-count">
+									«...дать толчок в развитии в перспективе более одарённым барменам, чем мы сами...»
+								</p>
+							</div>
+							<div class="boxes__box">
+								<span class="material-symbols-outlined">
+									auto_awesome
+								</span>
+								<h2>
+									Сервис
+								</h2>
+								<p class="piece-count">
+									высшего класса
+								</p>
+								<span>
+									Персонализированное обучение.<br>
+									Количество студентов в группе - <strong>не более 6</strong>.<br>
+									Индивидуальный подход к составлению графика прохождения стажировки.<br>
+									Возможность получения предложения о трудоустройстве в караоке Jel'sa или казино
+									Opera.<br>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="row__bottom">
+						<div class="carousel">
+							<div class="carousel__nav">
+								<span id="moveLeft" class="carousel__arrow">
+									<svg class="carousel__icon" width="24" height="24" viewBox="0 0 24 24">
+										<path
+											d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z">
+										</path>
+									</svg>
+								</span>
+								<span id="moveRight" class="carousel__arrow">
+									<svg class="carousel__icon" width="24" height="24" viewBox="0 0 24 24">
+										<path
+											d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z">
+										</path>
+									</svg>
+								</span>
+							</div>
+							<div class="carousel-item carousel-item--1">
+								<div class="carousel-item__image"></div>
+								<div class="carousel-item__info">
+									<div class="carousel-item__container">
+										<div class="active-container">
+											<div class="circle circle-1"></div>
+											<div class="circle circle-2"></div>
+											<div class="circle circle-3"></div>
+											<div class="map">
+												<img class="map__pin-shadow"
+													src="http://denis-creative.com/wp-content/uploads/2018/05/map-pin-shadow.png">
+												<img class="map__pin"
+													src="https://docs.google.com/uc?id=1HfUzgQKQ0-82587c9WbvQIJWUIHH3rq_">
+											</div>
+										</div>
+										<h2 class="carousel-item__subtitle">
+											Тренинг-центр
+										</h2>
+										<h1 class="carousel-item__title">
+											JEL'SA
+										</h1>
+										<p class="carousel-item__description">
+											Профессионально обустроенный центр обучения:<br>познайте все тонкости
+											барного
+											ремесла в действующем заведении Премиум-класса <br>в сердце Минска
+										</p>
+										<div class="box">
+											<span></span>
+											<span></span>
+											<a href="#" class="carousel-item__btn">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+													viewBox="0 0 24 24">
+													<path d="M22 12l-20 12 7.289-12-7.289-12z" />
+												</svg>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="carousel-item carousel-item--2">
+								<div class="carousel-item__image"></div>
+								<div class="carousel-item__info">
+									<div class="carousel-item__container">
+										<h2 class="carousel-item__subtitle">
+											Доступная
+										</h2>
+										<h1 class="carousel-item__title">
+											Цена
+										</h1>
+										<p class="carousel-item__description">
+											Во всём мире не существует логического объяснения причин, по которым
+											кто-либо
+											вправе
+											создавать препятствия для обучения высокой <br>стоимостью курсов
+										</p>
+										<div class="box">
+											<span></span>
+											<span></span>
+											<a href="#" class="carousel-item__btn">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+													viewBox="0 0 24 24">
+													<path d="M22 12l-20 12 7.289-12-7.289-12z" />
+												</svg>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="carousel-item carousel-item--3">
+								<div class="carousel-item__image"></div>
+								<div class="carousel-item__info">
+									<div class="carousel-item__container">
+										<h2 class="carousel-item__subtitle">
+											Эксклюзивный
+										</h2>
+										<h1 class="carousel-item__title">
+											Стиль
+										</h1>
+										<p class="carousel-item__description">
+											Ограниченное количество студентов в одной группе позволяет применять
+											индивидуальный
+											подход к теоретическому и практическому обучению в полной мере
+										</p>
+										<div class="box">
+											<span></span>
+											<span></span>
+											<a href="#" class="carousel-item__btn">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+													viewBox="0 0 24 24">
+													<path d="M22 12l-20 12 7.289-12-7.289-12z" />
+												</svg>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row__bottom-2">
+						<div class="row__bottom-2-container">
+							<ul class="acc">
+								<li>
+									<button class="acc__ctrl">
+										<h2>
+											Практика
+										</h2>
+									</button>
+									<div class="acc__panel">
+										<ul class="additional">
+											<li>
+												Практические блоки
+												<ul class="additional">
+													<li>
+														Приготовление премиксов
+													</li>
+													<li>
+														Работа с барным инвентарём
+													</li>
+													<li>
+														Работа за барной стойкой в команде
+													</li>
+													<li>
+														Приготовление коктейлей
+													</li>
+													<li>
+														Разработка технологических карт
+													</li>
+													<li>
+														Последовательность действий
+													</li>
+													<li>
+														Speed Mixixng
+													</li>
+													<li>
+														Техника налива без использования мерной посуды
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<button class="acc__ctrl">
+										<h2>
+											Аттестации
+										</h2>
+									</button>
+									<div class="acc__panel">
+										<ul class="additional">
+											<li>
+												Проведение аттестационных испытаний
+												<ul class="additional">
+													<li>
+														Командные тестовые испытания
+													</li>
+													<li>
+														Командные практические испытания
+													</li>
+													<li>
+														Проведение глобального конкурса среди выпускников
+													</li>
+												</ul>
+											</li>
+											<li>
+												Подготовка к прохождению собеседований
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<button class="acc__ctrl">
+										<h2>
+											Миксология
+										</h2>
+									</button>
+									<div class="acc__panel">
+										<ul class="additional">
+											<li>
+												Азбука вкуса и техника построения авторских коктейлей
+											</li>
+											<li>
+												Mocktails &amp; Лимонады
+											</li>
+											<li>
+												Приготовление смешанных напитков &amp; украшений &amp; премиксов
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<button class="acc__ctrl">
+										<h2>
+											Сервис &amp; Психология
+										</h2>
+									</button>
+									<div class="acc__panel">
+										<ul class="additional">
+											<li>
+												История возникновения бара
+											</li>
+											<li>
+												Структура бара
+											</li>
+											<li>
+												Типы заведений
+											</li>
+											<li>
+												Имидж бармена
+											</li>
+											<li>
+												Психология &amp; философия бармена
+											</li>
+											<li>
+												Как стать лучшим и развиваться
+											</li>
+											<li>
+												Холодильное оборудование
+											</li>
+											<li>
+												Кофейное оборудование
+											</li>
+											<li>
+												Винные и сигарные шкафы
+											</li>
+											<li>
+												Барный инвентарь
+											</li>
+											<li>
+												Посуда
+											</li>
+											<li>
+												Организация рабочего пространства
+											</li>
+											<li>
+												Принятие заказа. Работа в команде
+											</li>
+											<li>
+												Английский язык для бармена
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<button class="acc__ctrl">
+										<h2>
+											Белые &amp; Красные вина
+										</h2>
+									</button>
+									<div class="acc__panel">
+										<ul class="additional">
+											<li>
+												Греция &amp; Рим
+											</li>
+											<li>
+												Старый Свет
+											</li>
+											<li>
+												Новый Свет
+											</li>
+											<li>
+												Искусство декантации
+											</li>
+											<li>
+												Виды бутылок. Метрика
+											</li>
+											<li>
+												Гастрономические сочетания блюд &amp; напитков.
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<button class="acc__ctrl">
+										<h2>
+											Шампанские &amp; Игристые вина
+										</h2>
+									</button>
+									<div class="acc__panel">
+										<ul class="additional">
+											<li>
+												Розе
+											</li>
+											<li>
+												Классификация игристых вин
+											</li>
+											<li>
+												Шампанское вино
+												<ul class="additional">
+													<li>
+														Определение &amp; история
+													</li>
+													<li>
+														Регионы &amp; техника производства
+													</li>
+													<li>
+														Выдежрка &amp; классификация
+													</li>
+													<li>
+														Правила хранения &amp; подачи
+													</li>
+													<li>
+														Сабраж
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<button class="acc__ctrl">
+										<h2>
+											Бренди
+										</h2>
+									</button>
+									<div class="acc__panel">
+										<ul class="additional">
+											<li>
+												История возникновения
+											</li>
+											<li>
+												Основные разновидности
+											</li>
+											<li>
+												Коньяк | Арманьяк
+												<ul class="additional">
+													<li>
+														Определение &amp; история
+													</li>
+													<li>
+														Регионы &amp; техника производства
+													</li>
+													<li>
+														Выдежрка &amp; классификация
+													</li>
+													<li>
+														Правила подачи
+													</li>
+													<li>
+														Напиток в миксологии
+													</li>
+												</ul>
+											</li>
+											<li>
+												Остальные виноградные бренди
+											</li>
+											<li>
+												Фруктовые бренди
+											</li>
+											<li>
+												Хересные бренди
+											</li>
+											<li>
+												Писко &amp; Ракы
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<button class="acc__ctrl">
+										<h2>
+											Виски &amp; Сигары
+										</h2>
+									</button>
+									<div class="acc__panel">
+										<ul class="additional">
+											<li>
+												История возникновения
+											</li>
+											<li>
+												Регионы производства
+											</li>
+											<li>
+												Выдержка &amp; Классификация
+											</li>
+											<li>
+												Основные производители
+											</li>
+											<li>
+												Культура потребления
+											</li>
+											<li>
+												Напиток в миксологии
+											</li>
+											<li>
+												Сигарный символизм. Культура обращения с сигарами
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<button class="acc__ctrl">
+										<h2>
+											Ром &amp; Текила
+										</h2>
+									</button>
+									<div class="acc__panel">
+										<ul class="additional">
+											<li>
+												История возникновения
+											</li>
+											<li>
+												Основные разновидности
+											</li>
+											<li>
+												Остальные напитки, рождённые из продуктов производства сахарного
+												тростника
+											</li>
+											<li>
+												Разновидности напитков, полученных из агавы
+											</li>
+											<li>
+												Сервировка &amp; Культура потребления
+											</li>
+											<li>
+												Мескаль &amp; Текила в миксологии
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<button class="acc__ctrl">
+										<h2>
+											Джин &amp; Водка
+										</h2>
+									</button>
+									<div class="acc__panel">
+										<ul class="additional">
+											<li>
+												История возникновения
+											</li>
+											<li>
+												Регионы производства
+											</li>
+											<li>
+												Выдержка &amp; Классификация
+											</li>
+											<li>
+												Основные производители Джина &amp; Женевера
+											</li>
+											<li>
+												Культура потребления &amp; Сервировка
+											</li>
+											<li>
+												Джин &amp; Женевер в миксологии
+											</li>
+											<li>
+												Основные производители водки
+											</li>
+											<li>
+												Водка в миксологии
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<button class="acc__ctrl">
+										<h2>
+											Абсент, Ликёры, Биттеры &amp; Вермуты
+										</h2>
+									</button>
+									<div class="acc__panel">
+										<ul class="additional">
+											<li>
+												История возникновения
+											</li>
+											<li>
+												Основные разновидности
+											</li>
+											<li>
+												Анисовые &amp; Хинные аперитивы
+											</li>
+											<li>
+												Абсент &amp; Ликёры в миксологии
+											</li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+		integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+		integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+		crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/bdd89edb33.js"></script>
+	<script type="text/javascript" src="../../static/js/navbar_toggle.js"></script>
+	<script type="text/javascript" src="../../static/js/bartenders_page.js"></script>
+	<script type="text/javascript" src="../../static/js/slider.js"></script>
+	<script type="text/javascript" src="../../static/js/accordion.js"></script>
+</body>
+
 </html>
