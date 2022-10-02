@@ -1,62 +1,85 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
 
-        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-        <link href="../../../static/css/simple-line-icons.css" rel="stylesheet">
-        <link href="../../../static/css/login.css" rel="stylesheet">
-        <link href="../../../static/css/fonts.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+	<link href="../../../static/css/simple-line-icons.css" rel="stylesheet">
+	<link href="../../../static/css/login.css" rel="stylesheet">
+	<link href="../../../static/css/login-btn.css" rel="stylesheet">
+	<link href="../../../static/css/fonts.css" rel="stylesheet">
 
-        <title>
-            FBC Login
-        </title>
-    </head>
-    <body>
-        <div id="left_backside"></div>
-        <div id="main">
-            <div class="vertical-center-login">
-                <form action="" method="POST" style="margin-top: 5%;">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <script src='https://www.google.com/recaptcha/api.js'></script>
-                    <div class="form-group-login g-recaptcha" data-sitekey="6LdqvHgaAAAAACUSh8cuYNpFMjYZwvt0OSFPAuaU" data-theme='dark'></div>
-                    {% if messages %}
-                        {% for message in messages %}
-                            {{ message }}
-                        {% endfor %}
-                    {% endif %}
-                    <div class="row">
-                        <div class="col-md-8 mx-auto social-container my-2 order-md-1">
-                            <button class="btn btn-danger  mb-2">
-                                <a href="#">Login with Instagram</a>
-                            </button>
-                            <button class="btn btn-primary mb-2">
-                                <a href="{% url 'social:begin' 'facebook' %}">
-                                    Login with Facebook
-                                </a>
-                            </button>
-                            <button class="btn btn-info mb-2">
-                                <a href="#">Login with LinkedIn</a>
-                            </button>
-                        </div>
-                    </div>
-                    <input type="submit" class="button" value="Войти">
-                </form>
-            </div>
-        </div>
-        <div id="right_backside">
-            <div id='t1' style="height: 33vh;"></div>
-            <div id='t2' style="height: 34vh;">
-                <div id="logo">
-                    <a href="{% url 'index' %}">Food &#38 Beverage Cartel</a>
-                </div>
-            </div>
-            <div id='t3' style="height: 33vh;"></div>
-        </div>
-    </body>
+	<title>
+		FBC Login
+	</title>
+</head>
+
+<body>
+	<div id="logo">
+		<a href="{% url 'index' %}">
+			Food &#38 Beverage Cartel
+		</a>
+	</div>
+	<div class="login__form">
+		<div class="login__form--redirect">
+			<div class="redirect">
+				<h2 class="redirect__title">
+					Нет аккаунта?
+				</h2>
+				<p class="redirect__body">
+					Наслаждайтесь общением с коллегами, изучайте классические рецептуры
+					коктейлей, знакомьтесь с современными тенденциями развития барной индустрии со всего мира
+				</p>
+				<button class="learn-more">
+					<span class="circle" aria-hidden="true">
+						<span class="icon arrow"></span>
+					</span>
+					<a href="{% url 'register' %}" class="button-text">
+						Регистрация
+					</a>
+				</button>
+			</div>
+		</div>
+		<div class="login__form--alowance">
+			<form action="" method="POST">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<script src='https://www.google.com/recaptcha/api.js'></script>
+				<div class="form-group-login g-recaptcha" data-sitekey="6LdqvHgaAAAAACUSh8cuYNpFMjYZwvt0OSFPAuaU"
+					data-theme='dark'>
+				</div>
+				{% if messages %}
+				{% for message in messages %}
+				{{ message }}
+				{% endfor %}
+				{% endif %}
+				<div class="footer">
+					<div class="footer__button--line">
+						<button class="footer__button--insta">
+							<a href="#">Login with Instagram</a>
+						</button>
+						<button class="footer__button--facebook">
+							<a href="{% url 'social:begin' 'facebook' %}">
+								Login with Facebook
+							</a>
+						</button>
+						<button class="footer__button--linkedin">
+							<a href="#">Login with LinkedIn</a>
+						</button>
+					</div>
+					<div class="footer__button--submit">
+						<input type="submit" class="button" value="Войти">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript" src="../../../static/js/recaptcha-required.js"></script>
+</body>
+
 </html>

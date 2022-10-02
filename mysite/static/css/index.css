@@ -2,19 +2,28 @@
 @import url(../css/null.css);
 
 body {
-    display: grid;
-    height: 100vh;
-    grid-template-areas: "nav info";
-    grid-template-columns: 20% 1fr;
-    grid-column-gap: 0%;
-    background: linear-gradient(to right, #000, #cb6b30);
-    background-color: #371b0a;
-    justify-content: center;
-    position: relative;
+	background-color: #272725;
+}
+.wrapper {
+	display: grid;
+	height: 100vh;
+	grid-template-areas: "nav info";
+	grid-template-columns: 20% 1fr;
+	grid-column-gap: 0%;
+	background: linear-gradient(to right, #000, #cb6b30);
+	background-color: #371b0a;
+	justify-content: center;
+	position: relative;
 }
 li {
     list-style: none;
-    margin-left: 10%;
+	width: 80%;
+}
+.navigation__link--account {
+	margin: 0% 0% 8% 10%;
+}
+.navigation__link--path {
+	margin: 0% 0% 0% 10%;
 }
 li a, li .active {
     line-height: 3em;
@@ -46,44 +55,6 @@ li .active:hover {
     display: flex;
     align-items: center;
     flex-direction: initial;
-}
-.active-container {
-    position: relative;
-    margin: 0;
-    width: 100%;
-    height: 3em;
-}
-.map {
-    display: block;
-    width: 3em;
-    height: 3em;
-    position: relative;
-    margin: 0 auto;
-    background-size: cover;
-    border-radius: 50%;
-    box-sizing: border-box;
-}
-.map__pin {
-    display: block;
-    width: 1.2em;
-    height: auto;
-    position: absolute;
-    bottom: 1.3em;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: map-pin 1.5s ease infinite;
-    z-index: 4;
-}
-.map__pin-shadow {
-    display: block;
-    width: 2.37rem;
-    height: auto;
-    filter: invert(1);
-    position: absolute;
-    bottom: 0.5rem;
-    left: 50%;
-    transform: translate(-50%, 50%);
-    animation: map-pin-shadow 1.5s ease infinite;
 }
 @keyframes map-pin {
     50% {
@@ -342,20 +313,20 @@ label {
     margin-left: 10%;
     font-size: 25px;
 }
-#pageNav {
+#navigation {
     grid-area: nav;
     background: url('../../static/img/aside.png') no-repeat right top rgb(0, 0, 0, 0.8);
     position: fixed;
     width: 20%;
-    overflow: auto;
+    overflow: hidden;
     display: block;
     height: 100%;
 }
-#pageInfo {
+#main {
     grid-area: info;
     color: rgb(255, 255, 255);
 }
-#pageInfo h1{
+#main h1{
     text-align: center;
 }
 #logo {
@@ -390,8 +361,6 @@ label {
 }
 #admin_menu, #extra_menu {
     display: grid;
-    width: 80%;
-    margin-bottom: 8%;
     text-align: center;
     border: 1px solid goldenrod;
     border-radius: 10px;
@@ -413,21 +382,40 @@ label {
     color: #ffe7d9;
     background-size: 100% 0.5px;
 }
-@media(max-width: 992.91px) {
-    body {
+@media screen and (max-width: 767px) {
+    .wrapper {
         display: block;
     }
+	button {
+		margin: 0;
+		padding: 1.5em 2em;
+	}
     .container {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        padding: 15vh 0vh 5vh 0vh;
+		padding: 25% 0 0 0;
     }
     .container .card {
-        width: 40vw;
-        height: 50vh;
+		width: 75vw;
+		height: 55vh;
     }
+	.card__content {
+		display: flex;
+		height: 50%;
+		flex-direction: column;
+		align-items: center;
+		margin: 3em 0 0 0;
+	}
+	.card__content p {
+		font-size: 1.1em;
+		margin: 2em 0;
+		padding: 0 2em 0;
+		color: rgb(26, 26, 26);
+		z-index: 1;
+		transition: 0.5s;
+	}
     .overlay {
         height: 0%;
         width: 100%;
@@ -454,9 +442,10 @@ label {
         align-items: center;
     }
     .hamburger, .open__btn-hamburger {
-        width: 24px;
-        height: 24px;
-        scroll-behavior: smooth;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
     }
     .hamburger .chevron,
     .open__btn-hamburger .chevron {
@@ -531,12 +520,12 @@ label {
         }
     }
     .overlay li {
-        margin-left: 0;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        width: 100%;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		width: 100%;
+		margin: 0;
     }
     .overlay li a {
         color: #ffe7d9;
@@ -566,8 +555,8 @@ label {
     .open__btn {
         display: flex;
         cursor: pointer;
-        width: 10vw;
-        height: 10vh;
+		width: 25vw;
+		height: 10vh;
         justify-content: center;
         align-items: baseline;
         position: absolute;
@@ -580,74 +569,267 @@ label {
         transition: 0.5s;
     }
     .open__btn:active {
-        width: 9vw;
-        height: 9vh;
-        margin: 3.5vh;
+		width: 13vw;
+		height: 20vh;
+		margin: 3.5vh;
     }
     .container .overlay{
         display: block;
     }
-    #pageNav {
+    #navigation {
         display: none;
     }
     #admin_menu {
-        width: 40%;
-        height: 65%;
-        font-size: 1em;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        margin-bottom: 2%;
+		font-size: 1em;
+		line-height: 4em;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		display: block;
+		width: 65%;
+		margin: 0% 0% 5% 0%;
     }
 }
-@media(max-width: 668px) {
-    .overlay .closebtn {
-        top: 0px;
-        right: 20px;
-    }
-    .overlay li {
-        margin-left: 0;
-    }
-    .overlay li a {
-        line-height: 2.5em;
-        font-size: 14px;
-    }
-    .overlay li a.active {
-        color: goldenrod;
-    }
-    .overlay li a:hover {
-        color: goldenrod;
-    }
-    .overlay__content {
-        position: relative;
-        top: 20%;
-        width: 100%;
-        text-align: center;
-    }
-    .open__btn {
-        display: block;
-        font-size:30px;
-        cursor:pointer;
-    }
-    .open__btn a {
-        font-size: 25px;
-        color: #000000;
-    }
-    .open__btn:hover a {
-        color:black;
-        transition: 1s;
-    }
-    .container .overlay{
-        display: block;
-    }
-    #pageNav {
-        display: none;
-    }
-    #admin_menu {
-        width: 60%;
-        margin-left: 20%;
-        margin-bottom: 10%;
-        font-size: 13px;
-        line-height: 2em;
-    }
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+	.wrapper {
+			display: block;
+		}
+	
+	button {
+		margin: 0;
+		padding: 1.5em 2em;
+	}
+
+	.container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		padding: 20% 0 0 0;
+	}
+
+	.container .card {
+		width: 35vw;
+		height: 100vh;
+	}
+
+	.card__content {
+		display: flex;
+		height: 50%;
+		flex-direction: column;
+		align-items: center;
+		margin: 3em 0 0 0;
+	}
+
+	.card__content p {
+		font-size: 1.1em;
+		margin: 2em 0;
+		padding: 0 2em 0;
+		color: rgb(26, 26, 26);
+		z-index: 1;
+		transition: 0.5s;
+	}
+
+	.overlay {
+		height: 0%;
+		width: 100%;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		background-color: #252525;
+		overflow-y: hidden;
+		transition: 0.5s;
+		overflow-y: auto;
+	}
+
+	.overlay .closebtn {
+		position: absolute;
+		font-size: 40px;
+		top: 15px;
+		right: 35px;
+	}
+
+	.overlay .overlay-container {
+		display: flex;
+		width: 100%;
+		height: 10%;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.hamburger,
+	.open__btn-hamburger {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.hamburger .chevron,
+	.open__btn-hamburger .chevron {
+		position: absolute;
+		width: 28px;
+		height: 8px;
+		opacity: 0;
+		transform: scale3d(0.5, 0.5, 0.5);
+		animation: move 3s ease-out infinite;
+	}
+
+	.hamburger .chevron:first-child,
+	.open__btn-hamburger .chevron:first-child {
+		animation: move 3s ease-out 1s infinite;
+	}
+
+	.hamburger .chevron:nth-child(2),
+	.open__btn-hamburger .chevron:nth-child(2) {
+		animation: move 3s ease-out 2s infinite;
+	}
+
+	.hamburger .chevron:before,
+	.hamburger .chevron:after,
+	.open__btn-hamburger .chevron:before,
+	.open__btn-hamburger .chevron:after {
+		content: ' ';
+		position: absolute;
+		top: 0;
+		height: 100%;
+		width: 51%;
+		background: goldenrod;
+	}
+
+	.hamburger .chevron:before,
+	.open__btn-hamburger .chevron:before {
+		left: 0;
+	}
+
+	.hamburger .chevron:after,
+	.open__btn-hamburger .chevron:after {
+		right: 0;
+		width: 50%;
+	}
+
+	.hamburger .chevron:before {
+		transform: skew(0deg, -30deg);
+	}
+
+	.hamburger .chevron:after {
+		transform: skew(-3.9deg, -150deg);
+	}
+
+	.open__btn-hamburger .chevron:before {
+		transform: skew(0deg, 30deg);
+	}
+
+	.open__btn-hamburger .chevron:after {
+		transform: skew(0deg, -30deg);
+	}
+
+	@keyframes move {
+		25% {
+			opacity: 1;
+
+		}
+
+		33% {
+			opacity: 1;
+			transform: translateY(30px);
+		}
+
+		67% {
+			opacity: 1;
+			transform: translateY(40px);
+		}
+
+		100% {
+			opacity: 0;
+			transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+		}
+	}
+
+	@keyframes pulse {
+		to {
+			opacity: 1;
+		}
+	}
+
+	.overlay li {
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		width: 100%;
+		margin: 0;
+	}
+
+	.overlay li a {
+		color: #ffe7d9;
+		line-height: 3em;
+		font-size: 15px;
+		background-image: linear-gradient(currentColor, currentColor);
+		background-position: 20% 75%;
+		background-repeat: no-repeat;
+		background-size: 0% 3px;
+		transition: 0.5s;
+	}
+
+	.overlay li a.active {
+		color: goldenrod;
+	}
+
+	.overlay li a:hover {
+		color: goldenrod;
+	}
+
+	.overlay__content {
+		position: relative;
+		width: 100%;
+		height: 90%;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.open__btn {
+		display: flex;
+		cursor: pointer;
+		width: 15vw;
+		height: 25vh;
+		justify-content: center;
+		align-items: baseline;
+		position: absolute;
+		top: 0%;
+		right: 0%;
+		margin: 5vh;
+		background: #ffc29b;
+		border-radius: 20px;
+		box-shadow: rgb(0 0 0) 0px 0px 4px 0px inset;
+		transition: 0.5s;
+	}
+
+	.open__btn:active {
+		width: 13vw;
+		height: 20vh;
+		margin: 3.5vh;
+	}
+
+	.container .overlay {
+		display: block;
+	}
+
+	#navigation {
+		display: none;
+	}
+
+	#admin_menu {
+		font-size: 1em;
+		line-height: 4em;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		display: block;
+		width: 65%;
+		margin: 0% 0% 1% 0%;
+	}
 }

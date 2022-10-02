@@ -59,45 +59,45 @@
 
 <body>
 	<div class="wrapper">
-		<div id="pageNav">
+		<div id="navigation">
 			<div id="logo">
 				<a href="{% url 'index' %}">Food &amp; Beverage Cartel <sup>BY</sup></a>
 			</div>
 			{% if not request.user.is_authenticated %}
-			<li>
+			<li class="navigation__link--path">
 				<a href="{% url 'login' %}">
 					Авторизация
 				</a>
 			</li>
-			<li>
+			<li class="navigation__link--path">
 				<a href="{% url 'register' %}">
 					Регистрация
 				</a>
 			</li>
 			{% endif %}
 			{% if request.user.is_authenticated %}
-			<li>
+			<li class="navigation__link--account">
 				<a href="{% url 'profile' %}" id="admin_menu">
 					{{ request.user.username }}
 				</a>
 			</li>
-			<li>
+			<li class="navigation__link--account">
 				<a href="{% url 'logout' %}" id="admin_menu">
 					Выход
 				</a>
 			</li>
 			{% endif %}
-			<li>
+			<li class="navigation__link--path">
 				<a href="#">
 					Справочник
 				</a>
 			</li>
-			<li>
+			<li class="navigation__link--path">
 				<a href="{% url 'courses' %}">
 					Обучение
 				</a>
 			</li>
-			<li>
+			<li class="navigation__link--path">
 				<a href="{% url 'about' %}">
 					О нас
 				</a>
@@ -121,7 +121,7 @@
 				</footer>
 			</div>
 		</div>
-		<div id="pageInfo">
+		<div id="main">
 			<div class="container">
 				<div id="myNav" class="overlay">
 					<div class="overlay-container">
@@ -133,24 +133,24 @@
 					</div>
 					<div class="overlay__content">
 						{% if not request.user.is_authenticated %}
-						<li>
+						<li class="navigation__link--path">
 							<a href="{% url 'login' %}">
 								Авторизация
 							</a>
 						</li>
-						<li>
+						<li class="navigation__link--path">
 							<a href="{% url 'register' %}">
 								Регистрация
 							</a>
 						</li>
 						{% endif %}
 						{% if request.user.is_authenticated %}
-						<li>
+						<li class="navigation__link--account">
 							<a href="{% url 'profile' %}" id="admin_menu">
 								{{ request.user.username }}
 							</a>
 						</li>
-						<li>
+						<li class="navigation__link--account">
 							<a href="{% url 'logout' %}" id="admin_menu">
 								Выход
 							</a>
@@ -163,17 +163,17 @@
 								Food &amp; Beverage Cartel <sup>BY</sup>
 							</a>
 						</li>
-						<li>
+						<li class="navigation__link--path">
 							<a href="#">
 								Справочник
 							</a>
 						</li>
-						<li>
+						<li class="navigation__link--path">
 							<a href="{% url 'courses' %}">
 								Обучение
 							</a>
 						</li>
-						<li>
+						<li class="navigation__link--path">
 							<a href="{% url 'about' %}">
 								О нас
 							</a>
@@ -372,9 +372,9 @@
 											барного
 											ремесла в действующем заведении Премиум-класса <br>в сердце Минска
 										</p>
-										<div class="box">
-											<span></span>
-											<span></span>
+									</div>
+									<div class="carousel-item__link">
+										<div class="carousel-item__link--2">
 											<a href="#" class="carousel-item__btn">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 													viewBox="0 0 24 24">
@@ -389,6 +389,17 @@
 								<div class="carousel-item__image"></div>
 								<div class="carousel-item__info">
 									<div class="carousel-item__container">
+										<div class="active-container">
+											<div class="circle circle-1"></div>
+											<div class="circle circle-2"></div>
+											<div class="circle circle-3"></div>
+											<div class="map">
+												<img class="map__pin-shadow"
+													src="http://denis-creative.com/wp-content/uploads/2018/05/map-pin-shadow.png">
+												<img class="map__pin"
+													src="https://docs.google.com/uc?id=1HfUzgQKQ0-82587c9WbvQIJWUIHH3rq_">
+											</div>
+										</div>
 										<h2 class="carousel-item__subtitle">
 											Доступная
 										</h2>
@@ -401,9 +412,9 @@
 											вправе
 											создавать препятствия для обучения высокой <br>стоимостью курсов
 										</p>
-										<div class="box">
-											<span></span>
-											<span></span>
+									</div>
+									<div class="carousel-item__link">
+										<div class="carousel-item__link--2">
 											<a href="#" class="carousel-item__btn">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 													viewBox="0 0 24 24">
@@ -418,6 +429,17 @@
 								<div class="carousel-item__image"></div>
 								<div class="carousel-item__info">
 									<div class="carousel-item__container">
+										<div class="active-container">
+											<div class="circle circle-1"></div>
+											<div class="circle circle-2"></div>
+											<div class="circle circle-3"></div>
+											<div class="map">
+												<img class="map__pin-shadow"
+													src="http://denis-creative.com/wp-content/uploads/2018/05/map-pin-shadow.png">
+												<img class="map__pin"
+													src="https://docs.google.com/uc?id=1HfUzgQKQ0-82587c9WbvQIJWUIHH3rq_">
+											</div>
+										</div>
 										<h2 class="carousel-item__subtitle">
 											Эксклюзивный
 										</h2>
@@ -429,9 +451,9 @@
 											индивидуальный
 											подход к теоретическому и практическому обучению в полной мере
 										</p>
-										<div class="box">
-											<span></span>
-											<span></span>
+									</div>
+									<div class="carousel-item__link">
+										<div class="carousel-item__link--2">
 											<a href="#" class="carousel-item__btn">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 													viewBox="0 0 24 24">

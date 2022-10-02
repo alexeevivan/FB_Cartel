@@ -42,6 +42,7 @@
 	<link rel="stylesheet" href="../../static/css/icons.css">
 	<link rel="stylesheet" href="../../static/css/simple-line-icons.css">
 	<link rel="stylesheet" href="../../static/css/fonts.css">
+	<link rel="stylesheet" href="../../static/css/index.css">
 	<link rel="stylesheet" href="../../static/css/forum.css">
 	<link rel="stylesheet" href="../../static/css/modal.css">
 
@@ -53,45 +54,45 @@
 
 <body>
 	<div class="wrapper">
-		<div id="pageNav">
+		<div id="navigation">
 			<div id="logo">
 				<a href="{% url 'index' %}">Food &amp; Beverage Cartel <sup>BY</sup></a>
 			</div>
 			{% if not request.user.is_authenticated %}
-			<li>
+			<li class="navigation__link--path">
 				<a href="{% url 'login' %}">
 					Авторизация
 				</a>
 			</li>
-			<li>
+			<li class="navigation__link--path">
 				<a href="{% url 'register' %}">
 					Регистрация
 				</a>
 			</li>
 			{% endif %}
 			{% if request.user.is_authenticated %}
-			<li>
+			<li class="navigation__link--account">
 				<a href="{% url 'profile' %}" id="admin_menu">
 					{{ request.user.username }}
 				</a>
 			</li>
-			<li>
+			<li class="navigation__link--account">
 				<a href="{% url 'logout' %}" id="admin_menu">
 					Выход
 				</a>
 			</li>
 			{% endif %}
-			<li>
+			<li class="navigation__link--path">
 				<a href="#">
 					Справочник
 				</a>
 			</li>
-			<li>
+			<li class="navigation__link--path">
 				<a href="{% url 'courses' %}">
 					Обучение
 				</a>
 			</li>
-			<li>
+			<li class="navigation__link--path">
 				<a href="{% url 'about' %}">
 					О нас
 				</a>
@@ -115,7 +116,7 @@
 				</footer>
 			</div>
 		</div>
-		<div id="pageInfo">
+		<div id="main">
 			<div class="container">
 				<div id="myNav" class="overlay">
 					<div class="overlay-container">
@@ -127,29 +128,27 @@
 					</div>
 					<div class="overlay__content">
 						{% if not request.user.is_authenticated %}
-						<li>
+						<li class="navigation__link--path">
 							<a href="{% url 'login' %}">
 								Авторизация
 							</a>
 						</li>
-						<li>
+						<li class="navigation__link--path">
 							<a href="{% url 'register' %}">
 								Регистрация
 							</a>
 						</li>
 						{% endif %}
 						{% if request.user.is_authenticated %}
-						<li>
+						<li class="navigation__link--account">
 							<a href="{% url 'profile' %}" id="admin_menu">
 								{{ request.user.username }}
 							</a>
 						</li>
-						<li>
+						<li class="navigation__link--account">
 							<a href="{% url 'logout' %}" id="admin_menu">
 								Выход
 							</a>
-						</li>
-						<li>
 						</li>
 						{% endif %}
 						<li>
@@ -157,17 +156,17 @@
 								Food &amp; Beverage Cartel <sup>BY</sup>
 							</a>
 						</li>
-						<li>
+						<li class="navigation__link--path">
 							<a href="#">
 								Справочник
 							</a>
 						</li>
-						<li>
+						<li class="navigation__link--path">
 							<a href="{% url 'courses' %}">
 								Обучение
 							</a>
 						</li>
-						<li>
+						<li class="navigation__link--path">
 							<a href="{% url 'about' %}">
 								О нас
 							</a>
@@ -185,94 +184,170 @@
 			</div>
 			<!--здесь не делаю for, потому что используется не ListView, который
 				подразумевает список - поэтому достаточно характеристики этого поста-->
-			<h1>
-				{{ post.title }}
-			</h1>
-			<small>
-				<li style="margin-left: 0;">
-					Автор:
-					<a href="{% url 'profile_page' post.author.profile.id %}">{{ post.author.first_name }} {{
-						post.author.last_name }}</a>
-					{% if post.author.profile.instagram_url %}
-					<a href="http://{{ post.author.profile.instagram_url }}" class="_icon-telegram"></a>
-					{% endif %}
-					{% if post.author.profile.vk_url %}
-					<a href="http://{{ post.author.profile.vk_url }}">vk</a>
-					{% endif %}
-					{% if post.author.profile.facebook_url %}
-					<a href="http://{{ post.author.profile.facebook_url }}">facebook</a>
-					{% endif %}
-					{% if post.author.profile.twitter_url %}
-					<a href="http://{{ post.author.profile.twitter_url }}" class="icon-social-instagram">twitter</a> -
-					{% endif %}
-					<p>
-						{{ post.pub_date }}
-					</p>
-				</li>
-			</small>
-			<div class="forum_post_detail_content">
-				<hr>
-				<!-- |safe позволяет в body ввода текста делать текст жирным, при этом в предпросмотре самого текста
+			<div class="container__post">
+				<header class="header">
+					<h1>
+						{{ post.title }}
+					</h1>
+				</header>
+				<div class="post__body">
+					<small>
+						<li>
+							<span>
+								Автор:
+							</span>
+							<a href="{% url 'profile_page' post.author.profile.id %}">
+								{{ post.author.first_name }} {{post.author.last_name }}
+							</a>
+							{% if post.author.profile.instagram_url %}
+							<a href="http://{{ post.author.profile.instagram_url }}" class="_icon-telegram"></a>
+							{% endif %}
+							{% if post.author.profile.vk_url %}
+							<a href="http://{{ post.author.profile.vk_url }}">
+								vk
+							</a>
+							{% endif %}
+							{% if post.author.profile.facebook_url %}
+							<a href="http://{{ post.author.profile.facebook_url }}">
+								facebook
+							</a>
+							{% endif %}
+							{% if post.author.profile.twitter_url %}
+							<a href="http://{{ post.author.profile.twitter_url }}" class="icon-social-instagram">
+								twitter
+							</a> -
+							{% endif %}
+							<p>
+								{{ post.pub_date }}
+							</p>
+						</li>
+					</small>
+					<div class="forum__post-detail-content">
+						<!-- |safe позволяет в body ввода текста делать текст жирным, при этом в предпросмотре самого текста
 					не будут использованы HTML-теги, типа <strong> и так далее-->
-				{% if post.uploaded_image %}
-				<p>
-					<img src="{{ post.uploaded_image.url }}"
-						style="width: 200px; height: 200px; border:1px; border-radius: 30px;">
-				</p>
-				{% endif %}
-				<p>
-					{{ post.body|safe }}
-				<p>
-					<hr>
-					<li style="margin-left: 0; text-align: center;">
-						{% if request.user.is_authenticated %}
-						{% if user.id == post.author.id %}
-						<a href="{% url 'forum_post_update' post.pk %}" id="changepostbtn">
-							Редактировать
-						</a>
-						<a href="{% url 'forum_post_remove' post.pk %}" id="deletepostbtn">
-							Удалить
-						</a>
+						{% if post.uploaded_image %}
+						<div class="forum__post-picture">
+							<img src="{{ post.uploaded_image.url }}">
+						</div>
 						{% endif %}
-						{% endif %}
-					</li>
-				</p>
-				</p>
-				<form action="{% url 'forum_post_like' post.pk %}" method="POST">
-					{% csrf_token %}
-					{% if request.user.is_authenticated %}
-					{% if liked %}
-					<button type="submit" class="button_like" name="post_id" value="{{ post.id }}">
-						Не нравится
-					</button>
-					{% else %}
-					<button type="submit" class="button_dislike" name="post_id" value="{{ post.id }}">
-						Нравится
-					</button>
-					{% endif %}
-					{{ total_likes }} Likes
-					{% endif %}
-				</form>
-				<h2>
-					Дискуссия
-				</h2>
-				{% if not post.comments.all %}
-				No comments yet <a href="{% url 'forum_post_comment_add' post.pk %}">Оставить первый комментарий</a>
-				{% else %}
-				<br>
-				<a href="{% url 'forum_post_comment_add' post.pk %}">Комментировать</a>
-				<br>
-				<a href="{% url 'forum' %}">Вернуться</a>
-				<br>
-				{% for comment in post.comments.all %}
-				{{ comment.name }} - {{ comment.date_added }}
-				<br>
-				{{ comment.body }}
-				<br>
-				{% endfor %}
-				{% endif %}
+						<p>
+							<!-- {{ post.body|safe }} -->
+							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio provident quam, ullam
+							temporibus sint sed praesentium? Suscipit dignissimos aliquam commodi voluptates delectus!
+							Voluptatibus accusamus dolor ex quae facere, impedit fugiat?
+							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio provident quam, ullam
+							temporibus sint sed praesentium? Suscipit dignissimos aliquam commodi voluptates delectus!
+							Voluptatibus accusamus dolor ex quae facere, impedit fugiat?
+							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio provident quam, ullam
+							temporibus sint sed praesentium? Suscipit dignissimos aliquam commodi voluptates delectus!
+							Voluptatibus accusamus dolor ex quae facere, impedit fugiat?
+							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio provident quam, ullam
+							temporibus sint sed praesentium? Suscipit dignissimos aliquam commodi voluptates delectus!
+							Voluptatibus accusamus dolor ex quae facere, impedit fugiat?
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, fuga commodi. Ea,
+							neque! Vero cum dolor porro repellat, earum quisquam quos a ab, ullam, magni est mollitia
+							tempora necessitatibus consequuntur.
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore unde consequatur omnis,
+							quo voluptatibus nisi possimus? Consequatur ipsam, aliquid explicabo deserunt minima quasi
+							cupiditate voluptatum vero distinctio mollitia ea qui!
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, eligendi perspiciatis
+							cumque molestias est exercitationem odit ut ex delectus fuga eaque iusto ullam deserunt cum
+							corrupti modi? Illo, natus illum.
+							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio nemo et quam omnis atque
+							facilis in dolorum. Nihil sequi voluptatem magnam, vitae quaerat eligendi veniam harum!
+							Dolor repudiandae ratione et.
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis est cumque sunt non?
+							Deleniti nemo necessitatibus ducimus nobis id corrupti. Aliquid necessitatibus quo modi
+							soluta reiciendis. Omnis voluptas neque magni.
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Est esse dolorem quibusdam quae
+							distinctio maiores? Veniam error sed libero voluptate, quis inventore, obcaecati porro
+							accusantium dicta dolorum quibusdam fuga labore.
+						<p>
+					</div>
+				</div>
+				<footer class="footer">
+					<form action="{% url 'forum_post_like' post.pk %}" method="POST">
+						<div class="footer__iteraction">
+							{% csrf_token %}
+							{% if request.user.is_authenticated %}
+							{% if liked %}
+							<button type="submit" class="like" name="post_id" value="{{ post.id }}">
+								Не нравится
+							</button>
+							{% else %}
+							<button type="submit" class="dislike" name="post_id" value="{{ post.id }}">
+								Нравится
+							</button>
+							{% endif %}
+							<span>{{ total_likes }} Likes</span>
+							{% endif %}
+						</div>
+						<ul>
+							<li>
+								{% if request.user.is_authenticated %}
+								{% if user.id == post.author.id %}
+								<a href="{% url 'forum_post_update' post.pk %}" id="changepostbtn">
+									Редактировать
+								</a>
+								<a href="{% url 'forum_post_remove' post.pk %}" id="deletepostbtn">
+									Удалить
+								</a>
+								{% endif %}
+								{% endif %}
+							</li>
+						</ul>
+					</form>
+					<div class="footer__discussion">
+						<div class="footer__discussion--title">
+							<h2>
+								Дискуссия
+							</h2>
+						</div>
+						<div class="footer__discussion--comment-btn">
+							{% if not post.comments.all %}
+							<a href="{% url 'forum_post_comment_add' post.pk %}">
+								Оставить первый комментарий
+							</a>
+							{% else %}
+							<a href="{% url 'forum_post_comment_add' post.pk %}">
+								Комментировать
+							</a>
+						</div>
+						<hr>
+						<div class="footer__discussion--comment-body">
+							{% for comment in post.comments.all %}
+							<div class="comment">
+								<div class="comment__title">
+									<span>
+										Прокомментировал:
+									</span>
+									<a href="{% url 'profile_page' post.author.profile.id %}">
+										<!-- {{ comment.name }} -->
+										{{ post.author.first_name }} {{ post.author.last_name }}
+									</a>
+								</div>
+								<div class="comment__body">
+									<ul>
+										<li>
+											{{ comment.body }}
+										</li>
+									</ul>
+								</div>
+								<div class="comment__date-added">
+									<span>
+										{{ comment.date_added }}
+									</span>
+								</div>
+							</div>
+							<hr>
+							{% endfor %}
+							{% endif %}
+						</div>
+					</div>
+				</footer>
 			</div>
 		</div>
+	</div>
 	</div>
 	<script type="text/javascript" src="../../static/js/navbar_toggle.js"></script>
 </body>

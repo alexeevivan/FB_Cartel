@@ -94,11 +94,13 @@
     background: rgb(255 255 255 / 86%);
     color: #252525;
 }
-@media(max-width: 992.91px) {
+@media screen and (max-width: 767px) {
     .modal {
         width: 100vw;
         margin-left: 0%;
-
     }
+	.modal__content {
+		width: 80%;
+	}
 }
 @media(max-width: 668px) {}

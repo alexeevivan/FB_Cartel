@@ -60,45 +60,45 @@
 
 <body>
 	<div class="wrapper">
-		<div id="pageNav">
+		<div id="navigation">
 			<div id="logo">
 				<a href="{% url 'index' %}">Food &amp; Beverage Cartel <sup>BY</sup></a>
 			</div>
 			{% if not request.user.is_authenticated %}
-			<li>
+			<li class="navigation__link--path">
 				<a href="{% url 'login' %}">
 					Авторизация
 				</a>
 			</li>
-			<li>
+			<li class="navigation__link--path">
 				<a href="{% url 'register' %}">
 					Регистрация
 				</a>
 			</li>
 			{% endif %}
 			{% if request.user.is_authenticated %}
-			<li>
+			<li class="navigation__link--account">
 				<a href="{% url 'profile' %}" id="admin_menu">
 					{{ request.user.username }}
 				</a>
 			</li>
-			<li>
+			<li class="navigation__link--account">
 				<a href="{% url 'logout' %}" id="admin_menu">
 					Выход
 				</a>
 			</li>
 			{% endif %}
-			<li>
+			<li class="navigation__link--path">
 				<a href="#">
 					Справочник
 				</a>
 			</li>
-			<li>
+			<li class="navigation__link--path">
 				<a href="{% url 'courses' %}">
 					Обучение
 				</a>
 			</li>
-			<li>
+			<li class="navigation__link--path">
 				<a href="{% url 'about' %}">
 					О нас
 				</a>
@@ -122,7 +122,7 @@
 				</footer>
 			</div>
 		</div>
-		<div id="pageInfo">
+		<div id="main">
 			<div class="container">
 				<div id="myNav" class="overlay">
 					<div class="overlay-container">
@@ -134,29 +134,27 @@
 					</div>
 					<div class="overlay__content">
 						{% if not request.user.is_authenticated %}
-						<li>
+						<li class="navigation__link--path">
 							<a href="{% url 'login' %}">
 								Авторизация
 							</a>
 						</li>
-						<li>
+						<li class="navigation__link--path">
 							<a href="{% url 'register' %}">
 								Регистрация
 							</a>
 						</li>
 						{% endif %}
 						{% if request.user.is_authenticated %}
-						<li>
+						<li class="navigation__link--account">
 							<a href="{% url 'profile' %}" id="admin_menu">
 								{{ request.user.username }}
 							</a>
 						</li>
-						<li>
+						<li class="navigation__link--account">
 							<a href="{% url 'logout' %}" id="admin_menu">
 								Выход
 							</a>
-						</li>
-						<li>
 						</li>
 						{% endif %}
 						<li>
@@ -164,17 +162,17 @@
 								Food &amp; Beverage Cartel <sup>BY</sup>
 							</a>
 						</li>
-						<li>
+						<li class="navigation__link--path">
 							<a href="#">
 								Справочник
 							</a>
 						</li>
-						<li>
+						<li class="navigation__link--path">
 							<a href="{% url 'courses' %}">
 								Обучение
 							</a>
 						</li>
-						<li>
+						<li class="navigation__link--path">
 							<a href="{% url 'about' %}">
 								О нас
 							</a>

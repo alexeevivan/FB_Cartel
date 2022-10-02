@@ -1,0 +1,78 @@
+/* Clear out these styles to start fresh or use this as a base! */
+@import url("https://fonts.googleapis.com/css2?family=Notable&family=Oswald:wght@700&display=swap");
+
+html {
+	height: 100%;
+	display: flex;
+}
+
+body {
+	margin: auto;
+}
+
+html,
+body {
+	background: #00043c;
+	color: #fff;
+	font: normal 600 8vw/1 "Notable", sans-serif;
+	font-family: "Oswald", sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.splitting .char {
+	visibility: hidden;
+
+	&::before,
+	&::after {
+		visibility: visible;
+		animation: slide-in 4s linear both infinite;
+		animation-delay: calc((40ms * var(--char-index)));
+		transform-origin: top center;
+	}
+
+	&::before {
+		animation-delay: calc(100ms + (40ms * var(--char-index))),
+			calc(100ms + (80ms * var(--char-index)));
+		animation-name: slide-in, colorize;
+		animation-timing-function: linear, linear;
+	}
+}
+
+@keyframes slide-in {
+
+	0%,
+	50%,
+	100% {
+		transform: translateY(-150%) scaleY(4);
+		animation-timing-function: cubic-bezier(1, 0, 0.4, 1);
+	}
+
+	20%,
+	30% {
+		transform: translateY(-110%) scaleY(1);
+		animation-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
+	}
+
+	70%,
+	80% {
+		transform: translateY(130%) scaleY(1);
+		animation-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
+	}
+}
+
+@keyframes colorize {
+
+	0%,
+	100% {
+		color: hsl(10deg, 90%, 70%);
+	}
+
+	30% {
+		color: hsl(120deg, 80%, 60%);
+	}
+
+	70% {
+		color: hsl(290deg, 80%, 60%);
+	}
+}

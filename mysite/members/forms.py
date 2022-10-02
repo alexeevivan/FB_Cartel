@@ -51,8 +51,8 @@ class SignUpForm(UserCreationForm):
 
 class LoginForm(AuthenticationForm):
     
-    username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control'}))
-    password = forms.CharField(max_length=100, widget=forms.PasswordInput(attrs={'class':'form-control'}))
+    username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Имя пользователя'}))
+    password = forms.CharField(max_length=100, widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Пароль'}))
     captcha = CaptchaField()
 
     class Meta:

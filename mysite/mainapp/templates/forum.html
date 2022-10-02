@@ -40,7 +40,6 @@
 
 	<link rel="stylesheet" href="../../static/css/icons.css">
 	<link rel="stylesheet" href="../../static/css/simple-line-icons.css">
-	<link rel="stylesheet" href="../../static/css/fonts.css">
 	<link rel="stylesheet" href="../../static/css/index.css">
 	<link rel="stylesheet" href="../../static/css/forum.css">
 	<link rel="stylesheet" href="../../static/css/modal.css">
@@ -53,45 +52,57 @@
 
 <body>
 	<div class="wrapper">
-		<div id="pageNav">
+		<div id="navigation">
 			<div id="logo">
 				<a href="{% url 'index' %}">Food &amp; Beverage Cartel <sup>BY</sup></a>
 			</div>
 			{% if not request.user.is_authenticated %}
-			<li>
+			<li class="navigation__link--path">
 				<a href="{% url 'login' %}">
 					Авторизация
 				</a>
 			</li>
-			<li>
+			<li class="navigation__link--path">
 				<a href="{% url 'register' %}">
 					Регистрация
 				</a>
 			</li>
 			{% endif %}
 			{% if request.user.is_authenticated %}
-			<li>
+			<li class="navigation__link--account">
 				<a href="{% url 'profile' %}" id="admin_menu">
 					{{ request.user.username }}
 				</a>
 			</li>
-			<li>
+			{% if request.user.is_superuser %}
+			<li class="navigation__link--account">
+				<a href="{% url 'forum_post_category_add' %}">
+					Добавить категорию
+				</a>
+			</li>
+			{% endif %}
+			<li class="navigation__link--path">
 				<a href="{% url 'logout' %}" id="admin_menu">
 					Выход
 				</a>
 			</li>
+			<li class="navigation__link--path">
+				<a href="{% url 'forum_post_add' %}">
+					Создать пост
+				</a>
+			</li>
 			{% endif %}
-			<li>
+			<li class="navigation__link--path">
 				<a href="#">
 					Справочник
 				</a>
 			</li>
-			<li>
+			<li class="navigation__link--path">
 				<a href="{% url 'courses' %}">
 					Обучение
 				</a>
 			</li>
-			<li>
+			<li class="navigation__link--path">
 				<a href="{% url 'about' %}">
 					О нас
 				</a>
@@ -115,7 +126,7 @@
 				</footer>
 			</div>
 		</div>
-		<div id="pageInfo">
+		<div id="main">
 			<div class="container">
 				<div id="myNav" class="overlay">
 					<div class="overlay-container">
@@ -184,9 +195,9 @@
 				</div>
 				<ul id="postlist">
 					{% for post in object_list %}
-					<li id="postlistobject">
+					<li id="postlist__object">
 						<p>
-							<a style="text-transform: capitalize; cursor: default; color: goldenrod; line-height: 1em;">
+							<a class="postlist__title">
 								{{ post.title }}
 							</a>
 							<!--Чтобы сделать рабочей ссылку на каждую категорию, нужно не забывать определять
@@ -195,19 +206,20 @@
 							<!-- |slugify позволяет добавить автоматически - (тире) к созданной категории
 								без этого тире: я создал категорию (новые заведения), теперь в адресной строке
 								будет (новые-заведения)-->
-						<p>&#926; <a href="{% url 'category' post.post_category %}" style="font-size:15px;">{{
-								post.post_category }}</a>
+						<p>&#926;
+							<a class="postlist__category" href="{% url 'category' post.post_category %}">
+								{{post.post_category }}
+							</a>
 						</p>
 						</p>
-						<p
-							style="text-transform: capitalize; border: 1px solid goldenrod; border-radius: 15px; padding: 20px;">
+						<p class="postlist__description">
 							<!-- Команда "|slice" помогает не показывать весь текст поста на странице всех постов
 								но я её удалил, потому что добавилась строка краткого описания
 								без неё было post.body, которое нужно было сократить-->
 							{{ post.short_description|safe}}
 						</p>
-						<p style="font-size: 15px;">
-							<a href="{% url 'profile_page' post.author.profile.id %}" style="font-size: 15px;">
+						<p class="postlist__author">
+							<a class="postlist__author" href="{% url 'profile_page' post.author.profile.id %}">
 								{{ post.author.first_name }} {{ post.author.last_name }}
 							</a>
 							- {{ post.pub_date}}
@@ -218,7 +230,7 @@
 							</span>
 							<br>
 							{% if request.user.is_authenticated %}
-						<form class="post_view_count" action="{% url 'forum_post_detail' pk=post.id %}" method="get">
+						<form class="post__view-count" action="{% url 'forum_post_detail' pk=post.id %}" method="get">
 							<input type="hidden" name="post-id" value={{post.id}}>
 							<button type="submit" id="readpostbtn">Читать</button>
 						</form>
@@ -250,19 +262,7 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="../../static/js/navbar_toggle.js"></script>
-	<script type="text/javascript">
-		jQuery(document).ready(function ($) {
-			// use the template tags in our JavaScript call
-			$.postCSRF("{{ hitcount.ajax_url }}", { hitcountPK: "{{ hitcount.pk }}" })
-				.done(function (data) {
-					$('<i />').text(data.hit_counted).attr('id', 'hit-counted-value').appendTo('#hit-counted');
-					$('#hit-response').text(data.hit_message);
-				}).fail(function (data) {
-					console.log('POST failed');
-					console.log(data);
-				});
-		});
-	</script>
+	<script type="text/javascript" src="../../static/js/forum_hit-count.js"></script>
 </body>
 
 </html>
