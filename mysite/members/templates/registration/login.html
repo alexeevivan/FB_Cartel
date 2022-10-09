@@ -9,7 +9,6 @@
 
 
 	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-	<link href="../../../static/css/simple-line-icons.css" rel="stylesheet">
 	<link href="../../../static/css/login.css" rel="stylesheet">
 	<link href="../../../static/css/login-btn.css" rel="stylesheet">
 	<link href="../../../static/css/fonts.css" rel="stylesheet">
@@ -20,63 +19,65 @@
 </head>
 
 <body>
-	<div id="logo">
-		<a href="{% url 'index' %}">
-			Food &#38 Beverage Cartel
-		</a>
-	</div>
-	<div class="login__form">
-		<div class="login__form--redirect">
-			<div class="redirect">
-				<h2 class="redirect__title">
-					Нет аккаунта?
-				</h2>
-				<p class="redirect__body">
-					Наслаждайтесь общением с коллегами, изучайте классические рецептуры
-					коктейлей, знакомьтесь с современными тенденциями развития барной индустрии со всего мира
-				</p>
-				<button class="learn-more">
-					<span class="circle" aria-hidden="true">
-						<span class="icon arrow"></span>
-					</span>
-					<a href="{% url 'register' %}" class="button-text">
-						Регистрация
-					</a>
-				</button>
-			</div>
+	<div class="wrapper">
+		<div class="logo">
+			<a href="{% url 'index' %}">
+				Food &#38 Beverage Cartel
+			</a>
 		</div>
-		<div class="login__form--alowance">
-			<form action="" method="POST">
-				{% csrf_token %}
-				{{ form.as_p }}
-				<script src='https://www.google.com/recaptcha/api.js'></script>
-				<div class="form-group-login g-recaptcha" data-sitekey="6LdqvHgaAAAAACUSh8cuYNpFMjYZwvt0OSFPAuaU"
-					data-theme='dark'>
+		<div class="login__form">
+			<div class="login__form--redirect">
+				<div class="redirect">
+					<h2 class="redirect__title">
+						Нет аккаунта?
+					</h2>
+					<p class="redirect__body">
+						Наслаждайтесь общением с коллегами, изучайте классические рецептуры
+						коктейлей, знакомьтесь с современными тенденциями развития барной индустрии со всего мира
+					</p>
+					<button class="learn-more">
+						<span class="circle" aria-hidden="true">
+							<span class="icon arrow"></span>
+						</span>
+						<a href="{% url 'register' %}" class="button-text">
+							Регистрация
+						</a>
+					</button>
 				</div>
-				{% if messages %}
-				{% for message in messages %}
-				{{ message }}
-				{% endfor %}
-				{% endif %}
-				<div class="footer">
-					<div class="footer__button--line">
-						<button class="footer__button--insta">
-							<a href="#">Login with Instagram</a>
-						</button>
-						<button class="footer__button--facebook">
-							<a href="{% url 'social:begin' 'facebook' %}">
-								Login with Facebook
-							</a>
-						</button>
-						<button class="footer__button--linkedin">
-							<a href="#">Login with LinkedIn</a>
-						</button>
+			</div>
+			<div class="login__form--alowance">
+				<form action="" method="POST">
+					{% csrf_token %}
+					{{ form.as_p }}
+					<script src='https://www.google.com/recaptcha/api.js'></script>
+					<div class="form-group-login g-recaptcha" data-sitekey="6LdqvHgaAAAAACUSh8cuYNpFMjYZwvt0OSFPAuaU"
+						data-theme='dark'>
 					</div>
-					<div class="footer__button--submit">
-						<input type="submit" class="button" value="Войти">
+					{% if messages %}
+					{% for message in messages %}
+					{{ message }}
+					{% endfor %}
+					{% endif %}
+					<div class="footer">
+						<div class="footer__button--line">
+							<button class="footer__button--insta">
+								<a href="#">Login with Instagram</a>
+							</button>
+							<button class="footer__button--facebook">
+								<a href="{% url 'social:begin' 'facebook' %}">
+									Login with Facebook
+								</a>
+							</button>
+							<button class="footer__button--linkedin">
+								<a href="#">Login with LinkedIn</a>
+							</button>
+						</div>
+						<div class="footer__button--submit">
+							<input type="submit" class="button" value="Войти">
+						</div>
 					</div>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript" src="../../../static/js/recaptcha-required.js"></script>

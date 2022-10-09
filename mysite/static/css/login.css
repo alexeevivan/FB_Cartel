@@ -1,20 +1,20 @@
 @import url(../css/fonts.css);
 @import url(../css/null.css);
 
-body {
+.wrapper {
 	display: flex;
 	flex-direction: column;
 	background: linear-gradient(93deg, #6d2a00, #e77600, #482d1c 83.19%, #151515);
 	justify-content: center;
 }
-#logo {
+.logo {
 	margin: 0 auto;
-	height: 20%;
+	height: 20vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-#logo a {
+.logo a {
 	font-size: 4em;
 	display: block;
 	font-weight: normal;
@@ -30,11 +30,11 @@ body {
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-image: url(../../static/img/logo.jpeg);
-	transition: 1s;
+	transition: 0.25s;
+	line-height: initial;
 }
-#logo a:hover {
-	filter: hue-rotate(90deg);
-	transition: 1s;
+.logo a:hover {
+	filter: drop-shadow(2px 4px 6px black);
 }
 .login__form {
 	display: grid;
@@ -50,6 +50,7 @@ body {
 	flex-direction: row;
 	background: #f1d2cd;
 	width: 80vw;
+	max-width: 80vw;
 	height: 90%;
 	margin: auto;
 	border-radius: 10px;
@@ -116,13 +117,12 @@ label {
 .footer__button--submit {
 	margin: 1em auto;
 }
-.footer__button--submit:hover {
-	background: #232323;
-}
 .footer__button--submit input {
 	cursor: pointer;
+	transition: 0.25s;
 }
 .footer__button--submit:hover input {
+	background: #232323;
 	color: white;
 }
 /* .smth {

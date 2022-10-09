@@ -2,102 +2,112 @@
 <!DOCTYPE html>
 <html lang="ru">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
 
-        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-        <link href="../../../static/css/simple-line-icons.css" rel="stylesheet">
-        <link href="../../../static/css/forum.css" rel="stylesheet">
-        <link href="../../../static/css/profile_page.css" rel="stylesheet">
-        <link href="../../../static/css/fonts.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+	<link href="../../../static/css/simple-line-icons.css" rel="stylesheet">
+	<link href="../../../static/css/profile_page.css" rel="stylesheet">
+	<link href="../../../static/css/fonts.css" rel="stylesheet">
 
-        <title>
-            FBC Profile
-        </title>
-    </head>
-    <body>
-        {% if request.user.is_authenticated %}
-        <div id="logo_profilepage">
-            <a href="{% url 'index' %}" style="width: 40vw; margin-left: 30vw;">Food &#38 Beverage Cartel <sup>BY</sup></a>
-        </div>
-        <div class="card1">
-            <div class="container">
-                <div class="photo">
-                    {% if page_user.profile_img %}
-                        <img src="{{ page_user.profile_img.url }}" style="width: 200px; height: 200px; border:1px; border-radius: 30px;">
-                    {% else %}
-                        <img src="{% static 'img/default_user_img.png' %}" style="width: 200px; height: 200px; border:1px; border-radius: 30px;">
-                    {% endif %}
-                </div>
-                <div class="nickname">
-                    <h1>
-                        {{ user.username }}
-                    </h1>
-                </div>
-                <div class="main">
-                    <h3>
-                        "{{ user.profile.bio }}"
-                    </h3>
-                    <br>
-                    <span>
-                        {{ user.first_name }} {{ user.last_name }}
-                    </span>
-                    <br>
-                    {{ user.email }}
-                    <br>
-                    <br>
-                    {% if user.profile.workplace %}
-                        Работает в : <br>{{ user.profile.workplace }}
-                    {% else %}
-                        Место работы : <br>не указано
-                    {% endif %}
-                    <br>
-                    <br>
-                    {% if user.profile.instagram_url %}
-                        Instagram : <a href="{{ user.profile.instagram_url }}">{{ user.profile.instagram_url }}</a>
-                    {% else %}
-                        Instagram : <br><a class="nosocial" href="{% url 'profile_edit_page' user.profile.id %}">добавьте информацию</a>
-                    {% endif %}
-                    {% if user.profile.vk_url %}
-                        VK : <a href="{{ user.profile.vk_url }}">{{ user.profile.vk_url }}</a>
-                    {% else %}
-                        VK : <br><a class="nosocial" href="{% url 'profile_edit_page' user.profile.id %}">добавьте информацию</a>
-                    {% endif %}
-                    {% if user.profile.facebook_url %}
-                        Facebook : <a href="{{ user.profile.facebook_url }}">{{ user.profile.facebook_url }}</a>
-                    {% else %}
-                        Facebook : <br><a class="nosocial" href="{% url 'profile_edit_page' user.profile.id %}">добавьте информацию</a>
-                    {% endif %}
-                    {% if user.profile.twitter_url %}
-                        Twitter : <a href="{{ user.profile.twitter_url }}">{{ user.profile.twitter_url }}</a>
-                    {% else %}
-                        Twitter : <br><a class="nosocial" href="{% url 'profile_edit_page' user.profile.id %}">добавьте информацию</a>
-                    {% endif %}
-                </div>
-            </div>
-            <div class="additional">
-                <a href="{% url 'profile_edit' %}">
-                    <input type="submit" class="btn" value="Редактировать основную информацию">                        
-                </a>
-                {% if user.profile.id %}
-                    <a href="{% url 'profile_edit_page' user.profile.id %}">
-                        <input type="submit" class="btn" value="Редактировать дополнительную информацию">                        
-                    </a>
-                {% else %}
-                    <a href="{% url 'profile_page_create' %}">
-                        <input type="submit" class="btn" value="Создать личный кабинет">                        
-                    </a>
-                {% endif %}
-            {% else %}
-                <h1>
-                    Вы не можете просмотривать данную страницу, поскольку не авторизованы
-                </h1>
-            </div>
-        </div>
-        {% endif %}
-    </body>
+	<title>
+		FBC Profile
+	</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		{% if request.user.is_authenticated %}
+		<div id="logo_profilepage">
+			<a href="{% url 'index' %}" style="width: 40vw; margin-left: 30vw;">Food &#38 Beverage Cartel
+				<sup>BY</sup></a>
+		</div>
+		<div class="card1">
+			<div class="container">
+				<div class="photo">
+					{% if page_user.profile_img %}
+					<img src="{{ page_user.profile_img.url }}"
+						style="width: 200px; height: 200px; border:1px; border-radius: 30px;">
+					{% else %}
+					<img src="{% static 'img/default_user_img.png' %}"
+						style="width: 200px; height: 200px; border:1px; border-radius: 30px;">
+					{% endif %}
+				</div>
+				<div class="nickname">
+					<h1>
+						{{ user.username }}
+					</h1>
+				</div>
+				<div class="main">
+					<h3>
+						"{{ user.profile.bio }}"
+					</h3>
+					<br>
+					<span>
+						{{ user.first_name }} {{ user.last_name }}
+					</span>
+					<br>
+					{{ user.email }}
+					<br>
+					<br>
+					{% if user.profile.workplace %}
+					Работает в : <br>{{ user.profile.workplace }}
+					{% else %}
+					Место работы : <br>не указано
+					{% endif %}
+					<br>
+					<br>
+					{% if user.profile.instagram_url %}
+					Instagram : <a href="{{ user.profile.instagram_url }}">{{ user.profile.instagram_url }}</a>
+					{% else %}
+					Instagram : <br><a class="nosocial" href="{% url 'profile_edit_page' user.profile.id %}">добавьте
+						информацию</a>
+					{% endif %}
+					{% if user.profile.vk_url %}
+					VK : <a href="{{ user.profile.vk_url }}">{{ user.profile.vk_url }}</a>
+					{% else %}
+					VK : <br><a class="nosocial" href="{% url 'profile_edit_page' user.profile.id %}">добавьте
+						информацию</a>
+					{% endif %}
+					{% if user.profile.facebook_url %}
+					Facebook : <a href="{{ user.profile.facebook_url }}">{{ user.profile.facebook_url }}</a>
+					{% else %}
+					Facebook : <br><a class="nosocial" href="{% url 'profile_edit_page' user.profile.id %}">добавьте
+						информацию</a>
+					{% endif %}
+					{% if user.profile.twitter_url %}
+					Twitter : <a href="{{ user.profile.twitter_url }}">{{ user.profile.twitter_url }}</a>
+					{% else %}
+					Twitter : <br><a class="nosocial" href="{% url 'profile_edit_page' user.profile.id %}">добавьте
+						информацию</a>
+					{% endif %}
+				</div>
+			</div>
+			<div class="additional">
+				<a href="{% url 'profile_edit' %}">
+					<input type="submit" class="btn" value="Редактировать основную информацию">
+				</a>
+				{% if user.profile.id %}
+				<a href="{% url 'profile_edit_page' user.profile.id %}">
+					<input type="submit" class="btn" value="Редактировать дополнительную информацию">
+				</a>
+				{% else %}
+				<a href="{% url 'profile_page_create' %}">
+					<input type="submit" class="btn" value="Создать личный кабинет">
+				</a>
+				{% endif %}
+				{% else %}
+				<h1>
+					Вы не можете просмотривать данную страницу, поскольку не авторизованы
+				</h1>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+</body>
+
 </html>

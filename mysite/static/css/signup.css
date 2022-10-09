@@ -1,0 +1,36 @@
+.wrapper {
+	flex-direction: row;
+}
+.logo {
+	margin: auto;
+	height: 100%;
+	padding: 0 2em;
+}
+.signup {
+	height: 100%;
+	width: 75%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+}
+form {
+	width: 75%;
+	box-sizing: border-box;
+}
+.helptext {
+	text-align: center;
+	margin: 0 auto;
+	width: 100%;
+	display: block;
+	font-size: 10px;
+	padding: 1em 0;
+}
+ul {
+	margin: 0 auto;
+	width: 100%;
+	font-size: 10px;
+}
+.button {
+	margin: 1em 0;
+	cursor: pointer;
+}

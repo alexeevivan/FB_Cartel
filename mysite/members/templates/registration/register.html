@@ -10,7 +10,8 @@
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons">
 	<link rel="stylesheet" href="../../../static/css/simple-line-icons.css">
-	<link rel="stylesheet" href="../../../static/css/null.css">
+	<link rel="stylesheet" href="../../../static/css/login.css">
+	<link rel="stylesheet" href="../../../static/css/signup.css">
 	<link rel="stylesheet" href="../../../static/css/ban.css">
 
 	<title>
@@ -19,29 +20,28 @@
 </head>
 
 <body>
-	{% if request.user.is_authenticated %}
+	<div class="wrapper">
+		{% if request.user.is_authenticated %}
 
-	<div data-splitting>
-		Вам не стоит здесь находиться
-	</div>
+		<div data-splitting>
+			Вам не стоит здесь находиться
+		</div>
 
-	{% else %}
-	<div id="left_backside"></div>
-	<div id="main">
-		<div class="vertical-center">
-			<form action="" method="POST" class="register_form">
+		{% else %}
+		<div class="logo">
+			<a href="{% url 'index' %}">
+				Food &#38 Beverage Cartel
+			</a>
+		</div>
+		<div class="signup">
+			<form action="" method="POST" class="signup__form">
 				{% csrf_token %}
 				{{ form.as_p }}
 				<input type="submit" class="button" value="Войти">
 			</form>
 		</div>
+		{% endif %}
 	</div>
-	<div id="right_backside">
-		<div id="logo">
-			<a href="{% url 'index' %}">Food &#38 Beverage Cartel</a>
-		</div>
-	</div>
-	{% endif %}
 
 </body>
 
