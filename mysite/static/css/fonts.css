@@ -1,7 +1,6 @@
 @font-face {
 	font-family: 'SF Pro Display';
-	src: url('../fonts/SFProDisplay-Thin.woff2') format('woff2'),
-		url('../fonts/SFProDisplay-Thin.woff') format('woff');
+	src: url('../fonts/SFProDisplay-Thin.woff2') format('woff2'), url('../fonts/SFProDisplay-Thin.woff') format('woff');
 	font-weight: 100;
 	font-style: normal;
 	font-display: swap;
@@ -9,8 +8,7 @@
 
 @font-face {
 	font-family: 'SF Pro Display';
-	src: url('../fonts/../fonts/SFProDisplay-Light.woff2') format('woff2'),
-		url('../fonts/SFProDisplay-Light.woff') format('woff');
+	src: url('../fonts/../fonts/SFProDisplay-Light.woff2') format('woff2'), url('../fonts/SFProDisplay-Light.woff') format('woff');
 	font-weight: 300;
 	font-style: normal;
 	font-display: swap;
@@ -18,34 +16,33 @@
 
 @font-face {
 	font-family: 'SF Pro Display';
-	src: url('../fonts/SFProDisplay-Regular.woff2') format('woff2'),
-		url('../fonts/SFProDisplay-Regular.woff') format('woff');
+	src: url('../fonts/SFProDisplay-Regular.woff2') format('woff2'), url('../fonts/SFProDisplay-Regular.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-    font-family: 'Material Icons';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
-    src: local('Material Icons'),
-        local('MaterialIcons-Regular'),
-        url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
-        url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
-        url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(https://example.com/MaterialIcons-Regular.eot);
+	/* For IE6-8 */
+	src: local('Material Icons'),
+		local('MaterialIcons-Regular'),
+		url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+		url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+		url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
 }
 
 @font-face {
-    font-family: 'icon';
-    src:  url('../../static/fonts/icon.eot?ghtcw');
-    src:  url('../../static/fonts/icon.eot?ghtcw#iefix') format('embedded-opentype'),
-    	url('../../static/fonts/icon.ttf?ghtcw') format('truetype'),
-    	url('../../static/fonts/icon.woff?ghtcw') format('woff'),
+	font-family: 'icon';
+	src: url('../../static/fonts/icon.eot?ghtcw');
+	src: url('../../static/fonts/icon.eot?ghtcw#iefix') format('embedded-opentype'),
+		url('../../static/fonts/icon.ttf?ghtcw') format('truetype'),
+		url('../../static/fonts/icon.woff?ghtcw') format('woff'),
 		url('../../static/fonts/icon.svg?ghtcw#icon') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
 }
-  
